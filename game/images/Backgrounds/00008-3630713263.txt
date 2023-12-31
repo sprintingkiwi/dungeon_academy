@@ -1,0 +1,3 @@
+A beautiful goddess of light, red lips, white color, light, face close up, closed eyes, white skim, oil painted, blur
+Negative prompt: 3D, writings, words, letters, photo, realistic, poorly drawn, more than one face
+Steps: 20, Sampler: Euler a, CFG scale: 7, Seed: 3630713263, Size: 1280x720, Model hash: dcd690123c, Model: v2-1_768-ema-pruned, Denoising strength: 0.75, Mask blur: 4

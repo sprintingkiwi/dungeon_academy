@@ -1,0 +1,3 @@
+a empty classroom in a school for adventurers, dungeons and dragons, oil painted, fantasy setting
+Negative prompt: writings, letters, words, 3D, realistic, poorly drawn, people, photo, blur
+Steps: 20, Sampler: Euler a, CFG scale: 15, Seed: 1923438760, Size: 1600x900, Model hash: dcd690123c, Model: v2-1_768-ema-pruned

@@ -1,0 +1,4 @@
+A samurai village, inside a swamp, fantasy setting, oil painted, lights, sparkles, insects, sunset, purple
+
+Negative prompt: 3d, poorly drawn, writings, letters, words, legs
+Steps: 20, Sampler: Euler a, CFG scale: 7, Seed: 4280481633, Size: 1600x900, Model hash: dcd690123c, Model: v2-1_768-ema-pruned

@@ -1,0 +1,4 @@
+a rusty ruined sword in the stone, inside a cave, fantasy setting, oil painted, close up, white, light
+
+Negative prompt: writings, poorly drawn, 3D, realistic, purple
+Steps: 20, Sampler: Euler a, CFG scale: 30, Seed: 259963679, Size: 1280x720, Model hash: dcd690123c, Model: v2-1_768-ema-pruned, Denoising strength: 0.8, Mask blur: 4

@@ -1,0 +1,3 @@
+The entrance of a Cave on a hill in a sunny day, fantasy setting, oil painted, a lot of grass and rocks
+Negative prompt: 3D, poorly drawn, writings, letters, words, photo, people, watermark
+Steps: 20, Sampler: Euler a, CFG scale: 10, Seed: 2040205780, Size: 1600x896, Model hash: dcd690123c, Model: v2-1_768-ema-pruned
