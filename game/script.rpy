@@ -1295,7 +1295,14 @@ label chapter_2:
     $ renpy.pause()
     p "(That's it! This statue reminds me of that dream... But who is that woman?)"
     p "(Well, it's probably just a coincidence)"
+    "You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers"
+    "In the dimly lit depths of the cavern, you forgd ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls."
+    "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath. A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
+    "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world. The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
+    "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
+    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber. A shadowy figure emerges from the darkness"
     
+    " an hobgoblin, its malicious eyes fixed upon you and the girl. Panic sets in as it lunges forward, driven by a sinister intent to end your journey. Fear courses through your veins as you and the girl sprint desperately, the hobgoblin's ominous presence hot on your heels, threatening to shatter the fragile thread of your escape"
     scene 00003-827032854 with dissolve
     $ renpy.pause()
 
