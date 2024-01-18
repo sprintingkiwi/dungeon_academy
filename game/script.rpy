@@ -386,6 +386,7 @@ define rec = Character("Rector", who_color="#f4f4f4")
 define bel = Character("Bella", who_color="#ffc4e4")
 define dya = Character("Dyana", who_color="#a79aff")
 define ary = Character("Aryanna", who_color="#ff0062")
+define hob = Character("", who_color="#007d11")
 
 
 # Cutscene stuff
@@ -497,7 +498,10 @@ label start:
         "Begin story":
             $ restore_party(PARTY)
             play music onmyway fadein 2.0
-            "Welcome to Dice Academy!"    
+            "Welcome to Dice Academy!"  
+
+        "Debug Jump":
+            jump explore_cave_omens  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -1293,6 +1297,7 @@ label chapter_2:
     show 00008-3630713263 with annoytheuser:
         blur 75
     $ renpy.pause()
+    scene 00010-827032861 with dissolve   
     p "(That's it! This statue reminds me of that dream... But who is that woman?)"
     p "(Well, it's probably just a coincidence)"
     "You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers"
@@ -1300,7 +1305,9 @@ label chapter_2:
     "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath. A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
     "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world. The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
     "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
-    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber. A shadowy humanoid figure emerges from the darkness"
+    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber."
+    ary "Gyaaaaaa!"
+    "A shadowy humanoid figure emerges from the darkness..."
     $ roll = 0
     $ creature = "creature"
     menu:
@@ -1314,9 +1321,78 @@ label chapter_2:
     else:
         "You can't recognize the creature, even though you are sure you saw something similar on your beloved aventurer guide book."
     
-    "The [creature]'s malicious eyes fixed upon you and the little gnome girl. Panic sets in as it lunges forward, driven by a sinister intent to end your journey. Fear courses through your veins as you and the girl sprint desperately, the hobgoblin's ominous presence hot on your heels, threatening to shatter the fragile thread of your escape"
+    "The [creature]'s malicious eyes fixed upon you and the little gnome girl."
+    hob "... Why YOU Heeere?"
+    p "(What? He... can speak?)"
+    "A beam of light illuminates the creature, revealing a metallic armor and a large unsheathed broadsword."
+    hob "You... Witness..."
+    p "(What? Witness? Of What? What is he talking about?)"
+    hob "Witness... DIE!"
+    p "Aryanna, run, RUN!"
+    "You run through the cavernous surroundings, stumbling here and there on the uneven ground. You hear the hurried footsteps of the creature behind you. However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword."
+    "Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light coming from an opening in the ceiling."
     scene 00003-827032854 with dissolve
     $ renpy.pause()
+    "There are no exits or tunnels"
+    p "(Oh no! It's a dead end!)"
+    "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to choose a different path."
+    "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like a cat with it's prey."  
+    ary "Look, Big Bro! A sword!"
+    p "I know Ary, he's got a big sword..."
+    ary "No, there! There is a sword!"
+    "You follow with your eyes the direction she is pointing with her hand."
+    scene 00127-259963679 with dissolve
+    $ renpy.pause()
+    "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
+    "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
+    ary "Take the sword big Bro! You can fight with that sword!"
+    p "(I don't think I can fight that [creature], but...)"
+    "And you rapidly look around, as for searching alternative solutions."
+    p "(Do I really have another choice?)"        
+
+    $ roll = 0
+    menu:
+        "Attempt to climb the wall to reach the opening (Athletics)":
+            p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
+            $ roll = randint(1, 20) + Player.get_modifier("intelligence")
+            "ROLL: [roll]"
+            "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
+            $ dmg = roll_dice("1d4")
+            $ Player.take_damage(dmg)
+            "You take [dmg] points of damage!"
+            ary "Big Brother, get up please!"
+            "The little gnome is worried, but she is not crying."
+        "Attempt to pull the sword from the rock (Strength)":
+            call pull_sword
+               
+    ary "Hurry big Bro! Take the sword!"
+    p "(Breathing heavily due to the exertion) It's not... that... easy!"
+    p "(Maybe I should stop this... maybe we can still run away!)"
+    
+    $ roll = 0
+    menu:
+        "Attempt to run away":
+            "You try to find an opening to run away, but the [creature] anticipates your moves and cuts off your path. You retreat."
+        "Attempt to pull the sword from the rock (Strength)":
+            call pull_sword
+    
+    p "(It's no use!)"
+
+    label pull_sword:
+        "As you touch the hilt of that old sword, a warmth unfoldswithin you. This sensation of calm and pure happiness reminds you of something."
+        "Yes, that dream."
+        show 00008-3630713263 with annoytheuser:
+            blur 75
+        $ renpy.pause()
+        "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
+        $ roll = randint(1, 20) + Player.get_modifier("strength")
+        "ROLL: [roll]"
+        if roll < 20:
+            "You try to pull out the sword, but it resists strongly, not budging an inch."
+        else:
+            "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
+
+    
 
 
     
