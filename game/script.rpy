@@ -1230,10 +1230,10 @@ label chapter_2:
             "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to grab her with your hand..."
             $ roll = 0
             menu:                
-                "Roll D20 for Atlethics":
+                "Roll D20 on Atlethics":
                     $ roll = Player.roll_skill("atlethics")
                 
-                "Roll D20 for Acrobatics":
+                "Roll D20 on Acrobatics":
                     $ roll = Player.roll_skill("acrobatics")
             "ROLL: [roll]"
             if roll > 10:
@@ -1296,13 +1296,25 @@ label chapter_2:
     p "(That's it! This statue reminds me of that dream... But who is that woman?)"
     p "(Well, it's probably just a coincidence)"
     "You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers"
-    "In the dimly lit depths of the cavern, you forgd ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls."
+    "In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls."
     "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath. A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
     "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world. The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
     "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
-    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber. A shadowy figure emerges from the darkness"
+    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber. A shadowy humanoid figure emerges from the darkness"
+    $ roll = 0
+    $ creature = "creature"
+    menu:
+        "Roll D20 on Nature":
+            $ roll = randint(1, 20) + Player.get_modifier("intelligence")
+    "ROLL: [roll]"
+    if roll > 10:
+        "You recognize the creature: it's an Hobgoblin!"
+        p "(What's a Hobgoblin doing here?"
+        $ creature = "Hobgoblin"
+    else:
+        "You can't recognize the creature, even though you are sure you saw something similar on your beloved aventurer guide book."
     
-    " an hobgoblin, its malicious eyes fixed upon you and the girl. Panic sets in as it lunges forward, driven by a sinister intent to end your journey. Fear courses through your veins as you and the girl sprint desperately, the hobgoblin's ominous presence hot on your heels, threatening to shatter the fragile thread of your escape"
+    "The [creature]'s malicious eyes fixed upon you and the little gnome girl. Panic sets in as it lunges forward, driven by a sinister intent to end your journey. Fear courses through your veins as you and the girl sprint desperately, the hobgoblin's ominous presence hot on your heels, threatening to shatter the fragile thread of your escape"
     scene 00003-827032854 with dissolve
     $ renpy.pause()
 
