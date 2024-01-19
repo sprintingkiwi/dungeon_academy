@@ -387,6 +387,7 @@ define bel = Character("Bella", who_color="#ffc4e4")
 define dya = Character("Dyana", who_color="#a79aff")
 define ary = Character("Aryanna", who_color="#ff0062")
 define hob = Character("", who_color="#007d11")
+define dea = Character("", who_color="#ffffff")
 
 
 # Cutscene stuff
@@ -1262,6 +1263,7 @@ label chapter_2:
         "The earth beneath your feet crumbles and you fall down, rolling together with mud and rocks."
     
     label explore_cave_omens:
+    $ PARTY = [Player]
     stop music fadeout 2.0
     "When you open your eyes, a healty Ary stands before you..."
     ary "Are you my sister's friend?"
@@ -1293,17 +1295,20 @@ label chapter_2:
     "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a white statue."
     "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground, but the other half was still clearly recognizable."
     "Something of that face triggered a memory in you, but you cannot immediately grasp it."
-    p "(This statue... is strangely familiar)"
+    p "{i}(This statue... is strangely familiar){/i}"
+    window hide
     show 00008-3630713263 with annoytheuser:
         blur 75
     $ renpy.pause()
     scene 00010-827032861 with dissolve   
-    p "(That's it! This statue reminds me of that dream... But who is that woman?)"
-    p "(Well, it's probably just a coincidence)"
+    p "{i}(That's it! This statue reminds me of that dream... But who is that woman?){/i}"
+    p "{i}(Well, it's probably just a coincidence){/i}"
     "You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers"
     "In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls."
-    "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath. A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
-    "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world. The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
+    "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath."
+    "A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
+    "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world."
+    "The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
     "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
     "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber."
     ary "Gyaaaaaa!"
@@ -1316,25 +1321,26 @@ label chapter_2:
     "ROLL: [roll]"
     if roll > 10:
         "You recognize the creature: it's an Hobgoblin!"
-        p "(What's a Hobgoblin doing here?"
+        p "{i}(What's a Hobgoblin doing here?){/i}"
         $ creature = "Hobgoblin"
     else:
         "You can't recognize the creature, even though you are sure you saw something similar on your beloved aventurer guide book."
     
     "The [creature]'s malicious eyes fixed upon you and the little gnome girl."
     hob "... Why YOU Heeere?"
-    p "(What? He... can speak?)"
+    p "{i}(What? He... can speak?){/i}"
     "A beam of light illuminates the creature, revealing a metallic armor and a large unsheathed broadsword."
     hob "You... Witness..."
-    p "(What? Witness? Of What? What is he talking about?)"
+    p "{i}(What? Witness? Of What? What is he talking about?){/i}"
     hob "Witness... DIE!"
     p "Aryanna, run, RUN!"
-    "You run through the cavernous surroundings, stumbling here and there on the uneven ground. You hear the hurried footsteps of the creature behind you. However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword."
+    "You run through the cavernous surroundings, stumbling here and there on the uneven ground. You hear the hurried footsteps of the creature behind you."
+    "However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword."
     "Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light coming from an opening in the ceiling."
     scene 00003-827032854 with dissolve
     $ renpy.pause()
     "There are no exits or tunnels"
-    p "(Oh no! It's a dead end!)"
+    p "{i}(Oh no! It's a dead end!){/i}"
     "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to choose a different path."
     "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like a cat with it's prey."  
     ary "Look, Big Bro! A sword!"
@@ -1346,68 +1352,129 @@ label chapter_2:
     "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
     "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
     ary "Take the sword big Bro! You can fight with that sword!"
-    p "(I don't think I can fight that [creature], but...)"
+    p "{i}(I don't think I can fight that [creature], but...){/i}"
     "And you rapidly look around, as for searching alternative solutions."
-    p "(Do I really have another choice?)"        
+    p "{i}(Do I really have another choice?){/i}"        
 
     $ roll = 0
+    $ pull_attempted = False
+    $ drop_attempted = False
     menu:
         "Attempt to climb the wall to reach the opening (Athletics)":
             p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
-            $ roll = randint(1, 20) + Player.get_modifier("intelligence")
+            $ roll = randint(1, 20) + Player.get_modifier("strength")
             "ROLL: [roll]"
             "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
-            $ dmg = roll_dice("1d4")
-            $ Player.take_damage(dmg)
-            "You take [dmg] points of damage!"
+            if roll < 10:
+                $ dmg = roll_dice("1d4")
+                $ Player.take_damage(dmg)
+                "You take [dmg] points of damage!"
+            else:
+                "But somehow you managed to fall without taking any damage."
             ary "Big Brother, get up please!"
             "The little gnome is worried, but she is not crying."
         "Attempt to pull the sword from the rock (Strength)":
             call pull_sword
                
     ary "Hurry big Bro! Take the sword!"
-    p "(Breathing heavily due to the exertion) It's not... that... easy!"
-    p "(Maybe I should stop this... maybe we can still run away!)"
+    if not pull_attempted:
+        menu:
+            "Attempt to pull the sword from the rock (Strength)":
+                call pull_sword
+    p "(Breathing heavily due to the exertion) It's NOT... that... EASY!"
+    p "{i}(Maybe I should stop this... maybe we can still run away!){/i}"    
     
-    $ roll = 0
     menu:
         "Attempt to run away":
-            "You try to find an opening to run away, but the [creature] anticipates your moves and cuts off your path. You retreat."
+            call drop_sword
         "Attempt to pull the sword from the rock (Strength)":
             call pull_sword
+
+    p "{i}(It's no use!){/i}"
+    "You can't pull the sword out of the rock. You can't let go of it and run away."
+    "You are trapped."
+    "But still, amidst this struggle, the warm sensation is there, weaving its way through you."
+    "A sensation of peace and harmony that seems paradoxically at odds with the imminent danger."
+
+    menu:
+        "Fight back the warm feeling and try to pull the sword (Strength)":
+            call pull_sword
+            "You realize there's nothing else you can do now, except to let that warm feeling take the best of you..."
+        "Let the warm feeling possess you (Wisdom)":
+            $ roll = randint(1, 20) + Player.get_modifier("wisdom")
+            "ROLL: [roll]"
+            if roll > 5:
+                "SUCCESS"
+                pause
+                scene bg black with annoytheuser
+                "Silence"
+                "Void"
+                "There's nothing else around you now. Only Darkness. Then..."
+                window hide
+                scene bg white with annoytheuser
+                "Light"
+                window hide
+                "And in that light..."
+                window hide
+                show 00008-3630713263 with annoytheuser
+                "Love"
+                "You sense the warmth emanating from the woman before you, like in a sunlit summer afternoon."
+                "The woman does not speak."
+                "Yet, you perceive meanings in your mind and through your emotions."
+                "{i}YOU ARE FINE JUST THE WAY YOU ARE{/i}"
+                "{i}YOU ARE LOVED{/i}"
+                "Afterward, you are once again abruptly pulled back into reality."
+            else:
+                "FAILED"  
+
+    scene 00003-827032854 with dissolve
+    "Before you realize it, the sword is coming out of the rock."
+    ary "Yes big Bro! You can do it!"
+    "But it's not really you pulling it, it's the sword itself pushing up to get out."
+    "And it's vibrating!"
     
-    p "(It's no use!)"
+
+    # show sword_1 at top with dissolve
+    pause
+    # $ restore_party(PARTY)
+    p "I would say it's nice to meet you again but... I guess it's not."
+    $ battle(PARTY, [Hobgoblin], can_lose=True)
+    ""
+
+    jump chapter_3
 
     label pull_sword:
-        "As you touch the hilt of that old sword, a warmth unfoldswithin you. This sensation of calm and pure happiness reminds you of something."
-        "Yes, that dream."
-        show 00008-3630713263 with annoytheuser:
-            blur 75
-        $ renpy.pause()
-        "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
+        if not pull_attempted:
+            $ pull_attempted = True
+            "As you touch the hilt of that old sword, a warmth unfolds within you. This sensation of calm and pure happiness reminds you of something."
+            "Yes, that dream."
+            window hide
+            show 00008-3630713263 with annoytheuser:
+                blur 75
+            $ renpy.pause()
+            "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
+            hide 00008-3630713263 with annoytheuser
         $ roll = randint(1, 20) + Player.get_modifier("strength")
         "ROLL: [roll]"
         if roll < 20:
+            "SUCCESS"
             "You try to pull out the sword, but it resists strongly, not budging an inch."
         else:
+            "FAILED"
             "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
+        return
 
-    
-
-
-    
-
-
-
-
-    scene bg room
-    show sword_1 at top with dissolve
-    pause
-    # $ restore_party(PARTY)
-    p "I would say it's nice to meet you again but... I guess it's not"
-    $ battle(PARTY, [Hobgoblin])
+    label drop_sword:
+        "You try to let go of the sword, but strangely your hands do not respond."
+        if not drop_attempted:        
+            "Your grip is still firm on the hilt."
+            p "{i}(What happens? Am I paralyzed with fear?){/i}"
+            p "{i}(No, this is something different... I just... can't open my hands!){/i}"
+        return
 
 
+label chapter_3:
+    ""
 
 
 
@@ -1418,7 +1485,6 @@ label demo_end:
     "This demo game has now ended, but it's still work in progress."
     "If you enjoyed it, please stay updated. You'll be able to download the next version and continue right from you last game save."
     call gameover from _call_gameover_1
-
 
 
 
