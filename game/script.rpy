@@ -1348,7 +1348,7 @@ label chapter_2:
     p "I know Ary, he's got a big sword..."
     ary "No, there! There is a sword!"
     "You follow with your eyes the direction she is pointing with her hand."
-    scene 00127-259963679 with dissolve
+    scene 00001 with dissolve
     pause
     "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
     "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
