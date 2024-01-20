@@ -1311,6 +1311,7 @@ label chapter_2:
     "The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
     "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
     "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber."
+    play music cheezeecave fadein 2.0 volume 0.5
     ary "Gyaaaaaa!"
     "A shadowy humanoid figure emerges from the darkness..."
     $ roll = 0
@@ -1348,7 +1349,7 @@ label chapter_2:
     ary "No, there! There is a sword!"
     "You follow with your eyes the direction she is pointing with her hand."
     scene 00127-259963679 with dissolve
-    $ renpy.pause()
+    pause
     "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
     "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
     ary "Take the sword big Bro! You can fight with that sword!"
@@ -1391,6 +1392,8 @@ label chapter_2:
             call pull_sword
 
     p "{i}(It's no use!){/i}"
+    if not drop_attempted:
+        call drop_sword
     "You can't pull the sword out of the rock. You can't let go of it and run away."
     "You are trapped."
     "But still, amidst this struggle, the warm sensation is there, weaving its way through you."
@@ -1405,29 +1408,35 @@ label chapter_2:
             "ROLL: [roll]"
             if roll > 5:
                 "SUCCESS"
-                pause
+                stop music fadeout 1.0
                 scene bg black with annoytheuser
+                pause
                 "Silence"
                 "Void"
                 "There's nothing else around you now. Only Darkness. Then..."
                 window hide
                 scene bg white with annoytheuser
+                play music ascendingthevale fadein 2.0 volume 0.5
                 "Light"
                 window hide
                 "And in that light..."
                 window hide
                 show 00008-3630713263 with annoytheuser
+                pause
                 "Love"
                 "You sense the warmth emanating from the woman before you, like in a sunlit summer afternoon."
                 "The woman does not speak."
                 "Yet, you perceive meanings in your mind and through your emotions."
                 "{i}YOU ARE FINE JUST THE WAY YOU ARE{/i}"
                 "{i}YOU ARE LOVED{/i}"
+                scene bg white with annoytheuser
+                scene bg black with annoytheuser
                 "Afterward, you are once again abruptly pulled back into reality."
             else:
                 "FAILED"  
 
     scene 00003-827032854 with dissolve
+    play music heroicage fadein 2.0 volume 0.5
     "Before you realize it, the sword is coming out of the rock."
     ary "Yes big Bro! You can do it!"
     "But it's not really you pulling it, it's the sword itself pushing up to get out."
@@ -1448,6 +1457,7 @@ label chapter_2:
         if not pull_attempted:
             $ pull_attempted = True
             "As you touch the hilt of that old sword, a warmth unfolds within you. This sensation of calm and pure happiness reminds you of something."
+            play music ascendingthevale fadein 4.0 volume 0.2
             "Yes, that dream."
             window hide
             show 00008-3630713263 with annoytheuser:
@@ -1455,6 +1465,7 @@ label chapter_2:
             $ renpy.pause()
             "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
             hide 00008-3630713263 with annoytheuser
+            play music cheezeecave fadein 2.0 volume 0.5
         $ roll = Player.roll_ability("strength")
         "ROLL: [roll]"
         if roll >= 15:
@@ -1467,7 +1478,8 @@ label chapter_2:
 
     label drop_sword:
         "You try to let go of the sword, but strangely your hands do not respond."
-        if not drop_attempted:        
+        if not drop_attempted:
+            $ drop_attempted = True
             "Your grip is still firm on the hilt."
             p "{i}(What happens? Am I paralyzed with fear?){/i}"
             p "{i}(No, this is something different... I just... can't open my hands!){/i}"
