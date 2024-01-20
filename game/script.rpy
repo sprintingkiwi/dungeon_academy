@@ -1317,7 +1317,7 @@ label chapter_2:
     $ creature = "creature"
     menu:
         "Roll D20 on Nature":
-            $ roll = randint(1, 20) + Player.get_modifier("intelligence")
+            $ roll = Player.roll_ability("intelligence")
     "ROLL: [roll]"
     if roll > 10:
         "You recognize the creature: it's an Hobgoblin!"
@@ -1362,7 +1362,7 @@ label chapter_2:
     menu:
         "Attempt to climb the wall to reach the opening (Athletics)":
             p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
-            $ roll = randint(1, 20) + Player.get_modifier("strength")
+            $ roll = Player.roll_ability("strength")
             "ROLL: [roll]"
             "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
             if roll < 10:
@@ -1401,7 +1401,7 @@ label chapter_2:
             call pull_sword
             "You realize there's nothing else you can do now, except to let that warm feeling take the best of you..."
         "Let the warm feeling possess you (Wisdom)":
-            $ roll = randint(1, 20) + Player.get_modifier("wisdom")
+            $ roll = Player.roll_ability("wisdom")
             "ROLL: [roll]"
             if roll > 5:
                 "SUCCESS"
@@ -1431,7 +1431,8 @@ label chapter_2:
     "Before you realize it, the sword is coming out of the rock."
     ary "Yes big Bro! You can do it!"
     "But it's not really you pulling it, it's the sword itself pushing up to get out."
-    "And it's vibrating!"
+    "And it's vibrating so hard that your arms ache!"
+    "And yet, you couldn't let go of the sword even if you would..."
     
 
     # show sword_1 at top with dissolve
@@ -1454,14 +1455,14 @@ label chapter_2:
             $ renpy.pause()
             "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
             hide 00008-3630713263 with annoytheuser
-        $ roll = randint(1, 20) + Player.get_modifier("strength")
+        $ roll = Player.roll_ability("strength")
         "ROLL: [roll]"
-        if roll < 20:
+        if roll >= 15:
             "SUCCESS"
-            "You try to pull out the sword, but it resists strongly, not budging an inch."
+            "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
         else:
             "FAILED"
-            "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
+            "You try to pull out the sword, but it resists strongly, not budging an inch."
         return
 
     label drop_sword:
