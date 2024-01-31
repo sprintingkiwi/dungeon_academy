@@ -1375,25 +1375,25 @@ label chapter_2:
             ary "Big Brother, get up please!"
             "The little gnome is worried, but she is not crying."
         "Attempt to pull the sword from the rock (Strength)":
-            call pull_sword
+            call pull_sword from _call_pull_sword
                
     ary "Hurry big Bro! Take the sword!"
     if not pull_attempted:
         menu:
             "Attempt to pull the sword from the rock (Strength)":
-                call pull_sword
+                call pull_sword from _call_pull_sword_1
     p "(Breathing heavily due to the exertion) It's NOT... that... EASY!"
     p "{i}(Maybe I should stop this... maybe we can still run away!){/i}"    
     
     menu:
         "Attempt to run away":
-            call drop_sword
+            call drop_sword from _call_drop_sword
         "Attempt to pull the sword from the rock (Strength)":
-            call pull_sword
+            call pull_sword from _call_pull_sword_2
 
     p "{i}(It's no use!){/i}"
     if not drop_attempted:
-        call drop_sword
+        call drop_sword from _call_drop_sword_1
     "You can't pull the sword out of the rock. You can't let go of it and run away."
     "You are trapped."
     "But still, amidst this struggle, the warm sensation is there, weaving its way through you."
@@ -1401,7 +1401,7 @@ label chapter_2:
 
     menu:
         "Fight back the warm feeling and try to pull the sword (Strength)":
-            call pull_sword
+            call pull_sword from _call_pull_sword_3
             "You realize there's nothing else you can do now, except to let that warm feeling take the best of you..."
         "Let the warm feeling possess you (Wisdom)":
             $ roll = Player.roll_ability("wisdom")
