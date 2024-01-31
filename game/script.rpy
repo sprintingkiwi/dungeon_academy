@@ -1441,8 +1441,15 @@ label chapter_2:
     ary "Yes big Bro! You can do it!"
     "But it's not really you pulling it, it's the sword itself pushing up to get out."
     "And it's vibrating so hard that your arms ache!"
-    "And yet, you couldn't let go of the sword even if you would..."
-    
+    "And still, you couldn't let go of the sword even if you would..."
+    "You feel an otherworldly energy emanating from the sword. The little gnome girl watches in awe as the sword begins to glow, casting a soft, ethereal light."
+    "As the vibrations from the sword intensify, the air around you seems to shimmer, and an ancient power resonates through the cavern."
+    "The sword, once firmly embedded, now responds to an unseen force, as if it had a will of its own."
+    "As the vibrations peak, the sword leaps out of the rock, pushing you backward and almost causing you to lose your balance."
+    "You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light, and a sense of purpose emanates from it."
+    "But the beauty of the sword lasts only for a moment..."
+    "The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it before: an old, rusted, and heavily damaged sword."
+
 
     # show sword_1 at top with dissolve
     pause
