@@ -502,7 +502,7 @@ label start:
             "Welcome to Dice Academy!"  
 
         "Debug Jump":
-            jump explore_cave_omens  
+            jump hobgoblin_battle  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -1449,34 +1449,64 @@ label chapter_2:
     "You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light, and a sense of purpose emanates from it."
     "But the beauty of the sword lasts only for a moment..."
     "The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it before: an old, rusted, and heavily damaged sword."
-
+    "In the meanwhile, the [creature] draws dangerously close. You have no choice but to fight!"
 
     # show sword_1 at top with dissolve
     pause
     # $ restore_party(PARTY)
-    p "I would say it's nice to meet you again but... I guess it's not."
-    $ battle(PARTY, [Hobgoblin], can_lose=True)
+    # p "I would say it's nice to meet you again but... I guess it's not."
+    $ battle(PARTY, [Hobgoblin], can_lose=True)    
+
+    label hobgoblin_battle:
+    $ restore_party(party)
+    "With his last mighty blow, the [creature] sends you sprawling across the cavern floor."
     "You struggle to open your eyes... Your head aches and your vision is compromised... "
     ary "Big bro! Are you ok? You must get back on your feet!"
     "Strangely, you find yourself still gripping the sword tightly in your hand."
-    "With the assistance of young Aryanna, you manage to rise to your feet."
+    "With the assistance of young Aryanna, you manage to rise on your feet."
     "However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that slowly takes hold, mingled with an overwhelming sense of desperation."
     "As you stand there, sword in hand, your enemy slowly approaches, and a whispered uncertainty escapes your lips:"
     p "I don't know if I can win this fight..."
+
     menu:
         "{i}(Am I gonna die today?){/i}":
+            p "{i}(Wait... I haven't done much of what I wanted to do in my life!){/i}"
+            p "{i}(He will slay my flesh with that blade... It will be painful...){/i}"
+            p "{i}(NO! I DON'T WANT! It can't HAPPEN!){/i}"
+        "{i}(I Need to come up with something){/i}":
+            p "{i}(This thing seems like a magic sword but...){/i}"
+            p "{i}(I probably just don't know how to properly use it){/i}"
 
-        "{i}(Need to come up with something){/i}":
-
-    p "{i}(Wait... I haven't done much of what I wanted to do in my life!){/i}"
     p "{i}(Why am I in this situation? Was... Was it worth it?){/i}"
-    p "{i}(He will slay my flesh with that blade... It will be painful...){/i}"
-    p "{i}(NO! I DON'T WANT! It can't HAPPEN!){/i}"
-    p "{i}(Wait, maybe I can still run away...){/i}"
-    p "{i}(Aryanna won't make it but WHO CARES... She will slow down the [creature], so that's even better){/i}"
-    p "{i}(No one will ever know this... and I NEED TO SAVE MY LIFE!){/i}"
-    p "{i}(There's nothing more important, right?){/i}"
 
+    menu:
+        "{i}(Wait, maybe I can still run away...){/i}":
+            p "{i}(Aryanna won't make it but WHO CARES... She will slow down the [creature], so that's even better){/i}"
+            p "{i}(No one will ever know this... and I NEED TO SAVE MY LIFE!){/i}"
+            p "{i}(There's nothing more important, right?){/i}"
+            "You try to escape, but the sword get suddenly heavy, slowing you down."
+            "You try to drop the weapon, but your hand is still locked on the hilt."
+            "The [creature], sensing your desperate attempt to escape, launches another merciless attack!"
+            $ battle(PARTY, [Hobgoblin])
+        "{i}(I need to at least buy time for Aryanna to escape...){/i}":
+            p "{i}(Yes, this way my death will not be in vain, at least...){/i}"
+
+    "Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches across your face."
+    "You take a deep breath and focus on the weapon tightly gripped in your hand."
+    "Strangely, you notice that the sword feels considerably lighter and more balanced than before."
+    "You never trained to wield a longsword, but now you feel it as if it has become a natural extension of your body."
+    "The air in the cavern becomes tense as you prepare for what is about to unfold."
+    "In a sudden onslaught, the enemy launches a ferocious attack!"
+    "Drawing upon the agility and dexterity lessons from your days in the rogue's class, you skillfully use those teachings to avoid the enemy's blows"
+    p "{i}(Wow, so this is how all those exercises pay off, huh?){/i}"
+    "In a pivotal moment, a forceful blow, too potent to elude, hurtles towards you."
+    "Aware that dodging would mean exposing Aryanna to peril, you instinctively use the sword to parry the blow."
+    scene bg white
+    "In an instant, a blinding surge of light transforms the cavern, as if the entire sun chose that moment to unleash its brilliance."
+    "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
+    ""
+    scene 00003-827032854 with dissolve
+    ""
     
     
     jump chapter_3
