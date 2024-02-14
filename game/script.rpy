@@ -1502,7 +1502,7 @@ label chapter_2:
     "In a pivotal moment, a forceful blow, too potent to elude, hurtles towards you."
     "Aware that dodging would mean exposing Aryanna to peril, you instinctively use the sword to parry the blow."
     scene bg white
-    "In an instant, a blinding surge of light transforms the cavern, as if the entire sun chose that moment to unleash its brilliance."
+    "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash its brilliance."
     "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
     ""
     scene 00003-827032854 with dissolve
