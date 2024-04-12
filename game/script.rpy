@@ -502,7 +502,7 @@ label start:
             "Welcome to Dice Academy!"  
 
         "Debug Jump":
-            jump hobgoblin_battle  
+            jump explore_cave_omens  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -1266,9 +1266,11 @@ label chapter_2:
     $ PARTY = [Player]
     stop music fadeout 2.0
     "When you open your eyes, a healty Ary stands before you..."
+    show aryanna at topleft with dissolve
     ary "Are you my sister's friend?"
     ary "You fell down too!"    
     c "Ary!!"
+    show ciry at topright with dissolve
     p "Aryanna! Aryanna! Are you ok?"
     ary "Hehe, it was fun!"
     p "Yes, Ciry... She... seems to be ok..."
@@ -1282,7 +1284,9 @@ label chapter_2:
     p "Maybe we can just walk through these tunnels and see if there is an exit somewhere else!"
     c "(worried) Walk throught the tunnels?"
     c "Well, it could be a good idea after all... I'll try to walk around from up here and see if there is another exit!"
+    hide ciry with dissolve
     p "Ok! Let's go south for now!"
+    hide aryanna with dissolve
     "..."
     "And so, you and the little Aryanna set off walking inside those dimly lit tunnels"
     scene 00021-827032872 with dissolve
@@ -1291,8 +1295,10 @@ label chapter_2:
     scene 00010-827032861 with dissolve    
     $ renpy.pause()
     "You go on and on, walking through this strange natural cave"
+    show aryanna at topleft with dissolve
     ary "Big brother, look! There's a statue there!"
     "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a white statue."
+    hide aryanna with dissolve
     "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground, but the other half was still clearly recognizable."
     "Something of that face triggered a memory in you, but you cannot immediately grasp it."
     p "{i}(This statue... is strangely familiar){/i}"
@@ -1312,7 +1318,9 @@ label chapter_2:
     "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
     "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber."
     play music cheezeecave fadein 2.0 volume 0.5
+    show aryanna at topleft with dissolve
     ary "Gyaaaaaa!"
+    show hobgoblin at topright with dissolve
     "A shadowy humanoid figure emerges from the darkness..."
     $ roll = 0
     $ creature = "creature"
@@ -1335,6 +1343,8 @@ label chapter_2:
     p "{i}(What? Witness? Of What? What is he talking about?){/i}"
     hob "Witness... DIE!"
     p "Aryanna, run, RUN!"
+    hide aryanna with dissolve
+    hide hobgoblin with dissolve
     "You run through the cavernous surroundings, stumbling here and there on the uneven ground. You hear the hurried footsteps of the creature behind you."
     "However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword."
     "Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light coming from an opening in the ceiling."
@@ -1352,7 +1362,9 @@ label chapter_2:
     pause
     "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
     "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
+    show aryanna at topleft with dissolve
     ary "Take the sword big Bro! You can fight with that sword!"
+    hide aryanna with dissolve
     p "{i}(I don't think I can fight that [creature], but...){/i}"
     "And you rapidly look around, as for searching alternative solutions."
     p "{i}(Do I really have another choice?){/i}"        
@@ -1455,13 +1467,17 @@ label chapter_2:
     pause
     # $ restore_party(PARTY)
     # p "I would say it's nice to meet you again but... I guess it's not."
-    $ battle(PARTY, [Hobgoblin], can_lose=True)    
+    $ battle(PARTY, [Hobgoblin], can_lose=True)
 
     label hobgoblin_battle:
-    $ restore_party(party)
+    $ restore_party(PARTY)
+    stop music fadeout 1.0
     "With his last mighty blow, the [creature] sends you sprawling across the cavern floor."
     "You struggle to open your eyes... Your head aches and your vision is compromised... "
+    play music cheezeecave fadein 2.0
+    show aryanna at topleft with dissolve
     ary "Big bro! Are you ok? You must get back on your feet!"
+    hide aryanna with dissolve    
     "Strangely, you find yourself still gripping the sword tightly in your hand."
     "With the assistance of young Aryanna, you manage to rise on your feet."
     "However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that slowly takes hold, mingled with an overwhelming sense of desperation."
@@ -1491,6 +1507,7 @@ label chapter_2:
         "{i}(I need to at least buy time for Aryanna to escape...){/i}":
             p "{i}(Yes, this way my death will not be in vain, at least...){/i}"
 
+    play music heroicage fadein 1.0
     "Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches across your face."
     "You take a deep breath and focus on the weapon tightly gripped in your hand."
     "Strangely, you notice that the sword feels considerably lighter and more balanced than before."
@@ -1504,10 +1521,9 @@ label chapter_2:
     scene bg white
     "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash its brilliance."
     "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
-    ""
     scene 00003-827032854 with dissolve
+    "When your vision returns, you see the hobgoblin on the ground, his sword broken in hundreds of pieces and on of his arms missing, as if it was disintegrated."
     ""
-    
     
     jump chapter_3
 
