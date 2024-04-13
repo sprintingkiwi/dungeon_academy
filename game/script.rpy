@@ -469,7 +469,7 @@ label start:
         ))
         Theo.character = t
         Theo.image = "theo"
-        # Theo.actions = [default_attack, burning_hands]
+        Theo.actions = [default_attack]
         Theo.equip_weapon(SRD_equipment['club'])
 
         Player = PlayerAdventurer(dnd.Character(
@@ -486,6 +486,7 @@ label start:
             charisma=8
         ))
         Player.character = p
+        Player.actions = [default_attack]
         Player.equip_weapon(SRD_equipment['dagger'])
         Player.courses_taken = []
 
