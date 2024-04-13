@@ -1517,7 +1517,7 @@ label PART_1:
 
         menu:
             "Fight back the warm feeling and try to pull the sword (Strength)":
-                call pull_sword
+                call pull_sword from _call_pull_sword_3
                 "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
                 pause
                 $ battle(PARTY, [Hobgoblin])
@@ -1808,7 +1808,7 @@ label study_plan_2:
                     $ Player.sheet.skills_wisdom["animal-handling"] = True
                     $ Player.courses_taken.append("animals")
                 "Go back":
-                    call study_plan_2
+                    call study_plan_2 from _call_study_plan_2
 
         "Recognize evil in the world" if "evil" not in Player.courses_taken: # Paladin teacher
             "This course will improve your Wisdom and Constitution Abilities."
@@ -1818,7 +1818,7 @@ label study_plan_2:
                     $ Player.sheet.wisdom += 1
                     $ Player.courses_taken.append("evil")
                 "Go back":
-                    call study_plan_2
+                    call study_plan_2 from _call_study_plan_2_1
 
         "The dangers of magic" if "magic" not in Player.courses_taken: # Sorcerer teacher
             "This course will improve your Charisma and Constitution Abilities."
@@ -1828,7 +1828,7 @@ label study_plan_2:
                     $ Player.sheet.constitution += 1
                     $ Player.courses_taken.append("magic")
                 "Go back":
-                    call study_plan_2
+                    call study_plan_2 from _call_study_plan_2_2
 
         "Tales of extraplanar entities" if "extraplanar" not in Player.courses_taken: # Figther teacher
             "This course will improve your Charisma and Wisdom Abilities."
@@ -1838,7 +1838,7 @@ label study_plan_2:
                     $ Player.sheet.intelligence += 1
                     $ Player.courses_taken.append("extraplanar")
                 "Go back":
-                    call study_plan_2
+                    call study_plan_2 from _call_study_plan_2_3
 
         "The armony with nature" if "nature" not in Player.courses_taken: # Druid teacher
             "This course will improve your Wisdom (+1) and will grant you a proficiency in the Nature skill"
@@ -1848,7 +1848,7 @@ label study_plan_2:
                     $ Player.sheet.skills_intelligence["nature"] = True
                     $ Player.courses_taken.append("nature")
                 "Go back":
-                    call study_plan_2
+                    call study_plan_2 from _call_study_plan_2_4
 
     $ save_player_json()
     return
