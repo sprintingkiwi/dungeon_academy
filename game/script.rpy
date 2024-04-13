@@ -1709,31 +1709,31 @@ label demo_end:
 
 
 label study_plan_1:
-    "Choose the course to follow for the current month:"
+    "Choose the course to follow for the current term:"
     menu:
+
         "Survival in the woods" if "survival" not in Player.courses_taken: # Ranger teacher
-            "This course will improve your Wisdom and Constitution Abilities."
+            "This course will improve your Constitution (+1) and will grant you a proficiency in the Survival skill."
             menu:
                 "Take the course":
-                    $ Player.sheet.strength += 1
                     $ Player.sheet.constitution += 1
-                    # $ Player.sheet.skills_wisdom["survival"] = True
+                    $ Player.sheet.skills_wisdom["survival"] = True
                     $ Player.courses_taken.append("survival")
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_1
 
         "Basics of dungeoneering" if "dungeon" not in Player.courses_taken: # Rogue teacher
-            "This course will improve your Dexterity and Wisdom Abilities."
+            "This course will improve your Dexterity (+1) and will grant you a proficiency in the Perception skill."
             menu:
                 "Take the course":
-                    $ Player.sheet.wisdom += 1
                     $ Player.sheet.dexterity += 1
+                    $ Player.sheet.skills_wisdom["perception"] = True
                     $ Player.courses_taken.append("dungeon")
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_2
 
-        "History of magic" if "arcana" not in Player.courses_taken: # Wizard teacher
-            "This course will improve your Intelligence Ability and will grant you a proficiency in the Arcana Skill."
+        "History of Magic" if "arcana" not in Player.courses_taken: # Wizard teacher
+            "This course will improve your Intelligence (+1) and will grant you a proficiency in the Arcana skill."
             menu:
                 "Take the course":
                     $ Player.sheet.intelligence += 1
@@ -1742,65 +1742,53 @@ label study_plan_1:
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_3
 
-        "Fighting wild animals" if "animals" not in Player.courses_taken: # Barbarian teacher
-            "This course will improve your Strength and Constitution Abilities."
-            menu:
-                "Take the course":
-                    $ Player.sheet.strength += 1
-                    $ Player.sheet.constitution += 1
-                    $ Player.courses_taken.append("animals")
-                "Go back":
-                    call study_plan_1 from _call_study_plan_1_4
-
         "Persuasion Techniques" if "persuasion" not in Player.courses_taken: # Bard teacher
-            "This course will improve your Charisma and Intelligence Abilities."
+            "This course will improve your Charisma (+1) and will grant you a proficiency in the Persuasion skill."
             menu:
                 "Take the course":
                     $ Player.sheet.charisma += 1
-                    $ Player.sheet.intelligence += 1
+                    $ Player.sheet.skills_charisma["persuasion"] = True
                     $ Player.courses_taken.append("persuasion")
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_5
 
         "Principles of the faithful" if "religion" not in Player.courses_taken: # Cleric teacher
-            "This course will improve your Wisdom and Intelligence Abilities."
+            "This course will improve your Wisdom (+1) and will grant you a proficiency in the Religion skill."
             menu:
                 "Take the course":
                     $ Player.sheet.wisdom += 1
-                    $ Player.sheet.intelligence += 1
+                    $ Player.sheet.skills_intelligence["religion"] = True
                     $ Player.courses_taken.append("religion")
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_6
 
-        "The armony with nature" if "nature" not in Player.courses_taken: # Druid teacher
-            "This course will improve your Wisdom Ability and will grant you a proficiency in the Nature Skill"
-            menu:
-                "Take the course":
-                    $ Player.sheet.wisdom += 1
-                    $ Player.sheet.skills_intelligence["nature"] = True
-                    $ Player.courses_taken.append("nature")
-                "Go back":
-                    call study_plan_1 from _call_study_plan_1_7
-
-        "Strategies on the battlefield" if "combat" not in Player.courses_taken: # Figther teacher
-            "This course will improve your Strength and Dexterity Abilities."
+        "Basics of combat and martial arts" if "combat" not in Player.courses_taken: # Figther teacher
+            "This course will improve your Strength (+1) and will grant you a proficiency in the Athletics skill."
             menu:
                 "Take the course":
                     $ Player.sheet.strength += 1
-                    $ Player.sheet.dexterity += 1
+                    $ Player.sheet.skills_strength["athletics"] = True
                     $ Player.courses_taken.append("combat")
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_8
+        
+    $ save_player_json()
+    return
 
-        "Basics of martial arts" if "martial" not in Player.courses_taken: # Monk teacher
-            "This course will improve your Strength and Dexterity Abilities."
+
+label study_plan_2:
+    "Choose the course to follow for the current term:"
+    menu:
+
+        "Fighting wild animals" if "animals" not in Player.courses_taken: # Barbarian teacher
+            "This course will improve your Strength (+1) and will grant you a proficiency in the Animal-Handling skill."
             menu:
                 "Take the course":
-                    $ Player.sheet.constitution += 1
-                    $ Player.sheet.dexterity += 1
-                    $ Player.courses_taken.append("martial")
+                    $ Player.sheet.strength += 1
+                    $ Player.sheet.skills_wisdom["animal-handling"] = True
+                    $ Player.courses_taken.append("animals")
                 "Go back":
-                    call study_plan_1 from _call_study_plan_1_9
+                    call study_plan_2
 
         "Recognize evil in the world" if "evil" not in Player.courses_taken: # Paladin teacher
             "This course will improve your Wisdom and Constitution Abilities."
@@ -1810,7 +1798,7 @@ label study_plan_1:
                     $ Player.sheet.wisdom += 1
                     $ Player.courses_taken.append("evil")
                 "Go back":
-                    call study_plan_1 from _call_study_plan_1_10
+                    call study_plan_2
 
         "The dangers of magic" if "magic" not in Player.courses_taken: # Sorcerer teacher
             "This course will improve your Charisma and Constitution Abilities."
@@ -1820,7 +1808,7 @@ label study_plan_1:
                     $ Player.sheet.constitution += 1
                     $ Player.courses_taken.append("magic")
                 "Go back":
-                    call study_plan_1 from _call_study_plan_1_11
+                    call study_plan_2
 
         "Tales of extraplanar entities" if "extraplanar" not in Player.courses_taken: # Figther teacher
             "This course will improve your Charisma and Wisdom Abilities."
@@ -1830,7 +1818,17 @@ label study_plan_1:
                     $ Player.sheet.intelligence += 1
                     $ Player.courses_taken.append("extraplanar")
                 "Go back":
-                    call study_plan_1 from _call_study_plan_1_12
+                    call study_plan_2
+
+        "The armony with nature" if "nature" not in Player.courses_taken: # Druid teacher
+            "This course will improve your Wisdom (+1) and will grant you a proficiency in the Nature skill"
+            menu:
+                "Take the course":
+                    $ Player.sheet.wisdom += 1
+                    $ Player.sheet.skills_intelligence["nature"] = True
+                    $ Player.courses_taken.append("nature")
+                "Go back":
+                    call study_plan_2
 
     $ save_player_json()
     return
