@@ -125,21 +125,25 @@ init python:
         #     pass
 
         def get_modifier(self, ability):
-            return dnd.Character.getModifier(self.sheet[ability])
-
-        def roll_ability(self, ability):
-            return randint(1, 20) + self.get_modifier(ability)
+            return dnd.Character.getModifier(self.sheet[ability])        
         
-        def roll(self, dice, mod=None):
+        def roll(self, dice, mod=None, advantage=False):
             natural_roll = roll_dice(dice)
-            if mod != None:                
+            if advantage:
+                second_roll = roll_dice(dice)
+                if second_roll > natural_roll:
+                    natural_roll = second_roll
+            if mod != None:
                 modifier = self.get_modifier(mod)
                 total = natural_roll + modifier
-                narrator(f"ROLL: {natural_roll} + {modifier}({mod}) = {total}")
+                narrator(f"({self.get_name()}) ROLL: {natural_roll} + {modifier}({mod}) = {total}")
                 return total
             else:
-                narrator(f"ROLL: {natural_roll}")
+                narrator(f"({self.get_name()}) ROLL: {natural_roll}")
                 return natural_roll
+
+        def roll_ability(self, ability, advantage=False):
+            return self.roll("1d20", ability, advantage)
         
         def choose_action(self):
             return random.choice(self.actions)
@@ -185,8 +189,8 @@ init python:
         def restore(self):
             self.sheet.hp = self.sheet.max_hp
 
-        def roll_skill(self, skillname):
-            roll = randint(1, 20)
+        def roll_skill(self, skillname, advantage=False):
+            roll = self.roll("1d20", advantage)
             proficient = False
             dsheet = dict(self.sheet)
             skills_abilities = ["strength", "dexterity", "intelligence", "charisma", "wisdom"]
@@ -243,7 +247,7 @@ init python:
             self.current_location = ""
             self.achievements = []
 
-        def roll(self, dice, mod=None):
+        def roll(self, dice, mod=None, advantage=False):
             parts = dice.split("d")
             prompt = "Roll " + parts[0] + " D" + parts[1]
             renpy.display_menu([ (prompt, "")])
@@ -1514,9 +1518,9 @@ label PART_1:
                 call pull_sword from _call_pull_sword_3
                 "You realize there's nothing else you can do now, except to let that warm feeling take the best of you..."
             "Let the warm feeling possess you (Wisdom)":
-                $ roll = Player.roll_ability("wisdom")
+                $ roll = Player.roll_ability("wisdom", advantage=True)
                 "ROLL: [roll]"
-                if roll > 5:
+                if roll > 1:
                     "SUCCESS"
                     stop music fadeout 1.0
                     scene bg black with annoytheuser
