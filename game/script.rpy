@@ -250,6 +250,8 @@ init python:
         def roll(self, dice, mod=None, advantage=False):
             parts = dice.split("d")
             prompt = "Roll " + parts[0] + " D" + parts[1]
+            if advantage:
+                prompt += " (ADVANTAGE!)"
             renpy.display_menu([ (prompt, "")])
             return super().roll(dice, mod)
 
@@ -1515,8 +1517,10 @@ label PART_1:
 
         menu:
             "Fight back the warm feeling and try to pull the sword (Strength)":
-                call pull_sword from _call_pull_sword_3
-                "You realize there's nothing else you can do now, except to let that warm feeling take the best of you..."
+                call pull_sword
+                "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
+                pause
+                $ battle(PARTY, [Hobgoblin])
             "Let the warm feeling possess you (Wisdom)":
                 $ roll = Player.roll_ability("wisdom", advantage=True)
                 "ROLL: [roll]"
@@ -1547,7 +1551,9 @@ label PART_1:
                     scene bg black with annoytheuser
                     "Afterward, you are once again abruptly pulled back into reality."
                 else:
-                    "FAILED"  
+                    "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
+                    pause
+                    $ battle(PARTY, [Hobgoblin])
 
         scene 00003-827032854 with dissolve
         play music heroicage fadein 2.0 volume 0.5
