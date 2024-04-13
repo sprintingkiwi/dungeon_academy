@@ -1678,7 +1678,7 @@ label PART_1:
 
     label chapter_3:
         # Discovery of the Statue of the Silent Goddess within the school and the book that Ciry gradually translates.
-        # First encounter with Viconia
+        # First encounter with Hooded-Woman
         # Meeting Theo and preparation for the school tournament
         ""
 
@@ -1687,7 +1687,8 @@ label PART_1:
     # School tournament
         # Theoric test
         # Simulated dungeon with mechanical goblins, traps, and the Lake of the Spirit Trial
-        # In the lake of the spirit trial there is a test of Shar, the self-same trial
+        # The "Cursed Dawn" goddess, evil sister of the Blessed Eve, will interfere in the spirit trial with a much darker test of her own
+        # The "Cursed Dawn" goddess is, in fact, interested into the Player, as he she aims to corrupt the Silent Goddess's Chosen to have him for her to guide her Church.
     ""
 
 
@@ -1696,7 +1697,7 @@ label PART_2:
 
     label chapter_5:
         # Changing class (if player wants) and accelerated summer course for the new class
-        # Dark teachings from Viconia, during summer, if player accepts
+        # Dark teachings from Hooded-Woman, during summer, if player accepts
     
 
     label chapter_6:
