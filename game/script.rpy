@@ -1028,13 +1028,18 @@ label PART_1:
         p "Sure!"
         c "Let's see..."
         "Ciry frantically flips through the book, then stopping on a random page."
-        c "Wood Elves, too, can make outstanding rogues thanks to both their racial bonus to Dexterity and the Mask of the Wild feature, which allows them to easily hide in the natural world."
-        p "Well, I'm a Half-Elf... Even though, I can't use Mask of the Wild."
-        c "Oh, you are Half-Elf? I never would have said that!"
-        p "I know, my ears are mostly human-like. But still they're still a bit pointed."
-        "You move your hair to show Ciry your left ear."
-        c "Yeah, not so much but it can be seen. Right there, a little elven shaped ear!"
-        p "Hehe!"
+        if Player.race == "Half-Elf":
+            c "'Wood Elves, too, can make outstanding rogues thanks to both their racial bonus to Dexterity and the Mask of the Wild feature, which allows them to easily hide in the natural world.'"
+            p "Well, I'm a Half-Elf... Even though, I can't use Mask of the Wild."
+            c "Oh, you are Half-Elf? I never would have said that!"
+            p "I know, my ears are mostly human-like. But still they're still a bit pointed."
+            "You move your hair to show Ciry your left ear."
+            c "Yeah, not so much but it can be seen. Right there, a little elven shaped ear!"
+            p "Hehe!"
+        if Player.race == "Dwarf" or Player.race == "Half-Orc":
+            c "'Dwarves and Half-Orcs would be unusual races for rogues, but nonetheless, they can find a mix of abilities that can make them work effectively as Rogues.'"
+            p "Well, I didn't expect to end up in the Rogue class so... I guess I'll have to come up with some ideas about this 'mix of abilities'."
+            c "I'm sure you're gonna do a great job, [Player.sheet.name]!"
         c "..."
         p "..."
         stop music fadeout 2.0
@@ -1619,7 +1624,7 @@ label PART_1:
         "She was just behind you. A bit dazed but ultimately unharmed."
         "You then glance ahead to find the enemy. A harrowing scream echoes from the opposite side of the chamber. The [creature] rises to its feet, cradling the arm that once wielded its weapon."
         "To your astonishment, you realize that the arm is no longer there; it seems to have been disintegrated, leaving the [creature] in a state of shock and agony."
-        "On the ground lie hundreds of metallic shards, likely the remnants of what was once the [creature]'s weapon."
+        "Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon."
         
         jump demo_end
 
