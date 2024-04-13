@@ -1622,9 +1622,14 @@ label PART_1:
         "You rapidly scan the surroundings, searching for Ciry's little sister."
         ary "I'm here big bro... wha... what happened? There was that burst of light..."
         "She was just behind you. A bit dazed but ultimately unharmed."
-        "You then glance ahead to find the enemy. A harrowing scream echoes from the opposite side of the chamber. The [creature] rises to its feet, cradling the arm that once wielded its weapon."
-        "To your astonishment, you realize that the arm is no longer there; it seems to have been disintegrated, leaving the [creature] in a state of shock and agony."
+        "You notice you are still holding that strange sword."
+        "But the sword is not gleaming with light anymore, and it looks like a regular old rusty sword."
         "Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon."
+        "A harrowing scream echoes from the opposite side of the chamber. You then glance ahead to locate your enemy."
+        "The [creature] rises to its feet, cradling the arm that once wielded its weapon."
+        "To your astonishment, you realize that the arm is no longer there: it seems to have been disintegrated!"
+        "The [creature] is now in a state of shock and agony."
+        "With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine tunnels of the underground cave."
         
         jump demo_end
 
