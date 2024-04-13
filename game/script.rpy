@@ -339,6 +339,7 @@ init python:
                             active_party.remove(battler)
                         elif battler in active_enemies:
                             active_enemies.remove(battler)
+                        battlers.remove(battler)
                     if len(active_party) <= 0:
                         narrator("YOU LOSE")
                         if not can_lose:
@@ -453,6 +454,24 @@ label start:
         Dante.actions = [default_attack, burning_hands]
         Dante.equip_weapon(SRD_equipment['quarterstaff'])
 
+        Theo = PlayableAdventurer(dnd.Character(
+            name="Theo",
+            age="17",
+            level=1,
+            gender="Female",
+            classs=dnd.CLASSES["barbarian"],
+            strength=14,
+            dexterity=10,
+            constitution=14,
+            wisdom=8,
+            intelligence=8,
+            charisma=8
+        ))
+        Theo.character = t
+        Theo.image = "theo"
+        # Theo.actions = [default_attack, burning_hands]
+        Theo.equip_weapon(SRD_equipment['club'])
+
         Player = PlayerAdventurer(dnd.Character(
             name="Ale",
             age="16",
@@ -472,7 +491,7 @@ label start:
 
 
         # PARTY
-        PARTY = [Player, Ciry, Dante]
+        PARTY = [Player, Ciry, Dante, Theo]
 
 
 
