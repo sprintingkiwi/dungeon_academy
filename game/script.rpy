@@ -161,6 +161,7 @@ init python:
     class Adventurer(RPG_Entity):
         def __init__(self, sheet):
             super().__init__(sheet)
+            self.race = "Human"
             self.weapon = None
             self.armor = None
 
@@ -405,6 +406,7 @@ define burning_hands = {"name": "Burning hands", "effect": burning_hands_effect,
 default PARTY = []
 default Player = None
 default Ciry = None
+default Theo = None
 default Dante = None
 
 
@@ -429,10 +431,11 @@ label start:
             intelligence=12,
             charisma=12
         ))
+        Ciry.race = "Gnome"
         Ciry.character = c
         Ciry.image = "ciry"
         Ciry.actions = [default_attack, heal]
-        Ciry.equip_weapon(SRD_equipment['morningstar'])
+        Ciry.equip_weapon(SRD_equipment['morningstar'])        
         # Ciry.equip_armor(SRD_equipment['leather-armor'])
         # testimg = renpy.image("Ciry", "images/Characters/ciry.png")
 
@@ -449,6 +452,7 @@ label start:
             intelligence=16,
             charisma=12
         ))
+        Dante.race = "Human"
         Dante.character = d
         Dante.image = "dante"
         Dante.actions = [default_attack, burning_hands]
@@ -467,6 +471,7 @@ label start:
             intelligence=8,
             charisma=8
         ))
+        Theo.race = "Half-Orc"
         Theo.character = t
         Theo.image = "theo"
         Theo.actions = [default_attack]
@@ -580,6 +585,75 @@ label PART_1:
 
         p "[Player.sheet.name]"
         c "Nice to meet you, [Player.sheet.name]!"
+        c "You are a..."
+        $ class_choice = "Half-Elf"
+        menu:
+            "Human (choose stat bonus)":
+                $ class_choice = "Human"
+            "Half-Elf (+1 dex, +2 cha)":
+                $ class_choice = "Half-Elf"
+                $ Player.sheet.dexterity += 1
+                $ Player.sheet.charisma += 2
+            "Half-Orc (+2 str, +1 con)":
+                $ class_choice = "Half-Orc"
+                $ Player.sheet.constitution += 1
+                $ Player.sheet.strength += 2
+            "Dwarf (+2 str, +1 wis)":
+                $ class_choice = "Dwarf"
+                $ Player.sheet.wisdom += 1
+                $ Player.sheet.strength += 2
+            "Halfling (+2 dex, +1 int)":
+                $ class_choice = "Halfling"
+                $ Player.sheet.intelligence += 1
+                $ Player.sheet.dexterity += 2
+            "Elf (+2 dex, +1 wis)":
+                $ class_choice = "Elf"
+                $ Player.sheet.wisdom += 1
+                $ Player.sheet.dexterity += 2
+            "Gnome (+1 con, +2 int)":
+                $ class_choice = "Gnome"
+                $ Player.sheet.constitution += 1
+                $ Player.sheet.intelligence += 2
+            "Tiefling (+1 int, +2 cha)":
+                $ class_choice = "Tiefling"
+                $ Player.sheet.intelligence += 1
+                $ Player.sheet.charisma += 2
+
+        $ Player.race = class_choice
+        if class_choice == "Human":
+            "Choose your primary stat bonus (+2)"
+            menu:
+                "Strength":
+                    $ Player.sheet.strength += 2
+                "Dexterity":
+                    $ Player.sheet.dexterity += 2
+                "Constitution":
+                    $ Player.sheet.constitution += 2
+                "Intelligence":
+                    $ Player.sheet.intelligence += 2
+                "Wisdom":
+                    $ Player.sheet.wisdom += 2
+                "Charisma":
+                    $ Player.sheet.charisma += 2
+
+            "Choose your secondary stat bonus (+1)"
+            menu:
+                "Strength":
+                    $ Player.sheet.strength += 1
+                "Dexterity":
+                    $ Player.sheet.dexterity += 1
+                "Constitution":
+                    $ Player.sheet.constitution += 1
+                "Intelligence":
+                    $ Player.sheet.intelligence += 1
+                "Wisdom":
+                    $ Player.sheet.wisdom += 1
+                "Charisma":
+                    $ Player.sheet.charisma += 1
+
+        $ save_player_json()           
+
+        c "...[class_choice], aren't you?"
         "You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious books and scattered pages of handwritten notes."
         p "Wait, I'll help you"
         "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
@@ -987,16 +1061,14 @@ label PART_1:
         p "Yes... It seems interesting"
         bel "And did you make any friend?"
         p "I'm the only one in the Rogue class, actually, but I did make a friend today. She's in the Cleric class."
-        bel "SHE heh?! So there's a girl now! Hahaha, I knew the blood of my blood would strike right in the heart of a girl, hihihi!"
-        p "Auntie... Stop..."
-        bel "So... is she cute? IS SHE CUTE??"
-        p "(blushing) Ye... Yes... I guess she is cute. She is a gnome."
+        bel "So there's a girl-friend now! Hahaha!"
+        bel "And... is she cute? IS SHE CUTE??"
+        p "(blushing) Ye... Yes... I guess she is cute..."
         bel "(kissing you on the forhead) I'm so proud of you!"
-        bel "A little gnome girl in my nephew's heart!"
-        "With your sleeve, you wipe the glaring mark of her lipstick on your forehead"
-        p "(still blushing) Auntie please, stop, we're just friends."
-        bel "Oh I know, I had many friends too, hihi! Or at least I used to say that, hihihi!"
-        p "Ok, stop now... By the way, she asked me to meet you, she's a real nerd and she wants to ask you a lot of questions."
+        "With your sleeve, you wipe the glaring mark of her lipstick on your forehead."
+        p "(still blushing) Auntie... Stop!"
+        bel "Oh I know, I had many friends too, both boys and girls you know? Hihi! Or at least I used to call them 'friends'... Hihihi!"
+        p "Ok, stop now... By the way, she asked me to meet you, she's a real adventurer-nerd and she wants to ask you a lot of questions."
         bel "Invite her to study here! I'd be so happy!"
         p "Oh don't worry, she already invited herself..."
         scene 00004-1773495918 with dissolve
