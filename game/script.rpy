@@ -67,13 +67,17 @@ init python:
             return (False, roll)
 
 
+### ACTIONS ###
+
     def default_attack_effect(user, target):
         narrator(user.get_name() + " attacks " + target.get_name())
         ## Calculations for finesse weapons here ##
         hit_roll_result = hit_roll(user, target, "strength")
-        if hit_roll_result[0]:
+        hit = hit_roll_result[0]
+        roll = hit_roll_result[1]
+        if hit:
             narrator("Hit!")
-            damage = user.roll_default_damage(hit_roll_result[1]).result
+            damage = user.roll_default_damage(roll).result
             narrator(f"{target.get_name()} takes {damage} points of damage")
             target.take_damage(damage)
         else:
@@ -99,6 +103,7 @@ init python:
     def throw_flame_effect(user, target):
         narrator(user.get_name() + " summons a little blue flame on the hand and throws it like a little ball!")
         
+### ### ###
 
 
     class RPG_Entity(object):
@@ -134,11 +139,19 @@ init python:
             modifier = 0            
             if mod != None:
                 modifier = self.get_modifier(mod)
-            multiplier = 1
+            multiplier = 1 # For damage rolls
             if critical:
-                narrator("CRITICAL!")
                 multiplier = self.dmg_critical_multiplier
+                renpy.with_statement(vpunch)
+                narrator("CRITICAL HIT!")
             roll = Roll(dice_string, multiplier)
+            if roll.faces == 20: # For d20 rolls
+                if roll.natural_result == 20:
+                    renpy.with_statement(vpunch)
+                    narrator("CRITICAL SUCCESS!")
+                elif roll.natural_result == 1:
+                    renpy.with_statement(hpunch)
+                    narrator("CRITICAL FAILURE!")
             if advantage:
                 second_roll = Roll(dice_string, multiplier)
                 if second_roll.result > roll.result:
