@@ -34,45 +34,46 @@ init python:
                     return item            
 
 
-    def roll_dice(dice_string):
-        dmg_dice = dice_string.split("d")
-        numberstr = dmg_dice[0]
-        facesstr = dmg_dice[1]
-        faces = 0
-        damage = 0
-        addition = 0        
-        if "+" in facesstr:
-            splitting = facesstr.split("+")
-            addition = int(splitting[1])
-            faces = int(splitting[0])
-        else:
-            faces = int(facesstr)
-        for d in range(int(numberstr)):
-            damage += randint(1, faces)
-        return damage + addition
+    # def roll_dice(dice_string):
+    class Roll(object):
+        def __init__(self, dice_string, multiplier=1):
+            self.dice_str = dice_string.split("d")
+            self.number_dice = int(self.dice_str[0]) * multiplier
+            facesstr = self.dice_str[1]
+            self.faces = 0
+            self.natural_result = 0
+            self.result = 0
+            self.addition = 0
+            if "+" in facesstr:
+                splitting = facesstr.split("+")
+                self.addition = int(splitting[1])
+                self.faces = int(splitting[0])
+            else:
+                self.faces = int(facesstr)            
+            for d in range(self.number_dice):
+                self.natural_result += randint(1, self.faces)
+            self.result = self.natural_result + self.addition
 
 
-
-    def hit_roll(user, target, stat):
-        roll = user.roll("1d20")
+    def hit_roll(user, target, stat):        
         atk_bonus = user.get_attack_bonus(stat)
-        narrator(f"ATTACK ROLL: {roll} + {atk_bonus}(attack bonus) = {roll+atk_bonus}")        
-        roll += atk_bonus
+        roll = user.roll("1d20+"+str(atk_bonus))
+        narrator(f"ATTACK ROLL: {roll.natural_result} + {atk_bonus}(attack bonus) = {roll.result}")        
         ac = int(target.get_armor_class())
         narrator(f"Comparing attack roll with target Armor Class ({ac})... ")
-        if roll >= ac:
-            return True
+        if roll.result >= ac:
+            return (True, roll)
         else:
-            return False
+            return (False, roll)
 
 
     def default_attack_effect(user, target):
         narrator(user.get_name() + " attacks " + target.get_name())
         ## Calculations for finesse weapons here ##
         hit_roll_result = hit_roll(user, target, "strength")
-        if hit_roll_result:
+        if hit_roll_result[0]:
             narrator("Hit!")
-            damage = user.roll_default_damage()
+            damage = user.roll_default_damage(hit_roll_result[1]).result
             narrator(f"{target.get_name()} takes {damage} points of damage")
             target.take_damage(damage)
         else:
@@ -80,7 +81,7 @@ init python:
 
 
     def heal_effect(user, target):
-        roll = user.roll("1d8", mod="wisdom")
+        roll = user.roll("1d8", mod="wisdom").result
         # narrator("Roll for healing (wisdom): " + str(roll))
         target.take_damage(-roll)
         narrator(target.get_name() + " recovers " + str(roll) + " hit points.")
@@ -90,7 +91,7 @@ init python:
         narrator(user.get_name() + " produces a blaze that invests all enemies!")
         for target in targets:
             narrator(f"Rolling damage for {target.get_name()}...")
-            roll = user.roll("2d6", mod = "intelligence")
+            roll = user.roll("2d6", mod = "intelligence").result
             narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
             target.take_damage(roll)
 
@@ -107,6 +108,8 @@ init python:
             self.actions = [default_attack]
             self.image = None
             self.initiative = 0
+            self.dmg_critical_threshold = 20
+            self.dmg_critical_multiplier = 2
 
         def get_name(self):
             return self.sheet["name"]
@@ -127,20 +130,25 @@ init python:
         def get_modifier(self, ability):
             return dnd.Character.getModifier(self.sheet[ability])        
         
-        def roll(self, dice, mod=None, advantage=False):
-            natural_roll = roll_dice(dice)
-            if advantage:
-                second_roll = roll_dice(dice)
-                if second_roll > natural_roll:
-                    natural_roll = second_roll
+        def roll(self, dice_string, mod=None, advantage=False, critical=False):
+            modifier = 0            
             if mod != None:
                 modifier = self.get_modifier(mod)
-                total = natural_roll + modifier
-                narrator(f"({self.get_name()}) ROLL: {natural_roll} + {modifier}({mod}) = {total}")
-                return total
+            multiplier = 1
+            if critical:
+                narrator("CRITICAL!")
+                multiplier = self.dmg_critical_multiplier
+            roll = Roll(dice_string, multiplier)
+            if advantage:
+                second_roll = Roll(dice_string, multiplier)
+                if second_roll.result > roll.result:
+                    roll = second_roll
+            roll.result += modifier
+            if mod != None:
+                narrator(f"({self.get_name()}) ROLL: {roll.natural_result} + {modifier}({mod}) = {roll.result}")
             else:
-                narrator(f"({self.get_name()}) ROLL: {natural_roll}")
-                return natural_roll
+                narrator(f"({self.get_name()}) ROLL: {roll.result}")
+            return roll
 
         def roll_ability(self, ability, advantage=False):
             return self.roll("1d20", ability, advantage)
@@ -177,8 +185,9 @@ init python:
             ability_bonus = self.get_modifier(stat)
             return prof_bonus + ability_bonus
 
-        def roll_default_damage(self): # TO DO: Must differentiate between types of weapons
-            return self.roll(self.weapon["damage"]["damage_dice"], mod="strength")
+        def roll_default_damage(self, hit_roll): # TO DO: Must differentiate between types of weapons
+            crit = hit_roll.natural_result >= self.dmg_critical_threshold         
+            return self.roll(self.weapon["damage"]["damage_dice"], mod="strength", critical=crit)
 
         def get_armor_class(self):
             return self.sheet.armour_class
@@ -199,7 +208,7 @@ init python:
                 if skillname in dsheet[key]:
                     proficient = dsheet[key][skillname]
             if proficient:
-                roll += self.sheet["prof_bonus"]
+                roll.result += self.sheet["prof_bonus"]
             return roll
 
         def equip_weapon(self, weapon):
@@ -247,9 +256,12 @@ init python:
             self.current_location = ""
             self.achievements = []
 
-        def roll(self, dice, mod=None, advantage=False):
+        def roll(self, dice, mod=None, advantage=False, critical=False):
             parts = dice.split("d")
-            prompt = "Roll " + parts[0] + " D" + parts[1]
+            d = parts[1]
+            if "+" in d:
+                d = d.split("+")[0]
+            prompt = "Roll " + parts[0] + " D" + d
             if advantage:
                 prompt += " (ADVANTAGE!)"
             renpy.display_menu([ (prompt, "")])
@@ -268,8 +280,9 @@ init python:
         def get_attack_bonus(self, stat=None):
             return int(self.sheet["actions"][0]["attack_bonus"])
 
-        def roll_default_damage(self):
-            return self.roll(self.sheet["actions"][0]["damage"][0]["damage_dice"])
+        def roll_default_damage(self, hit_roll):
+            crit = hit_roll.natural_result >= self.dmg_critical_threshold
+            return self.roll(self.sheet["actions"][0]["damage"][0]["damage_dice"], critical=crit)
 
         def get_armor_class(self):
             return self.sheet["armor_class"]
@@ -294,7 +307,7 @@ init python:
         narrator("Battle start!")
         narrator("Roll for initiative!")
         for battler in battlers:
-            battler.initiative = battler.roll_ability("dexterity")
+            battler.initiative = battler.roll_ability("dexterity").result
         battlers.sort(key=lambda x: x.initiative, reverse=True)
         initlog = "Turn order based on initiative rolls: "
         for battler in battlers:
@@ -853,8 +866,8 @@ label PART_1:
         menu:
             "Roll a D20 on Perception":
                 $ roll = Player.roll_skill("perception")
-        "ROLL: [roll]"
-        if roll >= 15:
+        "ROLL: [roll.result]"
+        if roll.result >= 15:
             "Despite her short stature, being a gnome, you manage to recognize Ciry's hair in the middle of the crowd."
             "But you are too distant and there's no easy way to reach her."
         else:
@@ -1337,15 +1350,14 @@ label PART_1:
             "React":
                 $ Player.achievements.append("Reacted to save Aryanna")
                 "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to grab her with your hand..."
-                $ roll = 0
+                $ roll = None
                 menu:                
                     "Roll D20 on Atlethics":
-                        $ roll = Player.roll_skill("atlethics")
-                    
+                        $ roll = Player.roll_skill("atlethics")                    
                     "Roll D20 on Acrobatics":
                         $ roll = Player.roll_skill("acrobatics")
-                "ROLL: [roll]"
-                if roll > 10:
+                "ROLL: [roll.result]"
+                if roll.result > 10:
                     "... just in time! You manage to grab her arm and you are now holding her up. Below her, the void."
                     jump ary_grabbed
                 else:
@@ -1431,8 +1443,8 @@ label PART_1:
         menu:
             "Roll D20 on Nature":
                 $ roll = Player.roll_ability("intelligence")
-        "ROLL: [roll]"
-        if roll > 10:
+        "ROLL: [roll.result]"
+        if roll.result > 10:
             "You recognize the creature: it's an Hobgoblin!"
             p "{i}(What's a Hobgoblin doing here?){/i}"
             $ creature = "Hobgoblin"
@@ -1480,9 +1492,9 @@ label PART_1:
             "Attempt to climb the wall to reach the opening (Athletics)":
                 p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
                 $ roll = Player.roll_ability("strength")
-                "ROLL: [roll]"
+                "ROLL: [roll.result]"
                 "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
-                if roll < 10:
+                if roll.result < 10:
                     $ dmg = roll_dice("1d4")
                     $ Player.take_damage(dmg)
                     "You take [dmg] points of damage!"
@@ -1523,8 +1535,8 @@ label PART_1:
                 $ battle(PARTY, [Hobgoblin])
             "Let the warm feeling possess you (Wisdom)":
                 $ roll = Player.roll_ability("wisdom", advantage=True)
-                "ROLL: [roll]"
-                if roll > 1:
+                "ROLL: [roll.result]"
+                if roll.result > 1:
                     "SUCCESS"
                     stop music fadeout 1.0
                     scene bg black with annoytheuser
@@ -1657,8 +1669,8 @@ label PART_1:
                 hide 00008-3630713263 with annoytheuser
                 play music cheezeecave fadein 2.0 volume 0.5
             $ roll = Player.roll_ability("strength")
-            "ROLL: [roll]"
-            if roll >= 15:
+            "ROLL: [roll.result]"
+            if roll.result >= 15:
                 "SUCCESS"
                 "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
             else:
