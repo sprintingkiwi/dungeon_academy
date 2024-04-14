@@ -546,7 +546,7 @@ label start:
             "Welcome to Dice Academy!"  
 
         "Debug Jump":
-            jump explore_cave_omens  
+            jump earthquake_ch1  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -1313,10 +1313,12 @@ label PART_1:
         $ battle(PARTY, [GiantRat])
         $ restore_party(PARTY)
         "You and Ciry manage to fight back the Giant Rat."
+        label earthquake_ch1:
         "After some well-placed kicks and some hit with Ciry's 'morning star' mace, the evil animal retreats."
         show ciry at topright with dissolve
         c "Damn it! There shouldn't be this kind of monsters around here! We're still inside the City's external borders."
         c "There are supposed to be guards and adventurers patrolling all the borders... Ary!"
+        with hpunch
         "As you try to think of something, a little jolt of the ground throws you off balance"
         p "An earthquake?"
         c "Please Ary, answer!"
@@ -1342,7 +1344,10 @@ label PART_1:
         ary "I wanted to find the treasure of the dragon and bring it home!"
         c "Come here now, let's go home."
         c "(turning to you with a resigned expression) I'll tell her about the difference between reality and games later."
+        play sound rumble
+        with hpunch
         "But as you draw closer to the entrance, and to the little Aryanna, a second, more violent, earthquake strikes!"
+        with hpunch
         "This time it is followed by an eerie rumble coming from underground..."
         "... and before anyone could react, the ground beneath Aryanna's feet begins to collapse."
         "Ciry was petrified with fear"    
