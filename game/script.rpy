@@ -68,40 +68,62 @@ init python:
 
 
     ### ACTIONS ###
+    class Action(object):
+        def __init__(self):
+            self.name = ""
+            self.is_spell = False
+            self.scope = "Enemy" # or Ally or Allies or Enemies or Self
+            self.user = None
+            self.target = None          
+        def effect(self, user, target):
+            self.user = user
+            self.target = target
+            # narrator(f"Processing action {self.name}")
 
-    def default_attack_effect(user, target):
-        narrator(user.get_name() + " attacks " + target.get_name())
-        ## Calculations for finesse weapons here ##
-        hit_roll_result = hit_roll(user, target, "strength")
-        hit = hit_roll_result[0]
-        roll = hit_roll_result[1]
-        if hit:
-            narrator("Hit!")
-            damage = user.roll_default_damage(roll).result
-            narrator(f"{target.get_name()} takes {damage} points of damage")
-            target.take_damage(damage)
-        else:
-            narrator("Miss...")
+    class DefaultAttack(Action):
+        def __init__(self):
+            super().__init__()
+            self.name = "Attack"
+        def effect(self, user, target):
+            super().effect(user, target)
+            narrator(self.user.get_name() + " attacks " + self.target.get_name())
+            ## TO DO: Calculations for finesse weapons here ##
+            hit_roll_result = hit_roll(self.user, self.target, "strength")
+            hit = hit_roll_result[0]
+            roll = hit_roll_result[1]
+            if hit:
+                narrator("Hit!")
+                damage = self.user.roll_default_damage(roll).result
+                narrator(f"{self.target.get_name()} takes {damage} points of damage")
+                self.target.take_damage(damage)
+            else:
+                narrator("Miss...")
 
-
-    def heal_effect(user, target):
-        roll = user.roll("1d8", mod="wisdom").result
-        # narrator("Roll for healing (wisdom): " + str(roll))
-        target.take_damage(-roll)
-        narrator(target.get_name() + " recovers " + str(roll) + " hit points.")
-
+    class Heal(Action):
+        def __init__(self):
+            super().__init__()
+            self.name = "Heal light wounds"
+            self.scope = "Ally"
+        def effect(self, user, target):
+            super().effect(user, target)
+            roll = self.user.roll("1d8", mod="wisdom").result
+            # narrator("Roll for healing (wisdom): " + str(roll))
+            self.target.take_damage(-roll)
+            narrator(self.target.get_name() + " recovers " + str(roll) + " hit points.")
     
-    def burning_hands_effect(user, targets):
-        narrator(user.get_name() + " produces a blaze that invests all enemies!")
-        for target in targets:
-            narrator(f"Rolling damage for {target.get_name()}...")
-            roll = user.roll("2d6", mod = "intelligence").result
-            narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
-            target.take_damage(roll)
-
-
-    def throw_flame_effect(user, target):
-        narrator(user.get_name() + " summons a little blue flame on the hand and throws it like a little ball!")
+    class BurningHands(Action):
+        def __init__(self):
+            super().__init__()
+            self.name = "Burning Hands"
+            self.scope = "Enemies"
+        def effect(self, user, target):
+            super().effect(user, target)
+            narrator(self.user.get_name() + " produces a blaze that invests all enemies!")
+            for target in self.target:
+                narrator(f"Rolling damage for {target.get_name()}...")
+                roll = user.roll("2d6", mod = "intelligence").result
+                narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
+                target.take_damage(roll)
         
     ### ### ###
 
@@ -110,7 +132,7 @@ init python:
         def __init__(self, sheet):
             self.sheet = sheet
             self.character = None
-            self.actions = [default_attack]
+            self.actions = [DefaultAttack]
             self.image = None
             self.initiative = 0
             self.dmg_critical_threshold = 20
@@ -168,7 +190,8 @@ init python:
             return self.roll("1d20", ability, advantage)
         
         def choose_action(self):
-            return random.choice(self.actions)
+            action = random.choice(self.actions)()
+            return action
 
         def select_target(self, enemy_group):
             if self.current_target == None or self.current_target.get_hp() <= 0:
@@ -244,7 +267,8 @@ init python:
         def choose_action(self):
             choices = []
             for action in self.actions:
-                choices.append((action["name"], action))
+                a = action()
+                choices.append((a.name, a))
             choice = renpy.display_menu(choices)
             return choice
 
@@ -340,7 +364,7 @@ init python:
                     turnlog += "\nHP: " + str(battler.get_hp())
                 narrator(turnlog)
                 action = battler.choose_action()
-                scope = action["scope"]
+                scope = action.scope
                 target = None
                 if scope == "Enemy":
                     if battler in party:
@@ -364,7 +388,7 @@ init python:
                         target = enemy_group
                 else:
                     narrator("WRONG SCOPE")
-                action["effect"](battler, target)
+                action.effect(battler, target)
                 battler.postbattle()
                 # Check death
                 for battler in battlers:
@@ -431,9 +455,9 @@ define annoytheuser = Dissolve(3.0)
 
 
 # Actions (Constants)
-define default_attack = {"name": "Attack", "effect": default_attack_effect, "scope": "Enemy"}
-define heal = {"name": "Heal light wounds", "effect": heal_effect, "scope": "Ally"}
-define burning_hands = {"name": "Burning hands", "effect": burning_hands_effect, "scope": "Enemies"}
+# define default_attack = {"name": "Attack", "effect": default_attack_effect, "scope": "Enemy"}
+# define heal = {"name": "Heal light wounds", "effect": heal_effect, "scope": "Ally"}
+# define burning_hands = {"name": "Burning hands", "effect": burning_hands_effect, "scope": "Enemies"}
 
 
 # Stored variables
@@ -468,7 +492,7 @@ label start:
         Ciry.race = "Gnome"
         Ciry.character = c
         Ciry.image = "ciry"
-        Ciry.actions = [default_attack, heal]
+        Ciry.actions = [DefaultAttack, Heal]
         Ciry.equip_weapon(SRD_equipment['morningstar'])        
         # Ciry.equip_armor(SRD_equipment['leather-armor'])
         # testimg = renpy.image("Ciry", "images/Characters/ciry.png")
@@ -489,7 +513,7 @@ label start:
         Dante.race = "Human"
         Dante.character = d
         Dante.image = "dante"
-        Dante.actions = [default_attack, burning_hands]
+        Dante.actions = [DefaultAttack, BurningHands]
         Dante.equip_weapon(SRD_equipment['quarterstaff'])
 
         Theo = PlayableAdventurer(dnd.Character(
@@ -508,7 +532,7 @@ label start:
         Theo.race = "Half-Orc"
         Theo.character = t
         Theo.image = "theo"
-        Theo.actions = [default_attack]
+        Theo.actions = [DefaultAttack]
         Theo.equip_weapon(SRD_equipment['club'])
 
         Player = PlayerAdventurer(dnd.Character(
@@ -525,7 +549,7 @@ label start:
             charisma=8
         ))
         Player.character = p
-        Player.actions = [default_attack]
+        Player.actions = [DefaultAttack]
         Player.equip_weapon(SRD_equipment['dagger'])
         Player.courses_taken = []
 
