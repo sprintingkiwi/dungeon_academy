@@ -67,7 +67,7 @@ init python:
             return (False, roll)
 
 
-### ACTIONS ###
+    ### ACTIONS ###
 
     def default_attack_effect(user, target):
         narrator(user.get_name() + " attacks " + target.get_name())
@@ -103,7 +103,7 @@ init python:
     def throw_flame_effect(user, target):
         narrator(user.get_name() + " summons a little blue flame on the hand and throws it like a little ball!")
         
-### ### ###
+    ### ### ###
 
 
     class RPG_Entity(object):
@@ -115,6 +115,7 @@ init python:
             self.initiative = 0
             self.dmg_critical_threshold = 20
             self.dmg_critical_multiplier = 2
+            self.ac_bonus = 0
 
         def get_name(self):
             return self.sheet["name"]
@@ -203,7 +204,7 @@ init python:
             return self.roll(self.weapon["damage"]["damage_dice"], mod="strength", critical=crit)
 
         def get_armor_class(self):
-            return self.sheet.armour_class
+            return self.sheet.armour_class + self.ac_bonus
 
         def take_damage(self, damage):
             self.sheet.hp -= damage
@@ -238,6 +239,7 @@ init python:
             super().__init__(sheet)
             self.character = None
             self.courses_taken = []
+            self.inventory = ["Potion"]
 
         def choose_action(self):
             choices = []
@@ -298,7 +300,7 @@ init python:
             return self.roll(self.sheet["actions"][0]["damage"][0]["damage_dice"], critical=crit)
 
         def get_armor_class(self):
-            return self.sheet["armor_class"]
+            return self.sheet["armor_class"] + self.ac_bonus
 
         def restore(self):
             self.sheet["hit_points"] = self.max_hp
@@ -559,7 +561,7 @@ label start:
             "Welcome to Dice Academy!"  
 
         "Debug Jump":
-            jump earthquake_ch1  
+            jump chapter_4  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -1718,8 +1720,40 @@ label PART_1:
         # Theoric test
         # Simulated dungeon with mechanical goblins, traps, and the Lake of the Spirit Trial
         # The "Cursed Dawn" goddess, evil sister of the Blessed Eve, will interfere in the spirit trial with a much darker test of her own
-        # The "Cursed Dawn" goddess is, in fact, interested into the Player, as he she aims to corrupt the Silent Goddess's Chosen to have him for her to guide her Church.
-    ""
+        # 1v1 Final battle against Geralt Dune
+    $ choice = ""
+    $ rewards_list = [
+        "Shield of Justice",
+        "Critical Ring",
+        "Gloves of Gargantuan",
+        "Amulet of Mana"
+    ]
+    menu:
+        "Choose your reward"
+
+        "[rewards_list[0]]":
+            python:
+                Player.inventory.append(rewards_list[0])
+                choice = rewards_list[0]
+                Player.ac_bonus += 3
+
+        "[rewards_list[1]]":
+            python:
+                Player.inventory.append(rewards_list[1])
+                choice = rewards_list[1]
+                Player.dmg_critical_threshold -= 2
+
+        "[rewards_list[2]]":
+            python:
+                Player.inventory.append(rewards_list[2])
+                choice = rewards_list[2]
+                Player.sheet.strength += 2
+
+        "[rewards_list[3]]":
+            python:
+                Player.inventory.append(rewards_list[3])
+                choice = rewards_list[3]
+
 
 
 label PART_2:
