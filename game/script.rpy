@@ -305,7 +305,10 @@ init python:
                 renpy.hide(self.image)
 
         def get_spell_slots(self, spell_level):
-            return 1 # to do
+            slots = self.sheet.class_spellcasting["spell_slots_level_" + str(spell_level)]
+            # narrator(f"{slots}")
+            return slots
+            # return 1 # to do
 
     
     class PlayerAdventurer(PlayableAdventurer):
