@@ -1581,7 +1581,7 @@ label PART_1:
                 "ROLL: [roll.result]"
                 "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
                 if roll.result < 10:
-                    $ dmg = roll_dice("1d4")
+                    $ dmg = Roll("1d4").result
                     $ Player.take_damage(dmg)
                     "You take [dmg] points of damage!"
                 else:
