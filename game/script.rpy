@@ -69,23 +69,36 @@ init python:
 
     ### ACTIONS ###
     class Action(object):
-        def __init__(self):
+        def __init__(self, user):
             self.name = ""
             self.is_spell = False
             self.scope = "Enemy" # or Ally or Allies or Enemies or Self
-            self.user = None
-            self.target = None          
-        def effect(self, user, target):
             self.user = user
+            self.target = None
+        def requirements(self):
+            return True
+        def effect(self, target):
             self.target = target
             # narrator(f"Processing action {self.name}")
 
+    class Spell(Action):
+        def __init__(self, user):
+            super().__init__(user)
+            self.spell_level = 0
+        def requirements(self):
+            if self.user.get_spell_slots(self.spell_level) - self.user.used_spell_slots[self.spell_level] >= 1:
+                self.user.used_spell_slots[self.spell_level] += 1
+                return True
+            else:
+                return False
+
+
     class DefaultAttack(Action):
-        def __init__(self):
-            super().__init__()
+        def __init__(self, user):
+            super().__init__(user)
             self.name = "Attack"
-        def effect(self, user, target):
-            super().effect(user, target)
+        def effect(self, target):
+            super().effect(target)
             narrator(self.user.get_name() + " attacks " + self.target.get_name())
             ## TO DO: Calculations for finesse weapons here ##
             hit_roll_result = hit_roll(self.user, self.target, "strength")
@@ -99,29 +112,31 @@ init python:
             else:
                 narrator("Miss...")
 
-    class Heal(Action):
-        def __init__(self):
-            super().__init__()
+    class Heal(Spell):
+        def __init__(self, user):
+            super().__init__(user)
             self.name = "Heal light wounds"
             self.scope = "Ally"
-        def effect(self, user, target):
-            super().effect(user, target)
+            self.spell_level = 1
+        def effect(self, target):
+            super().effect(target)
             roll = self.user.roll("1d8", mod="wisdom").result
             # narrator("Roll for healing (wisdom): " + str(roll))
             self.target.take_damage(-roll)
             narrator(self.target.get_name() + " recovers " + str(roll) + " hit points.")
     
-    class BurningHands(Action):
-        def __init__(self):
-            super().__init__()
+    class BurningHands(Spell):
+        def __init__(self, user):
+            super().__init__(user)
             self.name = "Burning Hands"
             self.scope = "Enemies"
-        def effect(self, user, target):
-            super().effect(user, target)
+            self.spell_level = 1
+        def effect(self, target):
+            super().effect(target)
             narrator(self.user.get_name() + " produces a blaze that invests all enemies!")
             for target in self.target:
                 narrator(f"Rolling damage for {target.get_name()}...")
-                roll = user.roll("2d6", mod = "intelligence").result
+                roll = self.user.roll("2d6", mod = "intelligence").result
                 narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
                 target.take_damage(roll)
         
@@ -190,7 +205,7 @@ init python:
             return self.roll("1d20", ability, advantage)
         
         def choose_action(self):
-            action = random.choice(self.actions)()
+            action = random.choice(self.actions)(self)
             return action
 
         def select_target(self, enemy_group):
@@ -263,12 +278,14 @@ init python:
             self.character = None
             self.courses_taken = []
             self.inventory = ["Potion"]
+            self.used_spell_slots = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # to spell level 9
 
         def choose_action(self):
             choices = []
             for action in self.actions:
-                a = action()
-                choices.append((a.name, a))
+                a = action(user=self)
+                if a.requirements():
+                    choices.append((a.name, a))
             choice = renpy.display_menu(choices)
             return choice
 
@@ -285,7 +302,10 @@ init python:
         
         def postbattle(self):
             if self.image != None:
-                renpy.hide(self.image)        
+                renpy.hide(self.image)
+
+        def get_spell_slots(self, spell_level):
+            return 1 # to do
 
     
     class PlayerAdventurer(PlayableAdventurer):
@@ -388,7 +408,7 @@ init python:
                         target = enemy_group
                 else:
                     narrator("WRONG SCOPE")
-                action.effect(battler, target)
+                action.effect(target)
                 battler.postbattle()
                 # Check death
                 for battler in battlers:
