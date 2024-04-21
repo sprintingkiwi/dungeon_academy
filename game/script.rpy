@@ -174,7 +174,7 @@ init python:
             return dnd.Character.getModifier(self.sheet[ability])        
         
         def roll(self, dice_string, mod=None, advantage=False, critical=False):
-            modifier = 0            
+            modifier = 0
             if mod != None:
                 modifier = self.get_modifier(mod)
             multiplier = 1 # For damage rolls
@@ -251,7 +251,7 @@ init python:
             self.sheet.hp = self.sheet.max_hp
 
         def roll_skill(self, skillname, advantage=False):
-            roll = self.roll("1d20", advantage)
+            roll = self.roll("1d20", advantage=advantage)
             proficient = False
             dsheet = dict(self.sheet)
             skills_abilities = ["strength", "dexterity", "intelligence", "charisma", "wisdom"]
@@ -608,7 +608,7 @@ label start:
             "Welcome to Dice Academy!"  
 
         "Debug Jump":
-            jump chapter_4  
+            jump earthquake_ch1  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -748,16 +748,35 @@ label PART_1:
         p "I'm not sure yet..."
         $ class_choice = ""
         menu:
+            p "I think I'll try to be a..."
             # "### THIS CHOICE WILL NOT AFFECT YOUR CLASS ###"
 
-            "I think I'll try to be a Ranger":
+            "Ranger":
                 $ class_choice = "Ranger"
                 
-            "I want to try the Paladin class":
+            "Paladin":
                 $ class_choice = "Paladin"
 
-            "I feel I'm suited to be a Wizard":
+            "Wizard":
                 $ class_choice = "Wizard"
+            
+            "Fighter":
+                $ class_choice = "Fighter"
+                
+            "Cleric":
+                $ class_choice = "Cleric"
+
+            "Barbarian":
+                $ class_choice = "Barbarian"
+
+            "Sorcerer":
+                $ class_choice = "Sorcerer"
+                
+            "Warlock":
+                $ class_choice = "Warlock"
+
+            "Bard":
+                $ class_choice = "Bard"
         
         # python:
         #     Player.sheet = dnd.Character(
