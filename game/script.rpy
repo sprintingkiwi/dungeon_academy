@@ -472,16 +472,8 @@ define ary = Character("Aryanna", who_color="#ff0062")
 define hob = Character("", who_color="#007d11")
 define dea = Character("", who_color="#ffffff")
 
-
 # Cutscene stuff
 define annoytheuser = Dissolve(3.0)
-
-
-# Actions (Constants)
-# define default_attack = {"name": "Attack", "effect": default_attack_effect, "scope": "Enemy"}
-# define heal = {"name": "Heal light wounds", "effect": heal_effect, "scope": "Ally"}
-# define burning_hands = {"name": "Burning hands", "effect": burning_hands_effect, "scope": "Enemies"}
-
 
 # Stored variables
 default PARTY = []
@@ -489,7 +481,6 @@ default Player = None
 default Ciry = None
 default Theo = None
 default Dante = None
-
 
 
 # The game starts here.
@@ -605,7 +596,7 @@ label start:
         "Begin story":
             $ restore_party(PARTY)
             play music onmyway fadein 2.0
-            "Welcome to Dice Academy!"  
+            "Welcome to Dungeon Academy!"  
 
         "Debug Jump":
             jump earthquake_ch1  
@@ -613,11 +604,9 @@ label start:
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
-
     # show eileen happy
 
     # These display lines of dialogue.
-
     # $ e("Hello " + Player.name)
 
 
@@ -625,22 +614,12 @@ label PART_1:
 
 
     label chapter_1:
-        # show dice academy2 at top with dissolve
-        "In this text-based video game, you will be transported to a fantastic world full of magic, brave warriors, and above all, a real academy for adventurers!"
-        "You will live the story of a skinny boy, who is in his first year at Dice Academy, the most prestigious academy for adventurers on the entire continent."
-        "His dream: to become the greatest adventurer of all time!"
+        "In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all, a real academy for adventurers!"
+        "You will play the role of a student at the 'Dungeon Academy', the most prestigious academy for adventurers on the entire continent."
+        "Your dream: to become the greatest adventurer of all time!"
         "# # #"
-
-        # $ narrator(str(Player.actions[0]["scope"]))
-        # $ narrator(str(Ciry.actions[0]["scope"]))
-        # $ narrator(str(Hobgoblin.actions[0]["scope"]))
-        # $ battle(PARTY, [Hobgoblin])
-
-
         scene road1 
         $ renpy.pause()
-        # show road1 at top with dissolve
-
         "You walk with a light step as you make your way down the tree-lined path that leads to your dream destination, the Academy!"
         "You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day - the best of all: your first day of academy."
         "You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful moment. Will you perhaps meet future classmates there?"
@@ -740,7 +719,7 @@ label PART_1:
         "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
         p "I know this book! I've read it three times!"
         p "Wait, are you..."
-        c "(smiling) I'm going to Dice Academy. This is my first year!"
+        c "(smiling) I'm going to Dungeon Academy. This is my first year!"
         p "Cool! I'm going there too! Firt year, first day."
         c "We can walk together to the academy!"
         p "(surprised) Oh.. Ok, sure!"
@@ -959,7 +938,7 @@ label PART_1:
         "The Rector is gonna speak!"
         rec "Dear students..."
         show rector at top with dissolve
-        rec "Welcome to Dice Academy!"
+        rec "Welcome to Dungeon Academy!"
         rec "THE Academy!"
         rec "I suppose I'm now mostly talking to first year students, since all the other students should already be in their classes now."
         "After the Rector's last words, you can see a certain amount of students halfheartedly leave the main hall."
