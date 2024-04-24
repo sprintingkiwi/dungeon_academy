@@ -597,7 +597,7 @@ label start:
             "Welcome to Dungeon Academy!"  
 
         "Debug Jump":
-            jump after_rector_intro  
+            jump before_rector_intro  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -915,7 +915,7 @@ label PART_1:
         hide tris with dissolve
 
 
-
+        label before_rector_intro:
         "After signing up for the Rogue class, you are told to walk inside the Academy hall, together with all the other students."
         scene main hall
         $ renpy.pause()
@@ -925,7 +925,8 @@ label PART_1:
             "Roll a D20 on Perception":
                 $ roll = Player.roll_skill("perception")
         "ROLL: [roll.result]"
-        if roll.result >= 15:
+        if roll.result >= 7:
+            $ Player.achievements.append("Found Ciry in the crowd")
             "Despite her short stature, being a gnome, you manage to recognize Ciry's hair in the middle of the crowd."
             "But you are too distant and there's no easy way to reach her."
         else:
@@ -962,101 +963,105 @@ label PART_1:
         "Another woman, maybe the vice principal, started to talk in his place: 'the lessons will start right now'."
         "With too many questions still on your mind, you hear the woman saying that each student should move to their class's classroom for an initial briefing, and that the following day will be possible to choose the study plan for the current month."
         
-        label after_rector_intro:
         $ visited = []
-        label academy_menu_ch1:
-            while len(visited) < 3:
-                menu:
-                    "Where do you want to go?"
-                    
-                    "Dining room" if ("Dining room" not in visited):
-                        $ visited.append("Dining room")
-                        call dining_room_ch1
-                        jump academy_menu_ch1
+        label after_rector_intro:            
+            menu:
+                "Where do you want to go?"
 
-                    "Rogue classroom" if ("Rogue classroom" not in visited):
-                        $ visited.append("Rogue classroom")
-                        call rogue_classroom_ch1
-                        jump academy_menu_ch1
-            jump go_home_ch1
-                    
-        label dining_room_ch1:
-            "You approach the Dining room"
+                "Try to reach out Ciry" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
+                    $ visited.append("Reach Ciry")
+                    call reach_ciry_ch1
+                    jump after_rector_intro              
+                
+                "Explore Academy" if ("Explore Academy" not in visited):
+                    $ visited.append("Explore Academy")
+                    call explore_academy_ch1
+                    jump after_rector_intro
+
+                "Skip (go to Rogue classroom)":
+                    jump skip_to_class_ch1   
+
+        label reach_ciry_ch1:
+            "You manage to reach out Ciry among the crowd of students."
+            p "Ciry! I'm here!"
             return
         
-        label rogue_classroom_ch1:
-            scene 00004-1923438760
-            "You enter the Rogue's classroom and the first thing you notice is that it's empty, except, of course, for the teacher."
-            show tris at topright with dissolve
-            tri "Oh, hello my only student!"
-            play music etherealrelaxation fadein 2.0
-            tri "It's [Player.sheet.name], isn't it?"
-            p "Yes"
-            tri "Well, as you already know I'm the class-master of the Rogue class, and so on... I won't annoy you with formalities now."
-            tri "Oh, and don't you dare address me 'Ma'am', just call me teacher or Tris."
-            p "Oh, ok"
-            tri "So, you are probably asking yourself why there's no one else here."
-            tri "It's no mistery: Rogue is not a class many desire."
-            tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow my optional courses."
-            tri "I'm always overbooked!"
-            p "So... people just avoid choosing the Rogue as their official class? To be honest, I didn't even know it was a real class...."
-            tri "That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery skills, very valuable in dungeons, especially to disarm traps, steal treasures from monsters without fighting, or to get informations about enemies."
-            tri "But those Rogues usually learnt their skills growing up in the slums as criminals."
-            tri "I don't wanna say that they were all bad. Many were just abandoned children with no home and no food..."
-            tri "Well, anyway, time passed and the Rogue skills became sought after in all parties."
-            tri "Many rangers, bards, or even other classes started to train in how to slink, or how to pick a lock, just to have more chances of entering strong parties and become rich, famous adventurers."
-            tri "But to be called 'Rogue'? Nah! No one wanted it..."
-            tri "and most adventurers still don't want it now, even if the Rogue has officially been recognized as an Adventurer Class by the Council, with a real license and everything else."
-            tri "You can now graduate as a Rogue adventurer. Still, in the last years I only had very few students. And some years I even had no students. Like THIS year, if it wasn't for you! Hahaha"
-            tri "People, villagers, kings, everyone still tend to think of rogues as criminals... There's no glory in fulfilling a mission if you are a Rogue. No one will acclaim you."
-            tri "Or at least not as much as being a proud Paladin, a fierce Fighter, a talented Wizard, or else."
-            tri "And if there's one thing an adventurer wants even more than gold or rare items, it's glory, you know?"
-            tri "But to be stealthy or picking a lock is just the tip of the iceberg. There's so much more in being a Rogue. That's what many adventurers miss..."
-            tri "And that's what I'll teach you. If you are willing to learn, of course."
-            p "Well, I... I am!"
-            p "{i}(So, this is the reason why no one wants to be a Rogue){/i}"
-            p "{i}(But I... I won't care about reasons like these!){/i}"
-            p "I mean, being an adventurer has always been my dream. I've always been uncertain about which class to choose, and I was sure that coming here the first day would have helped me taking a decision."
-            p "{i}(Yes, I will... I will be an adventurer no matter what!){/i}"
-            p "Even if I never thought to choose the Rogue class, as long as I will have the opportunity to be an adventurer, I will do my best. I promise!" 
-            tri "Very well. It's a good start."
-            tri "Now..."
+        label explore_academy_ch1:
+            "As the crowd of students disperse, you start exploring the academy."
+            return
+        
+        label skip_to_class_ch1:
+            $ renpy.pause()
+        
+        scene 00004-1923438760
+        "You enter the Rogue's classroom and the first thing you notice is that it's empty, except, of course, for the teacher."
+        show tris at topright with dissolve
+        tri "Oh, hello my only student!"
+        play music etherealrelaxation fadein 2.0
+        tri "It's [Player.sheet.name], isn't it?"
+        p "Yes"
+        tri "Well, as you already know I'm the class-master of the Rogue class, and so on... I won't annoy you with formalities now."
+        tri "Oh, and don't you dare address me 'Ma'am', just call me teacher or Tris."
+        p "Oh, ok"
+        tri "So, you are probably asking yourself why there's no one else here."
+        tri "It's no mistery: Rogue is not a class many desire."
+        tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow my optional courses."
+        tri "I'm always overbooked!"
+        p "So... people just avoid choosing the Rogue as their official class? To be honest, I didn't even know it was a real class...."
+        tri "That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery skills, very valuable in dungeons, especially to disarm traps, steal treasures from monsters without fighting, or to get informations about enemies."
+        tri "But those Rogues usually learnt their skills growing up in the slums as criminals."
+        tri "I don't wanna say that they were all bad. Many were just abandoned children with no home and no food..."
+        tri "Well, anyway, time passed and the Rogue skills became sought after in all parties."
+        tri "Many rangers, bards, or even other classes started to train in how to slink, or how to pick a lock, just to have more chances of entering strong parties and become rich, famous adventurers."
+        tri "But to be called 'Rogue'? Nah! No one wanted it..."
+        tri "and most adventurers still don't want it now, even if the Rogue has officially been recognized as an Adventurer Class by the Council, with a real license and everything else."
+        tri "You can now graduate as a Rogue adventurer. Still, in the last years I only had very few students. And some years I even had no students. Like THIS year, if it wasn't for you! Hahaha"
+        tri "People, villagers, kings, everyone still tend to think of rogues as criminals... There's no glory in fulfilling a mission if you are a Rogue. No one will acclaim you."
+        tri "Or at least not as much as being a proud Paladin, a fierce Fighter, a talented Wizard, or else."
+        tri "And if there's one thing an adventurer wants even more than gold or rare items, it's glory, you know?"
+        tri "But to be stealthy or picking a lock is just the tip of the iceberg. There's so much more in being a Rogue. That's what many adventurers miss..."
+        tri "And that's what I'll teach you. If you are willing to learn, of course."
+        p "Well, I... I am!"
+        p "{i}(So, this is the reason why no one wants to be a Rogue){/i}"
+        p "{i}(But I... I won't care about reasons like these!){/i}"
+        p "I mean, being an adventurer has always been my dream. I've always been uncertain about which class to choose, and I was sure that coming here the first day would have helped me taking a decision."
+        p "{i}(Yes, I will... I will be an adventurer no matter what!){/i}"
+        p "Even if I never thought to choose the Rogue class, as long as I will have the opportunity to be an adventurer, I will do my best. I promise!" 
+        tri "Very well. It's a good start."
+        tri "Now..."
 
-            menu:
-                tri "Tell me, [Player.sheet.name], what you think better describes the abilities of a Rogue?"
-                "Dexterity? to be precise and agile?":
-                    tri "Dexterity is important for a Rogue, of course, but it's not just that."
-                
-                "To be stealthy and strike the enemies from behind?":
-                    tri "The Sneak Attack is, indeed, a powerful attack, but other classes have powerful attacks too, and with a better defense, or a broader choice for effect area."
-                
-                "I think a mix of many things... I can't figure out just now":
-                    tri "That's... somehow a good answer."
-                
-            tri "Memorize the location of all the traps in a dungeon,"
-            tri "distract an enemy so that a fellow adventurer can find an opening in his guard,"
-            tri "find a way out of a bad situation with an unpredictable trick, when everyone else in the party has already lost hope..."
-            tri "These are some of the things that could make you a 'real' Rogue."
-            tri "And here come the basic principles of the Rogue class. Try to always focus on these three words:"
-            tri "AWARENESS"
-            tri "FLEXIBILITY"
-            tri "CREATIVITY!"
-            tri "You are always aware of your surroundings, you can adapt to every situation, you can find creative solutions to unsolved problems... All this would make you a good Rogue."
-            tri "So what do you think?"
-            p "Wow... I think, I never imagined there could be so much behind the Rogue class. It's amazing!"
-            tri "And that's also so much for a first lesson. Let's just call it a day and go home now."
-            p "Oh, ok..."
-            tri "Yeah, I need to buy food and start cooking for my family..."
-            tri "Take this book and read it in your spare time."
-            p "{i}('Instinct of the Cunning Rogue - Part 1'){/i}"
-            p "Thanks."
-            tri "Oh, and don't forget to choose your study plan for the current month!"
-            stop music fadeout 2.0
-            tri "You'll start your first optional course tomorrow morning."    
-            return        
-
-        label go_home_ch1:
-        $ renpy.pause()
+        menu:
+            tri "Tell me, [Player.sheet.name], what you think better describes the abilities of a Rogue?"
+            "Dexterity? to be precise and agile?":
+                tri "Dexterity is important for a Rogue, of course, but it's not just that."
+            
+            "To be stealthy and strike the enemies from behind?":
+                tri "The Sneak Attack is, indeed, a powerful attack, but other classes have powerful attacks too, and with a better defense, or a broader choice for effect area."
+            
+            "I think a mix of many things... I can't figure out just now":
+                tri "That's... somehow a good answer."
+            
+        tri "Memorize the location of all the traps in a dungeon,"
+        tri "distract an enemy so that a fellow adventurer can find an opening in his guard,"
+        tri "find a way out of a bad situation with an unpredictable trick, when everyone else in the party has already lost hope..."
+        tri "These are some of the things that could make you a 'real' Rogue."
+        tri "And here come the basic principles of the Rogue class. Try to always focus on these three words:"
+        tri "AWARENESS"
+        tri "FLEXIBILITY"
+        tri "CREATIVITY!"
+        tri "You are always aware of your surroundings, you can adapt to every situation, you can find creative solutions to unsolved problems... All this would make you a good Rogue."
+        tri "So what do you think?"
+        p "Wow... I think, I never imagined there could be so much behind the Rogue class. It's amazing!"
+        tri "And that's also so much for a first lesson. Let's just call it a day and go home now."
+        p "Oh, ok..."
+        tri "Yeah, I need to buy food and start cooking for my family..."
+        tri "Take this book and read it in your spare time."
+        p "{i}('Instinct of the Cunning Rogue - Part 1'){/i}"
+        p "Thanks."
+        tri "Oh, and don't forget to choose your study plan for the current month!"
+        stop music fadeout 2.0
+        tri "You'll start your first optional course tomorrow morning."            
+        
         hide tris with dissolve
         scene 00010-1467134838
         $ renpy.pause()
