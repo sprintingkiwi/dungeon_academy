@@ -279,6 +279,7 @@ init python:
             self.courses_taken = []
             self.inventory = ["Potion"]
             self.used_spell_slots = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # to spell level 9
+            self.approval = 0
 
         def choose_action(self):
             choices = []
@@ -968,32 +969,32 @@ label PART_1:
             menu:
                 "Where do you want to go?"
 
-                "Try to reach out Ciry" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
+                "Try to reach out Ciry (before losing her in the crowd)" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
                     $ visited.append("Reach Ciry")
-                    call reach_ciry_ch1
-                    jump after_rector_intro              
+                    $ Ciry.approval += 10
+                    "You managed to reach Ciry through the crowd of students, who almost overwhelmed her due to her short stature."
+                    p "Ciry! I'm here!"
+                    c "(smiling with surprise) Oh! [Player.sheet.name]!"
+                    c "You managed to find me even here throung all these people! Hehe, I was starting to fear being trampled."
+                    p "I just wanted to say goodbye before we all went to our respective classes"
+                    c "Oh, thank you [Player.sheet.name]..."
+                    c "Well, being a gnome girl usually means going unnoticed and feeling ignored."
+                    c "(blushing) So I'm... glad you came to say goodbye, I'm looking forward to meet you after our first lessons!"
+                    p "Yes, see you later Ciry!"
+                    jump after_rector_intro
                 
                 "Explore Academy" if ("Explore Academy" not in visited):
                     $ visited.append("Explore Academy")
-                    call explore_academy_ch1
+                    "As the crowd of students disperse, you start exploring the academy."
                     jump after_rector_intro
 
                 "Skip (go to Rogue classroom)":
-                    jump skip_to_class_ch1   
-
-        label reach_ciry_ch1:
-            "You manage to reach out Ciry among the crowd of students."
-            p "Ciry! I'm here!"
-            return
-        
-        label explore_academy_ch1:
-            "As the crowd of students disperse, you start exploring the academy."
-            return
-        
-        label skip_to_class_ch1:
-            $ renpy.pause()
-        
+                    window hide
+                    
+        pause
         scene 00004-1923438760
+        pause
+        window show
         "You enter the Rogue's classroom and the first thing you notice is that it's empty, except, of course, for the teacher."
         show tris at topright with dissolve
         tri "Oh, hello my only student!"
