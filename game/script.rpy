@@ -645,41 +645,41 @@ label PART_1:
         p "[Player.sheet.name]"
         c "Nice to meet you, [Player.sheet.name]!"
         c "You are a..."
-        $ class_choice = "Half-Elf"
+        $ race_choice = "Half-Elf"
         menu:
             "Human (choose stat bonus)":
-                $ class_choice = "Human"
+                $ race_choice = "Human"
             "Half-Elf (+1 dex, +2 cha)":
-                $ class_choice = "Half-Elf"
+                $ race_choice = "Half-Elf"
                 $ Player.sheet.dexterity += 1
                 $ Player.sheet.charisma += 2
             "Half-Orc (+2 str, +1 con)":
-                $ class_choice = "Half-Orc"
+                $ race_choice = "Half-Orc"
                 $ Player.sheet.constitution += 1
                 $ Player.sheet.strength += 2
             "Dwarf (+2 str, +1 wis)":
-                $ class_choice = "Dwarf"
+                $ race_choice = "Dwarf"
                 $ Player.sheet.wisdom += 1
                 $ Player.sheet.strength += 2
             "Halfling (+2 dex, +1 int)":
-                $ class_choice = "Halfling"
+                $ race_choice = "Halfling"
                 $ Player.sheet.intelligence += 1
                 $ Player.sheet.dexterity += 2
             "Elf (+2 dex, +1 wis)":
-                $ class_choice = "Elf"
+                $ race_choice = "Elf"
                 $ Player.sheet.wisdom += 1
                 $ Player.sheet.dexterity += 2
             "Gnome (+1 con, +2 int)":
-                $ class_choice = "Gnome"
+                $ race_choice = "Gnome"
                 $ Player.sheet.constitution += 1
                 $ Player.sheet.intelligence += 2
             "Tiefling (+1 int, +2 cha)":
-                $ class_choice = "Tiefling"
+                $ race_choice = "Tiefling"
                 $ Player.sheet.intelligence += 1
                 $ Player.sheet.charisma += 2
 
-        $ Player.race = class_choice
-        if class_choice == "Human":
+        $ Player.race = race_choice
+        if race_choice == "Human":
             "Choose your primary stat bonus (+2)"
             menu:
                 "Strength":
@@ -712,7 +712,10 @@ label PART_1:
 
         $ save_player_json()           
 
-        c "...[class_choice], aren't you?"
+        c "...[race_choice], aren't you?"
+        if race_choice == "Gnome":
+            c "I didn't expect to meet a fellow Gnome like this, hihihi!"
+            c "You know, Gnomes like us are quite rare in the City..."
         "You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious books and scattered pages of handwritten notes."
         p "Wait, I'll help you"
         "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
@@ -774,9 +777,13 @@ label PART_1:
         # $ player_class = Player.sheet.classs["name"]
         # "### YOU HAVE CHOOSEN THE [player_class] CLASS ###"
 
-        c "[class_choice] is a good class, I'd definitely need one in my party."
-        p "And what about you?"
-        c "Oh, I'm gonna be a Cleric. I decided it years ago. The Cleric has always been my favourite class!"
+        if class_choice == "Cleric":
+            "A Cleric, really? Just like me!"
+        else:
+            c "[class_choice] is a good class, I'd definitely need one in my party."
+            p "And what about you?"
+            c "Oh, I'm gonna be a Cleric. I decided it years ago."
+        c "The Cleric has always been my favourite class!"
         c "She can Heal, fight, use magic to defend or attack! A Cleric is so adaptable to any circumstance, she must be solid, realiable, and she often is the pivot around which all the party revolves."
         c "And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the strengths and weaknesses of each other class, in order to coordinate the party's actions in the best way!"
         p "Wow, ehm, that amazing Ciry! You know a lot of stuff. And it's clear that you really love and admire the Cleric class."
