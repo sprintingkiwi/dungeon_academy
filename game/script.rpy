@@ -971,9 +971,10 @@ label PART_1:
 
                 "Try to reach out Ciry (before losing her in the crowd)" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
                     $ visited.append("Reach Ciry")
-                    $ Ciry.approval += 10
+                    $ Ciry.approval += 10                    
                     "You managed to reach Ciry through the crowd of students, who almost overwhelmed her due to her short stature."
                     p "Ciry! I'm here!"
+                    show ciry at topleft with dissolve
                     c "(smiling with surprise) Oh! [Player.sheet.name]!"
                     c "You managed to find me even here throung all these people! Hehe, I was starting to fear being trampled."
                     p "I just wanted to say goodbye before we all went to our respective classes"
@@ -981,26 +982,49 @@ label PART_1:
                     c "Well, being a gnome girl usually means going unnoticed and feeling ignored."
                     c "(blushing) So I'm... glad you came to say goodbye, I'm looking forward to meet you after our first lessons!"
                     p "Yes, see you later Ciry!"
+                    hide ciry with dissolve
+                    "(Ciry's approval: +10)"                    
                     jump after_rector_intro
                 
                 "Explore Academy" if ("Explore Academy" not in visited):
                     $ visited.append("Explore Academy")
+                    $ Player.achievements.append("Explored academy")
                     "As the crowd of students disperse, you start exploring the academy."
+                    "The Academy, a colossal structure reminiscent of a castle, looms majestically before you."
+                    "You are astounded by the the multitude of rooms and then you notice its towering spires reaching towards the heavens..."
+                    "With a cacophony of voices filling the air, students disperse into the labyrinthine corridors, each one brimming with the promise of knowledge and adventure."
+                    scene 2024-04-25_11-04-48_5772 with dissolve
+                    pause
+                    "Some head towards the Hall of Deities, where statues of ancient gods and goddesses stand sentinel, their watchful gaze is said to impart wisdom and guidance to those who seek it."
+                    scene 2024-03-30_13-07-37_1127 with dissolve
+                    pause
+                    "Others make their way to the Training Grounds, where the clash of steel against steel resounds through the air as aspiring warriors hone their combat skills under the watchful eye of seasoned instructors."
+                    "Swordplay, archery, hand-to-hand combat..."
+                    scene 2024-03-30_13-25-35_7058 with dissolve
+                    pause
+                    "In the Arcane Chambers, young wizards and sorcerers gather to practice the intricate arts of magic."
+                    "The air crackles with energy as spells are cast and incantations whispered, each student striving to unlock the mysteries of the arcane and harness its power."
+                    scene 2024-03-30_13-11-02_1104 with dissolve
+                    pause
+                    "You then enter the dining room, now empty except for a single figure seemingly eating with brute force and anger."
+                    "As soon as she notices your presence, she turns towards you, giving you a dirty look, but then immediately ignores you."
+                    "You recognize the unmistakable traits of a half-orc in that tall, robust-looking girl."
                     jump after_rector_intro
 
                 "Skip (go to Rogue classroom)":
-                    window hide
+                    scene 00004-1923438760 with dissolve
                     
-        pause
-        scene 00004-1923438760
         pause
         window show
         "You enter the Rogue's classroom and the first thing you notice is that it's empty, except, of course, for the teacher."
         show tris at topright with dissolve
         tri "Oh, hello my only student!"
+        if "Explored academy" in Player.achievements:
+            tri "(smiling) It's a bit late, hehe, did you get lost in the depths of the academy?"
+            p "Well..."
         play music etherealrelaxation fadein 2.0
         tri "It's [Player.sheet.name], isn't it?"
-        p "Yes"
+        p "Yes..."
         tri "Well, as you already know I'm the class-master of the Rogue class, and so on... I won't annoy you with formalities now."
         tri "Oh, and don't you dare address me 'Ma'am', just call me teacher or Tris."
         p "Oh, ok"
