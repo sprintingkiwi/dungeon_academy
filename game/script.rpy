@@ -620,14 +620,18 @@ label PART_1:
         scene road1 
         $ renpy.pause()
         "You walk with a light step as you make your way down the tree-lined path that leads to your dream destination, the Academy!"
-        "You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day - the best of all: your first day of academy."
-        "You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful moment. Will you perhaps meet future classmates there?"
+        "You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day - the best of all:"
+        "your first day of academy."
+        "You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful moment."
+        "Will you perhaps meet future classmates there?"
         "Will they become friends and valuable allies for the years to come, at the academy or even lifelong adventure companions?"
-        "You've always been a shy boy and can't say you have many friends. The only exception is the apprentice of the inventor wizard, whose laboratory is right in front of your house."
-        "As you think about these things, staring up at the sky, something trips you up and you fall heavily to the ground, your face smacked against the stone-paved path."
+        # "You've always been a shy boy and can't say you have many friends. The only exception is the apprentice of the inventor wizard, whose laboratory is right in front of your house."
+        "As you think about these things, staring up at the sky, something trips you up and you fall heavily to the ground, your face"
+        "smacked against the stone-paved path."
         c "Ahi!"
         "You pick yourself up, a bit confused, trying to figure out what you had tripped over."
-        "A small white-haired female creature is in front of you, crawling next to a backpack and some fallen books. With one hand, she is now rubbing her head."
+        "A small white-haired female creature is in front of you, crawling next to a backpack and some fallen books. With one hand,"
+        "she is now rubbing her head."
         p "{i}(A gnome girl?){/i}"
         p "I'm so sorry... I didn't see you at all!"
         # scene bg room
@@ -716,7 +720,8 @@ label PART_1:
         if race_choice == "Gnome":
             c "I didn't expect to meet a fellow Gnome like this, hihihi!"
             c "You know, Gnomes like us are quite rare in the City..."
-        "You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious books and scattered pages of handwritten notes."
+        "You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious books and"
+        "scattered pages of handwritten notes."
         p "Wait, I'll help you"
         "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
         p "I know this book! I've read it three times!"
@@ -784,8 +789,10 @@ label PART_1:
             p "And what about you?"
             c "Oh, I'm gonna be a Cleric. I decided it years ago."
         c "The Cleric has always been my favourite class!"
-        c "She can Heal, fight, use magic to defend or attack! A Cleric is so adaptable to any circumstance, she must be solid, realiable, and she often is the pivot around which all the party revolves."
-        c "And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the strengths and weaknesses of each other class, in order to coordinate the party's actions in the best way!"
+        c "She can Heal, fight, use magic to defend or attack! A Cleric is so adaptable to any circumstance, she must be solid, realiable, and she often is the"
+        c "pivot around which all the party revolves."
+        c "And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the strengths and weaknesses of each other class,"
+        c "in order to coordinate the party's actions in the best way!"
         p "Wow, ehm, that amazing Ciry! You know a lot of stuff. And it's clear that you really love and admire the Cleric class."
         "And so, talking with your new friend, you go on walking toward the Academy."
 
@@ -889,10 +896,12 @@ label PART_1:
         c "The Rogue class!"
         p "The... Rogue class? Is that even a real class?"
         c "Oh yes it is. Right there!"
-        "When you look in the direction pointed by Ciry, you notice a woman in her forties, with a kind face and a bored expression, sitting alone by a table. No one was queuing in front of her."
+        "When you look in the direction pointed by Ciry, you notice a woman in her forties, with a kind face and a bored expression, sitting alone by a table."
+        "No one was queuing in front of her."
         p "But... I though Rogues grew up as criminals, and only then some of them joins some party ad adventurer."
         c "Well, that's indeed true for most of the Rogues adventurers, and it's surely the way the most renowned Rogues have grown up."
-        c "But the Academy opened the Rogue class some year ago. It's the most recent class to have been established, right after the High City Council acknowledged the Rogue as an official class."
+        c "But the Academy opened the Rogue class some year ago. It's the most recent class to have been established,"
+        c "right after the High City Council acknowledged the Rogue as an official class."
         p "Ok then, so be it. I won't be left behind. My biggest dream has always been to become an adventurer..."
         p "I'll sign up for the Rogue class!"
         c "See you later then, I'm gonna go show my reference and sign up for the Cleric class."
@@ -969,7 +978,8 @@ label PART_1:
         stop music fadeout 1.0
         "And without giving room for questions, the rector turned and walked away."
         "Another woman, maybe the vice principal, started to talk in his place: 'the lessons will start right now'."
-        "With too many questions still on your mind, you hear the woman saying that each student should move to their class's classroom for an initial briefing, and that the following day will be possible to choose the study plan for the current month."
+        "With too many questions still on your mind, you hear the woman saying that each student should move to their class's classroom for an initial briefing,"
+        "and that the following day will be possible to choose the study plan for the current month."
         
         $ visited = []
         label after_rector_intro:            
@@ -1005,7 +1015,8 @@ label PART_1:
                     "Some head towards the Hall of Deities, where statues of ancient gods and goddesses stand sentinel, their watchful gaze is said to impart wisdom and guidance to those who seek it."
                     scene 2024-03-30_13-07-37_1127 with dissolve
                     pause
-                    "Others make their way to the Training Grounds, where the clash of steel against steel resounds through the air as aspiring warriors hone their combat skills under the watchful eye of seasoned instructors."
+                    "Others make their way to the Training Grounds, where the clash of steel against steel resounds through the air as aspiring warriors hone their combat skills under the"
+                    "watchful eye of seasoned instructors."
                     "Swordplay, archery, hand-to-hand combat..."
                     scene 2024-03-30_13-25-35_7058 with dissolve
                     pause
@@ -1040,7 +1051,8 @@ label PART_1:
         tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow my optional courses."
         tri "I'm always overbooked!"
         p "So... people just avoid choosing the Rogue as their official class? To be honest, I didn't even know it was a real class...."
-        tri "That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery skills, very valuable in dungeons, especially to disarm traps, steal treasures from monsters without fighting, or to get informations about enemies."
+        tri "That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery skills, very valuable in dungeons, especially to disarm traps,"
+        tri "steal treasures from monsters without fighting, or to get informations about enemies."
         tri "But those Rogues usually learnt their skills growing up in the slums as criminals."
         tri "I don't wanna say that they were all bad. Many were just abandoned children with no home and no food..."
         tri "Well, anyway, time passed and the Rogue skills became sought after in all parties."
@@ -1258,7 +1270,8 @@ label PART_1:
 
         # $ PARTY = [store.Player, store.Ciry]
         "Day after day, you follow the lessons at the Academy with great interest."
-        "One of the things you notice in your first days at the Academy is that many students carry weapons with them, someone in their bags, others attached to their bodies, as if to display them, not to talk about those wearing shining heavy armors all the day long."
+        "One of the things you notice in your first days at the Academy is that many students carry weapons with them, someone in their bags, others attached to their bodies, as if to display them,"
+        "not to talk about those wearing shining heavy armors all the day long."
         show ciry at topleft with dissolve
         c "I can see your curious face, hihi"
         c "Some students, those coming from a rich family, use to flaunt their weapons in front of the teacher and the other students."
@@ -1290,7 +1303,8 @@ label PART_1:
         p "Do you know offensive spells?"
         c "(disappointed) Actually, not yet... But I could try"
         p "Well, I don't think it will be necessary."
-        "And with your last words you open the large wooden door. At first glance you see no one, then you lower your eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes. Her eyes suggesting she needed help."
+        "And with your last words you open the large wooden door. At first glance you see no one, then you lower your eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes."
+        "Her eyes suggesting she needed help."
         show dyana at topright with dissolve
         c "..."
         c "Mom?"
