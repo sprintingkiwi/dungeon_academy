@@ -6,13 +6,16 @@ from os import environ, walk, path, remove
 from functools import wraps
 import logging
 
-
 LOG = logging.getLogger(__package__)
 LOG.setLevel(logging.DEBUG)
 
 
+import renpy
+print("Game Dir - " + renpy.config.gamedir)
+
+
 try:
-    JSON_CACHE = f"{path.dirname(path.abspath(__file__))}/json_cache"
+    JSON_CACHE = renpy.config.gamedir + "/dnd_character/json_cache"
 except Exception as e:
     LOG.error(f"Entire JSON cache failed to load: {str(e)}")
 
