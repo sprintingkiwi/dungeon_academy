@@ -207,7 +207,7 @@ define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = gui.preference("btnsize", 56)
+define gui.choice_button_text_size = 56
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = "#fefefe"
 define gui.choice_button_text_hover_color = "#ffffff"
@@ -427,12 +427,12 @@ init python:
     def small():
 
         ## Font sizes.
-        gui.text_size = 60
-        gui.name_text_size = 60
+        gui.text_size = 56
+        gui.name_text_size = 56
         gui.notify_text_size = 38
-        gui.interface_text_size = 60
-        gui.button_text_size = 60
-        gui.label_text_size = 60
+        gui.interface_text_size = 72
+        gui.button_text_size = 56
+        gui.label_text_size = 56
 
         ## Adjust the location of the textbox.
         gui.textbox_height = 360
@@ -445,7 +445,7 @@ init python:
         gui.slider_size = 54
 
         gui.choice_button_width = 720
-        gui.choice_button_text_size = gui.preference("btn_size", 36)
+        gui.choice_button_text_size = 56
 
         gui.navigation_spacing = 30
         gui.pref_button_spacing = 15

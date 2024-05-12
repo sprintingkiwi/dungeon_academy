@@ -653,8 +653,6 @@ label PART_1:
         c "Nice to meet you, [Player.sheet.name]!"
         c "You are a..."
         
-        $ gui.SetPreference("btnsize", 36, rebuild=True)
-        $ print(gui.preference("btnsize"))
         $ race_choice = "Half-Elf"
         menu:
             "Human (choose stat bonus)":
@@ -737,12 +735,12 @@ label PART_1:
         c "We can walk together to the academy!"
         p "(surprised) Oh.. Ok, sure!"
         c "Sooo, I'm so excited for my first day! What class are you gonna take?"
-        p "I'm not sure yet..."
-        $ class_choice = ""
-        menu:
-            p "I think I'll try to be a..."
-            # "### THIS CHOICE WILL NOT AFFECT YOUR CLASS ###"
+        p "Hmmm... I'm not sure yet."
+        p "I think I'll try to be a..."
 
+        # "### THIS CHOICE WILL NOT AFFECT YOUR CLASS ###"
+        $ class_choice = ""
+        menu:            
             "Ranger":
                 $ class_choice = "Ranger"
                 
@@ -787,7 +785,6 @@ label PART_1:
 
         # $ player_class = Player.sheet.classs["name"]
         # "### YOU HAVE CHOOSEN THE [player_class] CLASS ###"
-        $ gui.SetPreference("btn_size", 60, rebuild=True)
         if class_choice == "Cleric":
             "A Cleric, really? Just like me!"
         else:
