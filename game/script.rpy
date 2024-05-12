@@ -488,6 +488,9 @@ default Dante = None
 label start:
 
     python:
+
+        if renpy.mobile or config.developer:
+            quick_menu = True
         # action = {"name": str, "effect": function, scope: "Enemy/Enemies/Ally/Allies"}
 
         # ADVENTURERS
@@ -649,6 +652,9 @@ label PART_1:
         p "[Player.sheet.name]"
         c "Nice to meet you, [Player.sheet.name]!"
         c "You are a..."
+        
+        $ gui.SetPreference("btnsize", 36, rebuild=True)
+        $ print(gui.preference("btnsize"))
         $ race_choice = "Half-Elf"
         menu:
             "Human (choose stat bonus)":
@@ -781,7 +787,7 @@ label PART_1:
 
         # $ player_class = Player.sheet.classs["name"]
         # "### YOU HAVE CHOOSEN THE [player_class] CLASS ###"
-
+        $ gui.SetPreference("btn_size", 60, rebuild=True)
         if class_choice == "Cleric":
             "A Cleric, really? Just like me!"
         else:

@@ -207,7 +207,7 @@ define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = gui.text_size
+define gui.choice_button_text_size = gui.preference("btnsize", 56)
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = "#fefefe"
 define gui.choice_button_text_hover_color = "#ffffff"
@@ -412,6 +412,7 @@ define gui.language = "unicode"
 ################################################################################
 
 init python:
+    # quick_menu = True
 
     ## This increases the size of the quick buttons to make them easier to touch
     ## on tablets and phones.
@@ -426,15 +427,16 @@ init python:
     def small():
 
         ## Font sizes.
-        gui.text_size = 56
-        gui.name_text_size = 56
+        gui.text_size = 60
+        gui.name_text_size = 60
         gui.notify_text_size = 38
-        gui.interface_text_size = 56
-        gui.button_text_size = 56
-        gui.label_text_size = 56
+        gui.interface_text_size = 60
+        gui.button_text_size = 60
+        gui.label_text_size = 60
 
         ## Adjust the location of the textbox.
         gui.textbox_height = 360
+        gui.dialogue_ypos = 0.2
         gui.name_xpos = 120
         gui.dialogue_xpos = 0.1
         gui.dialogue_width = 0.8
@@ -442,8 +444,8 @@ init python:
         ## Change the size and spacing of various things.
         gui.slider_size = 54
 
-        gui.choice_button_width = 1860
-        gui.choice_button_text_size = 45
+        gui.choice_button_width = 720
+        gui.choice_button_text_size = gui.preference("btn_size", 36)
 
         gui.navigation_spacing = 30
         gui.pref_button_spacing = 15
@@ -451,7 +453,7 @@ init python:
         gui.history_height = 285
         gui.history_text_width = 1035
 
-        gui.quick_button_text_size = 30
+        gui.quick_button_text_size = 48
 
         ## File button layout.
         gui.file_slot_cols = 2
