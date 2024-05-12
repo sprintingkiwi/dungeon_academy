@@ -1076,9 +1076,10 @@ label PART_1:
         p "Even if I never thought to choose the Rogue class, as long as I will have the opportunity to be an adventurer, I will do my best. I promise!" 
         tri "Very well. It's a good start."
         tri "Now..."
-
+        tri "Tell me, [Player.sheet.name], what you think better describes the abilities of a Rogue?"
+        
+        window hide
         menu:
-            tri "Tell me, [Player.sheet.name], what you think better describes the abilities of a Rogue?"
             "Dexterity? to be precise and agile?":
                 tri "Dexterity is important for a Rogue, of course, but it's not just that."
             
