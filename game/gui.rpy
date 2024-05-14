@@ -64,16 +64,16 @@ define gui.name_text_font = "calibri.ttf"
 define gui.interface_text_font = "calibri.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 56
+define gui.text_size = 54
 
 ## The size of character names.
-define gui.name_text_size = 56
+define gui.name_text_size = 54
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 56
+define gui.interface_text_size = 54
 
 ## The size of labels in the game's user interface.
-define gui.label_text_size = 56
+define gui.label_text_size = 54
 
 ## The size of text on the notify screen.
 define gui.notify_text_size = 24
@@ -207,7 +207,7 @@ define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = 56
+define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = "#fefefe"
 define gui.choice_button_text_hover_color = "#ffffff"
