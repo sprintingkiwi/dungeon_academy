@@ -943,7 +943,8 @@ label chapter_1:
     tri "Oh, wait! I get it! You couldn't find a place in any other class, could you?"
     p "(embarrassed) Well, actually..."
     p "{i}(I don't want her to fell like a fallback... What if she refuses too?){/i}"
-    p "This is the last class I'm trying to sign up for, it's true, but I'll proudly be a Rogue if you accept me as a student."
+    p "This is the last class I'm trying to sign up for, it's true, but I'll proudly be a Rogue if you accept me"
+    p "as a student."
     tri "Proudly be a Rogue? Hmmm... Interesting... Well, one student is still better than zero."
     tri "Furthermore, you look skinny. You could make a good Rogue for a human."
     p "...Thanks"
@@ -955,7 +956,8 @@ label chapter_1:
 
 
     label before_rector_intro:
-    "After signing up for the Rogue class, you are told to walk inside the Academy hall, together with all the other students."
+    "After signing up for the Rogue class, you are told to walk inside the Academy hall, together with all the"
+    "other students."
     scene main hall
     $ renpy.pause()
     play music arcadia
@@ -976,33 +978,46 @@ label chapter_1:
     "The Rector is gonna speak!"
     rec "Dear students..."
     show rector at top with dissolve
-    rec "Welcome to Dungeon Academy!"
-    rec "THE Academy!"
-    rec "I suppose I'm now mostly talking to first year students, since all the other students should already be in their classes now."
+    rec """
+    Welcome to Dungeon Academy!
+    THE Academy!
+    I suppose I'm now mostly talking to first year students, since all the other students should already be
+    in their classes now.
+    """
     "After the Rector's last words, you can see a certain amount of students halfheartedly leave the main hall."
-    rec "Each one of you did choose a class this morning. Someone with a reference, someone else as a result of a hard work or good luck."
-    rec "To all of you I'm here to explain how it will work for the months and years to come."
-    rec "As many probably know, every year here at the Academy is divided in two terms, each of them lasting four months."
-    rec "The first four months are considered a kind of trial period, in which you will experiment what it means to study in a certain class."
-    rec "During this first term, you will still be able to apply for a class change."
-    rec "Notice that a 'class change request' needs the approval of both the class-masters of the class you are leaving and the one you want to enter."
-    rec "The class-masters are the main teachers, one for each class. Their judgment is absolute."
-    rec "The lessons will be divided in class lessons and optional lessons."
-    rec "Every student will need to follow thier class-specific lesson, which will help you consolidate the basics that define your class"
-    rec "as well as to internalize the role that each class plays within a party."
-    rec "On the other hand, optional lessons are no less important."
-    rec "You will need to follow the optional lessons to gain enough credits to be promoted to the next year."
-    rec "Thier 'optional' nature will let you choose, at the beginning of every week, the course that will be added to your study plan."
-    rec "Each course will focus on developing certain skills and abilities. You are free to stick to those most closely related to you class, or to acquire a more hybrid mix of competences"
-    rec "You are here to 'build' yourselves into great adventurers. So make the most of this opportunity."
-    rec "With this I say goodbye and good luck to all of you. May the power of the gods be upon you in the time to come."
+    rec """
+    Each one of you did choose a class this morning. Someone with a reference, someone else as a result of a hard
+    work or good luck.
+    To all of you I'm here to explain how it will work for the months and years to come.
+    As many probably know, every year here at the Academy is divided in two terms, each of them lasting four months.
+    The first four months are considered a kind of trial period, in which you will experiment what it means to
+    study in a certain class.
+    During this first term, you will still be able to apply for a class change.
+    Notice that a 'class change request' needs the approval of both the class-masters of the class you are leaving
+    and the one you want to enter.
+    The class-masters are the main teachers, one for each class. Their judgment is absolute.
+    The lessons will be divided in class lessons and optional lessons.
+    Every student will need to follow thier class-specific lesson, which will help you consolidate the basics that
+    define your class, as well as to internalize the role that each class plays within a party.
+    On the other hand, optional lessons are no less important.
+    You will need to follow the optional lessons to gain enough credits to be promoted to the next year.
+    Thier 'optional' nature will let you choose, at the beginning of every week, the course that will be added to
+    your study plan.
+    Each course will focus on developing certain skills and abilities. You are free to stick to those most closely
+    related to you class, or to acquire a more hybrid mix of competences
+    You are here to 'build' yourselves into great adventurers. So make the most of this opportunity.
+    With this I say goodbye and good luck to all of you. May the power of the gods be upon you in the time to come.
+    """
     hide rector with dissolve
     stop music fadeout 1.0
-    "And without giving room for questions, the rector turned and walked away."
-    "Another woman, maybe the vice principal, started to talk in his place: 'the lessons will start right now'."
-    "With too many questions still on your mind, you hear the woman saying that each student should move to their class's classroom for an initial briefing,"
-    "and that the following day will be possible to choose the study plan for the current month."
-    
+    """
+    And without giving room for questions, the rector turned and walked away.
+    Another woman, maybe the vice principal, started to talk in his place: 'the lessons will start right now'.
+    With too many questions still on your mind, you hear the woman saying that each student should move to their
+    class's classroom for an initial briefing, and that the following day will be possible to choose the study plan
+    for the current month.
+    """
+
     $ visited = []
     label after_rector_intro:            
         menu:
@@ -1028,27 +1043,40 @@ label chapter_1:
             "Explore Academy" if ("Explore Academy" not in visited):
                 $ visited.append("Explore Academy")
                 $ Player.achievements.append("Explored academy")
-                "As the crowd of students disperse, you start exploring the academy."
-                "The Academy, a colossal structure reminiscent of a castle, looms majestically before you."
-                "You are astounded by the the multitude of rooms and then you notice its towering spires reaching towards the heavens..."
-                "With a cacophony of voices filling the air, students disperse into the labyrinthine corridors, each one brimming with the promise of knowledge and adventure."
+                """
+                As the crowd of students disperse, you start exploring the academy.
+                The Academy, a colossal structure reminiscent of a castle, looms majestically before you.
+                You are astounded by the the multitude of rooms and then you notice its towering spires reaching towards
+                the heavens...
+                With a cacophony of voices filling the air, students disperse into the labyrinthine corridors, each one
+                brimming with the promise of knowledge and adventure.
+                """
                 scene 2024-04-25_11-04-48_5772 with dissolve
                 pause
-                "Some head towards the Hall of Deities, where statues of ancient gods and goddesses stand sentinel, their watchful gaze is said to impart wisdom and guidance to those who seek it."
+                "Some head towards the Hall of Deities, where statues of ancient gods and goddesses stand sentinel, their"
+                "watchful gaze is said to impart wisdom and guidance to those who seek it."
                 scene 2024-03-30_13-07-37_1127 with dissolve
                 pause
-                "Others make their way to the Training Grounds, where the clash of steel against steel resounds through the air as aspiring warriors hone their combat skills under the"
-                "watchful eye of seasoned instructors."
-                "Swordplay, archery, hand-to-hand combat..."
+                """
+                Others make their way to the Training Grounds, where the clash of steel against steel resounds through the
+                air as aspiring warriors hone their combat skills under the watchful eye of seasoned instructors.
+                Swordplay, archery, hand-to-hand combat...
+                """
                 scene 2024-03-30_13-25-35_7058 with dissolve
                 pause
-                "In the Arcane Chambers, young wizards and sorcerers gather to practice the intricate arts of magic."
-                "The air crackles with energy as spells are cast and incantations whispered, each student striving to unlock the mysteries of the arcane and harness its power."
+                """
+                In the Arcane Chambers, young wizards and sorcerers gather to practice the intricate arts of magic.
+                The air crackles with energy as spells are cast and incantations whispered, each student striving to unlock
+                the mysteries of the arcane and harness its power.
+                """
                 scene 2024-03-30_13-11-02_1104 with dissolve
                 pause
-                "You then enter the dining room, now empty except for a single figure seemingly eating with brute force and anger."
-                "As soon as she notices your presence, she turns towards you, giving you a dirty look, but then immediately ignores you."
-                "You recognize the unmistakable traits of a half-orc in that tall, robust-looking girl."
+                """
+                You then enter the dining room, now empty except for a single figure seemingly eating with brute force and anger.
+                As soon as she notices your presence, she turns towards you, giving you a dirty look,
+                but then immediately ignores you.
+                You recognize the unmistakable traits of a half-orc in that tall, robust-looking girl.
+                """
                 jump after_rector_intro
 
             "Skip (go to Rogue classroom)":
@@ -1065,34 +1093,46 @@ label chapter_1:
     play music etherealrelaxation fadein 2.0
     tri "It's [Player.sheet.name], isn't it?"
     p "Yes..."
-    tri "Well, as you already know I'm the class-master of the Rogue class, and so on... I won't annoy you with formalities now."
+    tri "Well, as you already know I'm the class-master of the Rogue class, and so on..."
+    tri "I won't annoy you with formalities now."
     tri "Oh, and don't you dare address me 'Ma'am', just call me teacher or Tris."
     p "Oh, ok"
     tri "So, you are probably asking yourself why there's no one else here."
     tri "It's no mistery: Rogue is not a class many desire."
-    tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow my optional courses."
+    tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow"
+    tri "my optional courses."
     tri "I'm always overbooked!"
     p "So... people just avoid choosing the Rogue as their official class? To be honest, I didn't even know it was a real class...."
-    tri "That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery skills, very valuable in dungeons, especially to disarm traps,"
-    tri "steal treasures from monsters without fighting, or to get informations about enemies."
-    tri "But those Rogues usually learnt their skills growing up in the slums as criminals."
-    tri "I don't wanna say that they were all bad. Many were just abandoned children with no home and no food..."
-    tri "Well, anyway, time passed and the Rogue skills became sought after in all parties."
-    tri "Many rangers, bards, or even other classes started to train in how to slink, or how to pick a lock, just to have more chances of entering strong parties and become rich, famous adventurers."
-    tri "But to be called 'Rogue'? Nah! No one wanted it..."
-    tri "and most adventurers still don't want it now, even if the Rogue has officially been recognized as an Adventurer Class by the Council, with a real license and everything else."
-    tri "You can now graduate as a Rogue adventurer. Still, in the last years I only had very few students. And some years I even had no students. Like THIS year, if it wasn't for you! Hahaha"
-    tri "People, villagers, kings, everyone still tend to think of rogues as criminals... There's no glory in fulfilling a mission if you are a Rogue. No one will acclaim you."
-    tri "Or at least not as much as being a proud Paladin, a fierce Fighter, a talented Wizard, or else."
-    tri "And if there's one thing an adventurer wants even more than gold or rare items, it's glory, you know?"
-    tri "But to be stealthy or picking a lock is just the tip of the iceberg. There's so much more in being a Rogue. That's what many adventurers miss..."
-    tri "And that's what I'll teach you. If you are willing to learn, of course."
+    tri """
+    That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery
+    skills, very valuable in dungeons, especially to disarm traps, steal treasures from monsters without fighting,
+    or to get informations about enemies.
+    But those Rogues usually learnt their skills growing up in the slums as criminals.
+    I don't wanna say that they were all bad. Many were just abandoned children with no home and no food...
+    Well, anyway, time passed and the Rogue skills became sought after in all parties.
+    Many rangers, bards, or even other classes started to train in how to slink, or how to pick a lock, just to
+    have more chances of entering strong parties and become rich, famous adventurers.
+    But to be called 'Rogue'? Nah! No one wanted it...
+    and most adventurers still don't want it now, even if the Rogue has officially been recognized as an Adventurer
+    Class by the Council, with a real license and everything else.
+    You can now graduate as a Rogue adventurer. Still, in the last years I only had very few students.
+    And some years I even had no students. Like THIS year, if it wasn't for you! Hahaha
+    People, villagers, kings, everyone still tend to think of rogues as criminals...
+    There's no glory in fulfilling a mission if you are a Rogue. No one will acclaim you.
+    Or at least not as much as being a proud Paladin, a fierce Fighter, a talented Wizard, or else.
+    And if there's one thing an adventurer wants even more than gold or rare items, it's glory, you know?
+    But to be stealthy or picking a lock is just the tip of the iceberg. There's so much more in being a Rogue.
+    That's what many adventurers miss...
+    And that's what I'll teach you. If you are willing to learn, of course.
+    """
     p "Well, I... I am!"
     p "{i}(So, this is the reason why no one wants to be a Rogue){/i}"
     p "{i}(But I... I won't care about reasons like these!){/i}"
-    p "I mean, being an adventurer has always been my dream. I've always been uncertain about which class to choose, and I was sure that coming here the first day would have helped me taking a decision."
+    p "I mean, being an adventurer has always been my dream. I've always been uncertain about which class to choose,"
+    p "and I was sure that coming here the first day would have helped me taking a decision."
     p "{i}(Yes, I will... I will be an adventurer no matter what!){/i}"
-    p "Even if I never thought to choose the Rogue class, as long as I will have the opportunity to be an adventurer, I will do my best. I promise!" 
+    p "Even if I never thought to choose the Rogue class, as long as I will have the opportunity to be an adventurer,"
+    p "I will do my best. I promise!" 
     tri "Very well. It's a good start."
     tri "Now..."
     tri "Tell me, [Player.sheet.name], what you think better describes the abilities of a Rogue?"
@@ -1108,16 +1148,20 @@ label chapter_1:
         "I think a mix of many things... I can't figure out just now":
             tri "That's... somehow a good answer."
         
-    tri "Memorize the location of all the traps in a dungeon,"
-    tri "distract an enemy so that a fellow adventurer can find an opening in his guard,"
-    tri "find a way out of a bad situation with an unpredictable trick, when everyone else in the party has already lost hope..."
-    tri "These are some of the things that could make you a 'real' Rogue."
-    tri "And here come the basic principles of the Rogue class. Try to always focus on these three words:"
-    tri "AWARENESS"
-    tri "FLEXIBILITY"
-    tri "CREATIVITY!"
-    tri "You are always aware of your surroundings, you can adapt to every situation, you can find creative solutions to unsolved problems... All this would make you a good Rogue."
-    tri "So what do you think?"
+    tri """
+    Memorize the location of all the traps in a dungeon,"
+    distract an enemy so that a fellow adventurer can find an opening in his guard."
+    Find a way out of a bad situation with an unpredictable trick,
+    when everyone else in the party has already lost hope..."
+    These are some of the things that could make you a 'real' Rogue."
+    And here come the basic principles of the Rogue class. Try to always focus on these three words:"
+    AWARENESS"
+    FLEXIBILITY"
+    CREATIVITY!"
+    You are always aware of your surroundings, you can adapt to every situation, you can find creative solutions
+    to unsolved problems... All this would make you a good Rogue."
+    So what do you think?"
+    """
     p "Wow... I think, I never imagined there could be so much behind the Rogue class. It's amazing!"
     tri "And that's also so much for a first lesson. Let's just call it a day and go home now."
     p "Oh, ok..."
@@ -1133,7 +1177,8 @@ label chapter_1:
     scene 00010-1467134838
     $ renpy.pause()
     "Your first day at the Academy has come to an end."
-    "You walk out of the classroom and see the corridors rapidly fill up with students, along with a growing murmur of voices."
+    "You walk out of the classroom and see the corridors rapidly fill up with students, along with a growing murmur"
+    "of voices."
     "A little disoriented, you decide to follow the flow of people to reach the exit and then head home."
     scene dice academy1 with dissolve
     "Just outside the Academy, you hear a familiar voice call out your name"
@@ -1143,17 +1188,20 @@ label chapter_1:
     play music onmyway fadein 1.0
     c "There you are!"
     p "Oh, Ciry! It's nice to see you again! How was your first lesson?"
-    c "Oh [Player.sheet.name], it was amazing! We started talking about out different deities and faiths. It was so fascinating..."
+    c "Oh [Player.sheet.name], it was amazing! We started talking about out different deities and faiths."
+    c "It was so fascinating..."
     c "I think I won't sleep at all tonight! I have so much questions in my head!"
     c "Let's head home together! Where do you live?"
     scene 00027-1515435079 with dissolve    
     p "Uhm, I live near the Mushroom Forest, not really near the city..."
     show ciry at topleft with dissolve
     c "The Mushroom Forest? I didn't know there was a village there."
-    p "Well, it's not exactly a village, it's just me and my aunt. I live with her, my... my parents died when I was child."
+    p "Well, it's not exactly a village, it's just me and my aunt. I live with her, my..."
+    p "my parents died when I was child."
     c "Oh, I'm so sorry [Player.sheet.name]..."
     p "Don't worry, it's all in the past now."
-    c "Anyway, isn't it dangerous to live near the Mushroom Forest? I heard stories about strange creatures living there..."
+    c "Anyway, isn't it dangerous to live near the Mushroom Forest?"
+    c "I heard stories about strange creatures living there..."
     p "I guess it happens when your aunt is the Druid-guardian of a Forest..."
     c "Wh... WHAT?!"
     c "So your aunt is the famous Mushroom-Druid?"
@@ -1164,7 +1212,8 @@ label chapter_1:
     p "But, you are in the Cleric class while I'm in the Rogue class, what should we study together?"
     c "Don't forget the complementary subjects! Geography, History and Laws of the City, and so on."
     c "Furthermore, you can teach me your Rogue stuff while I teach you about the Cleric class!"
-    c "Yes, it's a brilliant idea! This way we can learn things about two different classes, and be more prepared when we'll work in parties!"
+    c "Yes, it's a brilliant idea!"
+    c "This way we can learn things about two different classes, and be more prepared when we'll work in parties!"
     p "It's a deal then"
     c "GREAT!"
     c "So... What about YOUR first day at the academy?"
@@ -1181,7 +1230,8 @@ label chapter_1:
     c "Let's see..."
     "Ciry frantically flips through the book, then stopping on a random page."
     if Player.race == "Half-Elf":
-        c "'Wood Elves, too, can make outstanding rogues thanks to both their racial bonus to Dexterity and the Mask of the Wild feature, which allows them to easily hide in the natural world.'"
+        c "'Wood Elves, too, can make outstanding rogues thanks to both their racial bonus to Dexterity and the"
+        c "Mask of the Wild feature, which allows them to easily hide in the natural world.'"
         p "Well, I'm a Half-Elf... Even though, I can't use Mask of the Wild."
         c "Oh, you are Half-Elf? I never would have said that!"
         p "I know, my ears are mostly human-like. But still they're still a bit pointed."
@@ -1189,8 +1239,10 @@ label chapter_1:
         c "Yeah, not so much but it can be seen. Right there, a little elven shaped ear!"
         p "Hehe!"
     if Player.race == "Dwarf" or Player.race == "Half-Orc":
-        c "'Dwarves and Half-Orcs would be unusual races for rogues, but nonetheless, they can find a mix of abilities that can make them work effectively as Rogues.'"
-        p "Well, I didn't expect to end up in the Rogue class so... I guess I'll have to come up with some ideas about this 'mix of abilities'."
+        c "'Dwarves and Half-Orcs would be unusual races for rogues, but nonetheless, they can find a mix of"
+        c "abilities that can make them work effectively as Rogues.'"
+        p "Well, I didn't expect to end up in the Rogue class so... I guess I'll have to come up with some ideas"
+        p "about this 'mix of abilities'."
         c "I'm sure you're gonna do a great job, [Player.sheet.name]!"
     c "..."
     p "..."
@@ -1200,12 +1252,15 @@ label chapter_1:
     p "Oh, so... Have a nice evening and... see you tomorrow at the Academy!"
     c "Thanks [Player.sheet.name], you too!"
     hide ciry with dissolve
-    "After saying goodbye to Ciry, you walk outside the city walls. It takes nearly an hour to walk from your house to the center of the City, but you are well used to it."
-    "You take the usual avenue that crosses more peripheral houses, the houses of the farmers. Then you cut through a field up a hill until in the distance you see a mushroom-shaped house."
+    "After saying goodbye to Ciry, you walk outside the city walls. It takes nearly an hour to walk from your house"
+    "to the center of the City, but you are well used to it."
+    "You take the usual avenue that crosses more peripheral houses, the houses of the farmers. Then you cut through"
+    "a field up a hill until in the distance you see a mushroom-shaped house."
     scene 00028-45450802 with dissolve
     $ renpy.pause()
     play music averybradyspecial fadein 2.0
-    alt "A mushroom shaped house with a green roof completely covered by moss. Warm yellow lights shine inside and colorful flowers surround the edges of the windows."
+    alt "A mushroom shaped house with a green roof completely covered by moss. Warm yellow lights shine inside and"
+    "colorful flowers surround the edges of the windows."
     "A house you call home."
     show bella at topright with dissolve
     bel "[Player.sheet.name]!"
@@ -1213,7 +1268,8 @@ label chapter_1:
     p "Hi auntie! It was good"
     bel "Which class which class?? Did you finally choose?"
     p "I didn't actually choose but... I ended up in the Rogue class."
-    bel "The... The Rogue class? Uhm, you never mentioned it in our long one-sided discussion about pros and cons of each class..."
+    bel "The... The Rogue class? Uhm, you never mentioned it in our long one-sided discussion about pros and cons"
+    bel "of each class..."
     bel "How cute!"
     p "Yes... It seems interesting"
     bel "And did you make any friend?"
@@ -1224,17 +1280,21 @@ label chapter_1:
     bel "(kissing you on the forhead) I'm so proud of you!"
     "With your sleeve, you wipe the glaring mark of her lipstick on your forehead."
     p "(still blushing) Auntie... Stop!"
-    bel "Oh I know, I had many friends too, both boys and girls you know? Hihi! Or at least I used to call them 'friends'... Hihihi!"
-    p "Ok, stop now... By the way, she asked me to meet you, she's a real adventurer-nerd and she wants to ask you a lot of questions."
+    bel "Oh I know, I had many friends too, both boys and girls you know? Hihi!"
+    bel "Or at least I used to call them 'friends'... Hihihi!"
+    p "Ok, stop now... By the way, she asked me to meet you, she's a real adventurer-nerd and she wants to ask you"
+    p "a lot of questions."
     bel "Invite her to study here! I'd be so happy!"
     p "Oh don't worry, she already invited herself..."
     scene 00004-1773495918 with dissolve
-    "You spend a pleasant evening in the company of your aunt, telling her everything you saw today at the academy and explaining to her that you would also start your optional courses the next day."
+    "You spend a pleasant evening in the company of your aunt, telling her everything you saw today at the academy"
+    "and explaining to her that you would also start your optional courses the next day."
     show dining_1 at left with dissolve
     "You enjoy the delicious dinner she prepared. Her skill in the kitchen surprises you every time."
     show bedroom_1 with dissolve
     "Then you go to bed, feeling that like Ciry you won't be able to sleep."
-    "But as you start dreaming the advetures of tomorrow, your eyes close, and a deep sleep drags you into its embrace..."
+    "But as you start dreaming the advetures of tomorrow, your eyes close,"
+    "and a deep sleep drags you into its embrace..."
     pause
     scene bg black with annoytheuser
     p "{i}...{/i}"
@@ -1257,7 +1317,8 @@ label chapter_2:
     "You wake up with a lot of energy and optimism"
     scene 00028-45450802 with dissolve
     play music firefliesandstardust fadein 2.0
-    "While you eat breakfast and prepare yourself for the day, you can't shake the vague feeling that you've dreamed of something: a scent, a light, a warm feeling of calm, like a hug from a beloved friend."
+    "While you eat breakfast and prepare yourself for the day, you can't shake the vague feeling that you've dreamt"
+    "about something: a scent, a light, a warm feeling of calm, like a hug from a beloved friend."
     "But soon your mind fills with excitement, questions and expectations"
     p "{i}(Which optional course should I choose?){/i}"
     "You say goodbye to your aunt Bella and start walking towards the Academy."
@@ -1268,11 +1329,13 @@ label chapter_2:
     "You notice Ciry not too distant from you. She seems completely lost in her own thoughts."
     p "Oh, Ciry! Good to see you!"
     c "Hi [Player.sheet.name]!"
-    c "I'm so excited! I couldn't sleep the whole night. Should I go with 'History of Magic' or 'Principles of the Faithful'?"
+    c "I'm so excited!"
+    c "I couldn't sleep the whole night. Should I go with 'History of Magic' or 'Principles of the Faithful'?"
     c "I still can't decide wheter to focus on pure Cleric stuff or expand my knowledge in complementary subjects..."
     menu:
         "You should focus on cleric stuff":
-            p "A solid foundation is the key to becoming a great adventurer: perhaps you should first focus on the knowledge and skills central to your class."
+            p "A solid foundation is the key to becoming a great adventurer: perhaps you should first focus on the knowledge"
+            p "and skills central to your class."
             $ Ciry.sheet.wisdom += 2
             $ Ciry.courses_taken.append("religion")
             $ Ciry.sheet.skills_intelligence["religion"] = True
@@ -1287,13 +1350,15 @@ label chapter_2:
     c "Thanks, I will take your suggestion into consideration!"
     c "Let's go sign up for the optional courses!"
     hide ciry with dissolve
-    "You follow Ciry inside the Main Hall where, in front of a long wooden table, a row of students waited their turn to write their name on the sheet relating to the chosen optional course."
+    "You follow Ciry inside the Main Hall where, in front of a long wooden table, a row of students waited their"
+    "turn to write their name on the sheet relating to the chosen optional course."
     "Finally, it's you turn to sign up for a course."
     call study_plan_1 from _call_study_plan_1
 
     # $ PARTY = [store.Player, store.Ciry]
     "Day after day, you follow the lessons at the Academy with great interest."
-    "One of the things you notice in your first days at the Academy is that many students carry weapons with them, someone in their bags, others attached to their bodies, as if to display them,"
+    "One of the things you notice in your first days at the Academy is that many students carry weapons with them,"
+    "someone in their bags, others attached to their bodies, as if to display them,"
     "not to talk about those wearing shining heavy armors all the day long."
     show ciry at topleft with dissolve
     c "I can see your curious face, hihi"
