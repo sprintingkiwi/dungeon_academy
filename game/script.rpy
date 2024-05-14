@@ -13,6 +13,13 @@ init python:
     import json
     import random
     from random import randint
+    import textwrap
+
+
+    def nar(text):
+        lines = textwrap.wrap(text, 108)
+        for line in lines:
+            narrator(line)
 
 
     def save_player_json():
@@ -614,6 +621,7 @@ label start:
 
 
 label chapter_1:
+    # $ nar("In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all, a real academy for adventurers! You will play the role of a student at the -Dungeon Academy-, the most prestigious academy for adventurers on the entire continent. Your dream: to become the greatest adventurer of all time!")
     """
     In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all,
     a real academy for adventurers!
@@ -646,7 +654,8 @@ label chapter_1:
     show ciry at topleft with dissolve
     c """
     Hehe, my fault, sorry! I'm a bit clumsy and I always end up dropping things...
-    I am Ciry, by the way..."""
+    I am Ciry, by the way...
+    """
     p "Well, I'm "
 
     python:
@@ -730,8 +739,10 @@ label chapter_1:
     if race_choice == "Gnome":
         c "I didn't expect to meet a fellow Gnome like this, hihihi!"
         c "You know, Gnomes like us are quite rare in the City..."
-    "You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious books and"
-    "scattered pages of handwritten notes."
+    """
+    You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious
+    books and scattered pages of handwritten notes.
+    """
     p "Wait, I'll help you"
     "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
     p "I know this book! I've read it three times!"
@@ -797,11 +808,14 @@ label chapter_1:
         c "[class_choice] is a good class, I'd definitely need one in my party."
         p "And what about you?"
         c "Oh, I'm gonna be a Cleric. I decided it years ago."
-    c "The Cleric has always been my favourite class!"
-    c "She can Heal, fight, use magic to defend or attack! A Cleric is so adaptable to any circumstance, she must be solid, realiable, and she often is the"
-    c "pivot around which all the party revolves."
-    c "And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the strengths and weaknesses of each other class,"
-    c "in order to coordinate the party's actions in the best way!"
+    c """
+    The Cleric has always been my favourite class!
+    She can Heal, fight, use magic to defend or attack!
+    A Cleric is so adaptable to any circumstance, she must be solid, realiable, and she often is the pivot around
+    which all the party revolves."
+    And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the
+    strengths and weaknesses of each other class in order to coordinate the party's actions in the best way!
+    """
     p "Wow, ehm, that amazing Ciry! You know a lot of stuff. And it's clear that you really love and admire the Cleric class."
     "And so, talking with your new friend, you go on walking toward the Academy."
 
