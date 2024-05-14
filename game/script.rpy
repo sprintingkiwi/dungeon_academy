@@ -496,8 +496,12 @@ label start:
 
     python:
 
-        if renpy.mobile or config.developer:
+        if renpy.mobile:
             quick_menu = True
+
+        if config.developer:
+            quick_menu = True
+            config.rollback_enabled = True
 
         # ADVENTURERS
         Ciry = PlayableAdventurer(dnd.Character(
@@ -815,7 +819,8 @@ label chapter_1:
     And this is the reason why a Cleric should also be well prepared, she must study a lot to get to know the
     strengths and weaknesses of each other class in order to coordinate the party's actions in the best way!
     """
-    p "Wow, ehm, that amazing Ciry! You know a lot of stuff. And it's clear that you really love and admire the Cleric class."
+    p "Wow, ehm, that amazing Ciry! You know a lot of stuff."
+    p "And it's clear that you really love and admire the Cleric class."
     "And so, talking with your new friend, you go on walking toward the Academy."
 
     # python:
@@ -836,18 +841,23 @@ label chapter_1:
     p "Oh, I didn't know that I had to sign up for a class."
     p "Wait, why did you say they are 'trying'?"
     c "Well, each class has a closed number of students for the first year."
-    p "Whoa! So I'm late! I thought I could talk to people, listen to presentation and decide a class, but now I risk to be cut out..."
+    p "Whoa! So I'm late! I thought I could talk to people, listen to presentation and decide a class,"
+    p "but now I risk to be cut out..."
     p "And what about you? Aren't you late too?"
     c "No, I'm not. Some classes need references to accept students."
-    c "The Cleric class is one of them, they want to know that your faith in a deity is sincere, and they need to know it from another Cleric."
+    c "The Cleric class is one of them, they want to know that your faith in a deity is sincere, and they need to"
+    c "know it from another Cleric."
     c "Same goes for Paladins."
     c "And that means there's not a queue for entering those classes."
-    c "To obtain a reference is a rare thing, I'm lucky to have one, thanks to my mother. I just need to show my reference and I will be accepted."
+    c "To obtain a reference is a rare thing, I'm lucky to have one, thanks to my mother. I just need to show my"
+    c "reference and I will be accepted."
     p "Wow, good for you, Ciry!"
-    p "But... I think this also means no Cleric or Paladin class for me. Alright. What can you tell me about the other classes?"
+    p "But... I think this also means no Cleric or Paladin class for me. Alright. What can you tell me about the"
+    p "other classes?"
     c "The other classes usually make you take entrance tests."
     p "Entrance tests??"
-    c "The Barbarian class test is a strength test, Rangers ask for good reflexs while the Fighters class requires a mix of the two."
+    c "The Barbarian class test is a strength test, Rangers ask for good reflexs while the Fighters class requires"
+    c "a mix of the two."
     hide ciry with dissolve
     $ test_taken = []
     while len(test_taken) < 3:
@@ -862,11 +872,11 @@ label chapter_1:
 
             "Take the Ranger test" if "Ranger" not in test_taken:
                 show robin at topright with dissolve
-                python:                
-                        test_taken.append("Ranger")
-                        rob("Hello Cutie!")
-                        p("Ehm, I'd like to enter the Ranger class...")
-                        rob("Oh dear I'm sorry, we already have too many requests. I'm so so sorry I cannot accept you. You're so ccuute!!")
+                $ test_taken.append("Ranger")
+                rob "Hello Cutie!"
+                p "Ehm, I'd like to enter the Ranger class..."
+                rob "Oh dear I'm sorry, we already have too many requests. I'm so so sorry I cannot accept you."
+                rob "You're so ccuute!!"
                 hide robin with dissolve
 
             "Take the Barbarian test" if "Barbarian" not in test_taken:
@@ -888,26 +898,29 @@ label chapter_1:
                 "You look at the enormous arms of the man."
                 c "Don't do it [Player.sheet.name]..."
                 p "I... I will try!"
-                dra "I usually limit my strength to 20 percent, but with you I promise to only use a ten percent of my strength..."
+                dra "I usually limit my strength to 20 percent, but with you I promise to only use a 10 percent of my strength"
                 p "Let's do it!"
                 menu:
                     "Roll D20 on Strength":
                         $ roll = randint(1, 20) + Player.get_modifier("strength")
                 "ROLL: [roll]"
                 "You fail the test."
-                "The huge arm of the man in front of you crashes into yours mercilessly, almost as if you had put up no resistance at all."
+                "The huge arm of the man in front of you crashes into yours mercilessly,"
+                "almost as if you had put up no resistance at all."
                 "I'm sorry boy. I suggest you try another class."
                 hide dragon with dissolve
 
     show ciry at topleft with dissolve
     c "I'm sorry [Player.sheet.name]"
     p "Oh, and what about the Bard class?"
-    c "To enter the Bard class you must be able to play a musical instrument, or sing. Do you know how to play a musical instrument?"
+    c "To enter the Bard class you must be able to play a musical instrument, or sing. Do you know how to play a"
+    c "musical instrument?"
     p "Ehm..."
     p "Maybe... I can... try to sing?"
     c "(rolling her eyes) I would rather not, If I were you. Unless you REALLY know how to sing..."
     p "Ok... Oh! I found it! I could be a Sorcerer or a Warlock!"
-    c "Do you carry a magical birthright conferred by an exotic bloodline, some otherworldly influence, or exposure to unknown cosmic force?"
+    c "Do you carry a magical birthright conferred by an exotic bloodline, some otherworldly influence, or exposure"
+    c "to unknown cosmic force?"
     p "Well..."
     c "Did you seal a pact with a mysterious being of supernatural power?"
     p "(lowering your head) No."
@@ -918,10 +931,12 @@ label chapter_1:
     c "The Rogue class!"
     p "The... Rogue class? Is that even a real class?"
     c "Oh yes it is. Right there!"
-    "When you look in the direction pointed by Ciry, you notice a woman in her forties, with a kind face and a bored expression, sitting alone by a table."
+    "When you look in the direction pointed by Ciry, you notice a woman in her forties, with a kind face and a bored"
+    "expression, sitting alone by a table."
     "No one was queuing in front of her."
     p "But... I though Rogues grew up as criminals, and only then some of them joins some party ad adventurer."
-    c "Well, that's indeed true for most of the Rogues adventurers, and it's surely the way the most renowned Rogues have grown up."
+    c "Well, that's indeed true for most of the Rogues adventurers, and it's surely the way the most renowned"
+    c "Rogues have grown up."
     c "But the Academy opened the Rogue class some year ago. It's the most recent class to have been established,"
     c "right after the High City Council acknowledged the Rogue as an official class."
     p "Ok then, so be it. I won't be left behind. My biggest dream has always been to become an adventurer..."
@@ -934,7 +949,8 @@ label chapter_1:
 
     "You approach the lady indicated by Ciry with caution and a little hesitation"
     p "Hello, I... I'm here to sign up."
-    "The woman looks at you slightly bewildered, as if your words had brought her back to reality, distracting her from a long chain of thoughts"
+    "The woman looks at you slightly bewildered, as if your words had brought her back to reality, distracting her"
+    "from a long chain of thoughts."
     show tris at topright with dissolve
     tri "Oh, hello! My name is Tris, what can I do for you?"
     p "I mean, I'm here to sign up for the Rogue class."
@@ -1026,7 +1042,7 @@ label chapter_1:
             "Try to reach out Ciry (before losing her in the crowd)" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
                 $ visited.append("Reach Ciry")
                 $ Ciry.approval += 10                    
-                "You managed to reach Ciry through the crowd of students, who almost overwhelmed her due to her short stature."
+                "You managed to reach Ciry through the crowd, who almost overwhelmed her due to her short stature."
                 p "Ciry! I'm here!"
                 show ciry at topleft with dissolve
                 c "(smiling with surprise) Oh! [Player.sheet.name]!"
@@ -1034,7 +1050,8 @@ label chapter_1:
                 p "I just wanted to say goodbye before we all went to our respective classes"
                 c "Oh, thank you [Player.sheet.name]..."
                 c "Well, being a gnome girl usually means going unnoticed and feeling ignored."
-                c "(blushing) So I'm... glad you came to say goodbye, I'm looking forward to meet you after our first lessons!"
+                c "(blushing) So I'm... glad you came to say goodbye!"
+                c "I'm looking forward to meet you after our first lessons!"
                 p "Yes, see you later Ciry!"
                 hide ciry with dissolve
                 "(Ciry's approval: +10)"                    
@@ -1084,7 +1101,8 @@ label chapter_1:
                 
     pause
     window show
-    "You enter the Rogue's classroom and the first thing you notice is that it's empty, except, of course, for the teacher."
+    "You enter the Rogue's classroom."
+    "The first thing you notice is that it's empty, except, of course, for the teacher."
     show tris at topright with dissolve
     tri "Oh, hello my only student!"
     if "Explored academy" in Player.achievements:
@@ -1261,8 +1279,8 @@ label chapter_1:
     scene 00028-45450802 with dissolve
     $ renpy.pause()
     play music averybradyspecial fadein 2.0
-    alt "A mushroom shaped house with a green roof completely covered by moss. Warm yellow lights shine inside and"
-    "colorful flowers surround the edges of the windows."
+    alt "A mushroom shaped house with a green roof completely covered by moss."
+    alt "Warm yellow lights shine inside and colorful flowers surround the edges of the windows."
     "A house you call home."
     show bella at topright with dissolve
     bel "[Player.sheet.name]!"
@@ -1336,8 +1354,8 @@ label chapter_2:
     c "I still can't decide wheter to focus on pure Cleric stuff or expand my knowledge in complementary subjects..."
     menu:
         "You should focus on cleric stuff":
-            p "A solid foundation is the key to becoming a great adventurer: perhaps you should first focus on the knowledge"
-            p "and skills central to your class."
+            p "A solid foundation is the key to becoming a great adventurer:"
+            p "perhaps you should first focus on the knowledge and skills central to your class."
             $ Ciry.sheet.wisdom += 2
             $ Ciry.courses_taken.append("religion")
             $ Ciry.sheet.skills_intelligence["religion"] = True
