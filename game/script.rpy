@@ -1102,7 +1102,8 @@ label chapter_1:
     tri "Not that what I teach would be useless. On the contrary, a lot of students from the other classes follow"
     tri "my optional courses."
     tri "I'm always overbooked!"
-    p "So... people just avoid choosing the Rogue as their official class? To be honest, I didn't even know it was a real class...."
+    p "So... people just avoid choosing the Rogue as their official class?"
+    p "To be honest, I didn't even know it was a real class...."
     tri """
     That's exactly the point. Rogues started to fit in famous parties of adventurers for their stealth and trickery
     skills, very valuable in dungeons, especially to disarm traps, steal treasures from monsters without fighting,
@@ -1143,7 +1144,8 @@ label chapter_1:
             tri "Dexterity is important for a Rogue, of course, but it's not just that."
         
         "To be stealthy and strike the enemies from behind?":
-            tri "The Sneak Attack is, indeed, a powerful attack, but other classes have powerful attacks too, and with a better defense, or a broader choice for effect area."
+            tri "The Sneak Attack is, indeed, a powerful attack,"
+            tri "but other classes have powerful attacks too, and with a better defense, or a broader choice for effect area."
         
         "I think a mix of many things... I can't figure out just now":
             tri "That's... somehow a good answer."
@@ -1362,11 +1364,13 @@ label chapter_2:
     "not to talk about those wearing shining heavy armors all the day long."
     show ciry at topleft with dissolve
     c "I can see your curious face, hihi"
-    c "Some students, those coming from a rich family, use to flaunt their weapons in front of the teacher and the other students."
+    c "Students with rich families use to flaunt their weapons in front of the teacher and the other students."
     c "Those weapons and armors are usually of fine workmanship, and sometimes even magical artifacts."
-    c "It's like to say: (mocking the voice of a guy) 'hey, I'm so rich and powerful that I can bring this at school' hihi!"
+    c "It's like to say: (mocking the voice of a guy)"
+    c "'hey, I'm so rich and powerful that I can bring this at school' hihi!"
     c "I think it's just stupid, unless you really need to train in their use."
-    c "Wearing a heavy armor all the day, though, can make sense: for a heavy armor user, the sooner you get used to moving around effortlessly in armor the better."
+    c "Wearing a heavy armor all the day, though, can make sense: for a heavy armor user, the sooner you get used"
+    c "to moving around effortlessly in armor the better."
     hide ciry with dissolve
     "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
     scene 00004-1773495918
@@ -1375,7 +1379,8 @@ label chapter_2:
     "She is so happy and curious about your mushroom-house that she forces you to show her every single room"
     show ciry at topleft with dissolve
     c "But, where is your aunt? There are so many things I want to ask her!"
-    p "I'm sorry, she's not here now... She wanted to meet you too, but this morning she said there was something important and she left in hurry."
+    p "I'm sorry, she's not here now... She wanted to meet you too, but this morning she said there was something"
+    p "important and she left in hurry."
     p "She was very sorry to miss you. I promise you'll meet her another time!"
     c "Ok, no worries! I'll come back here maaaany other times! I love this Mushroomy house sooo much!"
     "Time passes, and you a Ciry go on talking about the things you've learnt at the Academy in past days."
@@ -1391,7 +1396,8 @@ label chapter_2:
     p "Do you know offensive spells?"
     c "(disappointed) Actually, not yet... But I could try"
     p "Well, I don't think it will be necessary."
-    "And with your last words you open the large wooden door. At first glance you see no one, then you lower your eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes."
+    "And with your last words you open the large wooden door. At first glance you see no one, then you lower your"
+    "eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes."
     "Her eyes suggesting she needed help."
     show dyana at topright with dissolve
     c "..."
@@ -1405,10 +1411,12 @@ label chapter_2:
     p "Who's Aryanna?"
     c "She's my little sister"
     c "But where... where did you see her last time?"
-    dya "She was playing adventurer at home, like usual, then she told me something like 'Mom, I'm going on a mission'"
+    dya "She was playing adventurer at home, like usual, then she told me something like:"
+    dya "'Mom, I'm going on a mission'"
     dya "I thought it was part of her play, not that she would actually leave!"
     dya "Oh Blessed Eve, please keep her safe!"
-    dya "We need to find her before sunset! Oh... I should have watched her more closely, we know how exuberant she is..."
+    dya "We need to find her before sunset! Oh... I should have watched her more closely,"
+    dya "we know how exuberant she is..."
     dya "What if some bad people find her?!"
     c "Ok, mom, let's calm down..."
     c "Can you remember if she said something else about the mission?"
@@ -1419,14 +1427,18 @@ label chapter_2:
     c "A treasure?..."
     c "Oh! Oh... Oh no."
     c "I think I know where she headed. But... The bad news is..."
-    c "A few days ago I was telling her stories about adventurers, like always, and I told her the legend of the treasure in the Cave of the Omens."
-    dya "The Cave of the Omens? Do you really think she went there? But how could she find the place? It's far from our house, and Aryanna's just five!"
+    c "A few days ago I was telling her stories about adventurers, like always, and I told her the legend of the"
+    c "treasure in the Cave of the Omens."
+    dya "The Cave of the Omens? Do you really think she went there? But how could she find the place?"
+    dya "It's far from our house, and Aryanna's just five!"
     c "I... may have drawn her a map to reach the cave..."
     dya "Ciry..."
     c "What? We were playing treasure hunt!"
     dya "I'll run back to the City, to ask the Guards for help, and you..."
-    c "I'll go to the Cave of Omens, it's not so far from here, it's much closer than the City... I'll probably meet her halfway, or in the Cave's surroundings"
-    dya "Be careful! If you see something dangerous just wait for the Guards... We are not even completely sure Aryanna is there."
+    c "I'll go to the Cave of Omens, it's not so far from here, it's much closer than the City..."
+    c "I'll probably meet her halfway, or in the Cave's surroundings"
+    dya "Be careful! If you see something dangerous just wait for the Guards..."
+    dya "We are not even completely sure Aryanna is there."
     p "I'll go with her! In two we'll search faster."
     dya "Thank you dear..."
     dya "May the Morning Star be with you both!"
@@ -1446,7 +1458,7 @@ label chapter_2:
     p "..."
     p "So, is 'The Blessed Eve' the deity you draw your Cleric powers from?"
     c "Yes, in my family there are a lot of Clerics, and we have prayed to the Morning Star for generations."
-    c "I grew up drawing her with my colored crayons, listening to goodnight stories about her before going to sleep..."
+    c "I grew up drawing her with my colored crayons, listening to goodnight stories about her before going to sleep"
     c "She's like a hero to me!"
     p "Every deity should have a favourite weapon, right? Which is the Morning Star's favourite weapon?"
     c "(narrowing her eyes) Well, the morning star"
@@ -1454,21 +1466,26 @@ label chapter_2:
     c "Right, hahaha!"
     c "I always carry a morning star in my bag... Here, take a look!"
     "And she shows you a well made weapon, a short mace with a round head, adorned with dangerous spikes"
-    p "I see. I guess it's comfortable to have a deity you can rely on, in moments of need... or just when one feels alone"
+    p "I see. I guess it's comfortable to have a deity you can rely on, in moments of need..."
+    p "or just when one feels alone"
     c "Yes, yes it is"
     c "[Player.sheet.name], you... Which deity do you use to pray and rely on?"
     p "Me? Well I... I don't have one, to be sincere"
     c "No?! Why?"
-    p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name or a personality..."
+    p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name"
+    p "or a personality..."
     p "She just adore the balance of Nature, and she says that a Druid can draw power from that alone."
     c "You know, there are many Druids that pray a specific deity."
     p "I know, just, she isn't one of them."
     p "My mom and dad used to pray to Tosvald, the God protector of Merchants. Since they were Merchants too."
-    p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to any diety, that's all."
+    p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to"
+    p "any diety, that's all."
     c "I'm sorry [Player.sheet.name], you don't have to justify your feelings with me."
-    c "It's fine if you feel that way. Just remember that there are good deities, like Eve the Morning Star, that will listen to you if you'll ever feel the need to pray."
+    c "It's fine if you feel that way. Just remember that there are good deities, like Eve the Morning Star,"
+    c "that will listen to you if you'll ever feel the need to pray."
     p "(smiling) Thank you Ciry, I'll take it into consideration."
-    c "Talking about faiths, the Cave of Omens is a long abandoned mine, but before that it used to be a place of worship, you know?"
+    c "Talking about faiths, the Cave of Omens is a long abandoned mine, but before that it used to be a place of"
+    c "worship, you know?"
     p "Really? How come it isn't anymore?"
     c "It was a sanctuary for the Silent Goddess."
     p "The... Silent Goddess? Never heard about her..."
@@ -1479,10 +1496,15 @@ label chapter_2:
     c "Over time, even the most righteous and faithful men came to prefer praying to the deities that, despite sharing the same principles of Good and Justice, could grant them the powers to fight back evil."
     c "And honestly, I can't say it's wrong..."
     p "So, anyway, this Silent Goddess was on the good side?"
-    c "Oh yes, even if I don't know much about her principles and domains, I know for sure she was good. It's told that she fought valiantly in the last war between good and evil gods."
-    c "And references to her are found in the sacred texts of many good deities"
-    c "But no one knows why she never talked back to anyone. The knowledge about her was only handed down by legends and sacred texts."
-    c "Now there are those who even question her very existence. Her devotees are scattered and her sanctuaries, ruins..."
+    c """
+    Oh yes, even if I don't know much about her principles and domains, I know for sure she was good.
+    It's told that she fought valiantly in the last war between good and evil gods.
+    And references to her are found in the sacred texts of many good deities.
+    But no one knows why she never talked back to anyone.
+    The knowledge about her was only handed down by legends and sacred texts.
+    Now there are those who even question her very existence.
+    Her devotees are scattered and her sanctuaries, ruins...
+    """
     c "..."
     p "..."
     c "(out of breath) I think we'd be close by now..."
@@ -1536,14 +1558,15 @@ label chapter_2:
     c "Oh thank The Blessed Eve!"
     p "I'm so relieved..."
     "You see a little figure moving in the tall grass, but she is so short that the grass completely covers her."
-    "You finally see her when she emerges from the tall grass. A little funny gnome figure, with a big round head and a very small body, was waving with her hand. She was now right near the cave's entrace."
+    "You finally see her when she emerges from the tall grass. A little funny gnome figure, with a big round head"
+    "and a very small body, was waving with her hand. She was now right near the cave's entrace."
     show aryanna at topleft with dissolve
     ary "Big sis! I found the treasure cave!"
     c "Ary! How could you think of coming here alone?"
     c "You made us worry so much!"
     ary "I wanted to find the treasure of the dragon and bring it home!"
     c "Come here now, let's go home."
-    c "(turning to you with a resigned expression) I'll tell her about the difference between reality and games later."
+    c "(turning to you with a resigned expression) I'll teach her the difference between reality and games later."
     play sound rumble
     with hpunch
     "But as you draw closer to the entrance, and to the little Aryanna, a second, more violent, earthquake strikes!"
@@ -1554,7 +1577,8 @@ label chapter_2:
     menu:
         "React":
             $ Player.achievements.append("Reacted to save Aryanna")
-            "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to grab her with your hand..."
+            "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to"
+            "grab her with your hand..."
             $ roll = None
             menu:                
                 "Roll D20 on Atlethics":
@@ -1563,10 +1587,10 @@ label chapter_2:
                     $ roll = Player.roll_skill("acrobatics")
             "ROLL: [roll.result]"
             if roll.result > 10:
-                "... just in time! You manage to grab her arm and you are now holding her up. Below her, the void."
+                "Just in time! You manage to grab her arm and you are now holding her up. Below her, the void."
                 jump ary_grabbed
             else:
-                "... you touch her fingers but you can't manage to grab her and you hear her scream while she falls down."
+                "You touch her fingers but you can't manage to grab her and you hear her scream while she falls down."
                 jump ary_fall
 
         "Stay still":
@@ -1575,12 +1599,14 @@ label chapter_2:
         
 
     label ary_grabbed:
-        "You are holding the little gnome girl with your hand, but just when you are starting to pull her up, a huge earthquake shakes the ground!"
+        "You are holding the little gnome girl with your hand, but just when you are starting to pull her up,"
+        "a huge earthquake shakes the ground!"
         "The earth beneath you crumbles and you fall down, rolling together with mud and rocks."        
         jump explore_cave_omens
 
     label ary_fall:
-        "You are just starting to ask yourself if Ary is hurt, feeling guilty for not being able to help her, that a huge earthquake shakes the ground!"
+        "You are just starting to ask yourself if Ary is hurt, feeling guilty for not being able to help her,"
+        "that a huge earthquake shakes the ground!"
         "The earth beneath your feet crumbles and you fall down, rolling together with mud and rocks."
     
     label explore_cave_omens:
@@ -1604,7 +1630,8 @@ label chapter_2:
     "As you look around, you realize that the place you fell into is net of natural underground tunnels"
     p "Maybe we can just walk through these tunnels and see if there is an exit somewhere else!"
     c "(worried) Walk throught the tunnels?"
-    c "Well, it could be a good idea after all... I'll try to walk around from up here and see if there is another exit!"
+    c "Well, it could be a good idea after all..."
+    c "I'll try to walk around from up here and see if there is another exit!"
     hide ciry with dissolve
     p "Ok! Let's go south for now!"
     hide aryanna with dissolve
@@ -1618,9 +1645,11 @@ label chapter_2:
     "You go on and on, walking through this strange natural cave"
     show aryanna at topleft with dissolve
     ary "Big brother, look! There's a statue there!"
-    "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a white statue."
+    "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a"
+    "white statue."
     hide aryanna with dissolve
-    "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground, but the other half was still clearly recognizable."
+    "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground,"
+    "but the other half was still clearly recognizable."
     "Something of that face triggered a memory in you, but you cannot immediately grasp it."
     p "{i}(This statue... is strangely familiar){/i}"
     window hide
@@ -1630,14 +1659,21 @@ label chapter_2:
     scene 00010-827032861 with dissolve   
     p "{i}(That's it! This statue reminds me of that dream... But who is that woman?){/i}"
     p "{i}(Well, it's probably just a coincidence){/i}"
-    "You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers"
-    "In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls."
-    "The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath."
-    "A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor."
-    "Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world."
-    "The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations."
-    "As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit."
-    "But as you delve deeper into the unknown, a menacing growl reverberates through the chamber."
+    """
+    You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers
+    In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the
+    backdrop of the damp, rocky walls.
+    The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath.
+    A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join
+    the meandering streams tracing intricate patterns on the cavern floor.
+    Armed with nothing but determination, the pair navigated the labyrinthine passageways,
+    their steps reverberating softly in the vastness of the subterranean world.
+    The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that
+    danced across the ancient rock formations.
+    As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a
+    potential exit.
+    But as you delve deeper into the unknown, a menacing growl reverberates through the chamber.
+    """
     play music cheezeecave fadein 2.0 volume 0.5
     show aryanna at topleft with dissolve
     ary "Gyaaaaaa!"
@@ -1654,7 +1690,8 @@ label chapter_2:
         p "{i}(What's a Hobgoblin doing here?){/i}"
         $ creature = "Hobgoblin"
     else:
-        "You can't recognize the creature, even though you are sure you saw something similar on your beloved aventurer guide book."
+        "You can't recognize the creature,"
+        "even though you are sure you saw something similar on your beloved aventurer guide book."
     
     "The [creature]'s malicious eyes fixed upon you and the little gnome girl."
     hob "... Why YOU Heeere?"
@@ -1666,23 +1703,32 @@ label chapter_2:
     p "Aryanna, run, RUN!"
     hide aryanna with dissolve
     hide hobgoblin with dissolve
-    "You run through the cavernous surroundings, stumbling here and there on the uneven ground. You hear the hurried footsteps of the creature behind you."
-    "However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword."
-    "Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light coming from an opening in the ceiling."
+    """
+    You run through the cavernous surroundings, stumbling here and there on the uneven ground.
+    You hear the hurried footsteps of the creature behind you.
+    However, you manage to put some distance between you and the [creature],
+    likely slowed down by the armor and the broadsword.
+    Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light
+    coming from an opening in the ceiling.
+    """
     scene 00003-827032854 with dissolve
     $ renpy.pause()
     "There are no exits or tunnels"
     p "{i}(Oh no! It's a dead end!){/i}"
-    "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to choose a different path."
-    "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like a cat with it's prey."  
+    "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to"
+    "choose a different path."
+    "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like"
+    "a cat with it's prey."  
     ary "Look, Big Bro! A sword!"
     p "I know Ary, he's got a big sword..."
     ary "No, there! There is a sword!"
     "You follow with your eyes the direction she is pointing with her hand."
     scene 00001 with dissolve
     pause
-    "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different."
-    "Almost entirely covered with moss and limestone deposits, it is barely recognizable: the hilt of an old sword lodged into the rock."
+    "You realize that what you thought was just the upper part of that big rock at the center of the room,"
+    "is instead something different."
+    "Almost entirely covered with moss and limestone deposits, it is barely recognizable:"
+    "the hilt of an old sword lodged into the rock."
     show aryanna at topleft with dissolve
     ary "Take the sword big Bro! You can fight with that sword!"
     hide aryanna with dissolve
@@ -1698,7 +1744,8 @@ label chapter_2:
             p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
             $ roll = Player.roll_ability("strength")
             "ROLL: [roll.result]"
-            "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep. You fall heavily to the ground."
+            "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep."
+            "You fall heavily to the ground."
             if roll.result < 10:
                 $ dmg = Roll("1d4").result
                 $ Player.take_damage(dmg)
@@ -1776,17 +1823,24 @@ label chapter_2:
     play music heroicage fadein 2.0 volume 0.5
     "Before you realize it, the sword is coming out of the rock."
     ary "Yes big Bro! You can do it!"
-    "But it's not really you pulling it, it's the sword itself pushing up to get out."
-    "And it's vibrating so hard that your arms ache!"
-    "And still, you couldn't let go of the sword even if you would..."
-    "You feel an otherworldly energy emanating from the sword. The little gnome girl watches in awe as the sword begins to glow, casting a soft, ethereal light."
-    "As the vibrations from the sword intensify, the air around you seems to shimmer, and an ancient power resonates through the cavern."
-    "The sword, once firmly embedded, now responds to an unseen force, as if it had a will of its own."
-    "As the vibrations peak, the sword leaps out of the rock, pushing you backward and almost causing you to lose your balance."
-    "You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light, and a sense of purpose emanates from it."
-    "But the beauty of the sword lasts only for a moment..."
-    "The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it before: an old, rusted, and heavily damaged sword."
-    "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
+    """
+    But it's not really you pulling it, it's the sword itself pushing up to get out.
+    And it's vibrating so hard that your arms ache!
+    And still, you couldn't let go of the sword even if you would...
+    You feel an otherworldly energy emanating from the sword. The little gnome girl watches in awe as the sword
+    begins to glow, casting a soft, ethereal light.
+    As the vibrations from the sword intensify, the air around you seems to shimmer, and an ancient power resonates
+    through the cavern.
+    The sword, once firmly embedded, now responds to an unseen force, as if it had a will of its own.
+    As the vibrations peak, the sword leaps out of the rock, pushing you backward and almost causing you to lose
+    your balance.
+    You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light,
+    and a sense of purpose emanates from it.
+    But the beauty of the sword lasts only for a moment...
+    The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it
+    before: an old, rusted, and heavily damaged sword.
+    In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!
+    """
     pause
     $ battle(PARTY, [Hobgoblin], can_lose=True)
 
@@ -1890,7 +1944,8 @@ label chapter_2:
         "ROLL: [roll.result]"
         if roll.result >= 15:
             "SUCCESS"
-            "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword. It stops moving."
+            "The sword seems like moving a very little bit, but the you feel a strange vibration coming from the sword."
+            "It stops moving."
         else:
             "FAILED"
             "You try to pull out the sword, but it resists strongly, not budging an inch."
