@@ -242,6 +242,7 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
+    line_spacing 0
 
 
 ## Quick Menu screen ###########################################################
