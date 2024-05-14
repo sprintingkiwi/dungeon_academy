@@ -104,7 +104,7 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 360
+define gui.name_xpos = 30
 define gui.name_ypos = 0
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
@@ -426,19 +426,22 @@ init python:
     ## are easily visible on phones.
     @gui.variant
     def small():
+        
+        # Change this to adjust text size on mobile
+        mobile_text_size = 54
 
         ## Font sizes.
-        gui.text_size = 60
-        gui.name_text_size = 60
+        gui.text_size = mobile_text_size
+        gui.name_text_size = mobile_text_size
         gui.notify_text_size = 38
         gui.interface_text_size = 72
-        gui.button_text_size = 60
-        gui.label_text_size = 60
+        gui.button_text_size = mobile_text_size
+        gui.label_text_size = mobile_text_size
 
         ## Adjust the location of the textbox.
-        gui.textbox_height = 360
+        gui.textbox_height = 280
         gui.dialogue_ypos = 0.2
-        gui.name_xpos = 120
+        gui.name_xpos = 30
         gui.dialogue_xpos = 0.1
         gui.dialogue_width = 0.8
 
@@ -446,7 +449,7 @@ init python:
         gui.slider_size = 54
 
         gui.choice_button_width = 720
-        gui.choice_button_text_size = 60
+        gui.choice_button_text_size = mobile_text_size
 
         gui.navigation_spacing = 30
         gui.pref_button_spacing = 15

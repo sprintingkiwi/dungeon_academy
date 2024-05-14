@@ -489,8 +489,8 @@ label start:
 
     python:
 
-        if renpy.mobile or config.developer:
-            quick_menu = True
+        # if renpy.mobile or config.developer:
+        #     quick_menu = True
         # action = {"name": str, "effect": function, scope: "Enemy/Enemies/Ally/Allies"}
 
         # ADVENTURERS
