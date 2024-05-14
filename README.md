@@ -13,3 +13,7 @@ Graphics realized with Stable Diffusion
 A special thanks to:
 * [tassaron](https://github.com/tassaron) for the very useful dnd_character python library
 * [kevin macleod](https://incompetech.com/music/royalty-free/music.html) for producing a lot of beautiful royalty free music
+
+# NOTES:
+* Set visual studio code editor ruler at 120 for correct line breaking, two lines for dialogue.
+* Put dnd_character python library folder inside "renpy-8.2.1-sdk\lib\python3.9" for Android builds.
