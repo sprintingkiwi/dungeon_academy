@@ -1733,11 +1733,14 @@ label chapter_2:
     play music cheezeecave fadein 2.0
     show aryanna at topleft with dissolve
     ary "Big bro! Are you ok? You must get back on your feet!"
-    hide aryanna with dissolve    
-    "Strangely, you find yourself still gripping the sword tightly in your hand."
-    "With the assistance of young Aryanna, you manage to rise on your feet."
-    "However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that slowly takes hold, mingled with an overwhelming sense of desperation."
-    "As you stand there, sword in hand, your enemy slowly approaches, and a whispered uncertainty escapes your lips:"
+    hide aryanna with dissolve
+    """
+    Strangely, you find yourself still gripping the sword tightly in your hand.
+    With the assistance of young Aryanna, you manage to rise on your feet.
+    However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that
+    slowly takes hold, mingled with an overwhelming sense of desperation.
+    As you stand there, sword in hand, your enemy slowly approaches, and a whispered uncertainty escapes your lips:
+    """
     p "I don't know if I can win this fight..."
 
     menu:
@@ -1764,18 +1767,23 @@ label chapter_2:
             p "{i}(Yes, this way my death will not be in vain, at least...){/i}"
 
     play music heroicage fadein 1.0
-    "Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches across your face."
-    "You take a deep breath and focus on the weapon tightly gripped in your hand."
-    "Strangely, you notice that the sword feels considerably lighter and more balanced than before."
-    "You never trained to wield a longsword, but now you feel it as if it has become a natural extension of your body."
-    "The air in the cavern becomes tense as you prepare for what is about to unfold."
-    "In a sudden onslaught, the enemy launches a ferocious attack!"
-    "Drawing upon the agility and dexterity lessons from your days in the rogue's class, you skillfully use those teachings to avoid the enemy's blows"
+    """
+    Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches
+    across your face.
+    You take a deep breath and focus on the weapon tightly gripped in your hand.
+    Strangely, you notice that the sword feels considerably lighter and more balanced than before.
+    You never trained to wield a longsword, but now you feel it as if it has become a natural extension of your body.
+    The air in the cavern becomes tense as you prepare for what is about to unfold.
+    In a sudden onslaught, the enemy launches a ferocious attack!
+    Drawing upon the agility and dexterity lessons from your days in the rogue's class, you skillfully use those
+    teachings to avoid the enemy's blows
+    """
     p "{i}(Wow, so this is how all those exercises pay off, huh?){/i}"
     "In a pivotal moment, a forceful blow, too potent to elude, hurtles towards you."
     "Aware that dodging would mean exposing Aryanna to peril, you instinctively use the sword to parry the blow."
     scene bg white
-    "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash its brilliance."
+    "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash"
+    "its brilliance."
     "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
     scene bg white with dissolve
     pause    
@@ -1784,29 +1792,34 @@ label chapter_2:
     p "Aryanna! Where are you?"
     "You rapidly scan the surroundings, searching for Ciry's little sister."
     ary "I'm here big bro... wha... what happened? There was that burst of light..."
-    "She was just behind you. A bit dazed but ultimately unharmed."
-    "You notice you are still holding that strange sword."
-    "But the sword is not gleaming with light anymore, and it looks like a regular old rusty sword."
-    "Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon."
-    "A harrowing scream echoes from the opposite side of the chamber. You then glance ahead to locate your enemy."
-    "The [creature] rises to its feet, cradling the arm that once wielded its weapon."
-    "To your astonishment, you realize that the arm is no longer there: it seems to have been disintegrated!"
-    "The [creature] is now in a state of shock and agony."
-    "With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine tunnels of the underground cave."
+    """
+    She was just behind you. A bit dazed but ultimately unharmed.
+    You notice you are still holding that strange sword.
+    But the sword is not gleaming with light anymore, and it looks like a regular old rusty sword.
+    Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon.
+    A harrowing scream echoes from the opposite side of the chamber. You then glance ahead to locate your enemy.
+    The [creature] rises to its feet, cradling the arm that once wielded its weapon.
+    To your astonishment, you realize that the arm is no longer there: it seems to have been disintegrated!
+    The [creature] is now in a state of shock and agony.
+    With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine
+    tunnels of the underground cave.
+    """
     
     jump demo_end
 
     label pull_sword:
         if not pull_attempted:
             $ pull_attempted = True
-            "As you touch the hilt of that old sword, a warmth unfolds within you. This sensation of calm and pure happiness reminds you of something."
+            "As you touch the hilt of that old sword, a warmth unfolds within you. This sensation of calm and pure"
+            "happiness reminds you of something."
             play music ascendingthevale fadein 4.0 volume 0.2
             "Yes, that dream."
             window hide
             show 00008-3630713263 with annoytheuser:
                 blur 75
             $ renpy.pause()
-            "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with white hair had appeared to you."
+            "You feel exactly as you did upon waking from that strange dream, where the image of that beautiful woman with"
+            "white hair had appeared to you."
             hide 00008-3630713263 with annoytheuser
             play music cheezeecave fadein 2.0 volume 0.5
         $ roll = Player.roll_ability("strength")
