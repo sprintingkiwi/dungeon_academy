@@ -12,6 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
+define build.itch_project = "sprintingkiwi/dungeon-academy"
 define config.name = _("DungeonAcademy")
 define config.rollback_enabled = False
 
