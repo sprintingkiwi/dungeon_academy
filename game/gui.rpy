@@ -428,7 +428,7 @@ init python:
     def small():
         
         # Change this to adjust text size on mobile
-        mobile_text_size = 54
+        mobile_text_size = 64
 
         ## Font sizes.
         gui.text_size = mobile_text_size
@@ -442,8 +442,8 @@ init python:
         gui.textbox_height = 280
         gui.dialogue_ypos = 0.2
         gui.name_xpos = 30
-        gui.dialogue_xpos = 0.1
-        gui.dialogue_width = 0.8
+        gui.dialogue_xpos = 0.05
+        gui.dialogue_width = 0.95
 
         ## Change the size and spacing of various things.
         gui.slider_size = 54
@@ -457,7 +457,7 @@ init python:
         gui.history_height = 285
         gui.history_text_width = 1035
 
-        gui.quick_button_text_size = 48
+        gui.quick_button_text_size = 32
 
         ## File button layout.
         gui.file_slot_cols = 2
