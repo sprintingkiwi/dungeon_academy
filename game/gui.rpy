@@ -434,13 +434,13 @@ init python:
         gui.text_size = mobile_text_size
         gui.name_text_size = mobile_text_size
         gui.notify_text_size = 38
-        gui.interface_text_size = 72
+        gui.interface_text_size = 32
         gui.button_text_size = mobile_text_size
         gui.label_text_size = mobile_text_size
 
         ## Adjust the location of the textbox.
         gui.textbox_height = 280
-        gui.dialogue_ypos = 0.2
+        gui.dialogue_ypos = 0.3
         gui.name_xpos = 30
         gui.dialogue_xpos = 0.05
         gui.dialogue_width = 0.95
