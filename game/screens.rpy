@@ -24,6 +24,12 @@ style hyperlink_text:
 
 style gui_text:
     properties gui.text_properties("interface")
+    line_spacing 10
+
+style gui_text:
+    variant "touch"
+    properties gui.text_properties("interface")
+    line_spacing 0
 
 
 style button:
