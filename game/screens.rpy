@@ -159,7 +159,7 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-    line_spacing 25
+    line_spacing 20
 
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
@@ -246,7 +246,6 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
-    line_spacing 0
 
 
 ## Quick Menu screen ###########################################################
@@ -1446,7 +1445,8 @@ screen quick_menu():
 
 style window:
     variant "small"
-    background "gui/phone/textbox.png"
+    # background "gui/phone/textbox.png"
+    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style radio_button:
     variant "small"

@@ -673,33 +673,33 @@ label chapter_1:
     
     $ race_choice = "Half-Elf"
     menu:
-        "Human (choose stat bonus)":
+        "Human\n(choose stat bonus)":
             $ race_choice = "Human"
-        "Half-Elf (+1 dex, +2 cha)":
+        "Half-Elf\n(+1 dex, +2 cha)":
             $ race_choice = "Half-Elf"
             $ Player.sheet.dexterity += 1
             $ Player.sheet.charisma += 2
-        "Half-Orc (+2 str, +1 con)":
+        "Half-Orc\n(+2 str, +1 con)":
             $ race_choice = "Half-Orc"
             $ Player.sheet.constitution += 1
             $ Player.sheet.strength += 2
-        "Dwarf (+2 str, +1 wis)":
+        "Dwarf\n(+2 str, +1 wis)":
             $ race_choice = "Dwarf"
             $ Player.sheet.wisdom += 1
             $ Player.sheet.strength += 2
-        "Halfling (+2 dex, +1 int)":
+        "Halfling\n(+2 dex, +1 int)":
             $ race_choice = "Halfling"
             $ Player.sheet.intelligence += 1
             $ Player.sheet.dexterity += 2
-        "Elf (+2 dex, +1 wis)":
+        "Elf\n(+2 dex, +1 wis)":
             $ race_choice = "Elf"
             $ Player.sheet.wisdom += 1
             $ Player.sheet.dexterity += 2
-        "Gnome (+1 con, +2 int)":
+        "Gnome\n(+1 con, +2 int)":
             $ race_choice = "Gnome"
             $ Player.sheet.constitution += 1
             $ Player.sheet.intelligence += 2
-        "Tiefling (+1 int, +2 cha)":
+        "Tiefling\n(+1 int, +2 cha)":
             $ race_choice = "Tiefling"
             $ Player.sheet.intelligence += 1
             $ Player.sheet.charisma += 2
