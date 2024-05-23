@@ -11,8 +11,7 @@ init offset = -1
 
 style default:
     properties gui.text_properties()
-    language gui.language
-    line_spacing 25
+    language gui.language    
 
 style input:
     properties gui.text_properties("input", accent=True)
@@ -23,13 +22,11 @@ style hyperlink_text:
     hover_underline True
 
 style gui_text:
-    properties gui.text_properties("interface")
-    line_spacing 10
+    properties gui.text_properties("interface")    
 
 style gui_text:
     variant "touch"
-    properties gui.text_properties("interface")
-    line_spacing 0
+    properties gui.text_properties("interface")    
 
 
 style button:
@@ -162,6 +159,7 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
+    line_spacing 25
 
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
