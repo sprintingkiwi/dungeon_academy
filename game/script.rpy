@@ -640,8 +640,7 @@ label chapter_1:
     the Academy!
     You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day. The best of all:
     your first day of academy.
-    You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful
-    moment.
+    You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful moment.
     Will you perhaps meet future classmates there? Will they become friends and valuable allies for the years to
     come at the academy, or even lifelong adventure companions?
     As you think about these things, staring up at the sky, something trips you up and you fall heavily to the
@@ -649,8 +648,8 @@ label chapter_1:
     """
     c "Ahi!"
     "You pick yourself up, a bit confused, trying to figure out what you had tripped over."
-    "A small white-haired female creature is in front of you, crawling next to a backpack and some"
-    "fallen books. With one hand, she is now rubbing her head."
+    "A small white-haired female creature is in front of you, crawling next to a backpack and some fallen books."
+    "With one hand, she is now rubbing her head."
     p "{i}(A gnome girl?){/i}"
     p "I'm so sorry... I didn't see you at all!"
     # scene bg room
