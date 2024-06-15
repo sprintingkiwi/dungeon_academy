@@ -958,8 +958,7 @@ label chapter_1:
     tri "Oh, wait! I get it! You couldn't find a place in any other class, could you?"
     p "(embarrassed) Well, actually..."
     p "{i}(I don't want her to fell like a fallback... What if she refuses too?){/i}"
-    p "This is the last class I'm trying to sign up for, it's true, but I'll proudly be a Rogue if you accept me"
-    p "as a student."
+    p "This is the last class I'm trying to sign up for, it's true. But I'll proudly be a Rogue if you accept me!"
     tri "Proudly be a Rogue? Hmmm... Interesting... Well, one student is still better than zero."
     tri "Furthermore, you look skinny. You could make a good Rogue for a human."
     p "...Thanks"
@@ -971,8 +970,7 @@ label chapter_1:
 
 
     label before_rector_intro:
-    "After signing up for the Rogue class, you are told to walk inside the Academy hall, together with all the"
-    "other students."
+    "After signing up for the Rogue class, you are told to walk inside the Academy hall."
     scene main hall
     $ renpy.pause()
     play music arcadia
@@ -1507,14 +1505,15 @@ label chapter_2:
     c "It was a sanctuary for the Silent Goddess."
     p "The... Silent Goddess? Never heard about her..."
     c "Not much is said about her anymore... Precisely because she is 'silent', no one prays in her name anymore"
-    c "No a Church, no Clerics and not an order of Paladins... She never granted her divine powers to those who worshipped her..."
+    c "No a Church, no Clerics and not an order of Paladins..."
+    c "She never granted her divine powers to those who worshipped her..."
     p "So there was no point in worshipping her if no divine power was granted, eh?"
     c """
-    "Well, in theory one should believe in the guiding principles of a Deity, not worshipping just for recieve divine powers but..."
-    "I guess that's more or less right, in practical terms"
-    "Over time, even the most righteous and faithful men came to prefer praying to the deities that, despite sharing the"
-    "same principles of Good and Justice, could grant them the powers to fight back evil."
-    "And honestly, I can't say it's wrong..."
+    Well, in theory one should believe in the guiding principles of a Deity...
+    And not worshipping just for recieve divine powers.
+    But over time, even the most righteous and faithful men came to prefer praying to the deities that, despite sharing
+    the same principles of Good and Justice, could grant them the powers to fight back evil.
+    And honestly, I can't say it's wrong...
     """
     p "So, anyway, this Silent Goddess was on the good side?"    
     c """
