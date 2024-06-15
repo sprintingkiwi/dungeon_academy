@@ -16,4 +16,4 @@ A special thanks to:
 
 # NOTES:
 * Set visual studio code editor ruler at 120 for correct line breaking, two lines for dialogue.
-* For Android builds: the dnd_character python library folder must be at first moved (not copied!) inside "renpy-8.2.1-sdk\lib\python3.9" so that the Renpy Android packager can properly add it among the python libraries that will be packaged in the APK file. Then, after the first build, the folder can be copied again inside the game folder (e.g. with git stash; but leave a copy inside lib/python...).
+* For Android builds: put the dnd_character python library folder inside "renpy-8.2.1-sdk\lib\python3.*" so that the Renpy Android packager can properly add it among the python libraries that will be packaged in the APK file. Do not put it inside the "game" directory, otherwise the build will search it there during execution but will not find the json cache files inside, because for some reasons they are not packaged together with it, returning an error.
