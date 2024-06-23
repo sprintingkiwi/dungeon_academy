@@ -479,6 +479,7 @@ define dya = Character("Dyana", who_color="#a79aff")
 define ary = Character("Aryanna", who_color="#ff0062")
 define hob = Character("", who_color="#007d11")
 define dea = Character("", who_color="#ffffff")
+define uk = Character("???", who_color="#d5d5d5")
 
 # Cutscene stuff
 define annoytheuser = Dissolve(3.0)
@@ -651,7 +652,14 @@ label chapter_1:
     "A small white-haired female creature is in front of you, crawling next to a backpack and some fallen books."
     "With one hand, she is now rubbing her head."
     p "{i}(A gnome girl?){/i}"
-    p "I'm so sorry... I didn't see you at all!"
+
+    menu:        
+        "I'm so sorry... I didn't see you at all!":
+            $ Ciry.approval += 5
+            "(???'s approval: +5)"
+        "Hey! Watch out!":
+            pass
+
     # scene bg room
     show ciry at topleft with dissolve
     c """
@@ -745,10 +753,16 @@ label chapter_1:
     You reach out your hand to help her up, but she doesn't notice it, completely busy picking up her precious
     books and scattered pages of handwritten notes.
     """
-    p "Wait, I'll help you"
-    "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
-    p "I know this book! I've read it three times!"
-    p "Wait, are you..."
+    menu:
+        "Wait, I'll help you":
+            $ Ciry.approval += 5
+            "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
+            p "I know this book! I've read it three times!"
+            "(Ciry's approval: +5)"
+            p "Wait, are you..."
+        "Try to ignore her":
+            pass
+
     c "(smiling) I'm going to Dungeon Academy. This is my first year!"
     p "Cool! I'm going there too! Firt year, first day."
     c "We can walk together to the academy!"
@@ -757,9 +771,9 @@ label chapter_1:
     p "Hmmm... I'm not sure yet."
     p "I think I'll try to be a..."
 
-    # "### THIS CHOICE WILL NOT AFFECT YOUR CLASS ###"
+    # "### THIS CHOICE WILL NOT AFFECT Player CLASS ###"
     $ class_choice = ""
-    menu:            
+    menu:
         "Ranger":
             $ class_choice = "Ranger"
             
@@ -787,23 +801,6 @@ label chapter_1:
         "Bard":
             $ class_choice = "Bard"
     
-    # python:
-    #     Player.sheet = dnd.Character(
-    #         name=Player.sheet.name,
-    #         age="16",
-    #         level=1,
-    #         gender="Male",
-    #         classs=dnd.CLASSES[class_choice],
-    #         strength=12,
-    #         dexterity=12,
-    #         constitution=10,
-    #         wisdom=10,
-    #         intelligence=10,
-    #         charisma=10
-    #     )
-
-    # $ player_class = Player.sheet.classs["name"]
-    # "### YOU HAVE CHOOSEN THE [player_class] CLASS ###"
     if class_choice == "Cleric":
         "A Cleric, really? Just like me!"
     else:
@@ -1038,7 +1035,7 @@ label chapter_1:
 
             "Try to reach out Ciry (before losing her in the crowd)" if ("Reach Ciry" not in visited and "Found Ciry in the crowd" in Player.achievements and len(visited) == 0):
                 $ visited.append("Reach Ciry")
-                $ Ciry.approval += 10                    
+                $ Ciry.approval += 10
                 "You managed to reach Ciry through the crowd, who almost overwhelmed her due to her short stature."
                 p "Ciry! I'm here!"
                 show ciry at topleft with dissolve
@@ -1091,6 +1088,27 @@ label chapter_1:
                 but then immediately ignores you.
                 You recognize the unmistakable traits of a half-orc in that tall, robust-looking girl.
                 """
+                menu:
+                    "Approach her and try to introduce yourself":
+                        $ Theo.approval -= 5
+                        "You approach the girl with an uncertain step."
+                        "She pretends not to notice you, but then."
+                        "But when you wave your hand and try to speak to get her attention, she immediately gives you a grim look."
+                        # $ Player.race = "Elf"
+                        if Player.race == "Half-Orc":
+                            uk "(speaking with her mouth full) Just 'cause ye're a fellow Half-Monster don't mean I gotta like ye."
+                        elif Player.race == "Elf":
+                            uk "(speaking with her mouth full) Can't stand seein' fairies like ya."
+                            uk "For yer own good, don't come near me, 'specially when I'm eatin', or you'll be sorry."
+                        else:
+                            uk "(speaking with her mouth full) I know not who thou art, but I don't care for company whilst I'm eatin'."
+                        uk "...now get outta here 'fore I lose me cool."
+                        "(???'s approval: -5)"
+                        
+                    "Ignore her (she seems comfortable alone)":
+                        $ Theo.approval += 5
+                        "(???'s approval: +5)"
+
                 jump after_rector_intro
 
             "Skip (go to Rogue classroom)":
