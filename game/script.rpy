@@ -1503,17 +1503,32 @@ label chapter_2:
     p "or just when one feels alone"
     c "Yes, yes it is"
     c "[Player.sheet.name], you... Which deity do you use to pray and rely on?"
-    p "Me? Well I... I don't have one, to be sincere"
-    c "No?! Why?"
-    p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name"
-    p "or a personality..."
-    p "She just adore the balance of Nature, and she says that a Druid can draw power from that alone."
-    c "You know, there are many Druids that pray a specific deity."
-    p "I know, just, she isn't one of them."
-    p "My mom and dad used to pray to Tosvald, the God protector of Merchants. Since they were Merchants too."
-    p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to"
-    p "any diety, that's all."
-    c "I'm sorry [Player.sheet.name], you don't have to justify your feelings with me."
+    
+    menu:
+        "I rely on good Deities":
+            p "I use to rely on good Deities, though I don't specifically serve or pray one more than the another."
+            "(Ciry's approval: +5)"
+            $ Ciry.approval += 5
+        
+        "I don't have one":
+            p "Me? Well I... I don't have one, to be sincere"
+            c "No?! Why?"
+            p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name"
+            p "or a personality..."
+            p "She just adore the balance of Nature, and she says that a Druid can draw power from that alone."
+            c "You know, there are many Druids that pray a specific deity."
+            p "I know, just, she isn't one of them."
+            p "My mom and dad used to pray to Tosvald, the God protector of Merchants. Since they were Merchants too."
+            p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to"
+            p "any diety, that's all."
+            c "I'm sorry [Player.sheet.name], you don't have to justify your feelings with me."
+
+        "I don't like deities":
+            p "To be sincere, I don't really like deities..."
+            c "Oh... What a sad thing to say..."
+            p "My parents use to pray their god, and they died anyway... It obviously didn't help."
+            p "I don't need to pray anyone, I only rely on my own strengths."
+    
     c "It's fine if you feel that way. Just remember that there are good deities, like Eve the Morning Star,"
     c "that will listen to you if you'll ever feel the need to pray."
     p "(smiling) Thank you Ciry, I'll take it into consideration."
@@ -1960,6 +1975,23 @@ label chapter_2:
     With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine
     tunnels of the underground cave.
     """
+    pause
+    """
+    You slowly shake off the dizziness, your head still spinning slightly from the impact.
+    Suddenly you hear a familiar voice coming from above.
+    """
+    c "Aryanna! [Player.sheet.name]!"
+    c "Are you there?"
+    "Above, not far away, you manage to catch a glimpse of Ciry's familiar face through the dust cloud raised by the explosion."
+    ary "Big sis! Yeah, we're here!"
+    c "Oh Ary! Thanks the Blessed Eve!"
+    c "Are you alright?!"
+    ary "Yeah we're fine big sis..."
+    p "Almost... at least"
+    ary "Big bro defeated that bad monster with a magic sword!"
+    c "What?"
+    c "Anyway... You might be able to climb those rocks!"
+    
     
     jump demo_end
 
