@@ -634,8 +634,15 @@ label chapter_1:
     Your dream: to become the greatest adventurer of all time!
     """
     "# # #"
-    scene road1 
-    $ renpy.pause()
+    scene road1
+    alt """
+    The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow.
+    A gentle mist weaves through the air, softening the outlines of stone buildings lining the thoroughfare.
+    Warm light spills from lanterns and windows, casting a golden hue that dances upon the stones.
+    People traverse this dreamlike avenue, their forms hazy and mysterious in the fog-laden atmosphere."
+    """
+    window hide
+    pause
     """
     You walk with a light step as you make your way down the tree-lined path that leads to your dream destination:
     the Academy!
@@ -662,6 +669,12 @@ label chapter_1:
 
     # scene bg room
     show ciry at topleft with dissolve
+    alt """
+    A portrait image appears, showing a young female character with big eyes and a gentle smile.
+    Her long, flowing white hair is elegantly gathered at the top, secured by a single braid that winds around the locks.
+    Pointed ears hint at a non-human race, adding an air of mystery and otherworldliness.
+    The character wears a golden armor adorned with intricate detailing—an ensemble befitting high rank or noble status.
+    """
     c """
     Hehe, my fault, sorry! I'm a bit clumsy and I always end up dropping things...
     I am Ciry, by the way...
