@@ -612,7 +612,7 @@ label start:
             "Welcome to Dungeon Academy!"  
 
         "Debug Jump":
-            jump before_rector_intro  
+            jump debug  
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -865,22 +865,47 @@ label chapter_1:
     p "other classes?"
     c "The other classes usually make you take entrance tests."
     p "Entrance tests??"
-    c "The Barbarian class test is a strength test, Rangers ask for good reflexs while the Fighters class requires"
-    c "a mix of the two."
+    label debug:
+    c "The Barbarian class test is a strength test, Rangers ask for good reflexs."
+    c "While the Fighter class requires a mix of the two."
     hide ciry with dissolve
     $ test_taken = []
     while len(test_taken) < 3:
         menu:
             "Take the Fighter test" if "Fighter" not in test_taken:
                 show tolomeus at topright with dissolve
+                alt """
+                A portrait appears, showing the image of an authoritative figure, seemingly of noble or warrior descent.
+                He has a distinguished presence with a sharply chiseled face, a stern expression, and penetrating eyes.
+                His hair is neatly combed back, revealing a touch of grey that adds to his dignified aura.
+                A prominent, meticulously groomed beard frames his face.
+                A golden, ornate headpiece adorns his forehead, adding to his majestic appearance.
+                His attire is equally impressive: a suit of armor adorned with intricate gold embellishments,
+                particularly a striking emblem resembling a radiant sun at the center of his chest.
+                The pauldrons on his shoulders are robust and angular, signifying strength and readiness for battle.
+                The overall aesthetic of the portrait exudes a sense of power, wisdom, and authority,
+                capturing the essence of a seasoned leader or a revered knight.
+                """
                 python:
                         test_taken.append("Fighter")
-                        tol("The Fighter class is full. I'm sorry boy.")
+                        tol("The Fighter class is full. I'm sorry young student.")
                 hide tolomeus with dissolve
 
 
             "Take the Ranger test" if "Ranger" not in test_taken:
                 show robin at topright with dissolve
+                alt """
+                A portrait appears, showing the image of a confident and vibrant female character with an unmistakable
+                aura of strength and individuality.
+                Her striking pink hair cascades in layers, framing a face marked by a mischievous, self-assured smile.
+                Her eyes, partially concealed by her hair, exude a sense of playful defiance.
+                She is dressed in a distinctive outfit that blends practicality with style.
+                The ensemble includes a fitted, green top that accentuates her form,
+                overlaid with a unique harness that adds an element of edginess.
+                Her shoulders are protected by light blue pauldrons, contributing to the warrior-like aesthetic.
+                Her arms are adorned with leather bracers and gloves, indicating readiness for combat.
+                A sturdy belt at her waist, further enhances her dynamic and battle-ready appearance.
+                """
                 $ test_taken.append("Ranger")
                 rob "Hello Cutie!"
                 p "Ehm, I'd like to enter the Ranger class..."
@@ -892,6 +917,17 @@ label chapter_1:
                 $ test_taken.append("Barbarian")
                 "A huge half-orc, like a mountain, looks down on you."
                 show dragon at topright with dissolve
+                alt """
+                A portrait appears showing a fearsome and imposing warrior exuding raw power and fierce determination.
+                His face, framed by a wild mane of dark hair and a rugged beard, is contorted in a menacing snarl,
+                revealing sharp teeth that enhance his intimidating presence.
+                His eyes burn with an intense, almost supernatural glow, further emphasizing his ferocity.
+                His muscular physique is prominently displayed, showcasing a body built for battle.
+                The warrior is clad in minimal but striking armor: intricately designed pauldrons adorn his shoulders,
+                and his chest is protected by a harness that features a central, luminous emblem.
+                His stance suggests readiness for combat, as if caught in the midst of a battle cry.
+                Overall, a formidable and relentless barbarian, embodying both primal rage and indomitable spirit.
+                """
                 dra "And who should YOU be?"
                 p "I... I'm [Player.sheet.name]. I would like to... ehm... enter the Barbarian class."
                 dra "HAHA"
@@ -916,7 +952,7 @@ label chapter_1:
                 "You fail the test."
                 "The huge arm of the man in front of you crashes into yours mercilessly,"
                 "almost as if you had put up no resistance at all."
-                "I'm sorry boy. I suggest you try another class."
+                "I'm sorry. I suggest you try another class."
                 hide dragon with dissolve
 
     show ciry at topleft with dissolve
@@ -1001,6 +1037,9 @@ label chapter_1:
     "The Rector is gonna speak!"
     rec "Dear students..."
     show rector at top with dissolve
+    alt """
+    
+    """
     rec """
     Welcome to Dungeon Academy!
     THE Academy!
