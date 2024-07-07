@@ -838,8 +838,16 @@ label chapter_1:
     #     save_player_json()
     
     scene courtyard
+    alt """
+    The image depicts a vast, grand hall filled with a large crowd of people.
+    The architectural style of the hall is gothic, characterized by tall, pointed arches, and intricate stonework.
+    The hall is bathed in a soft, ethereal light streaming through high windows, creating a majestic atmosphere.
+    The crowd, composed of individuals with diverse appearances, is gathered,
+    suggesting an important event or ceremony is taking place.
+    The overall scene exudes a sense of reverence and awe, enhanced by the grandeur of the surroundings.
+    """
     $ renpy.save("autosave")
-    $ renpy.pause()
+    pause
     
     "The school courtyard is so full of people you are astounded."
     "So many students waiting there, talking in little groups here and there."
@@ -858,14 +866,13 @@ label chapter_1:
     c "know it from another Cleric."
     c "Same goes for Paladins."
     c "And that means there's not a queue for entering those classes."
-    c "To obtain a reference is a rare thing, I'm lucky to have one, thanks to my mother. I just need to show my"
-    c "reference and I will be accepted."
+    c "To obtain a reference is a rare thing, I'm lucky to have one, thanks to my mother being a cleric of the Blessed Eve."
+    c "I just need to show my reference and I will be accepted."
     p "Wow, good for you, Ciry!"
     p "But... I think this also means no Cleric or Paladin class for me. Alright. What can you tell me about the"
     p "other classes?"
     c "The other classes usually make you take entrance tests."
-    p "Entrance tests??"
-    label debug:
+    p "Entrance tests??"    
     c "The Barbarian class test is a strength test, Rangers ask for good reflexs."
     c "While the Fighter class requires a mix of the two."
     hide ciry with dissolve
@@ -990,13 +997,21 @@ label chapter_1:
     p "Thanks for everything, Ciry! I'm glad I made friend with you on my first day here... Let's meet again later!"
     c "(blushing) Good luck!"
     hide ciry with dissolve
-    $ renpy.pause()
+    window hide
+    pause
 
     "You approach the lady indicated by Ciry with caution and a little hesitation"
     p "Hello, I... I'm here to sign up."
     "The woman looks at you slightly bewildered, as if your words had brought her back to reality, distracting her"
     "from a long chain of thoughts."
     show tris at topright with dissolve
+    alt """
+    A portrait appears, showing a cheerful middle-aged woman wearing a green dress with brown accents.
+    She shows a low neckline and short puffed sleeves, emphasizing her curvy physique.
+    Her eyes are large and a striking shade of pink, adding a playful element to her expression.
+    She has vibrant green hair styled in a loose, flowing manner, adorned with a small flower on one side.
+    Her overall appearance radiates warmth and friendliness.
+    """
     tri "Oh, hello! My name is Tris, what can I do for you?"
     p "I mean, I'm here to sign up for the Rogue class."
     tri "(curious) For the Rogue class? Really?"
@@ -1013,12 +1028,13 @@ label chapter_1:
     tri "Anyway... Just sign here, and here. Here's a pen!"
     stop music fadeout 1.0
     hide tris with dissolve
-
-
+    
+    label debug:
     label before_rector_intro:
     "After signing up for the Rogue class, you are told to walk inside the Academy hall."
     scene main hall
-    $ renpy.pause()
+    window hide
+    pause
     play music arcadia
     "You look around trying to find your new friend Ciry in the midst of all those people."
     menu:
@@ -1038,7 +1054,12 @@ label chapter_1:
     rec "Dear students..."
     show rector at top with dissolve
     alt """
-    
+    A portrait appears, showing the image of a distinguished elderly man.
+    He has a flowing white beard and tousled white hair, giving him an air of wisdom.
+    His attire is formal and ornate, featuring a blue and black robe with gold accents and tassels.
+    He wears a yellow necktie over a maroon shirt, complemented by a ceremonial blue and gold headdress.
+    His black-framed glasses add a scholarly touch to his appearance.
+    The overall impression is that of a high-ranking academic or a university rector.
     """
     rec """
     Welcome to Dungeon Academy!
