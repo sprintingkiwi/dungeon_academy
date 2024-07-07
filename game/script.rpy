@@ -839,7 +839,8 @@ label chapter_1:
     
     scene courtyard
     alt """
-    The image depicts a vast, grand hall filled with a large crowd of people.
+    The background changes.
+    The background image depicts a vast, grand hall filled with a large crowd of people.
     The architectural style of the hall is gothic, characterized by tall, pointed arches, and intricate stonework.
     The hall is bathed in a soft, ethereal light streaming through high windows, creating a majestic atmosphere.
     The crowd, composed of individuals with diverse appearances, is gathered,
@@ -1027,12 +1028,25 @@ label chapter_1:
     tri "Then three children happened, and the fourth's inside my belly! Ahahaha!"
     tri "Anyway... Just sign here, and here. Here's a pen!"
     stop music fadeout 1.0
-    hide tris with dissolve
+    hide tris with dissolve    
     
-    label debug:
     label before_rector_intro:
     "After signing up for the Rogue class, you are told to walk inside the Academy hall."
     scene main hall
+    alt """
+    The background changes.
+    The background image presents a grand and opulent hall, steeped in architectural splendor.
+    High ceilings adorned with wooden carvings weave a complex and ornate pattern across the entire expanse.
+    Equally detailed columns and arches stand as testament to the craftsmanship involved in their creation.
+    Large, arched windows line the walls, allowing streams of soft, natural light to filter in,
+    casting a warm and inviting glow throughout the room.
+    The interplay of light and shadow enhances the hall's majestic atmosphere, highlighting the woodwork details.
+    Chandeliers hang from the ceiling, their lights adding a golden hue to the space, complementing the natural light.
+    Numerous candles contribute to the room's illumination and adds to its regal feel.
+    The flooring is smooth and reflective, providing a contrasting simplicity to the elaborate surroundings,
+    further amplifying the hall's sense of grandeur. The overall atmosphere is one of timeless beauty,
+    evoking a sense of awe and reverence for the architectural mastery displayed within this magnificent space.
+    """
     window hide
     pause
     play music arcadia
@@ -1100,7 +1114,7 @@ label chapter_1:
     class's classroom for an initial briefing, and that the following day will be possible to choose the study plan
     for the current month.
     """
-
+    
     $ visited = []
     label after_rector_intro:            
         menu:
@@ -1281,9 +1295,10 @@ label chapter_1:
     stop music fadeout 2.0
     tri "You'll start your first optional course tomorrow morning."            
     
+    label debug:
     hide tris with dissolve
     scene 00010-1467134838
-    $ renpy.pause()
+    pause    
     "Your first day at the Academy has come to an end."
     "You walk out of the classroom and see the corridors rapidly fill up with students, along with a growing murmur"
     "of voices."
@@ -1300,7 +1315,10 @@ label chapter_1:
     c "It was so fascinating..."
     c "I think I won't sleep at all tonight! I have so much questions in my head!"
     c "Let's head home together! Where do you live?"
-    scene 00027-1515435079 with dissolve    
+    scene 00027-1515435079 with dissolve
+    alt """
+    The background changes. It shows the cobblestone road of the city.
+    """
     p "Uhm, I live near the Mushroom Forest, not really near the city..."
     show ciry at topleft with dissolve
     c "The Mushroom Forest? I didn't know there was a village there."
@@ -1355,7 +1373,7 @@ label chapter_1:
     c "..."
     p "..."
     stop music fadeout 2.0
-    $ renpy.pause()
+    pause
     c "I'm home! I live right there, near the eastern City wall, Thanks you for walking with me!"
     p "Oh, so... Have a nice evening and... see you tomorrow at the Academy!"
     c "Thanks [Player.sheet.name], you too!"
@@ -1365,12 +1383,22 @@ label chapter_1:
     "You take the usual avenue that crosses more peripheral houses, the houses of the farmers. Then you cut through"
     "a field up a hill until in the distance you see a mushroom-shaped house."
     scene 00028-45450802 with dissolve
-    $ renpy.pause()
+    pause
     play music averybradyspecial fadein 2.0
     alt "A mushroom shaped house with a green roof completely covered by moss."
     alt "Warm yellow lights shine inside and colorful flowers surround the edges of the windows."
     "A house you call home."
     show bella at topright with dissolve
+    alt """
+    A portrait appears, depicting a vibrant and cheerful female character.
+    She has long, flowing black hair that frames her face and curls slightly at the ends.
+    Her eyes are a striking shade of blue, full of energy and sparkle, complementing her wide, beaming and joyful smile.
+    She is dressed in a stylish outfit that features shades of blue and black.
+    The high-collared garment is adorned with intricate lace details around the neckline,
+    adding a touch of elegance to her bold and spirited demeanor.
+    Overall, her expression and pose convey a sense of positivity and determination,
+    suggesting a character who is both approachable and strong-willed.
+    """
     bel "[Player.sheet.name]!"
     bel "Welcome home! How was your longed-for first day?"
     p "Hi auntie! It was good"
