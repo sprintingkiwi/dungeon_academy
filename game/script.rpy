@@ -1293,9 +1293,8 @@ label chapter_1:
     p "Thanks."
     tri "Oh, and don't forget to choose your study plan for the current month!"
     stop music fadeout 2.0
-    tri "You'll start your first optional course tomorrow morning."            
+    tri "You'll start your first optional course tomorrow morning."    
     
-    label debug:
     hide tris with dissolve
     scene 00010-1467134838
     pause    
@@ -1374,6 +1373,8 @@ label chapter_1:
     p "..."
     stop music fadeout 2.0
     pause
+
+    label debug:
     c "I'm home! I live right there, near the eastern City wall, Thanks you for walking with me!"
     p "Oh, so... Have a nice evening and... see you tomorrow at the Academy!"
     c "Thanks [Player.sheet.name], you too!"
@@ -1385,14 +1386,22 @@ label chapter_1:
     scene 00028-45450802 with dissolve
     pause
     play music averybradyspecial fadein 2.0
-    alt "A mushroom shaped house with a green roof completely covered by moss."
-    alt "Warm yellow lights shine inside and colorful flowers surround the edges of the windows."
+    alt """
+    The background changes.
+    A mushroom shaped house with a green roof completely covered by moss, nestled in a magical forest.
+    Warm yellow lights shine inside and colorful flowers surround the edges of the windows.
+    Curved, organic shapes with roofs covered in lush green moss, seamlessly blending with the surrounding nature.
+    Warm, golden light spills from the arched windows and doorways, casting a welcoming glow.
+    The forest itself is otherworldly, with whimsical, oversized mushrooms that enhance the fantastical ambiance.
+    A gentle stream winds through the scene, reflecting the warm light from the houses.
+    Flowers and greenery surround the houses, completing the picturesque and inviting woodland retreat.
+    """
     "A house you call home."
     show bella at topright with dissolve
     alt """
     A portrait appears, depicting a vibrant and cheerful female character.
     She has long, flowing black hair that frames her face and curls slightly at the ends.
-    Her eyes are a striking shade of blue, full of energy and sparkle, complementing her wide, beaming and joyful smile.
+    Her eyes are a striking shade of blue, full of energy and sparkle, complementing her wide, joyful smile.
     She is dressed in a stylish outfit that features shades of blue and black.
     The high-collared garment is adorned with intricate lace details around the neckline,
     adding a touch of elegance to her bold and spirited demeanor.
@@ -1433,16 +1442,21 @@ label chapter_1:
     "and a deep sleep drags you into its embrace..."
     pause
     scene bg black with annoytheuser
+    alt "The background fades out in darkness."
     p "{i}...{/i}"
     window hide
     show 00008-3630713263 with annoytheuser:
         blur 75
-    $ renpy.pause()
+    pause
+    alt "A blurred image appears, maybe the face of a beautiful woman with long white hair?"
     p "{i}Is this a dream?{/i}"
     window hide
     show 00008-3630713263 with annoytheuser:
         blur 25
-    $ renpy.pause()
+    pause
+    alt """
+    The image is more nitid now: a young woman with platinum blonde hair flowing gracefully around her.
+    """
     scene bg black with annoytheuser    
     window hide
     scene bg white with annoytheuser
@@ -1958,6 +1972,11 @@ label chapter_2:
                 "And in that light..."
                 window hide
                 show 00008-3630713263 with annoytheuser
+                alt """
+                Her eyes are closed, and she wears a calm, introspective expression.
+                Her makeup is striking, with bold red lipstick and subtle eyeshadow that enhances her delicate features.
+                The background is a dreamy blend of deep blues and soft light streaks: a mystical or otherworldly setting.
+                """
                 pause
                 "Love"
                 "You sense the warmth emanating from the woman before you, like in a sunlit summer afternoon."
