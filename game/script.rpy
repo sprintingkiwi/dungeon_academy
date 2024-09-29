@@ -244,6 +244,20 @@ init python:
             ability_bonus = self.get_modifier(stat)
             return prof_bonus + ability_bonus
 
+        def set_ability(self, ability, value):
+            if ability == "Strength":
+                Player.sheet.strength = value
+            elif ability == "Dexterity":
+                Player.sheet.dexterity = value
+            elif ability == "Constitution":
+                Player.sheet.constitution = value
+            elif ability == "Intelligence":
+                Player.sheet.intelligence = value
+            elif ability == "Wisdom":
+                Player.sheet.wisdom = value
+            elif ability == "Charisma":
+                Player.sheet.charisma = value
+
         def roll_default_damage(self, hit_roll): # TO DO: Must differentiate between types of weapons
             crit = hit_roll.natural_result >= self.dmg_critical_threshold         
             return self.roll(self.weapon["damage"]["damage_dice"], mod="strength", critical=crit)
@@ -490,6 +504,8 @@ default Player = None
 default Ciry = None
 default Theo = None
 default Dante = None
+default ABILITIES = ("Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma")
+
 
 
 # The game starts here.
@@ -511,12 +527,12 @@ label start:
             level=1,
             gender="Female",
             classs=dnd.CLASSES["cleric"],
-            strength=10,
-            dexterity=10,
-            constitution=12,
-            wisdom=14,
-            intelligence=12,
-            charisma=12
+            strength=14,
+            dexterity=12,
+            constitution=14,
+            wisdom=15,
+            intelligence=10,
+            charisma=10
         ))
         Ciry.race = "Gnome"
         Ciry.character = c
@@ -532,12 +548,12 @@ label start:
             level=1,
             gender="Male",
             classs=dnd.CLASSES["wizard"],
-            strength=8,
-            dexterity=8,
-            constitution=10,
-            wisdom=14,
+            strength=9,
+            dexterity=15,
+            constitution=13,
+            wisdom=11,
             intelligence=16,
-            charisma=12
+            charisma=14
         ))
         Dante.race = "Human"
         Dante.character = d
@@ -551,12 +567,12 @@ label start:
             level=1,
             gender="Female",
             classs=dnd.CLASSES["barbarian"],
-            strength=14,
-            dexterity=10,
-            constitution=14,
-            wisdom=8,
+            strength=17,
+            dexterity=12,
+            constitution=15,
+            wisdom=10,
             intelligence=8,
-            charisma=8
+            charisma=13
         ))
         Theo.race = "Half-Orc"
         Theo.character = t
@@ -633,7 +649,20 @@ label chapter_1:
     adventurers on the entire continent.
     Your dream: to become the greatest adventurer of all time!
     """
+
+    "# # #" # CHOOSE ABILITIES
+    python:
+        score_array = [15, 14, 13, 12, 10, 8]
+        for ability in ABILITIES:
+            narrator(f"Choose your {ability} score:")
+            choices = []
+            for score in score_array:
+                choices.append((str(score), score))
+            choice = renpy.display_menu(choices)            
+            Player.set_ability(ability, choice)
+            score_array.remove(choice)
     "# # #"
+
     scene road1
     alt """
     The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow.
@@ -691,70 +720,78 @@ label chapter_1:
     c "Nice to meet you, [Player.sheet.name]!"
     c "You are a..."
     
-    $ race_choice = "Half-Elf"
+    $ race_choice = "Human"
     menu:
-        "Human\n(choose stat bonus)":
+        "Human\n+1 to all abilities":
             $ race_choice = "Human"
-        "Half-Elf\n(+1 dex, +2 cha)":
+            $ Player.sheet.dexterity += 1
+            $ Player.sheet.charisma += 1
+            $ Player.sheet.constitution += 1
+            $ Player.sheet.strength += 1
+            $ Player.sheet.wisdom += 1
+            $ Player.sheet.intelligence += 1
+        "Half-Elf\n+2 Charisma\nChoose two other +1":
             $ race_choice = "Half-Elf"
             $ Player.sheet.dexterity += 1
             $ Player.sheet.charisma += 2
-        "Half-Orc\n(+2 str, +1 con)":
+        "Half-Orc\n+2 Strength\n+1 Constitution":
             $ race_choice = "Half-Orc"
             $ Player.sheet.constitution += 1
             $ Player.sheet.strength += 2
-        "Dwarf\n(+2 str, +1 wis)":
+        "Dwarf\n+2 Constitution\n+1 Wisdom)":
             $ race_choice = "Dwarf"
             $ Player.sheet.wisdom += 1
-            $ Player.sheet.strength += 2
-        "Halfling\n(+2 dex, +1 int)":
+            $ Player.sheet.constitution += 2
+        "Halfling\n+2 Dexterity\n+1 int)":
             $ race_choice = "Halfling"
             $ Player.sheet.intelligence += 1
             $ Player.sheet.dexterity += 2
-        "Elf\n(+2 dex, +1 wis)":
+        "Elf\n+2 Dexterity\n+1 int)":
             $ race_choice = "Elf"
-            $ Player.sheet.wisdom += 1
+            $ Player.sheet.intelligence += 1
             $ Player.sheet.dexterity += 2
-        "Gnome\n(+1 con, +2 int)":
+        "Gnome\n+2 Intelligence\n+1 Constitution)":
             $ race_choice = "Gnome"
             $ Player.sheet.constitution += 1
             $ Player.sheet.intelligence += 2
-        "Tiefling\n(+1 int, +2 cha)":
+        "Tiefling\n+2 Charisma\n+1 Intelligence)":
             $ race_choice = "Tiefling"
             $ Player.sheet.intelligence += 1
             $ Player.sheet.charisma += 2
 
     $ Player.race = race_choice
-    if race_choice == "Human":
-        "Choose your primary stat bonus (+2)"
-        menu:
-            "Strength":
-                $ Player.sheet.strength += 2
-            "Dexterity":
-                $ Player.sheet.dexterity += 2
-            "Constitution":
-                $ Player.sheet.constitution += 2
-            "Intelligence":
-                $ Player.sheet.intelligence += 2
-            "Wisdom":
-                $ Player.sheet.wisdom += 2
-            "Charisma":
-                $ Player.sheet.charisma += 2
-
-        "Choose your secondary stat bonus (+1)"
+    if race_choice == "Half-Elf":
+        "Choose your first stat bonus (+1)"
+        $ first_bonus = ""
         menu:
             "Strength":
                 $ Player.sheet.strength += 1
+                $ first_bonus = "Strength"
             "Dexterity":
                 $ Player.sheet.dexterity += 1
+                $ first_bonus = "Dexterity"
             "Constitution":
                 $ Player.sheet.constitution += 1
+                $ first_bonus = "Constitution"
             "Intelligence":
                 $ Player.sheet.intelligence += 1
+                $ first_bonus = "Intelligence"
             "Wisdom":
                 $ Player.sheet.wisdom += 1
-            "Charisma":
-                $ Player.sheet.charisma += 1
+                $ first_bonus = "Wisdom"
+
+        "Choose your second stat bonus (+1)"
+        menu:
+            "Strength" if first_bonus != "Strength":
+                $ Player.sheet.strength += 1
+            "Dexterity" if first_bonus != "Dexterity":
+                $ Player.sheet.dexterity += 1
+            "Constitution" if first_bonus != "Constitution":
+                $ Player.sheet.constitution += 1
+            "Intelligence" if first_bonus != "Intelligence":
+                $ Player.sheet.intelligence += 1
+            "Wisdom" if first_bonus != "Wisdom":
+                $ Player.sheet.wisdom += 1
 
     $ save_player_json()           
 
