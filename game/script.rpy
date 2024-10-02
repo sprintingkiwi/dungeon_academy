@@ -654,7 +654,7 @@ label chapter_1:
     python:
         score_array = [15, 14, 13, 12, 10, 8]
         for ability in ABILITIES:
-            narrator(f"Choose your {ability} score:")
+            narrator(f"Choose your {ability} score:", interact=False)
             choices = []
             for score in score_array:
                 choices.append((str(score), score))
