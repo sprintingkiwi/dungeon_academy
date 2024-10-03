@@ -1,3 +1,6 @@
+Here follows the original README of the [dnd_character repository](https://github.com/tassaron/dnd-character) by [Tassaron](https://github.com/tassaron):
+
+
 # dnd-character
 
 A Python library to make 5e Dungeons & Dragons characters for use in another app. Characters are serializable into Python dicts so they can be saved and loaded however you wish.
