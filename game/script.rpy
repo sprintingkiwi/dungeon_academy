@@ -371,6 +371,9 @@ init python:
         def get_armor_class(self):
             return self.sheet["armor_class"] + self.ac_bonus
 
+        def get_challenge_rating(self):
+            return math.floor(max(0, self.sheet["challenge_rating"] - 1) / 4) + 2
+
         def restore(self):
             self.sheet["hit_points"] = self.max_hp
 
