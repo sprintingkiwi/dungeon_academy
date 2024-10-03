@@ -371,7 +371,7 @@ init python:
         def get_armor_class(self):
             return self.sheet["armor_class"] + self.ac_bonus
 
-        def get_challenge_rating(self):
+        def get_proficiency_bonus(self):
             return math.floor(max(0, self.sheet["challenge_rating"] - 1) / 4) + 2
 
         def restore(self):
