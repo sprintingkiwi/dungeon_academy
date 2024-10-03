@@ -164,18 +164,20 @@ init python:
         def get_name(self):
             return self.sheet["name"]
 
-        # def get_hp(self):
-        #     pass
-        # def get_attack_bonus(self):
-        #     pass
-        # def roll_default_damage(self):
-        #     pass        
-        # def get_armor_class(self):
-        #     pass
-        # def take_damage(self, damage):
-        #     pass
-        # def restore(self):
-        #     pass
+        def get_hp(self):
+            raise NotImplementedError()
+        def get_attack_bonus(self):
+            raise NotImplementedError()
+        def roll_default_damage(self):
+            raise NotImplementedError()        
+        def get_armor_class(self):
+            raise NotImplementedError()
+        def get_proficiency_bonus(self):
+            raise NotImplementedError()
+        def take_damage(self, damage):
+            raise NotImplementedError()
+        def restore(self):
+            raise NotImplementedError()
 
         def get_modifier(self, ability):
             return dnd.Character.getModifier(self.sheet[ability])        
@@ -238,6 +240,9 @@ init python:
 
         def get_hp(self):
             return self.sheet.hp
+
+        def get_proficiency_bonus(self):
+            return self.sheet["prof_bonus"]
 
         def get_attack_bonus(self, stat):
             prof_bonus = self.sheet["prof_bonus"]
