@@ -122,7 +122,7 @@ init python:
             self.spell_level = 1
         def effect(self, target):
             super().effect(target)
-            roll = self.user.roll("1d8", mod=self.user.get_spellcasting_modifier()).result
+            roll = self.user.roll("1d8", mod=self.user.get_spellcasting_ability()).result
             # narrator("Roll for healing (wisdom): " + str(roll))
             self.target.take_damage(-roll)
             narrator(self.target.get_name() + " recovers " + str(roll) + " hit points.")
@@ -138,7 +138,9 @@ init python:
             narrator(self.user.get_name() + " produces a blaze that invests all enemies!")
             for target in self.target:
                 narrator(f"Rolling damage for {target.get_name()}...")
-                roll = self.user.roll("2d6", mod = "intelligence").result
+                roll = self.user.roll("3d6").result
+                if target.roll_saving_throw("dexterity", self.user.get_spell_DC()):                    
+                    roll = int(roll / 2)
                 narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
                 target.take_damage(roll)
         
@@ -178,9 +180,14 @@ init python:
             raise NotImplementedError()
         def restore(self):
             raise NotImplementedError()
+        def get_spellcasting_ability(self):
+            raise NotImplementedError()
 
         def get_modifier(self, ability):
-            return dnd.Character.getModifier(self.sheet[ability])        
+            return dnd.Character.getModifier(self.sheet[ability])
+
+        def get_spell_DC(self):
+            return 8 + self.get_proficiency_bonus() + self.get_modifier(self.get_spellcasting_ability())
         
         def roll(self, dice_string, mod=None, advantage=False, critical=False):
             modifier = 0
@@ -212,6 +219,18 @@ init python:
 
         def roll_ability(self, ability, advantage=False):
             return self.roll("1d20", ability, advantage)
+
+        def roll_saving_throw(self, save, DC):
+            roll = self.roll_ability(save)
+            if "saving_throws" in self.sheet:
+                if save in self.sheet["saving_throws"]:
+                    roll.result += self.get_proficiency_bonus()
+            if roll.result < DC:
+                narrator(self.get_name() + " Failed saving throw!")
+                return False
+            else:
+                narrator(self.get_name() + " Successful saving throw!")
+                return True
         
         def choose_action(self):
             action = random.choice(self.actions)(self)
@@ -270,7 +289,7 @@ init python:
         def get_armor_class(self):
             return self.sheet.armour_class + self.ac_bonus
 
-        def get_spellcasting_modifier(self):
+        def get_spellcasting_ability(self):
             ability = self.sheet.spellcasting_stat
             if ability == "int":
                 return "intelligence"
@@ -387,6 +406,9 @@ init python:
 
         def get_proficiency_bonus(self):
             return math.floor(max(0, self.sheet["challenge_rating"] - 1) / 4) + 2
+
+        def get_spellcasting_ability(self):
+            return 0
 
         def restore(self):
             self.sheet["hit_points"] = self.max_hp
