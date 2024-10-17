@@ -135,10 +135,11 @@ init python:
             self.spell_level = 1
         def effect(self, target):
             super().effect(target)
-            narrator(self.user.get_name() + " produces a blaze that invests all enemies!")
+            narrator(f"{self.user.get_name()} produces a blaze that invests all enemies!")
+            damage_dice = f"{2+self.spell_level}d6"
             for target in self.target:
-                narrator(f"Rolling damage for {target.get_name()}...")
-                roll = self.user.roll("3d6").result
+                narrator(f"Rolling {damage_dice} fire damages for {target.get_name()}...")
+                roll = self.user.roll(damage_dice).result
                 if target.roll_saving_throw("dexterity", self.user.get_spell_DC()):                    
                     roll = int(roll / 2)
                 narrator(target.get_name() + " takes " + str(roll) + " points of damage" )
@@ -221,15 +222,16 @@ init python:
             return self.roll("1d20", ability, advantage)
 
         def roll_saving_throw(self, save, DC):
+            narrator(self.get_name() + " rolls a saving throw on " + save)
             roll = self.roll_ability(save)
             if "saving_throws" in self.sheet:
                 if save in self.sheet["saving_throws"]:
                     roll.result += self.get_proficiency_bonus()
             if roll.result < DC:
-                narrator(self.get_name() + " Failed saving throw!")
+                narrator(f"{str(roll.result)} vs DC {DC}: Failed!")
                 return False
             else:
-                narrator(self.get_name() + " Successful saving throw!")
+                narrator(f"{str(roll.result)} vs DC {DC}: Successful!")
                 return True
         
         def choose_action(self):
