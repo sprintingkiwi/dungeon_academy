@@ -22,11 +22,6 @@ init python:
             narrator(line)
 
 
-    def save_player_json():
-        with open('player.json', 'w') as outfile:
-            outfile.write(json.dumps(dict(Player.sheet), indent = 4))
-
-
     def restore_party(party):
         for hero in party:
             hero.restore()
@@ -163,6 +158,11 @@ init python:
 
         def get_name(self):
             return self.sheet["name"]
+
+        def save_json(self):
+            with open(self.get_name()+".json", 'w') as outfile:
+                outfile.write(json.dumps(dict(self.sheet), indent = 4))
+                outfile.close()
 
         def get_hp(self):
             raise NotImplementedError()
@@ -474,10 +474,14 @@ init 1 python:
     Hobgoblin = Monster(SRD_monsters["orc"])
     Hobgoblin.sheet["name"] = "Hobgoblin"
     Hobgoblin.image = "hobgoblin"
-    # with open('hobgoblin.json', 'w') as outfile:
-    #     outfile.write(json.dumps(Hobgoblin.sheet, indent = 4))
+
     test_enemies = [Goblin, Zombie]
     # test_enemies = [GiantRat]
+
+    Goblin.save_json()
+    Zombie.save_json()
+    Hobgoblin.save_json()
+    GiantRat.save_json()
 
     # EQUIPMENT
     Dragonlance = SRD_equipment['lance']
@@ -606,6 +610,10 @@ label start:
         Player.equip_weapon(SRD_equipment['dagger'])
         Player.courses_taken = []
 
+        Ciry.save_json()
+        Dante.save_json()
+        Theo.save_json()
+        Player.save_json()
 
         # PARTY
         PARTY = [Player, Ciry, Dante, Theo]
@@ -801,7 +809,7 @@ label chapter_1:
             "Wisdom" if first_bonus != "Wisdom":
                 $ Player.sheet.wisdom += 1
 
-    $ save_player_json()           
+    $ Player.save_json()           
 
     c "...[race_choice], aren't you?"
     if race_choice == "Gnome":
@@ -880,7 +888,7 @@ label chapter_1:
     # python:
     #     p("My attack bonus is: " + str(Player.get_attack_bonus()))
     #     c("My attack bonus is: " + str(Ciry.get_attack_bonus()))
-    #     save_player_json()
+    #     Player.save_json()
     
     scene courtyard
     alt """
@@ -2340,7 +2348,7 @@ label study_plan_1:
                 "Go back":
                     call study_plan_1 from _call_study_plan_1_8
         
-    $ save_player_json()
+    $ Player.save_json()
     return
 
 
@@ -2398,7 +2406,7 @@ label study_plan_2:
                 "Go back":
                     call study_plan_2 from _call_study_plan_2_4
 
-    $ save_player_json()
+    $ Player.save_json()
     return
 
 
