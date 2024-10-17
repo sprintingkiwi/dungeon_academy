@@ -114,15 +114,15 @@ init python:
             else:
                 narrator("Miss...")
 
-    class Heal(Spell):
+    class CureWounds(Spell):
         def __init__(self, user):
             super().__init__(user)
-            self.name = "Heal light wounds"
+            self.name = "Cure Wounds"
             self.scope = "Ally"
             self.spell_level = 1
         def effect(self, target):
             super().effect(target)
-            roll = self.user.roll("1d8", mod="wisdom").result
+            roll = self.user.roll("1d8", mod=self.user.get_spellcasting_modifier()).result
             # narrator("Roll for healing (wisdom): " + str(roll))
             self.target.take_damage(-roll)
             narrator(self.target.get_name() + " recovers " + str(roll) + " hit points.")
@@ -269,6 +269,15 @@ init python:
 
         def get_armor_class(self):
             return self.sheet.armour_class + self.ac_bonus
+
+        def get_spellcasting_modifier(self):
+            ability = self.sheet.spellcasting_stat
+            if ability == "int":
+                return "intelligence"
+            elif ability == "wis":
+                return "wisdom"
+            elif ability == "cha":
+                return "charisma"
 
         def take_damage(self, damage):
             self.sheet.hp -= damage
@@ -549,7 +558,7 @@ label start:
         Ciry.race = "Gnome"
         Ciry.character = c
         Ciry.image = "ciry"
-        Ciry.actions = [DefaultAttack, Heal]
+        Ciry.actions = [DefaultAttack, CureWounds]
         Ciry.equip_weapon(SRD_equipment['morningstar'])        
         # Ciry.equip_armor(SRD_equipment['leather-armor'])
         # testimg = renpy.image("Ciry", "images/Characters/ciry.png")
@@ -570,7 +579,7 @@ label start:
         Dante.race = "Human"
         Dante.character = d
         Dante.image = "dante"
-        Dante.actions = [DefaultAttack, BurningHands]
+        Dante.actions = [DefaultAttack, BurningHands, CureWounds]
         Dante.equip_weapon(SRD_equipment['quarterstaff'])
 
         Theo = PlayableAdventurer(dnd.Character(
