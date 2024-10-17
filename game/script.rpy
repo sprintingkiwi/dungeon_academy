@@ -10,6 +10,7 @@ init python:
     import dnd_character as dnd
     from dnd_character.monsters import SRD_monsters
     from dnd_character.equipment import SRD_equipment
+    from dnd_character.spellcasting import SRD_spells
     import json
     import random
     from random import randint
@@ -77,8 +78,10 @@ init python:
             self.scope = "Enemy" # or Ally or Allies or Enemies or Self
             self.user = user
             self.target = None
+
         def requirements(self):
             return True
+
         def effect(self, target):
             self.target = target
             # narrator(f"Processing action {self.name}")
@@ -86,19 +89,33 @@ init python:
     class Spell(Action):
         def __init__(self, user):
             super().__init__(user)
-            self.spell_level = 0
-        def requirements(self):
-            if self.user.get_spell_slots(self.spell_level) - self.user.used_spell_slots[self.spell_level] >= 1:
-                self.user.used_spell_slots[self.spell_level] += 1
+            self.sheet = None
+            self.used_slot_level = 0
+
+        def requirements(self):            
+            if self.used_slot_level == 0:
+                return True
+            elif self.user.get_spell_slots(self.used_slot_level) - self.user.used_spell_slots[self.used_slot_level] >= 1:
+                self.user.used_spell_slots[self.used_slot_level] += 1
                 return True
             else:
                 return False
+
+        def effect(self, target):
+            super().effect(target)
+            narrator("Choose slot level", interact=False)
+            spell_slot_choices = []
+            for i in range(9):
+                if self.user.get_spell_slots(i+1) > 0:
+                    spell_slot_choices.append((str(i+1), i+1))
+            self.used_slot_level = renpy.display_menu(spell_slot_choices)
 
 
     class DefaultAttack(Action):
         def __init__(self, user):
             super().__init__(user)
             self.name = "Attack"
+
         def effect(self, target):
             super().effect(target)
             narrator(self.user.get_name() + " attacks " + self.target.get_name())
@@ -119,7 +136,8 @@ init python:
             super().__init__(user)
             self.name = "Cure Wounds"
             self.scope = "Ally"
-            self.spell_level = 1
+            self.sheet = SRD_spells["cure-wounds"]
+
         def effect(self, target):
             super().effect(target)
             roll = self.user.roll("1d8", mod=self.user.get_spellcasting_ability()).result
@@ -132,11 +150,12 @@ init python:
             super().__init__(user)
             self.name = "Burning Hands"
             self.scope = "Enemies"
-            self.spell_level = 1
+            self.sheet = SRD_spells["burning-hands"]
+            
         def effect(self, target):
             super().effect(target)
             narrator(f"{self.user.get_name()} produces a blaze that invests all enemies!")
-            damage_dice = f"{2+self.spell_level}d6"
+            damage_dice = self.sheet["damage"]["damage_at_slot_level"][str(self.used_slot_level)]
             for target in self.target:
                 narrator(f"Rolling {damage_dice} fire damages for {target.get_name()}...")
                 roll = self.user.roll(damage_dice).result
@@ -521,6 +540,10 @@ init 1 python:
     # with open('lance.json', 'w') as outfile:
     #     outfile.write(json.dumps(Dragonlance, indent = 4)) 
 
+    # SPELLS
+    with open('spell.json', 'w') as outfile:
+        outfile.write(json.dumps(SRD_spells["burning-hands"], indent = 4))
+        outfile.close()
 
 
 # Talking characters
