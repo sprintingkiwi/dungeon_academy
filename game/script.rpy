@@ -1,9 +1,4 @@
 ﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-# define e = Character("Eileen")
-# label characters_creation:
 rpy monologue single
 
 init python:
@@ -151,7 +146,7 @@ init python:
             self.name = "Burning Hands"
             self.scope = "Enemies"
             self.sheet = SRD_spells["burning-hands"]
-            
+
         def effect(self, target):
             super().effect(target)
             narrator(f"{self.user.get_name()} produces a blaze that invests all enemies!")
@@ -515,37 +510,6 @@ init python:
 
 
 
-init 1 python:
-    # MONSTERS
-    Goblin = Monster(SRD_monsters["goblin"])
-    Goblin.image = "goblin_m"
-    Zombie = Monster(SRD_monsters["zombie"])
-    Zombie.image = "zombie_f"
-    GiantRat = Monster(SRD_monsters["giant-rat"])
-    GiantRat.image = "giant-rat"
-    Hobgoblin = Monster(SRD_monsters["orc"])
-    Hobgoblin.sheet["name"] = "Hobgoblin"
-    Hobgoblin.image = "hobgoblin"
-
-    test_enemies = [Goblin, Zombie]
-    # test_enemies = [GiantRat]
-
-    Goblin.save_json()
-    Zombie.save_json()
-    Hobgoblin.save_json()
-    GiantRat.save_json()
-
-    # EQUIPMENT
-    Dragonlance = SRD_equipment['lance']
-    # with open('lance.json', 'w') as outfile:
-    #     outfile.write(json.dumps(Dragonlance, indent = 4)) 
-
-    # SPELLS
-    with open('spell.json', 'w') as outfile:
-        outfile.write(json.dumps(SRD_spells["burning-hands"], indent = 4))
-        outfile.close()
-
-
 # Talking characters
 define p = Character("You", who_color="#86f1ff")
 define c = Character("Ciry", who_color="#ffff80")
@@ -628,6 +592,10 @@ label start:
         Dante.image = "dante"
         Dante.actions = [DefaultAttack, BurningHands, CureWounds]
         Dante.equip_weapon(SRD_equipment['quarterstaff'])
+        Dante.sheet.experience += Dante.sheet.experience.to_next_level
+        Dante.sheet.experience += Dante.sheet.experience.to_next_level
+        Dante.sheet.experience += Dante.sheet.experience.to_next_level
+        Dante.sheet.experience += Dante.sheet.experience.to_next_level
 
         Theo = PlayableAdventurer(dnd.Character(
             name="Theo",
@@ -673,6 +641,35 @@ label start:
 
         # PARTY
         PARTY = [Player, Ciry, Dante, Theo]
+
+        # MONSTERS
+        Goblin = Monster(SRD_monsters["goblin"])
+        Goblin.image = "goblin_m"
+        Zombie = Monster(SRD_monsters["zombie"])
+        Zombie.image = "zombie_f"
+        GiantRat = Monster(SRD_monsters["giant-rat"])
+        GiantRat.image = "giant-rat"
+        Hobgoblin = Monster(SRD_monsters["orc"])
+        Hobgoblin.sheet["name"] = "Hobgoblin"
+        Hobgoblin.image = "hobgoblin"
+
+        test_enemies = [Goblin, Zombie]
+        # test_enemies = [GiantRat]
+
+        Goblin.save_json()
+        Zombie.save_json()
+        Hobgoblin.save_json()
+        GiantRat.save_json()
+
+        # EQUIPMENT
+        Dragonlance = SRD_equipment['lance']
+        # with open('lance.json', 'w') as outfile:
+        #     outfile.write(json.dumps(Dragonlance, indent = 4)) 
+
+        # SPELLS
+        with open('spell.json', 'w') as outfile:
+            outfile.write(json.dumps(SRD_spells["burning-hands"], indent = 4))
+            outfile.close()
 
 
     # Show a background. This uses a placeholder by default, but you can
