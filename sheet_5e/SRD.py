@@ -1,5 +1,5 @@
 """
-A cached function that gets SRD data from a DND 5e REST API
+A cached function that gets SRD data from a 5e REST API
 """
 import json
 from os import environ, walk, path, remove
@@ -56,7 +56,7 @@ def __SRD_API_CALL():
     """
     Closure for API calls
     """
-    SRD_API = environ.get("SRD_API", "http://dnd5eapi.co")
+    SRD_API = environ.get("SRD_API", "")
 
     @cached_json
     def get_from_SRD(uri):

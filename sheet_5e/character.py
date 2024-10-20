@@ -105,7 +105,7 @@ class Character:
             ), "Alignments must be 2 letters (i.e LE, LG, TN, NG, CN)"
             self.alignment = self.alignment.upper()
 
-        # DND Class
+        # 5E Class
         self.class_name = class_name
         self.class_index = class_index
         self.class_levels = class_levels if class_levels is not None else []

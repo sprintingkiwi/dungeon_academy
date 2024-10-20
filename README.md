@@ -13,7 +13,7 @@ Graphics realized with Stable Diffusion
 
 # CREDITS:
 A special thanks to:
-* [tassaron](https://github.com/tassaron) for the very useful dnd_character python library
+* [tassaron](https://github.com/tassaron) for the very useful python library to manage 5e characters sheets
 * [kevin macleod](https://incompetech.com/music/royalty-free/music.html) for producing a lot of beautiful royalty free music
 
 # NOTES:

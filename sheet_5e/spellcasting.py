@@ -1,4 +1,4 @@
-from dnd_character.SRD import SRD, SRD_endpoints, SRD_classes
+from sheet_5e.SRD import SRD, SRD_endpoints, SRD_classes
 
 
 SRD_spells = {
