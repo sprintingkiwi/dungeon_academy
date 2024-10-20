@@ -1,4 +1,4 @@
-A d20-friendly Visual Novel prototype realized with Ren'Py and AI-generated graphics
+A 5e-SRD based Visual Novel prototype realized with Ren'Py and AI-generated graphics
 
 Releases can be found on [my Itch.io channel](https://sprintingkiwi.itch.io/)
 
@@ -8,6 +8,7 @@ Graphics realized with Stable Diffusion
 * The **code** is under GNU GPL 3 License, except for [dnd_character python library](https://github.com/tassaron/dnd-character) which credits go to [tassaron](https://github.com/tassaron), and it comes with its own license.
 * The **images** are licensed [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 * Credits and licenses for the **audio** files are specified inside the audio folder
+* The [Open Gaming License](SRD-OGL_V1.1.pdf) refers to the content of the [SRD5_system.rpy file](game/SRD5_system.rpy) which implements game mechanics heavily inspired by the SRD5 document. For more informations, please refer to this page: https://www.dndbeyond.com/resources/1781-systems-reference-document-srd
 
 # CREDITS:
 A special thanks to:
