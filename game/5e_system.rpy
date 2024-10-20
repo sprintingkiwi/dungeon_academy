@@ -1,8 +1,8 @@
 init python:
-    import dnd_character as dnd
-    from dnd_character.monsters import SRD_monsters
-    from dnd_character.equipment import SRD_equipment
-    from dnd_character.spellcasting import SRD_spells
+    import sheet_5e as sheet_5e
+    from sheet_5e.monsters import SRD_monsters
+    from sheet_5e.equipment import SRD_equipment
+    from sheet_5e.spellcasting import SRD_spells
     import json
     import random
     from random import randint
@@ -196,7 +196,7 @@ init python:
             raise NotImplementedError()
 
         def get_modifier(self, ability):
-            return dnd.Character.getModifier(self.sheet[ability])
+            return sheet_5e.Character.getModifier(self.sheet[ability])
 
         def get_spell_DC(self):
             return 8 + self.get_proficiency_bonus() + self.get_modifier(self.get_spellcasting_ability())

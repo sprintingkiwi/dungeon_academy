@@ -12,7 +12,7 @@ LOG.setLevel(logging.DEBUG)
 
 
 try:
-    JSON_CACHE = f"{path.dirname(path.abspath(__file__))}/json_cache"
+    JSON_CACHE = f"{path.dirname(path.abspath(__file__))}/../json_data_5e"
 except Exception as e:
     LOG.error(f"Entire JSON cache failed to load: {str(e)}")
 

@@ -44,12 +44,12 @@ label start:
             config.rollback_enabled = True
 
         # ADVENTURERS
-        Ciry = PlayableAdventurer(dnd.Character(
+        Ciry = PlayableAdventurer(sheet_5e.Character(
             name="Ciry",
             age="16",
             level=1,
             gender="Female",
-            classs=dnd.CLASSES["cleric"],
+            classs=sheet_5e.CLASSES["cleric"],
             strength=14,
             dexterity=12,
             constitution=14,
@@ -65,12 +65,12 @@ label start:
         # Ciry.equip_armor(SRD_equipment['leather-armor'])
         # testimg = renpy.image("Ciry", "images/Characters/ciry.png")
 
-        Dante = PlayableAdventurer(dnd.Character(
+        Dante = PlayableAdventurer(sheet_5e.Character(
             name="Dante",
             age="15",
             level=1,
             gender="Male",
-            classs=dnd.CLASSES["wizard"],
+            classs=sheet_5e.CLASSES["wizard"],
             strength=9,
             dexterity=15,
             constitution=13,
@@ -88,12 +88,12 @@ label start:
         Dante.sheet.experience += Dante.sheet.experience.to_next_level
         Dante.sheet.experience += Dante.sheet.experience.to_next_level
 
-        Theo = PlayableAdventurer(dnd.Character(
+        Theo = PlayableAdventurer(sheet_5e.Character(
             name="Theo",
             age="17",
             level=1,
             gender="Female",
-            classs=dnd.CLASSES["barbarian"],
+            classs=sheet_5e.CLASSES["barbarian"],
             strength=17,
             dexterity=12,
             constitution=15,
@@ -107,12 +107,12 @@ label start:
         Theo.actions = [DefaultAttack]
         Theo.equip_weapon(SRD_equipment['club'])
 
-        Player = PlayerAdventurer(dnd.Character(
+        Player = PlayerAdventurer(sheet_5e.Character(
             name="Ale",
             age="16",
             level=1,
             gender="Male",
-            classs=dnd.CLASSES["rogue"],
+            classs=sheet_5e.CLASSES["rogue"],
             strength=8,
             dexterity=8,
             constitution=8,
