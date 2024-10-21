@@ -10,7 +10,7 @@
     "name": "DungeonAcademy",
     "numeric_version": 1,
     "orientation": "sensorLandscape",
-    "package": "com.bravesqueakstudio.dungeonacademy",
+    "package": "com.sprintingkiwi.dungeonacademy",
     "permissions": [
         "VIBRATE",
         "INTERNET"
