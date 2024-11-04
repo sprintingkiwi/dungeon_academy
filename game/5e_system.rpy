@@ -26,7 +26,17 @@ init python:
             if isinstance(v, dict):
                 item = find_item(v, key)
                 if item != None:
-                    return item            
+                    return item
+
+    
+    def has_property(prop_list, prop):
+        for item in prop_list:
+            if isinstance(item, dict):
+                if "index" in item:
+                    if item["index"] == prop:
+                        return True
+        return False
+
 
 
     # def roll_dice(dice_string):
@@ -112,7 +122,11 @@ init python:
             super().effect(target)
             narrator(self.user.get_name() + " attacks " + self.target.get_name())
             ## TO DO: Calculations for finesse weapons here ##
-            hit_roll_result = hit_roll(self.user, self.target, "strength")
+            stat = "strength"
+            if user.weapon != None:
+                if user.weapon["weapon_range"] == "Ranged" or has_property(user.weapon["properties"], "finesse"):
+                    stat = "dexterity"
+            hit_roll_result = hit_roll(self.user, self.target, stat)
             hit = hit_roll_result[0]
             roll = hit_roll_result[1]
             if hit:

@@ -153,9 +153,9 @@ label start:
         GiantRat.save_json()
 
         # EQUIPMENT
-        Dragonlance = SRD_equipment['lance']
-        # with open('lance.json', 'w') as outfile:
-        #     outfile.write(json.dumps(Dragonlance, indent = 4)) 
+        weapon = SRD_equipment['shortbow']
+        with open('weapon.json', 'w') as outfile:
+            outfile.write(json.dumps(weapon, indent = 4)) 
 
         # SPELLS
         with open('spell.json', 'w') as outfile:
