@@ -60,8 +60,8 @@ init python:
             self.result = self.natural_result + self.addition
 
 
-    def hit_roll(user, target, stat):        
-        atk_bonus = user.get_attack_bonus(stat)
+    def hit_roll(user, target):        
+        atk_bonus = user.get_attack_bonus()
         roll = user.roll("1d20+"+str(atk_bonus))
         narrator(f"ATTACK ROLL: {roll.natural_result} + {atk_bonus}(attack bonus) = {roll.result}")        
         ac = int(target.get_armor_class())
@@ -121,12 +121,8 @@ init python:
         def effect(self, target):
             super().effect(target)
             narrator(self.user.get_name() + " attacks " + self.target.get_name())
-            ## TO DO: Calculations for finesse weapons here ##
-            stat = "strength"
-            if user.weapon != None:
-                if user.weapon["weapon_range"] == "Ranged" or has_property(user.weapon["properties"], "finesse"):
-                    stat = "dexterity"
-            hit_roll_result = hit_roll(self.user, self.target, stat)
+            ## TO DO: Calculations for finesse weapons here ##            
+            hit_roll_result = hit_roll(self.user, self.target)
             hit = hit_roll_result[0]
             roll = hit_roll_result[1]
             if hit:
@@ -290,7 +286,11 @@ init python:
         def get_proficiency_bonus(self):
             return self.sheet["prof_bonus"]
 
-        def get_attack_bonus(self, stat):
+        def get_attack_bonus(self):
+            stat = "strength"
+            if self.weapon != None:
+                if self.weapon["weapon_range"] == "Ranged" or has_property(self.weapon["properties"], "finesse"):
+                    stat = "dexterity"
             prof_bonus = self.sheet["prof_bonus"]
             ability_bonus = self.get_modifier(stat)
             return prof_bonus + ability_bonus
@@ -421,7 +421,7 @@ init python:
         def get_hp(self):
             return self.sheet["hit_points"]
 
-        def get_attack_bonus(self, stat=None):
+        def get_attack_bonus(self):
             return int(self.sheet["actions"][0]["attack_bonus"])
 
         def roll_default_damage(self, hit_roll):
