@@ -1,5 +1,7 @@
-﻿# The script of the game goes in this file.
-rpy monologue single
+﻿rpy monologue single
+
+init python:
+    config.tts_voice = "David"
 
 # Talking characters
 define p = Character("You", who_color="#86f1ff")
