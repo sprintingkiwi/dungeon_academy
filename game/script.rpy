@@ -156,14 +156,10 @@ label start:
 
         # EQUIPMENT
         weapon = SRD_equipment['shortbow']
-        with open('weapon.json', 'w') as outfile:
-            outfile.write(json.dumps(weapon, indent = 4)) 
+        open('weapon.json', 'w').write(json.dumps(weapon, indent = 4)) 
 
         # SPELLS
-        with open('spell.json', 'w') as outfile:
-            outfile.write(json.dumps(SRD_spells["burning-hands"], indent = 4))
-            outfile.close()
-
+        open('spell.json', 'w').write(json.dumps(SRD_spells["burning-hands"], indent = 4))
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the

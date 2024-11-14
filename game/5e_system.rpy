@@ -184,9 +184,7 @@ init python:
             return self.sheet["name"]
 
         def save_json(self):
-            with open(self.get_name()+".json", 'w') as outfile:
-                outfile.write(json.dumps(dict(self.sheet), indent = 4))
-                outfile.close()
+            open(self.get_name()+".json", 'w').write(json.dumps(dict(self.sheet), indent = 4))
 
         def get_hp(self):
             raise NotImplementedError()
