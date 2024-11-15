@@ -755,11 +755,6 @@ label chapter_1:
         c "'Wood Elves, too, can make outstanding rogues thanks to both their racial bonus to Dexterity and the"
         c "Mask of the Wild feature, which allows them to easily hide in the natural world.'"
         p "Well, I'm a Half-Elf... Even though, I can't use Mask of the Wild."
-        c "Oh, you are Half-Elf? I never would have said that!"
-        p "I know, my ears are mostly human-like. But still they're still a bit pointed."
-        "You move your hair to show Ciry your left ear."
-        c "Yeah, not so much but it can be seen. Right there, a little elven shaped ear!"
-        p "Hehe!"
     if Player.race == "Dwarf" or Player.race == "Half-Orc":
         c "'Dwarves and Half-Orcs would be unusual races for rogues, but nonetheless, they can find a mix of"
         c "abilities that can make them work effectively as Rogues.'"
