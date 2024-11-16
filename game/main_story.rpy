@@ -1875,6 +1875,53 @@ label chapter_4:
                 Player.inventory.append(rewards_list[3])
                 choice = rewards_list[3]
 
+    label gwen_returns:
+        """
+        You’ve done your best to put the encounter behind you, burying the memory of Gwen’s true form under the routine of academy life. But no matter how hard you try, it lingers—her glowing crimson eyes, the brush of her claws, the unsettling mix of fear and fascination.
+
+        Then one day, she returns.
+
+        You’re sitting in the academy courtyard, trying to focus on a particularly dense passage in one of your magical theory books. The chatter of students fills the air, a comforting background noise—until you hear a familiar voice behind you.
+
+        "Miss me?"
+
+        Your heart stops. You turn, and there she is—Gwen, back in her playful, mischievous academy disguise. She’s dressed in the same student uniform, her hair cropped short again, her bright eyes gleaming with amusement. She looks harmless, normal even, but you know better now.
+
+        "You’re still alive. I have to admit, I’m impressed," she says, sliding onto the bench beside you as if nothing has changed. "I thought you might’ve run off to some temple by now, begging a cleric to ward me away."
+
+        You shift uncomfortably, the memory of her true form flashing in your mind. "What are you doing here, Gwen?"
+
+        She leans in closer, her voice dropping to a conspiratorial whisper. "You, of course. I told you, didn’t I? There’s something about you, something... deliciously unique."
+
+        Her words send a shiver down your spine. "I thought you already got what you wanted," you say, trying to keep your voice steady.
+
+        She laughs softly, the sound both charming and unnerving. "Oh, I tried. Believe me, I tried. But whatever is anchoring your soul to your body? It’s powerful. Too powerful for even me to break through. I need to figure out what it is."
+
+        You swallow hard, unsure whether to feel relieved or terrified. "And why does that matter to you?"
+
+        Gwen’s playful smirk fades, replaced by something more serious. "Because your soul, my dear, was the most delicious thing I’ve ever tasted. Centuries of seduction, centuries of taking what I want, and nothing has ever come close to the sweetness of you. And I couldn’t even finish the meal."
+
+        Her words hang in the air, and you feel a cold sweat forming on your brow.
+
+        "But don’t worry," she adds, her smirk returning as she rests her chin in her hand. "I’m not here to hurt you. Yet. I just... need to figure you out. For now, you’re safe. Think of me as... a friend."
+
+        "A friend," you repeat, incredulous.
+
+        She grins. "Why not? Who else knows your secret? Who else can help you understand what’s going on with that soul of yours?"
+
+        Her words have a strange logic to them, even if every instinct tells you to stay as far away from her as possible.
+
+        "So, what do you say?" Gwen asks, her voice dropping to a low, honeyed tone. "Want to figure this out together?"
+
+        You hesitate. The memory of her glowing eyes and infernal wings looms large, but there’s something else too—a curiosity, a faint pull that you can’t entirely resist.
+
+        Choice:
+
+        "I don’t trust you, Gwen. Stay away from me."
+        "Fine. But I’m keeping my guard up."
+        "If you’re offering answers, I’m in."
+        """
+
 
 label chapter_5:
     # Changing class (if player wants) and accelerated summer course for the new class
