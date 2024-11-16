@@ -23,44 +23,33 @@ label chapter_1:
     "Your adventure begins."
     scene road1
     alt """
-    The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow.
-    A gentle mist weaves through the air, softening the outlines of stone buildings lining the thoroughfare.
-    Warm light spills from lanterns and windows, casting a golden hue that dances upon the stones.
-    People traverse this dreamlike avenue, their forms hazy and mysterious in the fog-laden atmosphere."
+    The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow. A gentle mist weaves through the air, softening the outlines of stone buildings lining the thoroughfare.
+    Warm light spills from lanterns and windows, casting a golden hue that dances upon the stones. People traverse this dreamlike avenue, their forms hazy and mysterious in the fog-laden atmosphere."
     """
     window hide
     pause
     """
-    You walk with a light step as you make your way down the tree-lined path that leads to your dream destination:
-    the Academy!
-    You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day. The best of all:
-    your first day of academy.
-    You left early to avoid the risk of being late. In fact, waiting outside the academy would be a wonderful moment.
-    Will you perhaps meet future classmates there? Will they become friends and valuable allies for the years to
-    come at the academy, or even lifelong adventure companions?
-    As you think about these things, staring up at the sky, something trips you up and you fall heavily to the
-    ground, your face smacked against the stone-paved path.
+    You walk with a light step as you make your way down the tree-lined path that leads to your dream destination: the Academy! You inhale deeply the fresh morning air as you scan the horizon. Yes, it's a beautiful day.
+    The best of all: your first day of academy.\nYou left early to avoid the risk of being late.
+    In fact, waiting outside the academy would be a wonderful moment. Will you perhaps meet future classmates there? Will they become friends and valuable allies for the years to come at the academy, or even lifelong companions?
+    As you think about these things, staring up at the sky, something trips you up and you fall heavily to the ground, your face smacked against the stone-paved path.
     """
     c "Ahi!"
-    "You pick yourself up, a bit confused, trying to figure out what you had tripped over."
-    "A small white-haired female creature is in front of you, crawling next to a backpack and some fallen books."
-    "With one hand, she is now rubbing her head."
+    "You pick yourself up, a bit confused, trying to figure out what you had tripped over: a small white-haired female creature is in front of you, crawling next to a backpack and some fallen books. With one hand, she is now rubbing her head."
     p "{i}(A gnome girl?){/i}"
 
-    menu:        
+    menu:
         "I'm so sorry... I didn't see you at all!":
             $ Ciry.approval += 5
-            "(???'s approval: +5)"
+            "(Unknown's approval: +5)"
         "Hey! Watch out!":
             pass
 
     # scene bg room
     show ciry at topleft with dissolve
     alt """
-    A portrait image appears, showing a young female character with big eyes and a gentle smile.
-    Her long, flowing white hair is elegantly gathered at the top, secured by a single braid that winds around the locks.
-    Pointed ears hint at a non-human race, adding an air of mystery and otherworldliness.
-    The character wears a golden armor adorned with intricate detailing—an ensemble befitting high rank or noble status.
+    A portrait image appears, showing a young female character with big eyes and a gentle smile. Her long, flowing white hair is elegantly gathered at the top, secured by a single braid that winds around the locks.
+    Pointed ears hint at a non-human race, adding an air of mystery and otherworldliness. The character wears a golden armor adorned with intricate detailing—an ensemble befitting high rank or noble status.
     """
     c """
     Hehe, my fault, sorry! I'm a bit clumsy and I always end up dropping things...
@@ -585,11 +574,11 @@ label chapter_1:
                         else:
                             uk "(speaking with her mouth full) I know not who thou art, but I don't care for company whilst I'm eatin'."
                         uk "...now get outta here 'fore I lose me cool."
-                        "(???'s approval: -5)"
+                        "(Unknown's approval: -5)"
                         
                     "Ignore her (she seems comfortable alone)":
                         $ Theo.approval += 5
-                        "(???'s approval: +5)"
+                        "(Unknown's approval: +5)"
 
                 jump after_rector_intro
 
