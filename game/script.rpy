@@ -19,6 +19,7 @@ define ary = Character("Aryanna", who_color="#ff0062")
 define hob = Character("", who_color="#007d11")
 define dea = Character("", who_color="#ffffff")
 define uk = Character("???", who_color="#d5d5d5")
+define gwe = Character("Gwen", color="#FF69B4")
 
 # Cutscene stuff
 define annoytheuser = Dissolve(3.0)

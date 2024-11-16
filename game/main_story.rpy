@@ -912,7 +912,60 @@ label chapter_2:
     c "Wearing a heavy armor all the day, though, can make sense: for a heavy armor user, the sooner you get used"
     c "to moving around effortlessly in armor the better."
     hide ciry with dissolve
-    "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
+
+    scene bg academy_courtyard with fade
+    "One day, the Academy's courtyard is buzzing with activity as students disperse to their classes."
+    "Amid the crowd, a girl approaches you."
+    
+    gwe "Hey, you! You're new here, aren't you?"
+    p "(nervous) Uh... me? Yes, I, uh, just started today."
+    
+    gwe "(grinning) Thought so! You look a little lost. I'm Gwen. What's your name?"
+    p "I'm [Player.name]. Nice to meet you."
+    
+    gwe "Well, how about I give you the grand tour of this place?"
+    gew "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
+    
+    menu:
+        "Agree hesitantly":
+            p "Oh, um... sure. I guess that could be nice."
+            gwe "Great! Meet me by the fountain at sunset. And don’t worry, I’ll try not to get us into too much trouble."
+            gwe "Probably."
+            $ Player.achievements.append("Gwen Date")
+
+        "Decline politely":
+            p "Thank you, but I really should focus on settling in. Maybe another time?"
+            gwe "(pouting) Suit yourself, new boy. But you’re missing out, you know. I’m very entertaining!"
+
+        "(blushing) Get flustered and say nothing":
+            p "Uh... I... um..."
+            gwe "(chuckling) Cat got your tongue, huh?"
+            gwe "Don’t worry, I’ll take that as a yes. Fountain. Sunset. Don’t be late!"
+            $ Player.achievements.append("Gwen Date")
+
+    menu:
+        "Go to the date with Gwen" if "Gwen Date" in Player.achievements:
+            label gwen_date:
+                "The sun dips low, painting the Academy courtyard in hues of gold and crimson."
+                "You wait nervously by the fountain, until Gwen arrives, her usual mischievous grin in place."                
+                gwe "Glad you showed up, [Player.name]! I was starting to think you might bail."
+                
+                menu:                
+                    "No, I wouldn’t... I mean, I’m here, aren’t I?":                
+                        gwe "Relax, I’m just teasing. Now, come on. The Bazaar awaits!"
+                
+                scene bg fantasy_bazaar with dissolve
+
+                "The two make their way to the bustling Bazaar, a vibrant market filled with magical trinkets, exotic foods, and performers displaying their talents. Gwen leads the way, pulling Leo into the crowd."
+                
+                gwe "This place has the best snacks. Try this!" 
+                gwe "Oh, and don’t miss the fire juggler over there. He’s always fun!"
+                
+                "As they wander, Gwen’s enthusiasm is infectious, and Leo finds himself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
+
+        "Skip (continue your studies for the week)":
+            "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
+
     scene 00004-1773495918
     stop music fadeout 2.0
     pause
@@ -1547,7 +1600,240 @@ label chapter_3:
     # Discovery of the Statue of the Silent Goddess within the school and the book that Ciry gradually translates.
     # First encounter with Hooded-Woman
     # Meeting Theo and preparation for the school tournament
-    ""
+    label ch3_choices_1:
+    menu:
+        "Date with Gwen" if "Second date with Gwen" in Player.achievements:
+            $ Player.achievements.append("Second date with Gwen")
+            label gwen_second_date:
+                scene bg academy_path_night with fade
+                "The two walk back towards the Academy under the glow of moonlight, their conversation easy and relaxed."
+                
+                gwe "You’re not bad company for a quiet guy, you know that?
+                Tell you what—why don’t you come back to my place for a bit? I’ve got something to show you."
+                
+                menu:
+                    "Agree to go with her":
+                        l "Alright, sure. Lead the way."
+                        jump gwen_house
+
+                    "Politely decline":
+                        l "Thanks, but I should probably head back. It’s getting late."
+                        g (smirking) "Fair enough, new boy. Maybe next time."
+                        return
+
+            label gwen_house:
+                scene bg gwen_house_interior with fade
+
+                "Gwen leads Leo to a small but cozy house nestled on the outskirts of the Academy grounds. Inside, it’s filled with curiosities: strange books, glimmering crystals, and faintly glowing runes etched into the walls."
+                
+                g "Make yourself at home. I’ll be right back."
+                
+                "She disappears into another room, leaving Leo to nervously take in his surroundings. Something about the place feels... different, though he can’t quite put his finger on it."
+                
+                scene bg gwen_house_dark with dissolve
+
+                "When Gwen returns, her demeanor has shifted. The playful grin remains, but her eyes glow faintly, and the air around her seems charged with an unfamiliar energy."
+                
+                g "You’re a sweet guy, Leo. I like that about you. But there’s something you should know about me..."
+                
+                """
+                "Her form begins to change subtly. Her eyes burn brighter, small horns appear on her head, and a tail flicks into view behind her."
+                When Gwen reveals her true succubus form, the transformation is as breathtaking as it is unsettling. The youthful charm of her academy disguise—a petite teenage girl with bright, mischievous eyes and a playful smile—is completely shed. In its place stands a vision of mature, otherworldly beauty that exudes power and centuries of practiced seduction.
+                Gwen’s stature shifts dramatically. She now stands taller, her posture commanding and poised, with a natural grace that makes every movement seem deliberate and alluring. Her body is no longer girlish but fully matured, with a perfect balance of athleticism and voluptuousness. Her curves are emphasized in a way that feels almost supernatural—designed to draw the eye and capture attention.
+                Her previously soft, pale skin takes on a slight iridescent glow, like moonlight shimmering on a darkened sea. There’s a faint hint of crimson along her shoulders and arms, a subtle reminder of her infernal nature. Small runic patterns etched in faint gold appear across her skin, pulsating faintly as if alive with magic.
+                Gwen’s eyes, once bright and playful, now blaze with an intense, glowing crimson hue, framed by thick, dark lashes. They seem to pierce directly into the soul, conveying a depth of knowledge and an unspoken promise of ecstasy—and danger.
+                Her short, playful haircut elongates into flowing locks of deep, jet-black hair streaked with hints of crimson. Her hair seems almost alive, swaying gently as if caught in an unseen breeze, adding to her otherworldly allure.
+                Two sleek, curved horns spiral elegantly from her temples, glossy black with subtle red veins that pulse with heat. They give her an air of regal dominance, as if she’s a queen of her infernal realm.
+                From her back sprout enormous bat-like wings, their leathery surface marked with faint, glowing runes similar to those on her skin. The wings fold and unfurl gracefully, their movements hypnotic and predatory.
+                Her tail, long and sinuous, moves with a mind of its own. It is tipped with a spade-like shape that glimmers faintly, catching the light in a way that seems both playful and threatening.
+                Her academy uniform dissolves into a flowing, form-fitting gown of deep black and crimson. The fabric shimmers like liquid obsidian, clinging to her curves while leaving parts of her shoulders, back, and legs daringly exposed. The edges of the gown are embroidered with intricate golden patterns resembling infernal script.
+                A choker of dark metal adorned with a single ruby rests around her neck, glowing faintly like a heartbeat. Her fingers are adorned with ornate rings, their gemstones pulsating with a faint inner light.
+                Gwen’s voice, once playful and teasing, becomes richer and more resonant, dripping with confidence and seduction. It’s the kind of voice that wraps around you, drawing you closer even when every instinct tells you to run.
+                The air around her seems to ripple with heat, not uncomfortable but disorienting, like standing too close to a fire. Her presence is almost magnetic, impossible to ignore, as if every movement and gesture is calculated to ensnare attention.
+                A faint, intoxicating aroma follows her, a mix of jasmine, dark spices, and something ineffable that stirs primal instincts.
+                """
+                l (shocked) "Y-you’re... a succubus?"
+                
+                g (softly) "Guilty as charged. Don’t worry, I’m not here to hurt you. I just... wanted to see if you’d trust me. And you did."
+                
+                menu:
+                    "React with fear":
+                        l "I-I need to go. I’m sorry, Gwen."
+                        g (sighing) "I understand. Just remember, I never meant to scare you."
+                        return
+
+                    "React with curiosity":
+                        l "Why reveal this to me? Why take the risk?"
+                        g "Because I’m tired of hiding. And maybe, just maybe, I thought you’d understand."
+                        return
+
+                    "React with acceptance":
+                        l (smiling nervously) "Well... you’re still Gwen, right? I guess that doesn’t change anything."
+                        g (smiling warmly) "You’re something else, Leo. I think I like you even more now."
+                        return
+
+            label gwen_confession:
+                scene bg gwen_house_dark with fade
+                "Leo’s breath catches as Gwen steps closer, her glowing eyes locked onto his. The air around her feels heavier, almost suffocating, but her voice remains soft and alluring."                
+                g "You see, Leo, there’s a little more to me than just being a mischievous girl at the Academy."                
+                "She tilts her head, her horns catching the faint light of the runes on the walls. Her tail flicks lazily behind her as she gazes at him with a mix of amusement and something deeper—something darker."
+                g "I have a habit, you might say. A... special arrangement with the students I bring home."
+                l (uneasy) "W-what kind of arrangement?"                
+                g "I make them feel things they've never felt before. Pleasure beyond their wildest imagination. I take them to heights they didn’t even know existed. And they love it, Leo. Every second of it."
+                "Her smile sharpens, a glimmer of something predatory in her expression."
+                g "But, of course, such ecstasy comes at a price. Nothing in this world is truly free, after all."
+                l (nervously) "The price...? What are you saying?"
+                g (leaning in) "Their souls, Leo. I take their souls. It’s what sustains me. Keeps me alive, keeps me... powerful."
+                "Leo stumbles back slightly, his pulse racing as her words sink in. His gaze darts to the strange runes on the walls, to the faint, otherworldly glow in her eyes."
+                g (softly) "Don’t look so scared, darling. It’s not as bad as it sounds. Most of them didn’t even care—they were too lost in the moment to notice what they’d given up."
+                
+                "She takes another step closer, her voice dropping to a sultry whisper."
+                
+                g "But you’re different, aren’t you? So sweet, so nervous... I couldn’t resist you. And now, here you are, in my home, all to yourself."
+                
+                menu:
+                    "Confront her with fear and anger":
+                        l (shouting) "So this is what you do? You lure people in just to destroy them? That’s... that’s monstrous!"
+                        g (smirking) "Oh, Leo, don’t be so dramatic. I never force anyone—they all agree in the end. Even the ones who protest at first."
+                        "Leo backs away, heart pounding, desperately scanning for an escape route."
+                        return
+
+                    "Challenge her with courage":
+                        l (firmly) "If you think I’m going to just let you take my soul, you’ve got another thing coming. I’m not like the others."
+                        g (laughing softly) "Oh, darling, that’s what they all say. But we’ll see, won’t we?"
+                        return
+
+                    "Appeal to her humanity":
+                        l (gently) "Gwen... if you really liked me, why would you do this? There has to be another way."
+                        g (pausing) "Another way...? You think you can change me, Leo? Save me from what I am?"
+                        "For a brief moment, her expression softens, but it’s quickly replaced by a knowing smirk."
+                        g "You’re adorable. But I wonder—are you willing to bet your soul on it?"
+                        return
+
+            label escape_gwen:
+                "Leo's mind races. Every fiber of his being screams for him to get out, to leave this dangerous and enchanting creature behind."
+                
+                l (thinking) "I can’t stay here. I need to find a way out before it’s too late."
+
+                "As Gwen steps closer, her glowing eyes pinning him in place, he spots the faint outline of the door behind her."
+                
+                g "What’s the matter, darling? Second thoughts? You’re not thinking of leaving, are you?"
+                
+                menu:
+                    "Attempt to distract her":
+                        l (nervously) "No, I just... I need some time to think about all this. It’s a lot to take in."
+                        g (smirking) "Oh, Leo, you’re adorable when you’re scared. But alright, I’ll give you some space. Just don’t run—I’d hate to have to chase you."
+                        
+                        "As she steps back, Leo bolts for the door, adrenaline propelling him forward. Gwen’s laughter echoes behind him as he throws the door open and runs into the night."
+                        
+                        "The Academy grounds blur past him as he sprints back to the safety of the dorms, his chest heaving and heart pounding. He doesn’t look back, but her voice lingers in his mind, a soft, sultry promise."
+                        
+                        g (off-screen) "You can run, Leo, but you’ll be back. They always come back..."
+                        
+
+                    "Try to overpower her":
+                        "Leo clenches his fists, his fear replaced by a surge of defiance. He grabs a nearby chair and hurls it in Gwen’s direction."
+                        
+                        g (laughing) "Really? You think that’s going to stop me?"
+                        
+                        "The distraction works just long enough for him to dart past her. He feels her claws graze his shoulder as he dives through the door, slamming it shut behind him."
+                        
+                        "He doesn’t stop running until he’s far from her house, his breaths ragged and heart pounding. Safe for now, but her parting words haunt him."
+                        
+                        g (off-screen) "You’re fun, Leo. I hope we get to play again soon..."
+
+            label accept_offer:
+                "Leo’s fear battles with a strange, unshakable curiosity. He meets Gwen’s glowing eyes and takes a shaky breath."
+                
+                l (hesitant) "If this is what you are... then I guess I’m willing to take the risk."
+                
+                g (surprised) "Oh? You’re full of surprises, Leo. I didn’t expect you to give in so easily. Or maybe I underestimated you."
+                
+                "She steps closer, her presence overwhelming, but her smile holds a warmth that feels oddly genuine despite the danger."
+                
+                g (softly) "I’ll admit, I’ve grown fond of you. So I’ll make this special for you. No tricks, no games. Just... bliss. Are you ready?"
+                
+                menu:
+                    "Fully accept":
+                        l "I’m ready. Just... go easy on me."
+                        g (laughing) "Oh, Leo, I’ll make it worth your while. Trust me."
+                        
+                        "Gwen reaches for him, her touch igniting a cascade of sensations that defy explanation. For a fleeting moment, all his fears dissolve, replaced by a euphoria that consumes him entirely."
+                        
+                        "But deep in the back of his mind, he feels something slipping away—a piece of himself he’ll never recover."
+                        
+                        "When it’s over, he’s left breathless, the glow in Gwen’s eyes dimming slightly as she gazes at him with a mix of satisfaction and regret."
+                        
+                        g "You were... extraordinary, Leo. I’ll never forget you."
+                        
+                        "He sinks into the chair, his soul now hers, but a part of him doesn’t care. The experience was worth it—or so he convinces himself."
+                        
+                        return
+
+                    "Hesitate but still proceed":
+                        l "I don’t know if I’m ready, but... I trust you."
+                        g (smiling softly) "Then let me take care of you. Just relax."
+                        
+                        "Gwen guides him gently, her power overwhelming yet strangely comforting. He feels himself slipping, but her warmth keeps him grounded until the very end."
+                        
+                        "As he opens his eyes, he knows something is different. Gwen stands before him, her expression unreadable."
+                        
+                        g "You’re stronger than most, Leo. Perhaps you’ll even survive this... for a while."
+                        
+                        "He doesn’t know what she means, but for now, he chooses to believe her. The bond between them is undeniable, even if it came at a cost he can’t fully comprehend."
+                        
+                        return 
+
+            label soul_anchor:
+                "Leo sits up slowly, his head spinning from the overwhelming sensations he just endured. His body feels... intact, but there’s an unfamiliar warmth in his chest, like something ancient and powerful is stirring within him."
+                
+                "Gwen watches him, her confident smirk faltering for the first time. Her glowing eyes narrow as if trying to pierce through a veil she’s never encountered before."
+                
+                g "This... this doesn’t make sense."
+                
+                l (groggily) "What are you talking about? I thought... you said you’d take my soul."
+                
+                "She steps back, her tail flicking agitatedly as she studies him like a puzzle she can’t solve."
+                
+                g (muttering) "I did. Or at least, I tried. I’ve never failed before—not in centuries. But you... you’re still here."
+                
+                "Leo blinks, confusion mingling with the faint remnants of fear. He places a hand on his chest, feeling the steady thrum of his heartbeat."
+                
+                l "I’m... alive?"
+                
+                g (narrowing eyes) "Barely. Something is keeping your soul anchored to your body, something strong. Stronger than anything I’ve ever encountered."
+                
+                "She paces, her claws clicking against the stone floor as she mutters to herself."
+                
+                g "It’s like... there’s a shield around it. No, not a shield—more like chains. Bound tightly to something I can’t touch. What in the Nine Hells are you?"
+                
+                menu:
+                    "Deny knowing anything about it":
+                        l "I have no idea what you’re talking about! I’m just... me. Nothing special."
+                        
+                        g (sharply) "No one who’s ‘just them’ survives me, Leo. You’re hiding something, even if you don’t know it."
+                        
+                        "She leans in, her glowing eyes boring into his, her voice low and dangerous."
+                        
+                        g "I’m going to find out what makes you so different, and when I do, you’d better hope it doesn’t make you more valuable to me."
+                        
+                        return
+
+                    "Admit you’ve always felt different":
+                        l "I don’t know what it is, but... I’ve always felt like there’s something inside me. Something I don’t understand."
+                        
+                        g (intrigued) "Interesting. You’re not lying, are you? No, you don’t even know what you’re hiding."
+                        
+                        "Her smile returns, though this time it’s less predatory and more curious, almost amused."
+                        
+                        g "Well, aren’t you the most fascinating little mystery? Maybe keeping you around will be more entertaining than I thought."
+                        
+                        return
+            
+            
+            jump ch3_choices_1
+
+        "Skip (continue with your school life)"
 
 
 label chapter_4:
