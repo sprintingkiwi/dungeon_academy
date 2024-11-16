@@ -7,19 +7,20 @@ label chapter_1:
     You will play the role of a student at the -Dungeon Academy-, the most prestigious academy for adventurers on the entire continent.\nYour dream: to become the greatest adventurer of all time!
     """
 
-    "# # #" # CHOOSE ABILITIES
+    # CHOOSE ABILITIES
+    "We will now define your abilities scores."
     python:
         score_array = [15, 14, 13, 12, 10, 8]
         for ability in ABILITIES:
-            narrator(f"Choose your {ability} score:", interact=False)
+            narrator(f"Choose your {ability} score:")
             choices = []
             for score in score_array:
                 choices.append((str(score), score))
             choice = renpy.display_menu(choices)            
             Player.set_ability(ability, choice)
             score_array.remove(choice)
-    "# # #"
 
+    "Your adventure begins."
     scene road1
     alt """
     The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow.
