@@ -1836,6 +1836,87 @@ label chapter_3:
         "Skip (continue with your school life)"
 
 
+    label assassin_encounter_cloak:
+        # Scene setup
+        scene bedroom_night with fade
+        play music "suspense_theme.mp3"
+        
+        "The stillness of the night is broken by the faint creak of a floorboard. You wake up, heart pounding, as the realization hits you: someone is inside your home."
+        "Reaching for your dagger, you barely have time to prepare when the door creaks open. A shadowy figure steps inside, their blade gleaming ominously in the faint moonlight."
+        
+        "Before you can act, a voice whispers in your ear, low and calm, though no one is there."
+        
+        hooded_woman "{i}Stay quiet and don’t panic. I can help you.{/i}"
+        
+        "You flinch, your eyes darting around the room. Out of the corner of your vision, you spot a hooded figure materializing in the shadows. Her golden eyes seem to glow, locking onto yours."
+        
+        menu:
+            "Trust her and listen":
+                "You stay silent, nodding slightly, unsure of who this woman is but desperate for help."
+                
+            "Demand answers":
+                l "Who are you?! What’s going on?!"
+                
+                hooded_woman "{i}No time for questions. If you want to live, follow my lead.{/i}"
+                "Her tone brooks no argument, and you reluctantly nod."
+        
+        "The assassin steps closer, their gaze scanning the room. The hooded woman tosses something to you—a shimmering cloak that feels impossibly light in your hands."
+        
+        hooded_woman "{i}Put it on. This will render you invisible to them, but it won’t last long.{/i}"
+        
+        menu:
+            "Put on the cloak":
+                "You throw the cloak around your shoulders, feeling a strange tingle as it settles over you. The assassin’s gaze passes over you without reaction, as though you’ve disappeared."
+                
+            "Hesitate":
+                "You hesitate, unsure if you can trust her, but the assassin’s approach leaves you no choice. You throw the cloak around your shoulders just in time, vanishing from sight."
+        
+        "The hooded woman’s voice whispers again, soft and urgent."
+        
+        hooded_woman "{i}Now, use your skills. You’ve trained for moments like this. Stay quiet, stay sharp, and take them down.{/i}"
+        
+        menu:
+            "Sneak behind the assassin":
+                "You move silently across the room, your footsteps barely a whisper on the wooden floor. The cloak conceals you completely, and the assassin seems oblivious to your presence."
+                
+                "When you’re close enough, you reach out, your dagger poised. With a swift, calculated motion, you disarm the assassin, their blade clattering to the floor."
+                
+            "Set a trap using the surroundings":
+                "You scan the room quickly, noticing a loose curtain cord dangling nearby. Silently, you tie it into a makeshift tripwire."
+                
+                "Then, with a deliberate noise, you draw the assassin’s attention. As they lunge, they trip over the cord, falling heavily to the floor."
+        
+        "The assassin struggles, but you seize the opportunity, pinning them down and pressing your dagger to their throat."
+        
+        "The hooded woman steps forward, her presence commanding."
+        
+        hooded_woman "{i}Enough.{/i}"
+        
+        "The assassin freezes, their eyes wide with fear as they glance at her. Without another word, the assassin scrambles to their feet and flees, disappearing into the night."
+        
+        stop music fadeout 2.0
+        play music "mystery_theme.mp3"
+        
+        "You turn to the hooded woman, your breath heavy. She nods approvingly, her golden eyes glowing faintly."
+        
+        hooded_woman "{i}You did well. But this was only the beginning.{/i}"
+        
+        menu:
+            "Ask who she is":
+                l "Who are you? And why did you help me?"
+                
+                hooded_woman "{i}That’s a story for another time. For now, let’s just say I have an interest in seeing you survive.{/i}"
+                
+            "Thank her nervously":
+                l "T-Thank you. I don’t know how I could have done that without you."
+                
+                hooded_woman "{i}Perhaps. But you’re stronger than you think. Remember that.{/i}"
+        
+        "Before you can say anything else, she vanishes into the shadows as quickly as she appeared, leaving you alone in the stillness of the night."
+
+
+
+
 label chapter_4:
     # School tournament
     # Theoric test
@@ -1937,6 +2018,156 @@ label chapter_6:
         # The meeting with Geralt Dune            
         # School excursion to Dune's manor house
 
+    label deva_ritual:
+        # Scene setup
+        scene meditation_room with fade
+        play music "meditation_theme.mp3"
+
+        "You sit cross-legged, the familiar calm of meditation washing over you. The air around you seems to grow heavy with an unspoken power."
+        "As you focus, your mind drifts, and the faint hum of divine energy fills the room, pulling you deeper into the ritual."
+        
+        "Suddenly, a vision appears before you—a fierce warrior woman, her form illuminated by a faint, otherworldly glow."
+        show deva_image
+        
+        "Her piercing gaze locks onto yours, and though she doesn't speak, her presence commands your full attention. You feel her name in your soul: {i}Deva.{/i}"
+        "The Silent Goddess’s power flows through the vision, and Deva’s story begins to unfold before your eyes…"
+
+        scene deva_childhood with dissolve
+        play music "haunting_theme.mp3"
+        
+        "Deva is but a child in a nomadic barbarian village in the far north, nestled near the snowy mountains. One day, while playing, she hears a strange hum."
+        "Drawn by the sound, she follows it to a hidden cave where she discovers an ancient sword, glowing faintly with divine energy. Playfully, she picks it up and swings it around."
+        
+        "The sword delays her return home, and when she finally heads back, she sees a nightmare unfolding. Frost Giants are attacking her village."
+        "She watches in horror as the giants destroy her home and devour her family and neighbors. Frozen with fear and despair, Deva eventually flees."
+        
+        "The vision shifts, showing Deva surviving alone in the wilderness. The sword, her only companion, offers her warmth on frigid nights and warns her of lurking dangers."
+        "It guides her in finding food and keeps her safe from predators. The bond between Deva and the sword grows stronger with each passing day."
+
+        scene deva_meets_villagers with dissolve
+        play music "soft_theme.mp3"
+        
+        "Years later, Deva stumbles upon a new settlement by a great river. There, she meets an elderly couple who show her kindness."
+        "Though she lives a wild, solitary life, she grows fond of them. They leave her food on cold nights, and the woman teaches her to read."
+        
+        "One night, as Deva sleeps by her small fire, the sword vibrates with urgency, glowing brighter than ever before. It leads her to the couple’s house."
+        "In the shadows, she senses two predatory presences—Dire Wolves, monstrous and bloodthirsty. The couple cries for help, their voices trembling with fear."
+
+        scene deva_wolf_battle with dissolve
+        play music "battle_theme.mp3"
+
+        "Deva refuses to flee this time. With fierce determination, she faces the wolves. The sword vibrates intensely, its glow nearly blinding the beasts."
+        "Though injured in the battle, Deva’s newfound resolve and the sword’s divine power help her slay both wolves. The elderly couple is saved."
+
+        "The vision fades momentarily, but you feel a deep sense of awe. Deva’s story continues to unfold."
+
+        scene deva_frost_giants with dissolve
+        play music "epic_theme.mp3"
+        
+        "Now an experienced warrior, Deva becomes a protector of the region, helping villages threatened by monsters and evil forces."
+        "One day, she hears of Frost Giants attacking a familiar settlement—the very one that once took her in."
+        
+        "Overcoming her childhood fears, Deva confronts the giants, slaying many with the sword’s divine power. A black dragon leading the giants attacks next, but Deva’s holy fury fuels her strength."
+        "In a climactic battle, she scales the dragon and pierces its skull with the sword, ending its reign of terror."
+
+        scene deva_genocide_with dissolve
+        play music "dark_theme.mp3"
+        
+        "But the vision turns darker. Deva, in her Sacred Rage, follows the retreating giants to their village, killing warriors and innocents alike."
+        "As she is about to strike down a pregnant giantess and her child, the sword grows unbearably heavy. It refuses to obey her will, resonating with a sense of sorrow and warning."
+        "Deva regains her senses, grateful to the sword for stopping her from committing an atrocity. This moment shapes her deeply, and she vows to wield her power with greater wisdom."
+
+        "The vision fades, and Deva looks at you once more, her expression a mixture of strength and pain."
+
+        hide deva_image with dissolve
+        play music "mystical_theme.mp3"
+        
+        "As the vision ends, the Silent Goddess’s presence lingers in the air. Deva’s story echoes in your heart, a tale of strength, loss, and redemption."
+        "You feel a newfound connection to the Silent Goddess and her Chosen, as though their trials are now entwined with your own."
+
+
+
+    label private_ritual:
+        scene ritual_room with fade
+        """
+        "The chamber is dimly lit, the air thick with the scent of burning incense and old magic. Strange runes etched into the stone walls shimmer faintly as the ritual reaches its climax."
+        "Gwen stands before you, her infernal wings partially unfurled, her glowing crimson eyes fixed on you with an intensity that makes it hard to breathe."
+        """    
+        gwe "Are you ready? This ritual... it will lay everything bare. Your soul, my essence—nothing will remain hidden."
+        
+        menu:
+            "Nod silently":
+                "You nod, unable to speak, your heart pounding in your chest."
+                
+            "Express doubt":
+                p "I’m not sure about this, Gwen. What if something goes wrong?"
+                
+                gwe "Something always goes wrong. That’s half the fun, isn’t it?"
+                "She smirks, but there’s a flicker of something genuine in her eyes. Concern? No, surely not."
+
+        "Gwen steps closer, her clawed hand brushing your cheek. Her touch is cold, sending a shiver down your spine."
+        
+        gwe "Just relax. This might sting a little."
+        
+        "She places her other hand on your chest, right above your heart. A dark energy begins to swirl around her, tendrils of shadow curling like smoke. You feel an unnatural pull, like your very essence is being drawn to the surface."
+        
+        scene ritual_glow with dissolve
+        
+        "But then, something unexpected happens. A blinding light erupts from within you, golden and pure, cutting through the shadows like a blade. The runes on the walls flicker and shift, their infernal glow replaced by a soft, holy radiance."
+        
+        gwe "(startled) What... what is this?"
+        
+        "She stumbles back, shielding her eyes from the light. Her wings twitch, and for the first time, you see fear on her face."
+        
+        p "I don’t know! This wasn’t supposed to happen!"
+        
+        "The light intensifies, and a voice—calm, soothing, and impossibly ancient—fills the room."
+        
+        silent_goddess "Gwenethra, daughter of shadow, bound by infernal chains. You have touched the root of a soul under my protection. In doing so, you have invited me into this place."
+        
+        gwe "(whispering)The Silent Goddess..."
+        
+        "The voice continues, unyielding yet gentle."
+        
+        silent_goddess "You have lived in darkness, consumed by your instincts. But I offer you a choice: Redemption. Not to walk the path of light, but to sever the chains that bind you to the infernal plane. To be free."
+        
+        menu:
+            "Encourage Gwen to accept":
+                l "Gwen, this is your chance. You don’t have to be a slave to your nature anymore."
+                
+                gwe "(hesitant) Free... I don’t even know what that means anymore."
+                
+                silent_goddess "Freedom means choice. To act, not as your instincts demand, but as your will decides."
+                
+                "Gwen stares at the light, her expression conflicted. Finally, she steps forward, reaching out tentatively."
+                
+                gwe "I... I accept."
+                
+                "The light envelops her, and for a moment, her form dissolves into pure radiance. When it fades, she stands before you, her wings smaller, her eyes no longer glowing but a deep, soulful violet."
+                
+                gwe "I feel... lighter. But also... hollow."
+                
+                silent_goddess "That is the weight of freedom. You will learn to carry it."
+                
+                return
+                
+            "Remain silent":
+                "You say nothing, watching as Gwen wrestles with the choice before her."
+                
+                gwe "I... I don’t know if I can. What am I without my instincts? Without my power?"
+                
+                dea "You are what you choose to become."
+                
+                "Gwen hesitates, then shakes her head, stepping back."
+                
+                gwe "No. I can’t. I’ve been this way too long."
+                
+                dea "So be it. The choice remains, should you seek it again."
+                
+                "The light fades, and the room grows dark once more. Gwen turns to you, her crimson eyes filled with a mix of regret and defiance."
+                
+                gwe "Let’s finish what we started. No more interruptions."
+            
 
 label chapter_7:
     # The ritual with Brandan Dune (Dune story is explained)
