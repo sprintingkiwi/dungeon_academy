@@ -64,7 +64,7 @@ define gui.name_text_font = "OpenSans-Medium.ttf"
 define gui.interface_text_font = "OpenSans-Medium.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 46
+define gui.text_size = 32
 
 ## The size of character names.
 define gui.name_text_size = 46
@@ -129,7 +129,7 @@ define gui.namebox_tile = False
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
 define gui.dialogue_xpos = 0.1
-define gui.dialogue_ypos = 0.15
+define gui.dialogue_ypos = 0.13
 
 ## The maximum width of dialogue text, in pixels.
 define gui.dialogue_width = 0.8
@@ -207,7 +207,7 @@ define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = 42
+define gui.choice_button_text_size = 32
 define gui.choice_button_text_xalign = 0.5
 # define gui.choice_button_text_yalign = 0.5
 define gui.choice_button_text_idle_color = "#fefefe"

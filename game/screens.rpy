@@ -159,7 +159,7 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-    line_spacing 15
+    line_spacing 10
 
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
@@ -212,7 +212,7 @@ style input:
 
 screen choice(items):
     style_prefix "choice"
-    if len(items) >= 5:
+    if len(items) >= 6:
         viewport:
             draggable True
             mousewheel True

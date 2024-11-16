@@ -3,11 +3,8 @@ rpy monologue single
 label chapter_1:
     # $ nar("In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all, a real academy for adventurers! You will play the role of a student at the -Dungeon Academy-, the most prestigious academy for adventurers on the entire continent. Your dream: to become the greatest adventurer of all time!")
     """
-    In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all,
-    a real academy for adventurers!
-    You will play the role of a student at the -Dungeon Academy-, the most prestigious academy for
-    adventurers on the entire continent.
-    Your dream: to become the greatest adventurer of all time!
+    In this video game, you will be transported to a fantastic world full of magic, brave warriors, and above all, a real academy for adventurers!
+    You will play the role of a student at the -Dungeon Academy-, the most prestigious academy for adventurers on the entire continent.\nYour dream: to become the greatest adventurer of all time!
     """
 
     "# # #" # CHOOSE ABILITIES
