@@ -6,8 +6,8 @@ init python:
 # Talking characters
 define p = Character("You", who_color="#86f1ff")
 define c = Character("Ciry", who_color="#ffff80")
-define d = Character("Dante", who_color="#ff9500")
-define t = Character("Theo", who_color="#7cff75")
+define dan = Character("Dante", who_color="#ff9500")
+define the = Character("Theo", who_color="#7cff75")
 define tol = Character("Tolomeus", who_color="#ff0000")
 define rob = Character("Robin", who_color="#faa2fa")
 define dra = Character("Dragon", who_color="#00f549")
@@ -82,7 +82,7 @@ label start:
             charisma=14
         ))
         Dante.race = "Human"
-        Dante.character = d
+        Dante.character = dan
         Dante.image = "dante"
         Dante.actions = [DefaultAttack, BurningHands, CureWounds]
         Dante.equip_weapon(SRD_equipment['quarterstaff'])
@@ -105,7 +105,7 @@ label start:
             charisma=13
         ))
         Theo.race = "Half-Orc"
-        Theo.character = t
+        Theo.character = the
         Theo.image = "theo"
         Theo.actions = [DefaultAttack]
         Theo.equip_weapon(SRD_equipment['club'])

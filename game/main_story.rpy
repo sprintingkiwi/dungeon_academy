@@ -1730,20 +1730,20 @@ label chapter_3:
                             jump ch3_choices_1
                         else:
                             "You lunge forward, trying to shove Gwen aside with all your strength. But to your shock, her hand shoots out, grabbing your wrist effortlessly."
-                            "Her grip is firm, almost unyielding, as if you’ve run into an unmovable force."                            
+                            "Her grip is firm, almost unyielding, as if you've run into an unmovable force."                            
                             gwe "Tsk, tsk. Such impatience."
-                            "She steps closer, her other hand brushing against your shoulder to steady you—or perhaps to remind you of how firmly she’s in control."                            
+                            "She steps closer, her other hand brushing against your shoulder to steady you—or perhaps to remind you of how firmly she's in control."                            
                             "You struggle against her hold, but her strength is far beyond what you expected. The faint scent of her perfume fills the air as her face draws nearer to yours."                            
-                            gwe "I told you, there’s no running from me. Not until I allow it."
-                            "Her tone softens, almost playful, but there’s a dangerous edge to her words. Her eyes bore into yours, daring you to try again."
-                            "Your body tenses as she pushes you backward, pinning you lightly against the nearby wall. It’s not painful, but her dominance is unmistakable."                            
-                            gwe "You’re strong... but not strong enough."
+                            gwe "I told you, there's no running from me. Not until I allow it."
+                            "Her tone softens, almost playful, but there's a dangerous edge to her words. Her eyes bore into yours, daring you to try again."
+                            "Your body tenses as she pushes you backward, pinning you lightly against the nearby wall. It's not painful, but her dominance is unmistakable."                            
+                            gwe "You're strong... but not strong enough."
                             "Her breath brushes against your cheek as her fingers linger on your wrist, a subtle reminder of her power over you."
 
                             menu:
                                 "Keep resisting":
-                                    "You thrash, trying to break free, but it’s like fighting against a storm. Gwen’s grip tightens just enough to still your movements."
-                                    gwe "Shhh... Relax. You’ll only hurt yourself like this."
+                                    "You thrash, trying to break free, but it's like fighting against a storm. Gwen's grip tightens just enough to still your movements."
+                                    gwe "Shhh... Relax. You'll only hurt yourself like this."
                                     "Her voice is laced with a strange mixture of authority and gentleness. Despite yourself, you begin to feel your strength ebb away."
                                     jump surrender_to_gwen
                                 "Stop struggling":
@@ -1753,7 +1753,7 @@ label chapter_3:
 
                 label surrender_to_gwen:
                     "Gwen releases you, though her presence still feels like an invisible chain keeping you rooted to the spot."
-                    gwe "See? That wasn’t so hard, was it?"
+                    gwe "See? That wasn't so hard, was it?"
                     "Her fingers trail along your arm as she steps back, a gesture as much about control as it is about mockery."                    
                     "You take a deep breath, unsure whether to feel anger, fear, or something else entirely."
                     gwe "(smiling softly) Let me take care of you. Just relax."                            
@@ -1805,8 +1805,109 @@ label chapter_3:
             jump ch3_choices_1
 
         "Skip (continue with your life at the Academy)":
-            jump assassin_encounter_cloak
+            jump orc_vs_mage_conflict
 
+
+    label orc_vs_mage_conflict:
+        # Scene setup
+        # scene courtyard_day with fade
+        # play music "tense_argument.mp3"
+
+        "As you walk through the academy courtyard, the sounds of a heated argument catch your attention. A crowd of students has gathered, forming a loose circle around the commotion."
+        "Pushing through the crowd, you see her—an imposing, muscular half-orc girl, her expression furious, towering over a smaller, sharply dressed boy. It's the same girl you noticed in the cafeteria a few days ago."
+
+        # show orc_girl_angry at left
+        # show mage_boy_arrogant at right
+
+        "The boy, his robes finely embroidered with arcane symbols, sneers at the half-orc girl with open disdain. His tone is dripping with contempt."
+        
+        dan "Listen here, you filthy *Half-Blood*. Know your place before you embarrass yourself further."
+        
+        "The half-orc girl clenches her fists, her muscles tensing. Her voice booms with fury as she steps closer to him."
+
+        the "Say that again, you pompous little worm. I dare you."
+        
+        dan "Oh, I will. Your kind doesn't belong here, let alone in the academy. Barbaric brute!"
+
+        "The crowd murmurs in anticipation, and you notice several larger boys standing behind the mage, smirking and cracking their knuckles. It's clear they're his lackeys, ready to back him up."
+
+        # show orc_girl_tense at left
+        "The half-orc girl glances around, her defiant expression faltering just slightly as she realizes she's outnumbered. Still, she doesn't back down."
+
+        the "You think you're tough with your little friends backing you up? I could take you all on if I had to."
+
+        "The tension in the air is palpable, and you feel the weight of the moment pressing down on you. You can't just stand by."
+
+        menu:
+            "Side with the Half-Orc Barbarian Girl":
+                $ alliance = "the"
+                jump side_with_orc
+            "Side with the Noble Mage Boy":
+                $ alliance = "dan"
+                jump side_with_mage
+            "Stay neutral and walk away":
+                $ alliance = "neutral"
+                jump stay_neutral
+
+    label side_with_orc:
+        "You step forward, placing yourself between the half-orc girl and the mage boy, your heart racing."
+        
+        player "That's enough! Leave her alone. She hasn't done anything to deserve this."
+        
+        # show mage_boy_shocked at right
+        "The mage looks at you in disbelief, his smirk replaced by annoyance."
+
+        dan "You're siding with *her*? Figures. Another fool to join the brutes."
+
+        # show orc_girl_surprised at left
+        "The half-orc girl looks at you with a mixture of surprise and gratitude. For a moment, her furious expression softens."
+
+        the "You've got guts stepping in. Thanks."
+
+        "The mage boy scoffs, signaling to his lackeys."
+        dan "Fine. Let's see if your little alliance can handle what's coming next. Let's go, boys."
+        "He storms off, his lackeys following closely behind, though their glares linger on you."
+
+        "The crowd begins to disperse, and the half-orc girl turns to you with a nod of appreciation."
+
+        the "Name's Ragna. I owe you one. Not many people would've done what you just did."
+
+        player "It was the right thing to do."
+
+        "You sense that you've made an ally today—one whose strength and courage might come in handy in the future."
+        jump after_conflict
+
+    label side_with_mage:
+        "You step forward, aligning yourself with the mage boy and his lackeys. The half-orc girl narrows her eyes at you, betrayal flickering across her face."
+
+        player "Maybe you should learn to control your temper. This academy isn't the place for threats and violence."
+        
+        # show orc_girl_hurt at left
+        "The half-orc girl glares at you, her anger briefly replaced by a hint of hurt."
+
+        the "Figures. Just another coward siding with the bullies."
+
+        # show mage_boy_smirk at right
+        "The mage boy chuckles, his arrogance growing."
+
+        dan "Smart choice. At least someone here understands how things work."
+
+        "The crowd begins to disperse as the half-orc girl storms off, her shoulders tense with barely contained fury."
+
+        dan "I'll remember this. Maybe you're not as hopeless as the rest of them."
+
+        "You've clearly made an impression on the mage boy and his circle, though you can't help but wonder if siding with him was the right decision."
+        jump after_conflict
+
+    label stay_neutral:
+        "You hesitate, unsure of how to act. The tension is thick, but ultimately, you decide not to get involved."
+        "The half-orc girl and the mage boy exchange a few more heated words before the crowd begins to disperse."
+        "You walk away, leaving the conflict unresolved. Whether it was the right choice or not, you'll never know."
+        jump after_conflict
+
+    label after_conflict:
+        "With the confrontation behind you, you reflect on what just happened. The choices you made today might shape your future relationships at the academy."
+        return
 
     label assassin_encounter_cloak:
         # Scene setup
