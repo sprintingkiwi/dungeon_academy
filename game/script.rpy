@@ -192,7 +192,7 @@ label start:
             jump dungeon_crawler
 
         "Debug Jump":
-            jump debug  
+            jump ch3_choices_1  
 
 
 

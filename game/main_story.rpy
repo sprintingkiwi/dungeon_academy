@@ -23,7 +23,7 @@ label chapter_1:
     "Your adventure begins."
     scene road1
     alt """
-    The background image portrays an enchanting cobblestone street, bathed in twilight’s ethereal glow. A gentle mist weaves through the air, softening the outlines of stone buildings lining the thoroughfare.
+    The background image portrays an enchanting cobblestone street, bathed in twilight's ethereal glow. A gentle mist weaves through the air, softening the outlines of stone buildings lining the thoroughfare.
     Warm light spills from lanterns and windows, casting a golden hue that dances upon the stones. People traverse this dreamlike avenue, their forms hazy and mysterious in the fog-laden atmosphere."
     """
     window hide
@@ -902,32 +902,29 @@ label chapter_2:
 
     scene bg academy_courtyard with fade
     "One day, the Academy's courtyard is buzzing with activity as students disperse to their classes."
-    "Amid the crowd, a girl approaches you."
-    
+    "Amid the crowd, a girl approaches you."    
     gwe "Hey, you! You're new here, aren't you?"
-    p "(nervous) Uh... me? Yes, I, uh, just started today."
-    
+    p "(nervous) Uh... me? Yes, I, uh, just started today."    
     gwe "(grinning) Thought so! You look a little lost. I'm Gwen. What's your name?"
-    p "I'm [Player.name]. Nice to meet you."
-    
+    p "I'm [Player.sheet.name]. Nice to meet you."    
     gwe "Well, how about I give you the grand tour of this place?"
     gew "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
     
     menu:
         "Agree hesitantly":
             p "Oh, um... sure. I guess that could be nice."
-            gwe "Great! Meet me by the fountain at sunset. And don’t worry, I’ll try not to get us into too much trouble."
+            gwe "Great! Meet me by the fountain at sunset. And don't worry, I'll try not to get us into too much trouble."
             gwe "Probably."
             $ Player.achievements.append("Gwen Date")
 
         "Decline politely":
             p "Thank you, but I really should focus on settling in. Maybe another time?"
-            gwe "(pouting) Suit yourself, new boy. But you’re missing out, you know. I’m very entertaining!"
+            gwe "(pouting) Suit yourself, new boy. But you're missing out, you know. I'm very entertaining!"
 
         "(blushing) Get flustered and say nothing":
             p "Uh... I... um..."
             gwe "(chuckling) Cat got your tongue, huh?"
-            gwe "Don’t worry, I’ll take that as a yes. Fountain. Sunset. Don’t be late!"
+            gwe "Don't worry, I'll take that as a yes. Fountain. Sunset. Don't be late!"
             $ Player.achievements.append("Gwen Date")
 
     menu:
@@ -935,20 +932,16 @@ label chapter_2:
             label gwen_date:
                 "The sun dips low, painting the Academy courtyard in hues of gold and crimson."
                 "You wait nervously by the fountain, until Gwen arrives, her usual mischievous grin in place."                
-                gwe "Glad you showed up, [Player.name]! I was starting to think you might bail."
+                gwe "Glad you showed up, [Player.sheet.name]! I was starting to think you might bail."
                 
                 menu:                
-                    "No, I wouldn’t... I mean, I’m here, aren’t I?":                
-                        gwe "Relax, I’m just teasing. Now, come on. The Bazaar awaits!"
-                
+                    "No, I wouldn't... I mean, I'm here, aren't I?":                
+                        gwe "Relax, I'm just teasing. Now, come on. The Bazaar awaits!"                
                 scene bg fantasy_bazaar with dissolve
-
-                "The two make their way to the bustling Bazaar, a vibrant market filled with magical trinkets, exotic foods, and performers displaying their talents. Gwen leads the way, pulling [Player.name] into the crowd."
-                
+                "You make your way to the bustling Bazaar, a vibrant market filled with magical trinkets, exotic foods, and performers displaying their talents. Gwen leads the way, pulling you into the crowd."                
                 gwe "This place has the best snacks. Try this!" 
-                gwe "Oh, and don’t miss the fire juggler over there. He’s always fun!"
-                
-                "As they wander, Gwen’s enthusiasm is infectious, and [Player.name] finds himself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
+                gwe "Oh, and don't miss the fire juggler over there. He's always fun!"                
+                "As you wander, Gwen's enthusiasm is infectious, and you find yourself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
 
         "Skip (continue your studies for the week)":
             "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
@@ -1589,246 +1582,243 @@ label chapter_3:
     # Meeting Theo and preparation for the school tournament
     label ch3_choices_1:
     menu:
-        "Date with Gwen" if "Second date with Gwen" in Player.achievements:
+        "Date with Gwen":
             $ Player.achievements.append("Second date with Gwen")
             label gwen_second_date:
-                scene bg academy_path_night with fade
-                "The two walk back towards the Academy under the glow of moonlight, their conversation easy and relaxed."
-                
-                gwe "You’re not bad company for a quiet guy, you know that?
-                Tell you what—why don’t you come back to my place for a bit? I’ve got something to show you."
-                
+                # scene bg academy_path_night with fade
+                "The two walk back towards the Academy under the glow of moonlight, their conversation easy and relaxed."                
+                gwe "You're not bad company for a quiet guy, you know that?
+                Tell you what—why don't you come back to my place for a bit? I've got something to show you."                
                 menu:
                     "Agree to go with her":
                         p "Alright, sure. Lead the way."
                         jump gwen_house
 
                     "Politely decline":
-                        p "Thanks, but I should probably head back. It’s getting late."
-                        gwe(smirking) "Fair enough, new boy. Maybe next time."
+                        p "Thanks, but I should probably head back. It's getting late."
+                        gwe "(smirking) Fair enough, new boy. Maybe next time."
                         return
 
             label gwen_house:
-                scene bg gwen_house_interior with fade
-
-                "Gwen leads [Player.name] to a small but cozy house nestled on the outskirts of the Academy grounds. Inside, it’s filled with curiosities: strange books, glimmering crystals, and faintly glowing runes etched into the walls."
-                
-                gwe"Make yourself at home. I’ll be right back."
-                
-                "She disappears into another room, leaving [Player.name] to nervously take in his surroundings. Something about the place feels... different, though he can’t quite put his finger on it."
-                
-                scene bg gwen_house_dark with dissolve
-
-                "When Gwen returns, her demeanor has shifted. The playful grin remains, but her eyes glow faintly, and the air around her seems charged with an unfamiliar energy."
-                
-                gwe"You’re a sweet guy, [Player.name]. I like that about you. But there’s something you should know about me..."
-                
+                # scene bg gwen_house_interior with fade
+                "Gwen leads [Player.sheet.name] to a small but cozy house nestled on the outskirts of the Academy grounds. Inside, it's filled with curiosities: strange books, glimmering crystals, and faintly glowing runes etched into the walls."                
+                gwe "Make yourself at home. I'll be right back."                
+                "She disappears into another room, leaving [Player.sheet.name] to nervously take in his surroundings. Something about the place feels... different, though he can't quite put his finger on it."                
+                # scene bg gwen_house_dark with dissolve
+                "When Gwen returns, her demeanor has shifted. The playful grin remains, but her eyes glow faintly, and the air around her seems charged with an unfamiliar energy."                
+                gwe"You're a sweet guy, [Player.sheet.name]. I like that about you. But there's something you should know about me..."                
                 """
                 "Her form begins to change subtly. Her eyes burn brighter, small horns appear on her head, and a tail flicks into view behind her."
-                When Gwen reveals her true succubus form, the transformation is as breathtaking as it is unsettling. The youthful charm of her academy disguise—a petite teenage girl with bright, mischievous eyes and a playful smile—is completely shed. In its place stands a vision of mature, otherworldly beauty that exudes power and centuries of practiced seduction.
-                Gwen’s stature shifts dramatically. She now stands taller, her posture commanding and poised, with a natural grace that makes every movement seem deliberate and alluring. Her body is no longer girlish but fully matured, with a perfect balance of athleticism and voluptuousness. Her curves are emphasized in a way that feels almost supernatural—designed to draw the eye and capture attention.
-                Her previously soft, pale skin takes on a slight iridescent glow, like moonlight shimmering on a darkened sea. There’s a faint hint of crimson along her shoulders and arms, a subtle reminder of her infernal nature. Small runic patterns etched in faint gold appear across her skin, pulsating faintly as if alive with magic.
-                Gwen’s eyes, once bright and playful, now blaze with an intense, glowing crimson hue, framed by thick, dark lashes. They seem to pierce directly into the soul, conveying a depth of knowledge and an unspoken promise of ecstasy—and danger.
+                When Gwen reveals her true succubus form, the transformation is as breathtaking as it is unsettling.
+                The youthful charm of her academy disguise—a petite teenage girl with bright, mischievous eyes and a playful smile—is completely shed.
+                In its place stands a vision of mature, otherworldly beauty that exudes power and centuries of practiced seduction.
+                Gwen's stature shifts dramatically. She now stands taller, her posture commanding and poised, with a natural grace that makes every movement seem deliberate and alluring.
+                Her body is no longer girlish but fully matured, with a perfect balance of athleticism and voluptuousness. Her curves are emphasized in a way that feels almost supernatural—designed to draw the eye and capture attention.
+                Her previously soft, pale skin takes on a slight iridescent glow, like moonlight shimmering on a darkened sea. There's a faint hint of crimson along her shoulders and arms, a subtle reminder of her infernal nature.
+                Small runic patterns etched in faint gold appear across her skin, pulsating faintly as if alive with magic.
+                Gwen's eyes, once bright and playful, now blaze with an intense, glowing crimson hue, framed by thick, dark lashes.
+                They seem to pierce directly into the soul, conveying a depth of knowledge and an unspoken promise of ecstasy—and danger.
                 Her short, playful haircut elongates into flowing locks of deep, jet-black hair streaked with hints of crimson. Her hair seems almost alive, swaying gently as if caught in an unseen breeze, adding to her otherworldly allure.
-                Two sleek, curved horns spiral elegantly from her temples, glossy black with subtle red veins that pulse with heat. They give her an air of regal dominance, as if she’s a queen of her infernal realm.
+                Two sleek, curved horns spiral elegantly from her temples, glossy black with subtle red veins that pulse with heat. They give her an air of regal dominance, as if she's a queen of her infernal realm.
                 From her back sprout enormous bat-like wings, their leathery surface marked with faint, glowing runes similar to those on her skin. The wings fold and unfurl gracefully, their movements hypnotic and predatory.
                 Her tail, long and sinuous, moves with a mind of its own. It is tipped with a spade-like shape that glimmers faintly, catching the light in a way that seems both playful and threatening.
-                Her academy uniform dissolves into a flowing, form-fitting gown of deep black and crimson. The fabric shimmers like liquid obsidian, clinging to her curves while leaving parts of her shoulders, back, and legs daringly exposed. The edges of the gown are embroidered with intricate golden patterns resembling infernal script.
+                Her academy uniform dissolves into a flowing, form-fitting gown of deep black and crimson. The fabric shimmers like liquid obsidian, clinging to her curves while leaving parts of her shoulders, back, and legs daringly exposed.
+                The edges of the gown are embroidered with intricate golden patterns resembling infernal script.
                 A choker of dark metal adorned with a single ruby rests around her neck, glowing faintly like a heartbeat. Her fingers are adorned with ornate rings, their gemstones pulsating with a faint inner light.
-                Gwen’s voice, once playful and teasing, becomes richer and more resonant, dripping with confidence and seduction. It’s the kind of voice that wraps around you, drawing you closer even when every instinct tells you to run.
+                Gwen's voice, once playful and teasing, becomes richer and more resonant, dripping with confidence and seduction. It's the kind of voice that wraps around you, drawing you closer even when every instinct tells you to run.
                 The air around her seems to ripple with heat, not uncomfortable but disorienting, like standing too close to a fire. Her presence is almost magnetic, impossible to ignore, as if every movement and gesture is calculated to ensnare attention.
                 A faint, intoxicating aroma follows her, a mix of jasmine, dark spices, and something ineffable that stirs primal instincts.
                 """
-                p (shocked) "Y-you’re... a succubus?"
+                show gwen at top with dissolve
                 
-                gwe(softly) "Guilty as charged. Don’t worry, I’m not here to hurt you. I just... wanted to see if you’d trust me. And you did."
+                menu:
+                    "Roll a D20 on Nature":
+                        $ roll = Player.roll_skill("nature")
+                "ROLL: [roll.result]"
+                if roll.result >= 10:
+                    p "(shocked) Y-you're... a Succubus?"
+                else:
+                    p "(shocked) What... What are you?"
+                    gwe "(smiling warmly) Never heard about Succubus, dear?"                
+                gwe "(softly) Guilty as charged. Don't worry, I'm not here to hurt you. I just... wanted to see if you'd trust me. And you did."
                 
                 menu:
                     "React with fear":
-                        p "I-I need to go. I’m sorry, Gwen."
+                        p "I-I need to go. I'm sorry, Gwen."
                         gwe "(sighing) I understand. Just remember, I never meant to scare you."
-                        return
 
                     "React with curiosity":
                         p "Why reveal this to me? Why take the risk?"
-                        gwe "Because I’m tired of hiding. And maybe, just maybe, I thought you’d understand."
-                        return
+                        gwe "Because I'm tired of hiding. And maybe, just maybe, I thought you'd understand."
 
                     "React with acceptance":
-                        p "(smiling nervously) Well... you’re still Gwen, right? I guess that doesn’t change anything."
-                        gwe "(smiling warmly) You’re something else, [Player.name]. I think I like you even more now."
-                        return
+                        p "(smiling nervously) Well... you're still Gwen, right? I guess that doesn't change anything."
+                        gwe "(smiling warmly) You're something else, [Player.sheet.name]. I think I like you even more now."
 
             label gwen_confession:
-                scene bg gwen_house_dark with fade
+                # scene bg gwen_house_dark with fade
                 "Your breath catches as Gwen steps closer, her glowing eyes locked onto yours. The air around her feels heavier, almost suffocating, but her voice remains soft and alluring."                
-                gwe "You see, [Player.name], there’s a little more to me than just being a mischievous girl at the Academy."                
+                gwe "You see, [Player.sheet.name], there's a little more to me than just being a mischievous girl at the Academy."                
                 "She tilts her head, her horns catching the faint light of the runes on the walls. Her tail flicks lazily behind her as she gazes at him with a mix of amusement and something deeper—something darker."
                 gwe "I have a habit, you might say. A... special arrangement with the students I bring home."
                 p "(uneasy) W-what kind of arrangement?"                
-                gwe "I make them feel things they've never felt before. Pleasure beyond their wildest imagination. I take them to heights they didn’t even know existed. And they love it, [Player.name]. Every second of it."
+                gwe "I make them feel things they've never felt before. Pleasure beyond their wildest imagination. I take them to heights they didn't even know existed. And they love it, [Player.sheet.name]. Every second of it."
                 "Her smile sharpens, a glimmer of something predatory in her expression."
                 gwe "But, of course, such ecstasy comes at a price. Nothing in this world is truly free, after all."
                 p "(nervously) The price...? What are you saying?"
-                gwe "(leaning in) Their souls, [Player.name]. I take their souls. It’s what sustains me. Keeps me alive, keeps me... powerful."
+                gwe "(leaning in) Their souls, [Player.sheet.name]. I take their souls. It's what sustains me. Keeps me alive, keeps me... powerful."
                 "You stumble back slightly, your pulse racing as her words sink in. Your gaze darts to the strange runes on the walls, to the faint, otherworldly glow in her eyes."
-                gwe "(softly) Don’t look so scared, darling. It’s not as bad as it sounds. Most of them didn’t even care—they were too lost in the moment to notice what they’d given up."
-                
-                "She takes another step closer, her voice dropping to a sultry whisper."
-                
-                gwe "But you’re different, aren’t you? So sweet, so nervous... I couldn’t resist you. And now, here you are, in my home, all to yourself."
+                gwe "(softly) Don't look so scared, darling. It's not as bad as it sounds. Most of them didn't even care—they were too lost in the moment to notice what they'd given up."                
+                "She takes another step closer, her voice dropping to a sultry whisper."                
+                gwe "But you're different, aren't you? So sweet, so nervous... I couldn't resist you. And now, here you are, in my home, all to yourself."
                 
                 menu:
                     "Confront her with fear and anger":
-                        p "(shouting) So this is what you do? You lure people in just to destroy them? That’s... that’s monstrous!"
-                        gwe "(smirking) Oh, [Player.name], don’t be so dramatic. I never force anyone—they all agree in the end. Even the ones who protest at first."
-                        "[Player.name] backs away, heart pounding, desperately scanning for an escape route."
+                        p "(shouting) So this is what you do? You lure people in just to destroy them? That's... that's monstrous!"
+                        gwe "(smirking) Oh, [Player.sheet.name], don't be so dramatic. I never force anyone—they all agree in the end. Even the ones who protest at first."
+                        "[Player.sheet.name] backs away, heart pounding, desperately scanning for an escape route."
 
                     "Challenge her with courage":
-                        p "(firmly) If you think I’m going to just let you take my soul, you’ve got another thing coming. I’m not like the others."
-                        gwe "(laughing softly) Oh, darling, that’s what they all say. But we’ll see, won’t we?"
+                        p "(firmly) If you think I'm going to just let you take my soul, you've got another thing coming. I'm not like the others."
+                        gwe "(laughing softly) Oh, darling, that's what they all say. But we'll see, won't we?"
 
                     "Appeal to her humanity":
                         p "(gently) Gwen... if you really liked me, why would you do this? There has to be another way."
-                        gwe "(pausing) Another way...? You think you can change me, [Player.name]? Save me from what I am?"
-                        "For a brief moment, her expression softens, but it’s quickly replaced by a knowing smirk."
-                        gwe "You’re adorable. But I wonder—are you willing to bet your soul on it?"
+                        gwe "(pausing) Another way...? You think you can change me, [Player.sheet.name]? Save me from what I am?"
+                        "For a brief moment, her expression softens, but it's quickly replaced by a knowing smirk."
+                        gwe "You're adorable. But I wonder—are you willing to bet your soul on it?"
+
+                menu:
+                    "Try to escape":
+                        jump escape_gwen
+                    "Accept her offer":
+                        jump accept_gwen_offer 
 
             label escape_gwen:
-                "[Player.name]'s mind races. Every fiber of his being screams for him to get out, to leave this dangerous and enchanting creature behind."
-                
-                p (thinking) "I can’t stay here. I need to find a way out before it’s too late."
-
-                "As Gwen steps closer, her glowing eyes pinning him in place, he spots the faint outline of the door behind her."
-                
-                gwe"What’s the matter, darling? Second thoughts? You’re not thinking of leaving, are you?"
+                "Your mind races. Every fiber of your being screams for you to get out, to leave this dangerous and enchanting creature behind."                
+                p "(thinking) I can't stay here. I need to find a way out before it's too late."
+                "As Gwen steps closer, her glowing eyes pinning you in place, he spots the faint outline of the door behind her."                
+                gwe "What's the matter, darling? Second thoughts? You're not thinking of leaving, are you?"
                 
                 menu:
                     "Attempt to distract her":
-                        p (nervously) "No, I just... I need some time to think about all this. It’s a lot to take in."
-                        gwe(smirking) "Oh, [Player.name], you’re adorable when you’re scared. But alright, I’ll give you some space. Just don’t run—I’d hate to have to chase you."
-                        
-                        "As she steps back, [Player.name] bolts for the door, adrenaline propelling him forward. Gwen’s laughter echoes behind him as he throws the door open and runs into the night."
-                        
-                        "The Academy grounds blur past him as he sprints back to the safety of the dorms, his chest heaving and heart pounding. He doesn’t look back, but her voice lingers in his mind, a soft, sultry promise."
-                        
-                        gwe(off-screen) "You can run, [Player.name], but you’ll be back. They always come back..."
-                        
+                        menu:
+                            "Roll a D20 on Performance":
+                                $ roll = Player.roll_skill("performance")
+                        "ROLL: [roll.result]"
+                        if roll.result >= 10:
+                            p "(nervously) No, I just... I need some time to think about all this. It's a lot to take in."
+                            gwe "(smirking) Oh, [Player.sheet.name], you're adorable when you're scared. But alright, I'll give you some space. Just don't run—I'd hate to have to chase you."                        
+                            "As she steps back, [Player.sheet.name] bolts for the door, adrenaline propelling him forward. Gwen's laughter echoes behind him as he throws the door open and runs into the night."                        
+                            "The Academy grounds blur past him as he sprints back to the safety of the dorms, his chest heaving and heart pounding. He doesn't look back, but her voice lingers in his mind, a soft, sultry promise."                        
+                            gwe "(off-screen) You can run, [Player.sheet.name], but you'll be back. They always come back..."   
+                            jump ch3_choices_1
+                        else:
+                            "You try to distract her, but she cannot be fooled so easily..."
 
                     "Try to overpower her":
-                        "[Player.name] clenches his fists, his fear replaced by a surge of defiance. He grabs a nearby chair and hurls it in Gwen’s direction."
-                        
-                        gwe(laughing) "Really? You think that’s going to stop me?"
-                        
-                        "The distraction works just long enough for him to dart past her. He feels her claws graze his shoulder as he dives through the door, slamming it shut behind him."
-                        
-                        "He doesn’t stop running until he’s far from her house, his breaths ragged and heart pounding. Safe for now, but her parting words haunt him."
-                        
-                        gwe(off-screen) "You’re fun, [Player.name]. I hope we get to play again soon..."
+                        menu:
+                            "Roll a D20 on Athletics":
+                                $ roll = Player.roll_skill("athletics")
+                        "ROLL: [roll.result]"
+                        if roll.result >= 10:
+                            "You clench your fists, your fear replaced by a surge of defiance. You grab a nearby chair and hurl it in Gwen's direction."                        
+                            gwe "(laughing) Really? You think that's going to stop me?"                        
+                            "The distraction works just long enough for you to dart past her. You fell her claws graze your shoulder as you dive through the door, slamming it shut behind you."                        
+                            "You don't stop running until you're far from her house, your breaths ragged and heart pounding. Safe for now, but her parting words haunt you."                        
+                            gwe "(off-screen) You're fun, [Player.sheet.name]. I hope we get to play again soon..."
+                            jump ch3_choices_1
+                        else:
+                            "You lunge forward, trying to shove Gwen aside with all your strength. But to your shock, her hand shoots out, grabbing your wrist effortlessly."
+                            "Her grip is firm, almost unyielding, as if you’ve run into an unmovable force."                            
+                            gwe "Tsk, tsk. Such impatience."
+                            "She steps closer, her other hand brushing against your shoulder to steady you—or perhaps to remind you of how firmly she’s in control."                            
+                            "You struggle against her hold, but her strength is far beyond what you expected. The faint scent of her perfume fills the air as her face draws nearer to yours."                            
+                            gwe "I told you, there’s no running from me. Not until I allow it."
+                            "Her tone softens, almost playful, but there’s a dangerous edge to her words. Her eyes bore into yours, daring you to try again."
+                            "Your body tenses as she pushes you backward, pinning you lightly against the nearby wall. It’s not painful, but her dominance is unmistakable."                            
+                            gwe "You’re strong... but not strong enough."
+                            "Her breath brushes against your cheek as her fingers linger on your wrist, a subtle reminder of her power over you."
 
-            label accept_offer:
-                "Your fear battles with a strange, unshakable curiosity. You meets Gwen’s glowing eyes and take a shaky breath."
-                
-                p (hesitant) "If this is what you are... then I guess I’m willing to take the risk."
-                
-                gwe "(surprised) Oh? You’re full of surprises, [Player.name]. I didn’t expect you to give in so easily. Or maybe I underestimated you."
-                
-                "She steps closer, her presence overwhelming, but her smile holds a warmth that feels oddly genuine despite the danger."
-                
-                gwe "(softly) I’ll admit, I’ve grown fond of you. So I’ll make this special for you. No tricks, no games. Just... bliss. Are you ready?"
-                
-                menu:
-                    "Fully accept":
-                        p "I’m ready. Just... go easy on me."
-                        gwe "(laughing) Oh, [Player.name], I’ll make it worth your while. Trust me."
-                        
-                        "Gwen reaches for you, her touch igniting a cascade of sensations that defy explanation. For a fleeting moment, all your fears dissolve, replaced by a euphoria that consumes you entirely."
-                        "But deep in the back of your mind, you feel something slipping away—a piece of yourself you might never recover."
-                        "When it’s over, you're left breathless, the glow in Gwen’s eyes dimming slightly as she gazes at you with a mix of satisfaction and regret."
-                        
-                        gwe "You were... extraordinary, [Player.name]. I’ll never forget you."
-                        
-                        "He sinks into the chair, his soul now hers, but a part of him doesn’t care. The experience was worth it—or so he convinces himself."
-                        
-                        return
+                            menu:
+                                "Keep resisting":
+                                    "You thrash, trying to break free, but it’s like fighting against a storm. Gwen’s grip tightens just enough to still your movements."
+                                    gwe "Shhh... Relax. You’ll only hurt yourself like this."
+                                    "Her voice is laced with a strange mixture of authority and gentleness. Despite yourself, you begin to feel your strength ebb away."
+                                    jump surrender_to_gwen
+                                "Stop struggling":
+                                    "Realizing that resistance is futile, you let your body relax under her hold. She notices your surrender with a smirk."
+                                    gwe "Good. Much better."
+                                    jump surrender_to_gwen
 
-                    "Hesitate but still proceed":
-                        p "I don’t know if I’m ready, but... I trust you."
-                        gwe(smiling softly) "Then let me take care of you. Just relax."
-                        
-                        "Gwen guides him gently, her power overwhelming yet strangely comforting. He feels himself slipping, but her warmth keeps him grounded until the very end."
-                        
-                        "As he opens his eyes, he knows something is different. Gwen stands before him, her expression unreadable."
-                        
-                        gwe"You’re stronger than most, [Player.name]. Perhaps you’ll even survive this... for a while."
-                        
-                        "He doesn’t know what she means, but for now, he chooses to believe her. The bond between them is undeniable, even if it came at a cost he can’t fully comprehend."
-                        
-                        return 
+                label surrender_to_gwen:
+                    "Gwen releases you, though her presence still feels like an invisible chain keeping you rooted to the spot."
+                    gwe "See? That wasn’t so hard, was it?"
+                    "Her fingers trail along your arm as she steps back, a gesture as much about control as it is about mockery."                    
+                    "You take a deep breath, unsure whether to feel anger, fear, or something else entirely."
+                    gwe "(smiling softly) Let me take care of you. Just relax."                            
+                    "Gwen guides you gently, her power overwhelming yet strangely comforting. You feel yourself slipping, but her warmth keeps you grounded until the very end."                            
+                    "As you open your eyes, you know something is different. Gwen stands before you, her expression unreadable."                            
+                    gwe"You're stronger than most, [Player.sheet.name]. Perhaps you'll even survive this... for a while."                            
+                    "You don't know what she means, but for now, you choose to believe her. The bond between them is undeniable, even if it came at a cost you can't fully comprehend."
+                    jump soul_anchor
 
+                label accept_gwen_offer:
+                    "Your fear battles with a strange, unshakable curiosity. You meets Gwen's glowing eyes and take a shaky breath."            
+                    p "(hesitant) If this is what you are... then I guess I'm willing to take the risk."                    
+                    gwe "(surprised) Oh? You're full of surprises, [Player.sheet.name]. I didn't expect you to give in so easily. Or maybe I underestimated you."                    
+                    "She steps closer, her presence overwhelming, but her smile holds a warmth that feels oddly genuine despite the danger."                    
+                    gwe "(softly) I'll admit, I've grown fond of you. So I'll make this special for you. No tricks, no games. Just... bliss. Are you ready?"                    
+                    p "I'm ready. Just... go easy on me."
+                    gwe "(laughing) Oh, [Player.sheet.name], I'll make it worth your while. Trust me."                    
+                    "Gwen reaches for you, her touch igniting a cascade of sensations that defy explanation. For a fleeting moment, all your fears dissolve, replaced by a euphoria that consumes you entirely."
+                    "But deep in the back of your mind, you feel something slipping away—a piece of yourself you might never recover."
+                    "When it's over, you're left breathless, the glow in Gwen's eyes dimming slightly as she gazes at you with a mix of satisfaction and regret."                    
+                    gwe "You were... extraordinary, [Player.sheet.name]. I'll never forget you."                    
+                    "He sinks into the chair, his soul now hers, but a part of him doesn't care. The experience was worth it—or so he convinces himself."
+                            
             label soul_anchor:
-                "[Player.name] sits up slowly, his head spinning from the overwhelming sensations he just endured. His body feels... intact, but there’s an unfamiliar warmth in his chest, like something ancient and powerful is stirring within him."
-                
-                "Gwen watches him, her confident smirk faltering for the first time. Her glowing eyes narrow as if trying to pierce through a veil she’s never encountered before."
-                
-                gwe"This... this doesn’t make sense."
-                
-                p (groggily) "What are you talking about? I thought... you said you’d take my soul."
-                
-                "She steps back, her tail flicking agitatedly as she studies him like a puzzle she can’t solve."
-                
-                gwe(muttering) "I did. Or at least, I tried. I’ve never failed before—not in centuries. But you... you’re still here."
-                
-                "[Player.name] blinks, confusion mingling with the faint remnants of fear. He places a hand on his chest, feeling the steady thrum of his heartbeat."
-                
-                p "I’m... alive?"
-                
-                gwe "(narrowing eyes) Barely. Something is keeping your soul anchored to your body, something strong. Stronger than anything I’ve ever encountered."
-                
+                "You sit up slowly, your head spinning from the overwhelming sensations you just endured. Your body feels... intact, but there's an unfamiliar warmth in your chest, like something ancient and powerful is stirring within you."
+                "Gwen watches you, her confident smirk faltering for the first time. Her glowing eyes narrow as if trying to pierce through a veil she's never encountered before."                
+                gwe "This... this doesn't make sense."                
+                p "(groggily) What are you talking about? I thought... you said you'd take my soul."                
+                "She steps back, her tail flicking agitatedly as she studies you like a puzzle she can't solve."
+                gwe "(muttering) I did. Or at least, I tried. I've never failed before—not in centuries. But you... you're still here."
+                "[Player.sheet.name] blinks, confusion mingling with the faint remnants of fear. He places a hand on his chest, feeling the steady thrum of his heartbeat."
+                p "I'm... alive?"                
+                gwe "(narrowing eyes) Barely. Something is keeping your soul anchored to your body, something strong. Stronger than anything I've ever encountered."
                 "She paces, her claws clicking against the stone floor as she mutters to herself."
-                
-                gwe"It’s like... there’s a shield around it. No, not a shield—more like chains. Bound tightly to something I can’t touch. What in the Nine Hells are you?"
+                gwe "It's like... there's a shield around it. No, not a shield—more like chains. Bound tightly to something I can't touch. What in the Nine Hells are you?"
                 
                 menu:
                     "Deny knowing anything about it":
-                        p "I have no idea what you’re talking about! I’m just... me. Nothing special."
+                        p "I have no idea what you're talking about! I'm just... me. Nothing special."                        
+                        gwe "(sharply) No one who's ‘just them' survives me, [Player.sheet.name]. You're hiding something, even if you don't know it."                        
+                        "She leans in, her glowing eyes boring into his, her voice low and dangerous."                        
+                        gwe"I'm going to find out what makes you so different, and when I do, you'd better hope it doesn't make you more valuable to me."
                         
-                        gwe "(sharply) No one who’s ‘just them’ survives me, [Player.name]. You’re hiding something, even if you don’t know it."
-                        
-                        "She leans in, her glowing eyes boring into his, her voice low and dangerous."
-                        
-                        gwe"I’m going to find out what makes you so different, and when I do, you’d better hope it doesn’t make you more valuable to me."
-                        
-                        return
-
-                    "Admit you’ve always felt different":
-                        p "I don’t know what it is, but... I’ve always felt like there’s something inside me. Something I don’t understand."
-                        
-                        gwe(intrigued) "Interesting. You’re not lying, are you? No, you don’t even know what you’re hiding."
-                        
-                        "Her smile returns, though this time it’s less predatory and more curious, almost amused."
-                        
-                        gwe"Well, aren’t you the most fascinating little mystery? Maybe keeping you around will be more entertaining than I thought."
-                        
-                        return
-            
+                    "Tell her about the sword":                        
+                        gwe "(intrigued) Interesting. You're not lying, are you? No, you don't even know what you're hiding."                        
+                        "Her smile returns, though this time it's less predatory and more curious, almost amused."                        
+                        gwe"Well, aren't you the most fascinating little mystery? Maybe keeping you around will be more entertaining than I thought."                       
             
             jump ch3_choices_1
 
-        "Skip (continue with your school life)"
+        "Skip (continue with your life at the Academy)":
+            jump assassin_encounter_cloak
 
 
     label assassin_encounter_cloak:
         # Scene setup
-        scene bedroom_night with fade
-        play music "suspense_theme.mp3"
+        # scene bedroom_night with fade
+        # play music "suspense_theme.mp3"
         
         "The stillness of the night is broken by the faint creak of a floorboard. You wake up, heart pounding, as the realization hits you: someone is inside your home."
         "Reaching for your dagger, you barely have time to prepare when the door creaks open. A shadowy figure steps inside, their blade gleaming ominously in the faint moonlight."
         
         "Before you can act, a voice whispers in your ear, low and calm, though no one is there."
         
-        hooded_woman "{i}Stay quiet and don’t panic. I can help you.{/i}"
+        hooded_woman "{i}Stay quiet and don't panic. I can help you.{/i}"
         
         "You flinch, your eyes darting around the room. Out of the corner of your vision, you spot a hooded figure materializing in the shadows. Her golden eyes seem to glow, locking onto yours."
         
@@ -1837,36 +1827,36 @@ label chapter_3:
                 "You stay silent, nodding slightly, unsure of who this woman is but desperate for help."
                 
             "Demand answers":
-                p "Who are you?! What’s going on?!"
+                p "Who are you?! What's going on?!"
                 
                 hooded_woman "{i}No time for questions. If you want to live, follow my lead.{/i}"
                 "Her tone brooks no argument, and you reluctantly nod."
         
         "The assassin steps closer, their gaze scanning the room. The hooded woman tosses something to you—a shimmering cloak that feels impossibly light in your hands."
         
-        hooded_woman "{i}Put it on. This will render you invisible to them, but it won’t last long.{/i}"
+        hooded_woman "{i}Put it on. This will render you invisible to them, but it won't last long.{/i}"
         
         menu:
             "Put on the cloak":
-                "You throw the cloak around your shoulders, feeling a strange tingle as it settles over you. The assassin’s gaze passes over you without reaction, as though you’ve disappeared."
+                "You throw the cloak around your shoulders, feeling a strange tingle as it settles over you. The assassin's gaze passes over you without reaction, as though you've disappeared."
                 
             "Hesitate":
-                "You hesitate, unsure if you can trust her, but the assassin’s approach leaves you no choice. You throw the cloak around your shoulders just in time, vanishing from sight."
+                "You hesitate, unsure if you can trust her, but the assassin's approach leaves you no choice. You throw the cloak around your shoulders just in time, vanishing from sight."
         
-        "The hooded woman’s voice whispers again, soft and urgent."
+        "The hooded woman's voice whispers again, soft and urgent."
         
-        hooded_woman "{i}Now, use your skills. You’ve trained for moments like this. Stay quiet, stay sharp, and take them down.{/i}"
+        hooded_woman "{i}Now, use your skills. You've trained for moments like this. Stay quiet, stay sharp, and take them down.{/i}"
         
         menu:
             "Sneak behind the assassin":
                 "You move silently across the room, your footsteps barely a whisper on the wooden floor. The cloak conceals you completely, and the assassin seems oblivious to your presence."
                 
-                "When you’re close enough, you reach out, your dagger poised. With a swift, calculated motion, you disarm the assassin, their blade clattering to the floor."
+                "When you're close enough, you reach out, your dagger poised. With a swift, calculated motion, you disarm the assassin, their blade clattering to the floor."
                 
             "Set a trap using the surroundings":
                 "You scan the room quickly, noticing a loose curtain cord dangling nearby. Silently, you tie it into a makeshift tripwire."
                 
-                "Then, with a deliberate noise, you draw the assassin’s attention. As they lunge, they trip over the cord, falling heavily to the floor."
+                "Then, with a deliberate noise, you draw the assassin's attention. As they lunge, they trip over the cord, falling heavily to the floor."
         
         "The assassin struggles, but you seize the opportunity, pinning them down and pressing your dagger to their throat."
         
@@ -1877,7 +1867,7 @@ label chapter_3:
         "The assassin freezes, their eyes wide with fear as they glance at her. Without another word, the assassin scrambles to their feet and flees, disappearing into the night."
         
         stop music fadeout 2.0
-        play music "mystery_theme.mp3"
+        # play music "mystery_theme.mp3"
         
         "You turn to the hooded woman, your breath heavy. She nods approvingly, her golden eyes glowing faintly."
         
@@ -1887,12 +1877,12 @@ label chapter_3:
             "Ask who she is":
                 p "Who are you? And why did you help me?"
                 
-                hooded_woman "{i}That’s a story for another time. For now, let’s just say I have an interest in seeing you survive.{/i}"
+                hooded_woman "{i}That's a story for another time. For now, let's just say I have an interest in seeing you survive.{/i}"
                 
             "Thank her nervously":
-                p "T-Thank you. I don’t know how I could have done that without you."
+                p "T-Thank you. I don't know how I could have done that without you."
                 
-                hooded_woman "{i}Perhaps. But you’re stronger than you think. Remember that.{/i}"
+                hooded_woman "{i}Perhaps. But you're stronger than you think. Remember that.{/i}"
         
         "Before you can say anything else, she vanishes into the shadows as quickly as she appeared, leaving you alone in the stillness of the night."
 
@@ -1940,49 +1930,49 @@ label chapter_4:
 
     label gwen_returns:
         """
-        You’ve done your best to put the encounter behind you, burying the memory of Gwen’s true form under the routine of academy life. But no matter how hard you try, it lingers—her glowing crimson eyes, the brush of her claws, the unsettling mix of fear and fascination.
+        You've done your best to put the encounter behind you, burying the memory of Gwen's true form under the routine of academy life. But no matter how hard you try, it lingers—her glowing crimson eyes, the brush of her claws, the unsettling mix of fear and fascination.
 
         Then one day, she returns.
 
-        You’re sitting in the academy courtyard, trying to focus on a particularly dense passage in one of your magical theory books. The chatter of students fills the air, a comforting background noise—until you hear a familiar voice behind you.
+        You're sitting in the academy courtyard, trying to focus on a particularly dense passage in one of your magical theory books. The chatter of students fills the air, a comforting background noise—until you hear a familiar voice behind you.
 
         "Miss me?"
 
-        Your heart stops. You turn, and there she is—Gwen, back in her playful, mischievous academy disguise. She’s dressed in the same student uniform, her hair cropped short again, her bright eyes gleaming with amusement. She looks harmless, normal even, but you know better now.
+        Your heart stops. You turn, and there she is—Gwen, back in her playful, mischievous academy disguise. She's dressed in the same student uniform, her hair cropped short again, her bright eyes gleaming with amusement. She looks harmless, normal even, but you know better now.
 
-        "You’re still alive. I have to admit, I’m impressed," she says, sliding onto the bench beside you as if nothing has changed. "I thought you might’ve run off to some temple by now, begging a cleric to ward me away."
+        "You're still alive. I have to admit, I'm impressed," she says, sliding onto the bench beside you as if nothing has changed. "I thought you might've run off to some temple by now, begging a cleric to ward me away."
 
         You shift uncomfortably, the memory of her true form flashing in your mind. "What are you doing here, Gwen?"
 
-        She leans in closer, her voice dropping to a conspiratorial whisper. "You, of course. I told you, didn’t I? There’s something about you, something... deliciously unique."
+        She leans in closer, her voice dropping to a conspiratorial whisper. "You, of course. I told you, didn't I? There's something about you, something... deliciously unique."
 
         Her words send a shiver down your spine. "I thought you already got what you wanted," you say, trying to keep your voice steady.
 
-        She laughs softly, the sound both charming and unnerving. "Oh, I tried. Believe me, I tried. But whatever is anchoring your soul to your body? It’s powerful. Too powerful for even me to break through. I need to figure out what it is."
+        She laughs softly, the sound both charming and unnerving. "Oh, I tried. Believe me, I tried. But whatever is anchoring your soul to your body? It's powerful. Too powerful for even me to break through. I need to figure out what it is."
 
         You swallow hard, unsure whether to feel relieved or terrified. "And why does that matter to you?"
 
-        Gwen’s playful smirk fades, replaced by something more serious. "Because your soul, my dear, was the most delicious thing I’ve ever tasted. Centuries of seduction, centuries of taking what I want, and nothing has ever come close to the sweetness of you. And I couldn’t even finish the meal."
+        Gwen's playful smirk fades, replaced by something more serious. "Because your soul, my dear, was the most delicious thing I've ever tasted. Centuries of seduction, centuries of taking what I want, and nothing has ever come close to the sweetness of you. And I couldn't even finish the meal."
 
         Her words hang in the air, and you feel a cold sweat forming on your brow.
 
-        "But don’t worry," she adds, her smirk returning as she rests her chin in her hand. "I’m not here to hurt you. Yet. I just... need to figure you out. For now, you’re safe. Think of me as... a friend."
+        "But don't worry," she adds, her smirk returning as she rests her chin in her hand. "I'm not here to hurt you. Yet. I just... need to figure you out. For now, you're safe. Think of me as... a friend."
 
         "A friend," you repeat, incredulous.
 
-        She grins. "Why not? Who else knows your secret? Who else can help you understand what’s going on with that soul of yours?"
+        She grins. "Why not? Who else knows your secret? Who else can help you understand what's going on with that soul of yours?"
 
         Her words have a strange logic to them, even if every instinct tells you to stay as far away from her as possible.
 
         "So, what do you say?" Gwen asks, her voice dropping to a low, honeyed tone. "Want to figure this out together?"
 
-        You hesitate. The memory of her glowing eyes and infernal wings looms large, but there’s something else too—a curiosity, a faint pull that you can’t entirely resist.
+        You hesitate. The memory of her glowing eyes and infernal wings looms large, but there's something else too—a curiosity, a faint pull that you can't entirely resist.
 
         Choice:
 
-        "I don’t trust you, Gwen. Stay away from me."
-        "Fine. But I’m keeping my guard up."
-        "If you’re offering answers, I’m in."
+        "I don't trust you, Gwen. Stay away from me."
+        "Fine. But I'm keeping my guard up."
+        "If you're offering answers, I'm in."
         """
 
 
@@ -2012,7 +2002,7 @@ label chapter_6:
         show deva_image
         
         "Her piercing gaze locks onto yours, and though she doesn't speak, her presence commands your full attention. You feel her name in your soul: {i}Deva.{/i}"
-        "The Silent Goddess’s power flows through the vision, and Deva’s story begins to unfold before your eyes…"
+        "The Silent Goddess's power flows through the vision, and Deva's story begins to unfold before your eyes…"
 
         scene deva_childhood with dissolve
         play music "haunting_theme.mp3"
@@ -2032,16 +2022,16 @@ label chapter_6:
         "Years later, Deva stumbles upon a new settlement by a great river. There, she meets an elderly couple who show her kindness."
         "Though she lives a wild, solitary life, she grows fond of them. They leave her food on cold nights, and the woman teaches her to read."
         
-        "One night, as Deva sleeps by her small fire, the sword vibrates with urgency, glowing brighter than ever before. It leads her to the couple’s house."
+        "One night, as Deva sleeps by her small fire, the sword vibrates with urgency, glowing brighter than ever before. It leads her to the couple's house."
         "In the shadows, she senses two predatory presences—Dire Wolves, monstrous and bloodthirsty. The couple cries for help, their voices trembling with fear."
 
         scene deva_wolf_battle with dissolve
         play music "battle_theme.mp3"
 
         "Deva refuses to flee this time. With fierce determination, she faces the wolves. The sword vibrates intensely, its glow nearly blinding the beasts."
-        "Though injured in the battle, Deva’s newfound resolve and the sword’s divine power help her slay both wolves. The elderly couple is saved."
+        "Though injured in the battle, Deva's newfound resolve and the sword's divine power help her slay both wolves. The elderly couple is saved."
 
-        "The vision fades momentarily, but you feel a deep sense of awe. Deva’s story continues to unfold."
+        "The vision fades momentarily, but you feel a deep sense of awe. Deva's story continues to unfold."
 
         scene deva_frost_giants with dissolve
         play music "epic_theme.mp3"
@@ -2049,7 +2039,7 @@ label chapter_6:
         "Now an experienced warrior, Deva becomes a protector of the region, helping villages threatened by monsters and evil forces."
         "One day, she hears of Frost Giants attacking a familiar settlement—the very one that once took her in."
         
-        "Overcoming her childhood fears, Deva confronts the giants, slaying many with the sword’s divine power. A black dragon leading the giants attacks next, but Deva’s holy fury fuels her strength."
+        "Overcoming her childhood fears, Deva confronts the giants, slaying many with the sword's divine power. A black dragon leading the giants attacks next, but Deva's holy fury fuels her strength."
         "In a climactic battle, she scales the dragon and pierces its skull with the sword, ending its reign of terror."
 
         scene deva_genocide_with dissolve
@@ -2064,7 +2054,7 @@ label chapter_6:
         hide deva_image with dissolve
         play music "mystical_theme.mp3"
         
-        "As the vision ends, the Silent Goddess’s presence lingers in the air. Deva’s story echoes in your heart, a tale of strength, loss, and redemption."
+        "As the vision ends, the Silent Goddess's presence lingers in the air. Deva's story echoes in your heart, a tale of strength, loss, and redemption."
         "You feel a newfound connection to the Silent Goddess and her Chosen, as though their trials are now entwined with your own."
 
 
@@ -2082,10 +2072,10 @@ label chapter_6:
                 "You nod, unable to speak, your heart pounding in your chest."
                 
             "Express doubt":
-                p "I’m not sure about this, Gwen. What if something goes wrong?"
+                p "I'm not sure about this, Gwen. What if something goes wrong?"
                 
-                gwe "Something always goes wrong. That’s half the fun, isn’t it?"
-                "She smirks, but there’s a flicker of something genuine in her eyes. Concern? No, surely not."
+                gwe "Something always goes wrong. That's half the fun, isn't it?"
+                "She smirks, but there's a flicker of something genuine in her eyes. Concern? No, surely not."
 
         "Gwen steps closer, her clawed hand brushing your cheek. Her touch is cold, sending a shiver down your spine."
         
@@ -2101,7 +2091,7 @@ label chapter_6:
         
         "She stumbles back, shielding her eyes from the light. Her wings twitch, and for the first time, you see fear on her face."
         
-        p "I don’t know! This wasn’t supposed to happen!"
+        p "I don't know! This wasn't supposed to happen!"
         
         "The light intensifies, and a voice—calm, soothing, and impossibly ancient—fills the room."
         
@@ -2115,9 +2105,9 @@ label chapter_6:
         
         menu:
             "Encourage Gwen to accept":
-                p "Gwen, this is your chance. You don’t have to be a slave to your nature anymore."
+                p "Gwen, this is your chance. You don't have to be a slave to your nature anymore."
                 
-                gwe "(hesitant) Free... I don’t even know what that means anymore."
+                gwe "(hesitant) Free... I don't even know what that means anymore."
                 
                 dea "Freedom means choice. To act, not as your instincts demand, but as your will decides."
                 
@@ -2136,19 +2126,19 @@ label chapter_6:
             "Remain silent":
                 "You say nothing, watching as Gwen wrestles with the choice before her."
                 
-                gwe "I... I don’t know if I can. What am I without my instincts? Without my power?"
+                gwe "I... I don't know if I can. What am I without my instincts? Without my power?"
                 
                 dea "You are what you choose to become."
                 
                 "Gwen hesitates, then shakes her head, stepping back."
                 
-                gwe "No. I can’t. I’ve been this way too long."
+                gwe "No. I can't. I've been this way too long."
                 
                 dea "So be it. The choice remains, should you seek it again."
                 
                 "The light fades, and the room grows dark once more. Gwen turns to you, her crimson eyes filled with a mix of regret and defiance."
                 
-                gwe "Let’s finish what we started. No more interruptions."
+                gwe "Let's finish what we started. No more interruptions."
             
 
 label chapter_7:
