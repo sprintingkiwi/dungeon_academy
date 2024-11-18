@@ -40,8 +40,8 @@ label chapter_1:
 
     menu:
         "I'm so sorry... I didn't see you at all!":
-            $ Ciry.approval += 5
-            "(Unknown's approval: +5)"
+            $ Ciry.approval += 10
+            "(Unknown's approval: +10)"
         "Hey! Watch out!":
             pass
 
@@ -152,10 +152,10 @@ label chapter_1:
     """
     menu:
         "Wait, I'll help you":
-            $ Ciry.approval += 5
+            $ Ciry.approval += 10
             "You pick up a book and you read the title with surprise: 'Basics of the adventure'"
             p "I know this book! I've read it three times!"
-            "(Ciry's approval: +5)"
+            "(Ciry's approval: +10)"
             p "Wait, are you..."
         "Try to ignore her":
             pass
@@ -561,7 +561,7 @@ label chapter_1:
                 """
                 menu:
                     "Approach her and try to introduce yourself":
-                        $ Theo.approval -= 5
+                        $ Theo.approval -= 10
                         "You approach the girl with an uncertain step."
                         "She pretends not to notice you, but then."
                         "But when you wave your hand and try to speak to get her attention, she immediately gives you a grim look."
@@ -574,11 +574,11 @@ label chapter_1:
                         else:
                             uk "(speaking with her mouth full) I know not who thou art, but I don't care for company whilst I'm eatin'."
                         uk "...now get outta here 'fore I lose me cool."
-                        "(Unknown's approval: -5)"
+                        "(Unknown's approval: -10)"
                         
                     "Ignore her (she seems comfortable alone)":
-                        $ Theo.approval += 5
-                        "(Unknown's approval: +5)"
+                        $ Theo.approval += 10
+                        "(Unknown's approval: +10)"
 
                 jump after_rector_intro
 
@@ -900,7 +900,7 @@ label chapter_2:
     c "to moving around effortlessly in armor the better."
     hide ciry with dissolve
 
-    scene bg academy_courtyard with fade
+    # scene bg academy_courtyard with fade
     "One day, the Academy's courtyard is buzzing with activity as students disperse to their classes."
     "Amid the crowd, a girl approaches you."    
     gwe "Hey, you! You're new here, aren't you?"
@@ -908,7 +908,7 @@ label chapter_2:
     gwe "(grinning) Thought so! You look a little lost. I'm Gwen. What's your name?"
     p "I'm [Player.sheet.name]. Nice to meet you."    
     gwe "Well, how about I give you the grand tour of this place?"
-    gew "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
+    gwe "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
     
     menu:
         "Agree hesitantly":
@@ -930,6 +930,7 @@ label chapter_2:
     menu:
         "Go to the date with Gwen" if "Gwen Date" in Player.achievements:
             label gwen_date:
+                $ Player.achievements.append("First date with Gwen")
                 "The sun dips low, painting the Academy courtyard in hues of gold and crimson."
                 "You wait nervously by the fountain, until Gwen arrives, her usual mischievous grin in place."                
                 gwe "Glad you showed up, [Player.sheet.name]! I was starting to think you might bail."
@@ -944,252 +945,244 @@ label chapter_2:
                 "As you wander, Gwen's enthusiasm is infectious, and you find yourself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
 
         "Skip (continue your studies for the week)":
-            "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
+            jump aryanna_rescue
 
-    scene 00004-1773495918
-    stop music fadeout 2.0
-    pause
-    "She is so happy and curious about your mushroom-house that she forces you to show her every single room"
-    show ciry at topleft with dissolve
-    c "But, where is your aunt? There are so many things I want to ask her!"
-    p "I'm sorry, she's not here now... She wanted to meet you too, but this morning she said there was something"
-    p "important and she left in hurry."
-    p "She was very sorry to miss you. I promise you'll meet her another time!"
-    c "Ok, no worries! I'll come back here maaaany other times! I love this Mushroomy house sooo much!"
-    "Time passes, and you a Ciry go on talking about the things you've learnt at the Academy in past days."
-    pause
-    play music cheezeecave fadein 2.0 volume 0.5
-    "Suddenly, you hear the sound of running steps approaching the house main door."
-    "Knock knock!"
-    "Someone is now knocking at the door, repeatedly and with hurry."
-    c "Are you waiting for someone?"
-    p "No... And aunt Bella would never knock at her own house, I guess."
-    p "Let's go check who's out there"
-    c "(with a malicious smile) Should I prepare some offensive spell, in case they're bandits?"
-    p "Do you know offensive spells?"
-    c "(disappointed) Actually, not yet... But I could try"
-    p "Well, I don't think it will be necessary."
-    "And with your last words you open the large wooden door. At first glance you see no one, then you lower your"
-    "eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes."
-    "Her eyes suggesting she needed help."
-    show dyana at topright with dissolve
-    c "..."
-    c "Mom?"
-    dya "Ciry!"
-    dya "Oh, Ciry, thanks the Morning Star I found you..."
-    c "Mom, what happened?"
-    dya "It's Aryanna..."
-    c "Aryanna what?"
-    dya "I can't find her!"
-    p "Who's Aryanna?"
-    c "She's my little sister"
-    c "But where... where did you see her last time?"
-    dya "She was playing adventurer at home, like usual, then she told me something like:"
-    dya "'Mom, I'm going on a mission'"
-    dya "I thought it was part of her play, not that she would actually leave!"
-    dya "Oh Blessed Eve, please keep her safe!"
-    dya "We need to find her before sunset! Oh... I should have watched her more closely,"
-    dya "we know how exuberant she is..."
-    dya "What if some bad people find her?!"
-    c "Ok, mom, let's calm down..."
-    c "Can you remember if she said something else about the mission?"
-    dya "The mission?"
-    dya "I... I don't know... Maybe..."
-    dya "..."
-    dya "... Oh! Yes, maybe... she was mumbling something about a treasure?"
-    c "A treasure?..."
-    c "Oh! Oh... Oh no."
-    c "I think I know where she headed. But... The bad news is..."
-    c "A few days ago I was telling her stories about adventurers, like always, and I told her the legend of the"
-    c "treasure in the Cave of the Omens."
-    dya "The Cave of the Omens? Do you really think she went there? But how could she find the place?"
-    dya "It's far from our house, and Aryanna's just five!"
-    c "I... may have drawn her a map to reach the cave..."
-    dya "Ciry..."
-    c "What? We were playing treasure hunt!"
-    dya "I'll run back to the City, to ask the Guards for help, and you..."
-    c "I'll go to the Cave of Omens, it's not so far from here, it's much closer than the City..."
-    c "I'll probably meet her halfway, or in the Cave's surroundings"
-    dya "Be careful! If you see something dangerous just wait for the Guards..."
-    dya "We are not even completely sure Aryanna is there."
-    p "I'll go with her! In two we'll search faster."
-    dya "Thank you dear..."
-    dya "May the Morning Star be with you both!"
-    "And so Ciry's mom left, heading towards the City. You and Ciry, too, leave you house in hurry."
-    hide ciry with dissolve
-    stop music fadeout 2.0
-    pause
-    scene 00004-2040205780 with dissolve
-    play music ancientwinds fadein 0.5
-    pause
-    $ PARTY = [Player, Ciry]
-    p "So, you know the path from here to the Cave? I've never been there..."
-    show ciry at topleft with dissolve
-    c "More or less... I read it on a book once."
-    p "(dubious) On a book?"
-    c "..."
-    p "..."
-    p "So, is 'The Blessed Eve' the deity you draw your Cleric powers from?"
-    c "Yes, in my family there are a lot of Clerics, and we have prayed to the Morning Star for generations."
-    c "I grew up drawing her with my colored crayons, listening to goodnight stories about her before going to sleep"
-    c "She's like a hero to me!"
-    p "Every deity should have a favourite weapon, right? Which is the Morning Star's favourite weapon?"
-    c "(narrowing her eyes) Well, the morning star"
-    p "Oh. Right. I could have spared that question."
-    c "Right, hahaha!"
-    c "I always carry a morning star in my bag... Here, take a look!"
-    "And she shows you a well made weapon, a short mace with a round head, adorned with dangerous spikes"
-    p "I see. I guess it's comfortable to have a deity you can rely on, in moments of need..."
-    p "or just when one feels alone"
-    c "Yes, yes it is"
-    c "[Player.sheet.name], you... Which deity do you use to pray and rely on?"
-    
-    menu:
-        "I rely on good Deities":
-            p "I use to rely on good Deities, though I don't specifically serve or pray one more than the another."
-            "(Ciry's approval: +5)"
-            $ Ciry.approval += 5
+    label aryanna_rescue:
+        "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
+        scene 00004-1773495918
+        stop music fadeout 2.0
+        pause
+        "She is so happy and curious about your mushroom-house that she forces you to show her every single room"
+        show ciry at topleft with dissolve
+        c "But, where is your aunt? There are so many things I want to ask her!"
+        p "I'm sorry, she's not here now... She wanted to meet you too, but this morning she said there was something"
+        p "important and she left in hurry."
+        p "She was very sorry to miss you. I promise you'll meet her another time!"
+        c "Ok, no worries! I'll come back here maaaany other times! I love this Mushroomy house sooo much!"
+        "Time passes, and you a Ciry go on talking about the things you've learnt at the Academy in past days."
+        pause
+        play music cheezeecave fadein 2.0 volume 0.5
+        "Suddenly, you hear the sound of running steps approaching the house main door."
+        "Knock knock!"
+        "Someone is now knocking at the door, repeatedly and with hurry."
+        c "Are you waiting for someone?"
+        p "No... And aunt Bella would never knock at her own house, I guess."
+        p "Let's go check who's out there"
+        c "(with a malicious smile) Should I prepare some offensive spell, in case they're bandits?"
+        p "Do you know offensive spells?"
+        c "(disappointed) Actually, not yet... But I could try"
+        p "Well, I don't think it will be necessary."
+        "And with your last words you open the large wooden door. At first glance you see no one, then you lower your"
+        "eyes, just to find a scared and out of breath gnome woman, dressed in simple clothes."
+        "Her eyes suggesting she needed help."
+        show dyana at topright with dissolve
+        c "..."
+        c "Mom?"
+        dya "Ciry!"
+        dya "Oh, Ciry, thanks the Morning Star I found you..."
+        c "Mom, what happened?"
+        dya "It's Aryanna..."
+        c "Aryanna what?"
+        dya "I can't find her!"
+        p "Who's Aryanna?"
+        c "She's my little sister"
+        c "But where... where did you see her last time?"
+        dya "She was playing adventurer at home, like usual, then she told me something like:"
+        dya "'Mom, I'm going on a mission'"
+        dya "I thought it was part of her play, not that she would actually leave!"
+        dya "Oh Blessed Eve, please keep her safe!"
+        dya "We need to find her before sunset! Oh... I should have watched her more closely,"
+        dya "we know how exuberant she is..."
+        dya "What if some bad people find her?!"
+        c "Ok, mom, let's calm down..."
+        c "Can you remember if she said something else about the mission?"
+        dya "The mission?"
+        dya "I... I don't know... Maybe..."
+        dya "..."
+        dya "... Oh! Yes, maybe... she was mumbling something about a treasure?"
+        c "A treasure?..."
+        c "Oh! Oh... Oh no."
+        c "I think I know where she headed. But... The bad news is..."
+        c "A few days ago I was telling her stories about adventurers, like always, and I told her the legend of the"
+        c "treasure in the Cave of the Omens."
+        dya "The Cave of the Omens? Do you really think she went there? But how could she find the place?"
+        dya "It's far from our house, and Aryanna's just five!"
+        c "I... may have drawn her a map to reach the cave..."
+        dya "Ciry..."
+        c "What? We were playing treasure hunt!"
+        dya "I'll run back to the City, to ask the Guards for help, and you..."
+        c "I'll go to the Cave of Omens, it's not so far from here, it's much closer than the City..."
+        c "I'll probably meet her halfway, or in the Cave's surroundings"
+        dya "Be careful! If you see something dangerous just wait for the Guards..."
+        dya "We are not even completely sure Aryanna is there."
+        p "I'll go with her! In two we'll search faster."
+        dya "Thank you dear..."
+        dya "May the Morning Star be with you both!"
+        "And so Ciry's mom left, heading towards the City. You and Ciry, too, leave you house in hurry."
+        hide ciry with dissolve
+        stop music fadeout 2.0
+        pause
+        scene 00004-2040205780 with dissolve
+        play music ancientwinds fadein 0.5
+        pause
+        $ PARTY = [Player, Ciry]
+        p "So, you know the path from here to the Cave? I've never been there..."
+        show ciry at topleft with dissolve
+        c "More or less... I read it on a book once."
+        p "(dubious) On a book?"
+        c "..."
+        p "..."
+        p "So, is 'The Blessed Eve' the deity you draw your Cleric powers from?"
+        c "Yes, in my family there are a lot of Clerics, and we have prayed to the Morning Star for generations."
+        c "I grew up drawing her with my colored crayons, listening to goodnight stories about her before going to sleep"
+        c "She's like a hero to me!"
+        p "Every deity should have a favourite weapon, right? Which is the Morning Star's favourite weapon?"
+        c "(narrowing her eyes) Well, the morning star"
+        p "Oh. Right. I could have spared that question."
+        c "Right, hahaha!"
+        c "I always carry a morning star in my bag... Here, take a look!"
+        "And she shows you a well made weapon, a short mace with a round head, adorned with dangerous spikes"
+        p "I see. I guess it's comfortable to have a deity you can rely on, in moments of need..."
+        p "or just when one feels alone"
+        c "Yes, yes it is"
+        c "[Player.sheet.name], you... Which deity do you use to pray and rely on?"
         
-        "I don't have one":
-            p "Me? Well I... I don't have one, to be sincere"
-            c "No?! Why?"
-            p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name"
-            p "or a personality..."
-            p "She just adore the balance of Nature, and she says that a Druid can draw power from that alone."
-            c "You know, there are many Druids that pray a specific deity."
-            p "I know, just, she isn't one of them."
-            p "My mom and dad used to pray to Tosvald, the God protector of Merchants. Since they were Merchants too."
-            p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to"
-            p "any diety, that's all."
-            c "I'm sorry [Player.sheet.name], you don't have to justify your feelings with me."
+        menu:
+            "I rely on good Deities":
+                p "I use to rely on good Deities, though I don't specifically serve or pray one more than the another."
+                "(Ciry's approval: +10)"
+                $ Ciry.approval += 10
+            
+            "I don't have one":
+                p "Me? Well I... I don't have one, to be sincere"
+                c "No?! Why?"
+                p "My aunt Bella always talks about Mother Nature, but never to refer to a specific Entity or Deity with a name"
+                p "or a personality..."
+                p "She just adore the balance of Nature, and she says that a Druid can draw power from that alone."
+                c "You know, there are many Druids that pray a specific deity."
+                p "I know, just, she isn't one of them."
+                p "My mom and dad used to pray to Tosvald, the God protector of Merchants. Since they were Merchants too."
+                p "But after my parents passed away... I don't know, It's just that somehow I could never feel connected to"
+                p "any diety, that's all."
+                c "I'm sorry [Player.sheet.name], you don't have to justify your feelings with me."
 
-        "I don't like deities":
-            p "To be sincere, I don't really like deities..."
-            c "Oh... What a sad thing to say..."
-            p "My parents use to pray their god, and they died anyway... It obviously didn't help."
-            p "I don't need to pray anyone, I only rely on my own strengths."
-    
-    c "It's fine if you feel that way. Just remember that there are good deities, like Eve the Morning Star,"
-    c "that will listen to you if you'll ever feel the need to pray."
-    p "(smiling) Thank you Ciry, I'll take it into consideration."
-    c "Talking about faiths, the Cave of Omens is a long abandoned mine, but before that it used to be a place of"
-    c "worship, you know?"
-    p "Really? How come it isn't anymore?"
-    c "It was a sanctuary for the Silent Goddess."
-    p "The... Silent Goddess? Never heard about her..."
-    c "Not much is said about her anymore... Precisely because she is 'silent', no one prays in her name anymore"
-    c "No a Church, no Clerics and not an order of Paladins..."
-    c "She never granted her divine powers to those who worshipped her..."
-    p "So there was no point in worshipping her if no divine power was granted, eh?"
-    c """
-    Well, in theory one should believe in the guiding principles of a Deity...
-    And not worshipping just for recieve divine powers.
-    But over time, even the most righteous and faithful men came to prefer praying to the deities that, despite sharing
-    the same principles of Good and Justice, could grant them the powers to fight back evil.
-    And honestly, I can't say it's wrong...
-    """
-    p "So, anyway, this Silent Goddess was on the good side?"    
-    c """
-    Oh yes, even if I don't know much about her principles and domains, I know for sure she was good.
-    It's told that she fought valiantly in the last war between good and evil gods.
-    And references to her are found in the sacred texts of many good deities.
-    But no one knows why she never talked back to anyone.
-    The knowledge about her was only handed down by legends and sacred texts.
-    Now there are those who even question her very existence.
-    Her devotees are scattered and her sanctuaries, ruins...
-    """
-    c "..."
-    p "..."
-    c "(out of breath) I think we'd be close by now..."
-    p "(out of breath) Yeah... It has been quite a walk!"
-    c "There!"
-    scene 00006-2040205782 with dissolve
-    pause
-    p "The Cave?"
-    show ciry at topright with dissolve
-    c "Yes! You see? That's the entrance, I'm sure."
-    p "But, what about your sister?"
-    c "If she found the way up here, she must be somewhere around"
-    c "Or maybe she will arrive soon..."
-    stop music fadeout 2.0
-    "Suddenly, a sound behind you. Something moving in the tall grass"
-    scene 00006-2040205782 with dissolve
-    p "Hey, what was that?"
-    c "Mah, just a rabbit, don't worry."
-    c "..."
-    c "There! It seems like a fate hare!"
-    p "I don't know, I'm not sure it's a hare..."
-    play music cheezeecave fadein 2.0 volume 0.5
-    p "Now it's coming towards us"
-    c "(disgusted) Oh, no, it's not a hare."
-    p "It's more like a rat!"
-    c "And a giant one... Do you have a weapon?"
-    p "No, I... I don't, I only have my adventure bag!"
-    $ battle(PARTY, [GiantRat])
-    $ restore_party(PARTY)
-    "You and Ciry manage to fight back the Giant Rat."
-    label earthquake_ch1:
-    "After some well-placed kicks and some hit with Ciry's 'morning star' mace, the evil animal retreats."
-    show ciry at topright with dissolve
-    c "Damn it! There shouldn't be this kind of monsters around here! We're still inside the City's external borders."
-    c "There are supposed to be guards and adventurers patrolling all the borders... Ary!"
-    with hpunch
-    "As you try to think of something, a little jolt of the ground throws you off balance"
-    p "An earthquake?"
-    c "Please Ary, answer!"
-    c "What if some beast like that one found my sister before us?"
-    p "Let's not despair right now, we don't even know for sure if she really came here..."
-    p "She might just be lost in the City"
-    c "Ary is very smart... I bet she could read my map correctly and find this place if she wanted..."
-    c "Aryanna!! Please answer"
-    "As the two of you shout Ciry's little sister name, you walk closer to the cave's entrace."
-    ary "Big sis?"
-    c "Ary?!"
-    c "Where are you?"
-    ary "Here, this way big sis! Hehehe"
-    c "Oh there she is! [Player.sheet.name]! We found her!"
-    c "Oh thank The Blessed Eve!"
-    p "I'm so relieved..."
-    "You see a little figure moving in the tall grass, but she is so short that the grass completely covers her."
-    "You finally see her when she emerges from the tall grass. A little funny gnome figure, with a big round head"
-    "and a very small body, was waving with her hand. She was now right near the cave's entrace."
-    show aryanna at topleft with dissolve
-    ary "Big sis! I found the treasure cave!"
-    c "Ary! How could you think of coming here alone?"
-    c "You made us worry so much!"
-    ary "I wanted to find the treasure of the dragon and bring it home!"
-    c "Come here now, let's go home."
-    c "(turning to you with a resigned expression) I'll teach her the difference between reality and games later."
-    play sound rumble
-    with hpunch
-    "But as you draw closer to the entrance, and to the little Aryanna, a second, more violent, earthquake strikes!"
-    with hpunch
-    "This time it is followed by an eerie rumble coming from underground..."
-    "... and before anyone could react, the ground beneath Aryanna's feet begins to collapse."
-    "Ciry was petrified with fear"    
-    menu:
-        "React":
-            $ Player.achievements.append("Reacted to save Aryanna")
-            "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to"
-            "grab her with your hand..."
-            $ roll = None
-            menu:                
-                "Roll D20 on Atlethics":
-                    $ roll = Player.roll_skill("atlethics")                    
-                "Roll D20 on Acrobatics":
-                    $ roll = Player.roll_skill("acrobatics")
-            "ROLL: [roll.result]"
-            if roll.result > 10:
-                "Just in time! You manage to grab her arm and you are now holding her up. Below her, the void."
-                jump ary_grabbed
-            else:
-                "You touch her fingers but you can't manage to grab her and you hear her scream while she falls down."
-                jump ary_fall
-
-        "Stay still":
-            "You want to move but your body doesn't, you helplessly watch the little girl disappear into the ground."
-            jump ary_fall
+            "I don't like deities":
+                p "To be sincere, I don't really like deities..."
+                c "Oh... What a sad thing to say..."
+                p "My parents use to pray their god, and they died anyway... It obviously didn't help."
+                p "I don't need to pray anyone, I only rely on my own strengths."
         
+        c "It's fine if you feel that way. Just remember that there are good deities, like Eve the Morning Star,"
+        c "that will listen to you if you'll ever feel the need to pray."
+        p "(smiling) Thank you Ciry, I'll take it into consideration."
+        c "Talking about faiths, the Cave of Omens is a long abandoned mine, but before that it used to be a place of"
+        c "worship, you know?"
+        p "Really? How come it isn't anymore?"
+        c "It was a sanctuary for the Silent Goddess."
+        p "The... Silent Goddess? Never heard about her..."
+        c "Not much is said about her anymore... Precisely because she is 'silent', no one prays in her name anymore"
+        c "No a Church, no Clerics and not an order of Paladins..."
+        c "She never granted her divine powers to those who worshipped her..."
+        p "So there was no point in worshipping her if no divine power was granted, eh?"
+        c """
+        Well, in theory one should believe in the guiding principles of a Deity... And not worshipping just for recieve divine powers.
+        But over time, even the most righteous and faithful men came to prefer praying to the deities that, despite sharing the same principles of Good and Justice, could grant them the powers to fight back evil.
+        And honestly, I can't say it's wrong...
+        """
+        p "So, anyway, this Silent Goddess was on the good side?"    
+        c """
+        Oh yes, even if I don't know much about her principles and domains, I know for sure she was good. It's told that she fought valiantly in the last war between good and evil gods.
+        And references to her are found in the sacred texts of many good deities. But no one knows why she never talked back to anyone. The knowledge about her was only handed down by legends and sacred texts.
+        Now there are those who even question her very existence. Her devotees are scattered and her sanctuaries, ruins...
+        """
+        "Silence falls between you and Ciry..."
+        c "(out of breath) I think we'd be close by now..."
+        p "(out of breath) Yeah... It has been quite a walk!"
+        c "There!"
+        scene 00006-2040205782 with dissolve
+        pause
+        p "The Cave?"
+        show ciry at topright with dissolve
+        c "Yes! You see? That's the entrance, I'm sure."
+        p "But, what about your sister?"
+        c "If she found the way up here, she must be somewhere around"
+        c "Or maybe she will arrive soon..."
+        stop music fadeout 2.0
+        "Suddenly, a sound behind you. Something moving in the tall grass"
+        scene 00006-2040205782 with dissolve
+        p "Hey, what was that?"
+        c "Mah, just a rabbit, don't worry."
+        c "..."
+        c "There! It seems like a fate hare!"
+        p "I don't know, I'm not sure it's a hare..."
+        play music cheezeecave fadein 2.0 volume 0.5
+        p "Now it's coming towards us"
+        c "(disgusted) Oh, no, it's not a hare."
+        p "It's more like a rat!"
+        c "And a giant one... Do you have a weapon?"
+        p "No, I... I don't, I only have my adventure bag!"
+        $ battle(PARTY, [GiantRat])
+        $ restore_party(PARTY)
+        "You and Ciry manage to fight back the Giant Rat."
+        label earthquake_ch1:
+        "After some well-placed kicks and some hit with Ciry's 'morning star' mace, the evil animal retreats."
+        show ciry at topright with dissolve
+        c "Damn it! There shouldn't be this kind of monsters around here! We're still inside the City's external borders."
+        c "There are supposed to be guards and adventurers patrolling all the borders... Ary!"
+        with hpunch
+        "As you try to think of something, a little jolt of the ground throws you off balance"
+        p "An earthquake?"
+        c "Please Ary, answer!"
+        c "What if some beast like that one found my sister before us?"
+        p "Let's not despair right now, we don't even know for sure if she really came here..."
+        p "She might just be lost in the City"
+        c "Ary is very smart... I bet she could read my map correctly and find this place if she wanted..."
+        c "Aryanna!! Please answer"
+        "As the two of you shout Ciry's little sister name, you walk closer to the cave's entrace."
+        ary "Big sis?"
+        c "Ary?!"
+        c "Where are you?"
+        ary "Here, this way big sis! Hehehe"
+        c "Oh there she is! [Player.sheet.name]! We found her!"
+        c "Oh thank The Blessed Eve!"
+        p "I'm so relieved..."
+        "You see a little figure moving in the tall grass, but she is so short that the grass completely covers her."
+        "You finally see her when she emerges from the tall grass. A little funny gnome figure, with a big round head and a very small body, was waving with her hand. She was now right near the cave's entrace."
+        show aryanna at topleft with dissolve
+        ary "Big sis! I found the treasure cave!"
+        c "Ary! How could you think of coming here alone?"
+        c "You made us worry so much!"
+        ary "I wanted to find the treasure of the dragon and bring it home!"
+        c "Come here now, let's go home."
+        c "(turning to you with a resigned expression) I'll teach her the difference between reality and games later."
+        play sound rumble
+        with hpunch
+        "But as you draw closer to the entrance, and to the little Aryanna, a second, more violent, earthquake strikes!"
+        with hpunch
+        "This time it is followed by an eerie rumble coming from underground... and before anyone could react, the ground beneath Aryanna's feet begins to collapse. Ciry is petrified with fear."    
+        
+        menu:
+            "React":
+                $ Player.achievements.append("Reacted to save Aryanna")
+                "Before even thinking about it, your body reacts, you sprint towards the little girl and you lunge to"
+                "grab her with your hand..."
+                $ roll = None
+                menu:                
+                    "Roll D20 on Atlethics":
+                        $ roll = Player.roll_skill("atlethics")                    
+                    "Roll D20 on Acrobatics":
+                        $ roll = Player.roll_skill("acrobatics")
+                "ROLL: [roll.result]"
+                if roll.result > 10:
+                    "Just in time! You manage to grab her arm and you are now holding her up. Below her, the void."
+                    jump ary_grabbed
+                else:
+                    "You touch her fingers but you can't manage to grab her and you hear her scream while she falls down."
+                    jump ary_fall
+
+            "Stay still":
+                "You want to move but your body doesn't, you helplessly watch the little girl disappear into the ground."
+                jump ary_fall        
 
     label ary_grabbed:
         "You are holding the little gnome girl with your hand, but just when you are starting to pull her up,"
@@ -1201,344 +1194,317 @@ label chapter_2:
         "You are just starting to ask yourself if Ary is hurt, feeling guilty for not being able to help her,"
         "that a huge earthquake shakes the ground!"
         "The earth beneath your feet crumbles and you fall down, rolling together with mud and rocks."
+        jump explore_cave_omens
     
     label explore_cave_omens:
-    $ PARTY = [Player]
-    stop music fadeout 2.0
-    "When you open your eyes, a healty Ary stands before you..."
-    show aryanna at topleft with dissolve
-    ary "Are you my sister's friend?"
-    ary "You fell down too!"    
-    c "Ary!!"
-    show ciry at topright with dissolve
-    p "Aryanna! Aryanna! Are you ok?"
-    ary "Hehe, it was fun!"
-    p "Yes, Ciry... She... seems to be ok..."
-    "Finally you can take a deep breath and try to calm down"
-    c "[Player.sheet.name], are you ok?"
-    p "Yes... I think, at least"
-    c "What do we do now? You need to get back up here!"
-    p "I know, I know..."
-    scene 00005-827032856 with dissolve
-    "As you look around, you realize that the place you fell into is net of natural underground tunnels"
-    p "Maybe we can just walk through these tunnels and see if there is an exit somewhere else!"
-    c "(worried) Walk throught the tunnels?"
-    c "Well, it could be a good idea after all..."
-    c "I'll try to walk around from up here and see if there is another exit!"
-    hide ciry with dissolve
-    p "Ok! Let's go south for now!"
-    hide aryanna with dissolve
-    "..."
-    "And so, you and the little Aryanna set off walking inside those dimly lit tunnels"
-    scene 00021-827032872 with dissolve
-    play music ancientwinds fadein 2.0 volume 0.5
-    $ renpy.pause()
-    scene 00010-827032861 with dissolve    
-    $ renpy.pause()
-    "You go on and on, walking through this strange natural cave"
-    show aryanna at topleft with dissolve
-    ary "Big brother, look! There's a statue there!"
-    "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a"
-    "white statue."
-    hide aryanna with dissolve
-    "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground,"
-    "but the other half was still clearly recognizable."
-    "Something of that face triggered a memory in you, but you cannot immediately grasp it."
-    p "{i}(This statue... is strangely familiar){/i}"
-    window hide
-    show 00008-3630713263 with annoytheuser:
-        blur 75
-    $ renpy.pause()
-    scene 00010-827032861 with dissolve   
-    p "{i}(That's it! This statue reminds me of that dream... But who is that woman?){/i}"
-    p "{i}(Well, it's probably just a coincidence){/i}"
-    """
-    You walk and walk, through the tunnels of the cave. Sometimes there is water on the ground, little rivers
-    In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the
-    backdrop of the damp, rocky walls.
-    The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath.
-    A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join
-    the meandering streams tracing intricate patterns on the cavern floor.
-    Armed with nothing but determination, the pair navigated the labyrinthine passageways,
-    their steps reverberating softly in the vastness of the subterranean world.
-    The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that
-    danced across the ancient rock formations.
-    As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a
-    potential exit.
-    But as you delve deeper into the unknown, a menacing growl reverberates through the chamber.
-    """
-    play music cheezeecave fadein 2.0 volume 0.5
-    show aryanna at topleft with dissolve
-    ary "Gyaaaaaa!"
-    show hobgoblin at topright with dissolve
-    "A shadowy humanoid figure emerges from the darkness..."
-    $ roll = 0
-    $ creature = "creature"
-    menu:
-        "Roll D20 on Nature":
-            $ roll = Player.roll_ability("intelligence")
-    "ROLL: [roll.result]"
-    if roll.result > 10:
-        "You recognize the creature: it's an Hobgoblin!"
-        p "{i}(What's a Hobgoblin doing here?){/i}"
-        $ creature = "Hobgoblin"
-    else:
-        "You can't recognize the creature,"
-        "even though you are sure you saw something similar on your beloved aventurer guide book."
-    
-    "The [creature]'s malicious eyes fixed upon you and the little gnome girl."
-    hob "... Why YOU Heeere?"
-    p "{i}(What? He... can speak?){/i}"
-    "A beam of light illuminates the creature, revealing a metallic armor and a large unsheathed broadsword."
-    hob "You... Witness..."
-    p "{i}(What? Witness? Of What? What is he talking about?){/i}"
-    hob "Witness... DIE!"
-    p "Aryanna, run, RUN!"
-    hide aryanna with dissolve
-    hide hobgoblin with dissolve
-    """
-    You run through the cavernous surroundings, stumbling here and there on the uneven ground.
-    You hear the hurried footsteps of the creature behind you.
-    However, you manage to put some distance between you and the [creature],
-    likely slowed down by the armor and the broadsword.
-    Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light
-    coming from an opening in the ceiling.
-    """
-    scene 00003-827032854 with dissolve
-    $ renpy.pause()
-    "There are no exits or tunnels"
-    p "{i}(Oh no! It's a dead end!){/i}"
-    "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to"
-    "choose a different path."
-    "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like"
-    "a cat with it's prey."  
-    ary "Look, Big Bro! A sword!"
-    p "I know Ary, he's got a big sword..."
-    ary "No, there! There is a sword!"
-    "You follow with your eyes the direction she is pointing with her hand."
-    scene 00001 with dissolve
-    pause
-    "You realize that what you thought was just the upper part of that big rock at the center of the room,"
-    "is instead something different."
-    "Almost entirely covered with moss and limestone deposits, it is barely recognizable:"
-    "the hilt of an old sword lodged into the rock."
-    show aryanna at topleft with dissolve
-    ary "Take the sword big Bro! You can fight with that sword!"
-    hide aryanna with dissolve
-    p "{i}(I don't think I can fight that [creature], but...){/i}"
-    "And you rapidly look around, as for searching alternative solutions."
-    p "{i}(Do I really have another choice?){/i}"        
-
-    $ roll = 0
-    $ pull_attempted = False
-    $ drop_attempted = False
-    menu:
-        "Attempt to climb the wall to reach the opening (Athletics)":
-            p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
-            $ roll = Player.roll_ability("strength")
-            "ROLL: [roll.result]"
-            "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep."
-            "You fall heavily to the ground."
-            if roll.result < 10:
-                $ dmg = Roll("1d4").result
-                $ Player.take_damage(dmg)
-                "You take [dmg] points of damage!"
-            else:
-                "But somehow you managed to fall without taking any damage."
-            ary "Big Brother, get up please!"
-            "The little gnome is worried, but she is not crying."
-        "Attempt to pull the sword from the rock (Strength)":
-            call pull_sword from _call_pull_sword
-            
-    ary "Hurry big Bro! Take the sword!"
-    if not pull_attempted:
+        $ PARTY = [Player]
+        stop music fadeout 2.0
+        "When you open your eyes, a healty Ary stands before you..."
+        show aryanna at topleft with dissolve
+        ary "Are you my sister's friend?"
+        ary "You fell down too!"    
+        c "Ary!!"
+        show ciry at topright with dissolve
+        p "Aryanna! Aryanna! Are you ok?"
+        ary "Hehe, it was fun!"
+        p "Yes, Ciry... She... seems to be ok..."
+        "Finally you can take a deep breath and try to calm down"
+        c "[Player.sheet.name], are you ok?"
+        p "Yes... I think, at least"
+        c "What do we do now? You need to get back up here!"
+        p "I know, I know..."
+        scene 00005-827032856 with dissolve
+        "As you look around, you realize that the place you fell into is net of natural underground tunnels"
+        p "Maybe we can just walk through these tunnels and see if there is an exit somewhere else!"
+        c "(worried) Walk throught the tunnels?"
+        c "Well, it could be a good idea after all..."
+        c "I'll try to walk around from up here and see if there is another exit!"
+        hide ciry with dissolve
+        p "Ok! Let's go south for now!"
+        hide aryanna with dissolve
+        "..."
+        "And so, you and the little Aryanna set off walking inside those dimly lit tunnels"
+        scene 00021-827032872 with dissolve
+        play music ancientwinds fadein 2.0 volume 0.5
+        $ renpy.pause()
+        scene 00010-827032861 with dissolve    
+        $ renpy.pause()
+        "You go on and on, walking through this strange natural cave"
+        show aryanna at topleft with dissolve
+        ary "Big brother, look! There's a statue there!"
+        "You follow with your eyes the direction Aryanna is pointing with her finger, and you see in the distance a"
+        "white statue."
+        hide aryanna with dissolve
+        "As you get closer, you clearly distinguish a female body, half of the face was collapsed on the ground,"
+        "but the other half was still clearly recognizable."
+        "Something of that face triggered a memory in you, but you cannot immediately grasp it."
+        p "{i}(This statue... is strangely familiar){/i}"
+        window hide
+        show 00008-3630713263 with annoytheuser:
+            blur 75
+        $ renpy.pause()
+        scene 00010-827032861 with dissolve   
+        p "{i}(That's it! This statue reminds me of that dream... But who is that woman?){/i}"
+        p "{i}(Well, it's probably just a coincidence){/i}"
+        """
+        You walk and walk, through the tunnels of the cave.
+        Sometimes there is water on the ground, little rivers. In the dimly lit depths of the cavern, you forge ahead, your small silhouettes barely discernible against the backdrop of the damp, rocky walls.
+        The air hangs heavy with moisture, as if the very essence of the cavern seeped into your every breath.
+        A gentle murmur echoes through the underground chamber, a symphony of droplets falling from stalactites to join the meandering streams tracing intricate patterns on the cavern floor.
+        Armed with nothing but determination, the pair navigated the labyrinthine passageways, their steps reverberating softly in the vastness of the subterranean world.
+        The occasional glistening pools reflected the feeble glow of their flickering torch, casting eerie shadows that danced across the ancient rock formations.
+        As you venture deeper into the heart of the cavern, you notice a distant sound of rushing water, hinting at a potential exit. But as you delve deeper into the unknown, a menacing growl reverberates through the chamber.
+        """
+        play music cheezeecave fadein 2.0 volume 0.5
+        show aryanna at topleft with dissolve
+        ary "Gyaaaaaa!"
+        show hobgoblin at topright with dissolve
+        "A shadowy humanoid figure emerges from the darkness..."
+        $ roll = 0
+        $ creature = "creature"
         menu:
+            "Roll D20 on Nature":
+                $ roll = Player.roll_ability("intelligence")
+        "ROLL: [roll.result]"
+        if roll.result > 10:
+            "You recognize the creature: it's an Hobgoblin!"
+            p "{i}(What's a Hobgoblin doing here?){/i}"
+            $ creature = "Hobgoblin"
+        else:
+            "You can't recognize the creature,"
+            "even though you are sure you saw something similar on your beloved aventurer guide book."
+        
+        "The [creature]'s malicious eyes fixed upon you and the little gnome girl."
+        hob "... Why YOU Heeere?"
+        p "{i}(What? He... can speak?){/i}"
+        "A beam of light illuminates the creature, revealing a metallic armor and a large unsheathed broadsword."
+        hob "You... Witness..."
+        p "{i}(What? Witness? Of What? What is he talking about?){/i}"
+        hob "Witness... DIE!"
+        p "Aryanna, run, RUN!"
+        hide aryanna with dissolve
+        hide hobgoblin with dissolve
+        """
+        You run through the cavernous surroundings, stumbling here and there on the uneven ground.
+        You hear the hurried footsteps of the creature behind you. However, you manage to put some distance between you and the [creature], likely slowed down by the armor and the broadsword.
+        Then, you find yourselves in a larger room, with a single rocky protrusion at the center, illuminated by light coming from an opening in the ceiling.
+        """
+        scene 00003-827032854 with dissolve
+        $ renpy.pause()
+        "There are no exits or tunnels"
+        p "{i}(Oh no! It's a dead end!){/i}"
+        "You hear the sounds of the approaching [creature] behind you, realizing there won't be time to go back to choose a different path."
+        "You see the [creature] entering the room and slowing down it's pursuit. He's looking at the two of you like a cat with it's prey."  
+        ary "Look, Big Bro! A sword!"
+        p "I know Ary, he's got a big sword..."
+        ary "No, there! There is a sword!"
+        "You follow with your eyes the direction she is pointing with her hand."
+        scene 00001 with dissolve
+        pause
+        "You realize that what you thought was just the upper part of that big rock at the center of the room, is instead something different. Almost entirely covered with moss and limestone deposits, it is barely recognizable:"
+        "the hilt of an old sword lodged into the rock!"
+        show aryanna at topleft with dissolve
+        ary "Take the sword big Bro! You can fight with that sword!"
+        hide aryanna with dissolve
+        p "{i}(I don't think I can fight that [creature], but...){/i}"
+        "And you rapidly look around, as for searching alternative solutions."
+        p "{i}(Do I really have another choice?){/i}"        
+
+        $ roll = 0
+        $ pull_attempted = False
+        $ drop_attempted = False
+        menu:
+            "Attempt to climb the wall to reach the opening (Athletics)":
+                p "Aryanna, hurry! Maybe we can climb up and reach that hole in the ceiling!"
+                $ roll = Player.roll_ability("strength")
+                "ROLL: [roll.result]"
+                "You attempt to climb the wall to reach the opening, but there are not enough handholds, and it's too steep."
+                "You fall heavily to the ground."
+                if roll.result < 10:
+                    $ dmg = Roll("1d4").result
+                    $ Player.take_damage(dmg)
+                    "You take [dmg] points of damage!"
+                else:
+                    "But somehow you managed to fall without taking any damage."
+                ary "Big Brother, get up please!"
+                "The little gnome is worried, but she is not crying."
             "Attempt to pull the sword from the rock (Strength)":
-                call pull_sword from _call_pull_sword_1
-    p "(Breathing heavily due to the exertion) It's NOT... that... EASY!"
-    p "{i}(Maybe I should stop this... maybe we can still run away!){/i}"    
-    
-    menu:
-        "Attempt to run away":
-            call drop_sword from _call_drop_sword
-        "Attempt to pull the sword from the rock (Strength)":
-            call pull_sword from _call_pull_sword_2
+                call pull_sword from _call_pull_sword
+                
+        ary "Hurry big Bro! Take the sword!"
+        if not pull_attempted:
+            menu:
+                "Attempt to pull the sword from the rock (Strength)":
+                    call pull_sword from _call_pull_sword_1
+        p "(Breathing heavily due to the exertion) It's NOT... that... EASY!"
+        p "{i}(Maybe I should stop this... maybe we can still run away!){/i}"    
+        
+        menu:
+            "Attempt to run away":
+                call drop_sword from _call_drop_sword
+            "Attempt to pull the sword from the rock (Strength)":
+                call pull_sword from _call_pull_sword_2
 
-    p "{i}(It's no use!){/i}"
-    if not drop_attempted:
-        call drop_sword from _call_drop_sword_1
-    "You can't pull the sword out of the rock. You can't let go of it and run away."
-    "You are trapped."
-    "But still, amidst this struggle, the warm sensation is there, weaving its way through you."
-    "A sensation of peace and harmony that seems paradoxically at odds with the imminent danger."
+        p "{i}(It's no use!){/i}"
+        if not drop_attempted:
+            call drop_sword from _call_drop_sword_1
+        "You can't pull the sword out of the rock. You can't let go of it and run away. You are trapped!"
+        "But still, amidst this struggle, the warm sensation is there, weaving its way through you. A sensation of peace and harmony that seems paradoxically at odds with the imminent danger."
 
-    menu:
-        "Fight back the warm feeling and try to pull the sword (Strength)":
-            call pull_sword from _call_pull_sword_3
-            "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
-            pause
-            $ battle(PARTY, [Hobgoblin])
-        "Let the warm feeling possess you (Wisdom)":
-            $ roll = Player.roll_ability("wisdom", advantage=True)
-            "ROLL: [roll.result]"
-            if roll.result > 1:
-                "SUCCESS"
-                stop music fadeout 1.0
-                scene bg black with annoytheuser
-                pause
-                "Silence"
-                "Void"
-                "There's nothing else around you now. Only Darkness. Then..."
-                window hide
-                scene bg white with annoytheuser
-                play music ascendingthevale fadein 2.0 volume 0.5
-                "Light"
-                window hide
-                "And in that light..."
-                window hide
-                show 00008-3630713263 with annoytheuser
-                alt """
-                Her eyes are closed, and she wears a calm, introspective expression.
-                Her makeup is striking, with bold red lipstick and subtle eyeshadow that enhances her delicate features.
-                The background is a dreamy blend of deep blues and soft light streaks: a mystical or otherworldly setting.
-                """
-                pause
-                "Love"
-                "You sense the warmth emanating from the woman before you, like in a sunlit summer afternoon."
-                "The woman does not speak."
-                "Yet, you perceive meanings in your mind and through your emotions."
-                "{i}YOU ARE FINE JUST THE WAY YOU ARE{/i}"
-                "{i}YOU ARE LOVED{/i}"
-                scene bg white with annoytheuser
-                scene bg black with annoytheuser
-                "Afterward, you are once again abruptly pulled back into reality."
-            else:
+        menu:
+            "Fight back the warm feeling and try to pull the sword (Strength)":
+                call pull_sword from _call_pull_sword_3
                 "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
                 pause
                 $ battle(PARTY, [Hobgoblin])
+            "Let the warm feeling possess you (Wisdom)":
+                $ roll = Player.roll_ability("wisdom", advantage=True)
+                "ROLL: [roll.result]"
+                if roll.result > 1:
+                    "SUCCESS"
+                    stop music fadeout 1.0
+                    scene bg black with annoytheuser
+                    pause
+                    "Silence"
+                    "Void"
+                    "There's nothing else around you now. Only Darkness. Then..."
+                    window hide
+                    scene bg white with annoytheuser
+                    play music ascendingthevale fadein 2.0 volume 0.5
+                    "Light"
+                    window hide
+                    "And in that light..."
+                    window hide
+                    show 00008-3630713263 with annoytheuser
+                    alt """
+                    Her eyes are closed, and she wears a calm, introspective expression. Her makeup is striking, with bold red lipstick and subtle eyeshadow that enhances her delicate features.
+                    The background is a dreamy blend of deep blues and soft light streaks: a mystical or otherworldly setting.
+                    """
+                    pause
+                    "Love"
+                    "You sense the warmth emanating from the woman before you, like in a sunlit summer afternoon. The woman does not speak. Yet, you perceive meanings in your mind and through your emotions."
+                    "{i}YOU ARE FINE JUST THE WAY YOU ARE{/i}"
+                    "{i}YOU ARE LOVED{/i}"
+                    scene bg white with annoytheuser
+                    scene bg black with annoytheuser
+                    "Afterward, you are once again abruptly pulled back into reality."
+                else:
+                    "In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!"
+                    pause
+                    $ battle(PARTY, [Hobgoblin])
 
-    scene 00003-827032854 with dissolve
-    play music heroicage fadein 2.0 volume 0.5
-    "Before you realize it, the sword is coming out of the rock."
-    ary "Yes big Bro! You can do it!"
-    """
-    But it's not really you pulling it, it's the sword itself pushing up to get out.
-    And it's vibrating so hard that your arms ache!
-    And still, you couldn't let go of the sword even if you would...
-    You feel an otherworldly energy emanating from the sword. The little gnome girl watches in awe as the sword
-    begins to glow, casting a soft, ethereal light.
-    As the vibrations from the sword intensify, the air around you seems to shimmer, and an ancient power resonates
-    through the cavern.
-    The sword, once firmly embedded, now responds to an unseen force, as if it had a will of its own.
-    As the vibrations peak, the sword leaps out of the rock, pushing you backward and almost causing you to lose
-    your balance.
-    You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light,
-    and a sense of purpose emanates from it.
-    But the beauty of the sword lasts only for a moment...
-    The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it
-    before: an old, rusted, and heavily damaged sword.
-    In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!
-    """
-    pause
-    $ battle(PARTY, [Hobgoblin], can_lose=True)
+        scene 00003-827032854 with dissolve
+        play music heroicage fadein 2.0 volume 0.5
+        "Before you realize it, the sword is coming out of the rock."
+        ary "Yes big Bro! You can do it!"
+        """
+        But it's not really you pulling it, it's the sword itself pushing up to get out. And it's vibrating so hard that your arms ache! And still, you couldn't let go of the sword even if you would...
+        You feel an otherworldly energy emanating from the sword. The little gnome girl watches in awe as the sword begins to glow, casting a soft, ethereal light.
+        As the vibrations from the sword intensify, the air around you seems to shimmer, and an ancient power resonates through the cavern. The sword, once firmly embedded, now responds to an unseen force, as if it had a will of its own.
+        As the vibrations peak, the sword leaps out of the rock, pushing you backward and almost causing you to lose your balance.
+        You find yourself holding a weapon of extraordinary craftsmanship. The blade gleams with a radiant light, and a sense of purpose emanates from it.
+        But the beauty of the sword lasts only for a moment... The blade reflects light into your eyes, dazzling you, and right after, you see it again as you had seen it before: an old, rusted, and heavily damaged sword.
+        In the meanwhile, the [creature] draws dangerously close: you have no choice but to fight!
+        """
+        pause
 
-    $ restore_party(PARTY)
-    stop music fadeout 1.0
-    "With his last mighty blow, the [creature] sends you sprawling across the cavern floor."
-    "You struggle to open your eyes... Your head aches and your vision is compromised... "
-    play music cheezeecave fadein 2.0
-    show aryanna at topleft with dissolve
-    ary "Big bro! Are you ok? You must get back on your feet!"
-    hide aryanna with dissolve
-    """
-    Strangely, you find yourself still gripping the sword tightly in your hand.
-    With the assistance of young Aryanna, you manage to rise on your feet.
-    However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that
-    slowly takes hold, mingled with an overwhelming sense of desperation.
-    As you stand there, sword in hand, your enemy slowly approaches, and a whispered uncertainty escapes your lips:
-    """
-    p "I don't know if I can win this fight..."
+        $ battle(PARTY, [Hobgoblin], can_lose=True)
 
-    menu:
-        "{i}(Am I gonna die today?){/i}":
-            p "{i}(Wait... I haven't done much of what I wanted to do in my life!){/i}"
-            p "{i}(He will slay my flesh with that blade... It will be painful...){/i}"
-            p "{i}(NO! I DON'T WANT! It can't HAPPEN!){/i}"
-        "{i}(I Need to come up with something){/i}":
-            p "{i}(This thing seems like a magic sword but...){/i}"
-            p "{i}(I probably just don't know how to properly use it){/i}"
+        $ restore_party(PARTY)
+        stop music fadeout 1.0
+        "With his last mighty blow, the [creature] sends you sprawling across the cavern floor."
+        "You struggle to open your eyes... Your head aches and your vision is compromised... "
+        play music cheezeecave fadein 2.0
+        show aryanna at topleft with dissolve
+        ary "Big bro! Are you ok? You must get back on your feet!"
+        hide aryanna with dissolve
+        """
+        Strangely, you find yourself still gripping the sword tightly in your hand.
+        With the assistance of young Aryanna, you manage to rise on your feet.
+        However, a multitude of doubts begin to weave through your mind, intertwining with a deep-seated fear that
+        slowly takes hold, mingled with an overwhelming sense of desperation.
+        As you stand there, sword in hand, your enemy slowly approaches, and a whispered uncertainty escapes your lips:
+        """
+        p "I don't know if I can win this fight..."
 
-    p "{i}(Why am I in this situation? Was... Was it worth it?){/i}"
+        menu:
+            "{i}(Am I gonna die today?){/i}":
+                p "{i}(Wait... I haven't done much of what I wanted to do in my life!){/i}"
+                p "{i}(He will slay my flesh with that blade... It will be painful...){/i}"
+                p "{i}(NO! I DON'T WANT! It can't HAPPEN!){/i}"
+            "{i}(I Need to come up with something){/i}":
+                p "{i}(This thing seems like a magic sword but...){/i}"
+                p "{i}(I probably just don't know how to properly use it){/i}"
 
-    menu:
-        "{i}(Wait, maybe I can still run away...){/i}":
-            p "{i}(Aryanna won't make it but WHO CARES... She will slow down the [creature], so that's even better){/i}"
-            p "{i}(No one will ever know this... and I NEED TO SAVE MY LIFE!){/i}"
-            p "{i}(There's nothing more important, right?){/i}"
-            "You try to escape, but the sword get suddenly heavy, slowing you down."
-            "You try to drop the weapon, but your hand is still locked on the hilt."
-            "The [creature], sensing your desperate attempt to escape, launches another merciless attack!"
-            $ battle(PARTY, [Hobgoblin])
-        "{i}(I need to at least buy time for Aryanna to escape...){/i}":
-            p "{i}(Yes, this way my death will not be in vain, at least...){/i}"
+        p "{i}(Why am I in this situation? Was... Was it worth it?){/i}"
 
-    play music heroicage fadein 1.0
-    """
-    Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches
-    across your face.
-    You take a deep breath and focus on the weapon tightly gripped in your hand.
-    Strangely, you notice that the sword feels considerably lighter and more balanced than before.
-    You never trained to wield a longsword, but now you feel it as if it has become a natural extension of your body.
-    The air in the cavern becomes tense as you prepare for what is about to unfold.
-    In a sudden onslaught, the enemy launches a ferocious attack!
-    Drawing upon the agility and dexterity lessons from your days in the rogue's class, you skillfully use those
-    teachings to avoid the enemy's blows
-    """
-    p "{i}(Wow, so this is how all those exercises pay off, huh?){/i}"
-    "In a pivotal moment, a forceful blow, too potent to elude, hurtles towards you."
-    "Aware that dodging would mean exposing Aryanna to peril, you instinctively use the sword to parry the blow."
-    scene bg white
-    "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash"
-    "its brilliance."
-    "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
-    scene bg white with dissolve
-    pause    
-    "As your senses gradually return, an enormous cloud of dust hangs in the air, obscuring the cavern."
-    scene 00003-827032854 with dissolve
-    p "Aryanna! Where are you?"
-    "You rapidly scan the surroundings, searching for Ciry's little sister."
-    ary "I'm here big bro... wha... what happened? There was that burst of light..."
-    """
-    She was just behind you. A bit dazed but ultimately unharmed.
-    You notice you are still holding that strange sword.
-    But the sword is not gleaming with light anymore, and it looks like a regular old rusty sword.
-    Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon.
-    A harrowing scream echoes from the opposite side of the chamber. You then glance ahead to locate your enemy.
-    The [creature] rises to its feet, cradling the arm that once wielded its weapon.
-    To your astonishment, you realize that the arm is no longer there: it seems to have been disintegrated!
-    The [creature] is now in a state of shock and agony.
-    With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine
-    tunnels of the underground cave.
-    """
-    pause
-    """
-    You slowly shake off the dizziness, your head still spinning slightly from the impact.
-    Suddenly you hear a familiar voice coming from above.
-    """
-    c "Aryanna! [Player.sheet.name]!"
-    c "Are you there?"
-    "Above, not far away, you manage to catch a glimpse of Ciry's familiar face through the dust cloud raised by the explosion."
-    ary "Big sis! Yeah, we're here!"
-    c "Oh Ary! Thanks the Blessed Eve!"
-    c "Are you alright?!"
-    ary "Yeah we're fine big sis..."
-    p "Almost... at least"
-    ary "Big bro defeated that bad monster with a magic sword!"
-    c "What?"
-    c "Anyway... You might be able to climb those rocks!"
-    
-    
-    jump demo_end
+        menu:
+            "{i}(Wait, maybe I can still run away...){/i}":
+                p "{i}(Aryanna won't make it but WHO CARES... She will slow down the [creature], so that's even better){/i}"
+                p "{i}(No one will ever know this... and I NEED TO SAVE MY LIFE!){/i}"
+                p "{i}(There's nothing more important, right?){/i}"
+                "You try to escape, but the sword get suddenly heavy, slowing you down."
+                "You try to drop the weapon, but your hand is still locked on the hilt."
+                "The [creature], sensing your desperate attempt to escape, launches another merciless attack!"
+                $ battle(PARTY, [Hobgoblin])
+            "{i}(I need to at least buy time for Aryanna to escape...){/i}":
+                p "{i}(Yes, this way my death will not be in vain, at least...){/i}"
+
+        play music heroicage fadein 1.0
+        """
+        Positioning yourself firmly between the menacing foe and the small gnome, an unwavering determination etches
+        across your face.
+        You take a deep breath and focus on the weapon tightly gripped in your hand.
+        Strangely, you notice that the sword feels considerably lighter and more balanced than before.
+        You never trained to wield a longsword, but now you feel it as if it has become a natural extension of your body.
+        The air in the cavern becomes tense as you prepare for what is about to unfold.
+        In a sudden onslaught, the enemy launches a ferocious attack!
+        Drawing upon the agility and dexterity lessons from your days in the rogue's class, you skillfully use those
+        teachings to avoid the enemy's blows
+        """
+        p "{i}(Wow, so this is how all those exercises pay off, huh?){/i}"
+        "In a pivotal moment, a forceful blow, too potent to elude, hurtles towards you."
+        "Aware that dodging would mean exposing Aryanna to peril, you instinctively use the sword to parry the blow."
+        scene bg white
+        "In an instant, a blinding surge of light pervades the cavern, as if the entire Sun chose that moment to unleash"
+        "its brilliance."
+        "An explosion propels you backward, leaving you sprawled on the ground, your senses awash in disorientation."
+        scene bg white with dissolve
+        pause    
+        "As your senses gradually return, an enormous cloud of dust hangs in the air, obscuring the cavern."
+        scene 00003-827032854 with dissolve
+        p "Aryanna! Where are you?"
+        "You rapidly scan the surroundings, searching for Ciry's little sister."
+        ary "I'm here big bro... wha... what happened? There was that burst of light..."
+        """
+        She was just behind you. A bit dazed but ultimately unharmed.
+        You notice you are still holding that strange sword.
+        But the sword is not gleaming with light anymore, and it looks like a regular old rusty sword.
+        Hundreds of metallic shards lie on the ground, likely the remnants of what once was the [creature]'s weapon.
+        A harrowing scream echoes from the opposite side of the chamber. You then glance ahead to locate your enemy.
+        The [creature] rises to its feet, cradling the arm that once wielded its weapon.
+        To your astonishment, you realize that the arm is no longer there: it seems to have been disintegrated!
+        The [creature] is now in a state of shock and agony.
+        With one final snarl filled with rage and hatred, the [creature] flees, vanishing into the labyrinthine
+        tunnels of the underground cave.
+        """
+        pause
+        """
+        You slowly shake off the dizziness, your head still spinning slightly from the impact.
+        Suddenly you hear a familiar voice coming from above.
+        """
+        c "Aryanna! [Player.sheet.name]!"
+        c "Are you there?"
+        "Above, not far away, you manage to catch a glimpse of Ciry's familiar face through the dust cloud raised by the explosion."
+        ary "Big sis! Yeah, we're here!"
+        c "Oh Ary! Thanks the Blessed Eve!"
+        c "Are you alright?!"
+        ary "Yeah we're fine big sis..."
+        p "Almost... at least"
+        ary "Big bro defeated that bad monster with a magic sword!"
+        c "What?"
+        c "Anyway... You might be able to climb those rocks!"    
+        jump chapter_3
 
     label pull_sword:
         if not pull_attempted:
@@ -1582,7 +1548,7 @@ label chapter_3:
     # Meeting Theo and preparation for the school tournament
     label ch3_choices_1:
     menu:
-        "Date with Gwen":
+        "Date with Gwen" if "First date with Gwen" in Player.achievements and "Second date with Gwen" in Player.achievements:
             $ Player.achievements.append("Second date with Gwen")
             label gwen_second_date:
                 # scene bg academy_path_night with fade
@@ -1812,32 +1778,21 @@ label chapter_3:
         # Scene setup
         # scene courtyard_day with fade
         # play music "tense_argument.mp3"
-
         "As you walk through the academy courtyard, the sounds of a heated argument catch your attention. A crowd of students has gathered, forming a loose circle around the commotion."
         "Pushing through the crowd, you see her—an imposing, muscular half-orc girl, her expression furious, towering over a smaller, sharply dressed boy. It's the same girl you noticed in the cafeteria a few days ago."
-
         # show orc_girl_angry at left
         # show mage_boy_arrogant at right
-
-        "The boy, his robes finely embroidered with arcane symbols, sneers at the half-orc girl with open disdain. His tone is dripping with contempt."
-        
-        dan "Listen here, you filthy *Half-Blood*. Know your place before you embarrass yourself further."
-        
+        "The boy, his robes finely embroidered with arcane symbols, sneers at the half-orc girl with open disdain. His tone is dripping with contempt."        
+        dan "Listen here, you filthy *Half-Blood*. Know your place before you embarrass yourself further."        
         "The half-orc girl clenches her fists, her muscles tensing. Her voice booms with fury as she steps closer to him."
-
-        the "Say that again, you pompous little worm. I dare you."
-        
+        the "Ye wanna say that 'gain, eh? Ye lil' worm? Say it, an' I’ll knock yer teeth down yer throat!"        
         dan "Oh, I will. Your kind doesn't belong here, let alone in the academy. Barbaric brute!"
-
         "The crowd murmurs in anticipation, and you notice several larger boys standing behind the mage, smirking and cracking their knuckles. It's clear they're his lackeys, ready to back him up."
-
         # show orc_girl_tense at left
         "The half-orc girl glances around, her defiant expression faltering just slightly as she realizes she's outnumbered. Still, she doesn't back down."
-
-        the "You think you're tough with your little friends backing you up? I could take you all on if I had to."
-
+        the "Oh, ye think I’m scared o’ yer lot? Bring it! I’ll bash yer skulls in, one by one!"
         "The tension in the air is palpable, and you feel the weight of the moment pressing down on you. You can't just stand by."
-
+        
         menu:
             "Side with the Half-Orc Barbarian Girl":
                 $ alliance = "the"
@@ -1850,34 +1805,28 @@ label chapter_3:
                 jump stay_neutral
 
     label side_with_orc:
-        "You step forward, placing yourself between the half-orc girl and the mage boy, your heart racing."
-        
-        player "That's enough! Leave her alone. She hasn't done anything to deserve this."
-        
+        $ Player.achievements.append("Side with Theo")
+        $ Theo.approval += 10
+        "You step forward, placing yourself between the half-orc girl and the mage boy, your heart racing."        
+        player "That's enough! Leave her alone. She hasn't done anything to deserve this."        
         # show mage_boy_shocked at right
         "The mage looks at you in disbelief, his smirk replaced by annoyance."
-
         dan "You're siding with *her*? Figures. Another fool to join the brutes."
-
         # show orc_girl_surprised at left
         "The half-orc girl looks at you with a mixture of surprise and gratitude. For a moment, her furious expression softens."
-
-        the "You've got guts stepping in. Thanks."
-
+        the "Eh, ye got guts, I’ll give ye that. Thanks fer steppin’ in."
         "The mage boy scoffs, signaling to his lackeys."
         dan "Fine. Let's see if your little alliance can handle what's coming next. Let's go, boys."
         "He storms off, his lackeys following closely behind, though their glares linger on you."
-
         "The crowd begins to disperse, and the half-orc girl turns to you with a nod of appreciation."
-
-        the "Name's Ragna. I owe you one. Not many people would've done what you just did."
-
+        the "Name’s Theo. Ye ain’t half bad, y’know. Not many folk’d do what ye just did."
         player "It was the right thing to do."
-
-        "You sense that you've made an ally today—one whose strength and courage might come in handy in the future."
+        "You sense that you've made an ally today. One whose strength and courage might come in handy in the future."
+        "(Theo's approval: +10)"
         jump after_conflict
 
     label side_with_mage:
+        $ Player.achievements.append("Side with Dante")
         "You step forward, aligning yourself with the mage boy and his lackeys. The half-orc girl narrows her eyes at you, betrayal flickering across her face."
 
         player "Maybe you should learn to control your temper. This academy isn't the place for threats and violence."

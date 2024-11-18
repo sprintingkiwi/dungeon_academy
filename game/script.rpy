@@ -110,6 +110,25 @@ label start:
         Theo.actions = [DefaultAttack]
         Theo.equip_weapon(SRD_equipment['club'])
 
+        Gwen = PlayableAdventurer(sheet_5e.Character(
+            name="Gwen",
+            age="666",
+            level=20,
+            gender="Female",
+            classs=sheet_5e.CLASSES["cleric"],
+            strength=14,
+            dexterity=28,
+            constitution=26,
+            wisdom=24,
+            intelligence=22,
+            charisma=30
+        ))
+        Gwen.race = "Succubus"
+        Gwen.character = gwe
+        Gwen.image = "gwen"
+        Gwen.actions = [DefaultAttack]
+        Gwen.equip_weapon(SRD_equipment['dagger'])
+
         Player = PlayerAdventurer(sheet_5e.Character(
             name="Ale",
             age="16",
@@ -192,7 +211,7 @@ label start:
             jump dungeon_crawler
 
         "Debug Jump":
-            jump ch3_choices_1  
+            jump chapter_2  
 
 
 
