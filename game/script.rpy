@@ -211,7 +211,8 @@ label start:
             jump dungeon_crawler
 
         "Debug Jump":
-            jump chapter_2  
+            $ Player.achievements.append("First date with Gwen")
+            jump chapter_3
 
 
 

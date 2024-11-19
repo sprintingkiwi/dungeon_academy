@@ -843,109 +843,110 @@ label chapter_1:
 
 
 label chapter_2:
-    "You wake up with a lot of energy and optimism"
-    scene 00028-45450802 with dissolve
-    play music firefliesandstardust fadein 2.0
-    "While you eat breakfast and prepare yourself for the day, you can't shake the vague feeling that you've dreamt"
-    "about something: a scent, a light, a warm feeling of calm, like a hug from a beloved friend."
-    "But soon your mind fills with excitement, questions and expectations"
-    p "{i}(Which optional course should I choose?){/i}"
-    "You say goodbye to your aunt Bella and start walking towards the Academy."
-    scene dice academy1 with annoytheuser
-    "As soon as you arrive at the Academy, you see many students in turmoil inside the Main Hall."
-    "But this time you know why: everyone should choose his optional course for the current month."
-    show ciry at topleft with dissolve
-    "You notice Ciry not too distant from you. She seems completely lost in her own thoughts."
-    p "Oh, Ciry! Good to see you!"
-    c "Hi [Player.sheet.name]!"
-    c "I'm so excited!"
-    c "I couldn't sleep the whole night. Should I go with 'History of Magic' or 'Principles of the Faithful'?"
-    c "I still can't decide wheter to focus on pure Cleric stuff or expand my knowledge in complementary subjects..."
-    menu:
-        "You should focus on cleric stuff":
-            p "A solid foundation is the key to becoming a great adventurer:"
-            p "perhaps you should first focus on the knowledge and skills central to your class."
-            $ Ciry.sheet.wisdom += 2
-            $ Ciry.courses_taken.append("religion")
-            $ Ciry.sheet.skills_intelligence["religion"] = True
+    label first_days_academy:
+        "You wake up with a lot of energy and optimism"
+        scene 00028-45450802 with dissolve
+        play music firefliesandstardust fadein 2.0
+        "While you eat breakfast and prepare yourself for the day, you can't shake the vague feeling that you've dreamt"
+        "about something: a scent, a light, a warm feeling of calm, like a hug from a beloved friend."
+        "But soon your mind fills with excitement, questions and expectations"
+        p "{i}(Which optional course should I choose?){/i}"
+        "You say goodbye to your aunt Bella and start walking towards the Academy."
+        scene dice academy1 with annoytheuser
+        "As soon as you arrive at the Academy, you see many students in turmoil inside the Main Hall."
+        "But this time you know why: everyone should choose his optional course for the current month."
+        show ciry at topleft with dissolve
+        "You notice Ciry not too distant from you. She seems completely lost in her own thoughts."
+        p "Oh, Ciry! Good to see you!"
+        c "Hi [Player.sheet.name]!"
+        c "I'm so excited!"
+        c "I couldn't sleep the whole night. Should I go with 'History of Magic' or 'Principles of the Faithful'?"
+        c "I still can't decide wheter to focus on pure Cleric stuff or expand my knowledge in complementary subjects..."
+        menu:
+            "You should focus on cleric stuff":
+                p "A solid foundation is the key to becoming a great adventurer:"
+                p "perhaps you should first focus on the knowledge and skills central to your class."
+                $ Ciry.sheet.wisdom += 2
+                $ Ciry.courses_taken.append("religion")
+                $ Ciry.sheet.skills_intelligence["religion"] = True
 
-        "You should expand your knowledge":
-            p "I think flexibility is a good thing for every adventurer, not just for Rogues."
-            p "Maybe expanding your knowledge will save you from a bad situation one day."
-            $ Ciry.sheet.intelligence += 2
-            $ Ciry.sheet.skills_intelligence["arcana"] = True
-            $ Ciry.courses_taken.append("arcana")
-    
-    c "Thanks, I will take your suggestion into consideration!"
-    c "Let's go sign up for the optional courses!"
-    hide ciry with dissolve
-    "You follow Ciry inside the Main Hall where, in front of a long wooden table, a row of students waited their"
-    "turn to write their name on the sheet relating to the chosen optional course."
-    "Finally, it's you turn to sign up for a course."
-    call study_plan_1 from _call_study_plan_1
+            "You should expand your knowledge":
+                p "I think flexibility is a good thing for every adventurer, not just for Rogues."
+                p "Maybe expanding your knowledge will save you from a bad situation one day."
+                $ Ciry.sheet.intelligence += 2
+                $ Ciry.sheet.skills_intelligence["arcana"] = True
+                $ Ciry.courses_taken.append("arcana")
+        
+        c "Thanks, I will take your suggestion into consideration!"
+        c "Let's go sign up for the optional courses!"
+        hide ciry with dissolve
+        "You follow Ciry inside the Main Hall where, in front of a long wooden table, a row of students waited their"
+        "turn to write their name on the sheet relating to the chosen optional course."
+        "Finally, it's you turn to sign up for a course."
+        call study_plan_1 from _call_study_plan_1
 
-    # $ PARTY = [store.Player, store.Ciry]
-    "Day after day, you follow the lessons at the Academy with great interest."
-    "One of the things you notice in your first days at the Academy is that many students carry weapons with them,"
-    "someone in their bags, others attached to their bodies, as if to display them,"
-    "not to talk about those wearing shining heavy armors all the day long."
-    show ciry at topleft with dissolve
-    c "I can see your curious face, hihi"
-    c "Students with rich families use to flaunt their weapons in front of the teacher and the other students."
-    c "Those weapons and armors are usually of fine workmanship, and sometimes even magical artifacts."
-    c "It's like to say: (mocking the voice of a guy)"
-    c "'hey, I'm so rich and powerful that I can bring this at school' hihi!"
-    c "I think it's just stupid, unless you really need to train in their use."
-    c "Wearing a heavy armor all the day, though, can make sense: for a heavy armor user, the sooner you get used"
-    c "to moving around effortlessly in armor the better."
-    hide ciry with dissolve
+        # $ PARTY = [store.Player, store.Ciry]
+        "Day after day, you follow the lessons at the Academy with great interest."
+        "One of the things you notice in your first days at the Academy is that many students carry weapons with them,"
+        "someone in their bags, others attached to their bodies, as if to display them,"
+        "not to talk about those wearing shining heavy armors all the day long."
+        show ciry at topleft with dissolve
+        c "I can see your curious face, hihi"
+        c "Students with rich families use to flaunt their weapons in front of the teacher and the other students."
+        c "Those weapons and armors are usually of fine workmanship, and sometimes even magical artifacts."
+        c "It's like to say: (mocking the voice of a guy)"
+        c "'hey, I'm so rich and powerful that I can bring this at school' hihi!"
+        c "I think it's just stupid, unless you really need to train in their use."
+        c "Wearing a heavy armor all the day, though, can make sense: for a heavy armor user, the sooner you get used"
+        c "to moving around effortlessly in armor the better."
+        hide ciry with dissolve
 
-    # scene bg academy_courtyard with fade
-    "One day, the Academy's courtyard is buzzing with activity as students disperse to their classes."
-    "Amid the crowd, a girl approaches you."    
-    gwe "Hey, you! You're new here, aren't you?"
-    p "(nervous) Uh... me? Yes, I, uh, just started today."    
-    gwe "(grinning) Thought so! You look a little lost. I'm Gwen. What's your name?"
-    p "I'm [Player.sheet.name]. Nice to meet you."    
-    gwe "Well, how about I give you the grand tour of this place?"
-    gwe "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
-    
-    menu:
-        "Agree hesitantly":
-            p "Oh, um... sure. I guess that could be nice."
-            gwe "Great! Meet me by the fountain at sunset. And don't worry, I'll try not to get us into too much trouble."
-            gwe "Probably."
-            $ Player.achievements.append("Gwen Date")
+        # scene bg academy_courtyard with fade
+        "One day, the Academy's courtyard is buzzing with activity as students disperse to their classes."
+        "Amid the crowd, a girl approaches you."    
+        gwe "Hey, you! You're new here, aren't you?"
+        p "(nervous) Uh... me? Yes, I, uh, just started today."    
+        gwe "(grinning) Thought so! You look a little lost. I'm Gwen. What's your name?"
+        p "I'm [Player.sheet.name]. Nice to meet you."    
+        gwe "Well, how about I give you the grand tour of this place?"
+        gwe "Or better yet, why don't we skip the boring stuff and grab a bite at the Bazaar later? It'll be fun!"
+        
+        menu:
+            "Agree hesitantly":
+                p "Oh, um... sure. I guess that could be nice."
+                gwe "Great! Meet me by the fountain at sunset. And don't worry, I'll try not to get us into too much trouble."
+                gwe "Probably."
+                $ Player.achievements.append("Gwen Date")
 
-        "Decline politely":
-            p "Thank you, but I really should focus on settling in. Maybe another time?"
-            gwe "(pouting) Suit yourself, new boy. But you're missing out, you know. I'm very entertaining!"
+            "Decline politely":
+                p "Thank you, but I really should focus on settling in. Maybe another time?"
+                gwe "(pouting) Suit yourself, new boy. But you're missing out, you know. I'm very entertaining!"
 
-        "(blushing) Get flustered and say nothing":
-            p "Uh... I... um..."
-            gwe "(chuckling) Cat got your tongue, huh?"
-            gwe "Don't worry, I'll take that as a yes. Fountain. Sunset. Don't be late!"
-            $ Player.achievements.append("Gwen Date")
+            "(blushing) Get flustered and say nothing":
+                p "Uh... I... um..."
+                gwe "(chuckling) Cat got your tongue, huh?"
+                gwe "Don't worry, I'll take that as a yes. Fountain. Sunset. Don't be late!"
+                $ Player.achievements.append("Gwen Date")
 
-    menu:
-        "Go to the date with Gwen" if "Gwen Date" in Player.achievements:
-            label gwen_date:
-                $ Player.achievements.append("First date with Gwen")
-                "The sun dips low, painting the Academy courtyard in hues of gold and crimson."
-                "You wait nervously by the fountain, until Gwen arrives, her usual mischievous grin in place."                
-                gwe "Glad you showed up, [Player.sheet.name]! I was starting to think you might bail."
-                
-                menu:                
-                    "No, I wouldn't... I mean, I'm here, aren't I?":                
-                        gwe "Relax, I'm just teasing. Now, come on. The Bazaar awaits!"                
-                scene bg fantasy_bazaar with dissolve
-                "You make your way to the bustling Bazaar, a vibrant market filled with magical trinkets, exotic foods, and performers displaying their talents. Gwen leads the way, pulling you into the crowd."                
-                gwe "This place has the best snacks. Try this!" 
-                gwe "Oh, and don't miss the fire juggler over there. He's always fun!"                
-                "As you wander, Gwen's enthusiasm is infectious, and you find yourself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
+        menu:
+            "Go to the date with Gwen" if "Gwen Date" in Player.achievements:
+                label gwen_date:
+                    $ Player.achievements.append("First date with Gwen")
+                    "The sun dips low, painting the Academy courtyard in hues of gold and crimson."
+                    "You wait nervously by the fountain, until Gwen arrives, her usual mischievous grin in place."                
+                    gwe "Glad you showed up, [Player.sheet.name]! I was starting to think you might bail."
+                    
+                    menu:                
+                        "No, I wouldn't... I mean, I'm here, aren't I?":                
+                            gwe "Relax, I'm just teasing. Now, come on. The Bazaar awaits!"                
+                    scene bg fantasy_bazaar with dissolve
+                    "You make your way to the bustling Bazaar, a vibrant market filled with magical trinkets, exotic foods, and performers displaying their talents. Gwen leads the way, pulling you into the crowd."                
+                    gwe "This place has the best snacks. Try this!" 
+                    gwe "Oh, and don't miss the fire juggler over there. He's always fun!"                
+                    "As you wander, Gwen's enthusiasm is infectious, and you find yourself smiling and laughing more than he has in years. The evening passes in a blur of lights and sounds."
 
-        "Skip (continue your studies for the week)":
-            jump aryanna_rescue
+            "Skip (continue your studies for the week)":
+                jump aryanna_rescue
 
     label aryanna_rescue:
         "The first week is now gone, and today Ciry will come to visit you at your home, as you both previously agreed."
@@ -1546,9 +1547,93 @@ label chapter_3:
     # Discovery of the Statue of the Silent Goddess within the school and the book that Ciry gradually translates.
     # First encounter with Hooded-Woman
     # Meeting Theo and preparation for the school tournament
+    
+    label orc_vs_mage_conflict:
+        # Scene setup
+        # scene courtyard_day with fade
+        # play music "tense_argument.mp3"
+        "As you walk through the academy courtyard, the sounds of a heated argument catch your attention. A crowd of students has gathered, forming a loose circle around the commotion."
+        "Pushing through the crowd, you see her—an imposing, muscular half-orc girl, her expression furious, towering over a smaller, sharply dressed boy. It's the same girl you noticed in the cafeteria a few days ago."
+        # show orc_girl_angry at left
+        # show mage_boy_arrogant at right
+        "The boy, his robes finely embroidered with arcane symbols, sneers at the half-orc girl with open disdain. His tone is dripping with contempt."        
+        dan "Listen here, you filthy *Half-Blood*. Know your place before you embarrass yourself further."        
+        "The half-orc girl clenches her fists, her muscles tensing. Her voice booms with fury as she steps closer to him."
+        the "Ye wanna say that 'gain, eh? Ye lil' worm? Say it, an' I’ll knock yer teeth down yer throat!"        
+        dan "Oh, I will. Your kind doesn't belong here, let alone in the academy. Barbaric brute!"
+        "The crowd murmurs in anticipation, and you notice several larger boys standing behind the mage, smirking and cracking their knuckles. It's clear they're his lackeys, ready to back him up."
+        # show orc_girl_tense at left
+        "The half-orc girl glances around, her defiant expression faltering just slightly as she realizes she's outnumbered. Still, she doesn't back down."
+        the "Oh, ye think I’m scared o’ yer lot? Bring it! I’ll bash yer skulls in, one by one!"
+        "The tension in the air is palpable, and you feel the weight of the moment pressing down on you. You can't just stand by."
+        
+        menu:
+            "Side with the Half-Orc Barbarian Girl":
+                $ alliance = "the"
+                jump side_with_orc
+            "Side with the Noble Mage Boy":
+                $ alliance = "dan"
+                jump side_with_mage
+            "Stay neutral and walk away":
+                $ alliance = "neutral"
+                jump stay_neutral
+
+    label side_with_orc:
+        $ Player.achievements.append("Side with Theo")
+        $ Theo.approval += 10
+        "You step forward, placing yourself between the half-orc girl and the mage boy, your heart racing."        
+        p "That's enough! Leave her alone. She hasn't done anything to deserve this."        
+        # show mage_boy_shocked at right
+        "The mage looks at you in disbelief, his smirk replaced by annoyance."
+        dan "You're siding with *her*? Figures. Another fool to join the brutes."
+        # show orc_girl_surprised at left
+        "The half-orc girl looks at you with a mixture of surprise and gratitude. For a moment, her furious expression softens."
+        the "Eh, ye got guts, I’ll give ye that. Thanks fer steppin’ in."
+        "The mage boy scoffs, signaling to his lackeys."
+        dan "Fine. Let's see if your little alliance can handle what's coming next. Let's go, boys."
+        "He storms off, his lackeys following closely behind, though their glares linger on you."
+        "The crowd begins to disperse, and the half-orc girl turns to you with a nod of appreciation."
+        the "Name’s Theo. Ye ain’t half bad, y’know. Not many folk’d do what ye just did."
+        p "It was the right thing to do."
+        "You sense that you've made an ally today. One whose strength and courage might come in handy in the future."
+        "(Theo's approval: +10)"
+        jump after_conflict
+
+    label side_with_mage:
+        $ Player.achievements.append("Side with Dante")
+        "You step forward, aligning yourself with the mage boy and his lackeys. The half-orc girl narrows her eyes at you, betrayal flickering across her face."
+
+        p "Maybe you should learn to control your temper. This academy isn't the place for threats and violence."
+        
+        # show orc_girl_hurt at left
+        "The half-orc girl glares at you, her anger briefly replaced by a hint of hurt."
+
+        the "Figures. Just another coward siding with the bullies."
+
+        # show mage_boy_smirk at right
+        "The mage boy chuckles, his arrogance growing."
+
+        dan "Smart choice. At least someone here understands how things work."
+
+        "The crowd begins to disperse as the half-orc girl storms off, her shoulders tense with barely contained fury."
+
+        dan "I'll remember this. Maybe you're not as hopeless as the rest of them."
+
+        "You've clearly made an impression on the mage boy and his circle, though you can't help but wonder if siding with him was the right decision."
+        jump after_conflict
+
+    label stay_neutral:
+        "You hesitate, unsure of how to act. The tension is thick, but ultimately, you decide not to get involved."
+        "The half-orc girl and the mage boy exchange a few more heated words before the crowd begins to disperse."
+        "You walk away, leaving the conflict unresolved. Whether it was the right choice or not, you'll never know."
+        jump after_conflict
+
+    label after_conflict:
+        "With the confrontation behind you, you reflect on what just happened. The choices you made today might shape your future relationships at the academy."
+
     label ch3_choices_1:
     menu:
-        "Date with Gwen" if "First date with Gwen" in Player.achievements and "Second date with Gwen" in Player.achievements:
+        "Date with Gwen" if "First date with Gwen" in Player.achievements and "Second date with Gwen" not in Player.achievements:
             $ Player.achievements.append("Second date with Gwen")
             label gwen_second_date:
                 # scene bg academy_path_night with fade
@@ -1770,93 +1855,126 @@ label chapter_3:
             
             jump ch3_choices_1
 
+        "Date with Theo" if "Side with Theo" in Player.achievements:            
+            label date_with_theo:
+                # scene park_evening with fade
+                # play music "gentle_evening_theme.mp3"
+
+                "You and Theo decide to spend some time together in the academy’s beautiful park. The sun is setting, painting the sky with hues of orange and pink."
+
+                # show theo_happy at left
+                the "Well, ain’t this a fine evenin’, eh? This place be lookin' like somethin’ outta one o’ them bard tales. All shiny-like an’ calm."
+
+                "Theo stretches her muscular arms and takes a deep breath of the fresh evening air."
+                the "So, whatcha wanna do, eh? We could mess about, or jus’ sit an’ chat. Yer call."
+
+                menu:
+                    "Go for a walk together":
+                        $ affection += 5
+                        "You suggest taking a walk around the park, enjoying the scenery together."
+                        the "Aye, a walk’s soundin’ nice. Let’s stretch them legs an’ see what we find."
+                        jump date_walk
+
+                    "Sit by the lake and talk":
+                        $ affection += 10
+                        "You suggest sitting by the lake to relax and chat."
+                        the "Eh, a quiet sit-down don’t sound too bad. Guess I can handle not punchin’ somethin’ fer a while."
+                        jump date_lake
+
+                    "Challenge her to an arm-wrestling match":
+                        $ affection += 15
+                        "You playfully challenge Theo to an arm-wrestling match."
+                        the "Ha! Ye sure 'bout that, mate? Me strength ain’t fer show, y’know!"
+                        jump date_armwrestle
+
+            label date_walk:
+                # scene park_path with fade
+                "You and Theo stroll along the park's winding paths, surrounded by trees and flowers."
+
+                the "This place be all quiet-like, huh? Don’t get me wrong, I like bashin’ heads, but sometimes, a bit o’ peace is nice too."
+                "Theo glances at you with a grin."
+                the "Ye ever think 'bout how small we is, standin' in all this big world? Makes ye wonder, don’t it?"
+
+                menu:
+                    "Agree with her sentiment":
+                        $ affection += 5
+                        "You nod, agreeing that the world feels vast and awe-inspiring."
+                        the "Aye, glad ye see it too. Life’s a big ol’ mystery, an’ we just tryin’ to make sense of it."
+
+                    "Tease her for being philosophical":
+                        "You joke about her sudden philosophical side."
+                        the "Oi, don’t go thinkin’ I’m all brawn an’ no brains! Even a barbarian’s got thoughts, y’know!"
+
+                "As you continue walking, Theo’s tone turns more serious."
+                the "Ye know, I weren’t always wanderin' about like this. When I was little, I... weren’t treated too kind. Got sold as a slave, y’see. Some right nasty folk bought me, wanted me fer... fightin’, mostly."
+                "She clenches her fists, her cheerful demeanor briefly fading."
+                the "But then, one day, a group o’ paladins stormed in. Proper shiny folk, with big ol’ swords and hearts bigger than mountains. They saved me, they did."
+                the "Ever since, I been dreamin’ o’ bein’ like 'em. But this academy... they said I ain’t got the 'references.' Fancy word fer sayin’ I ain’t noble enough, I reckon."
+                the "So here I am, swingin’ axes instead. Ain’t a bad life, but... someday, I’ll show 'em. I’ll be a paladin, just like them who saved me."
+                "You walk in silence for a while, letting her words sink in."
+                jump date_end
+
+            label date_lake:
+                # scene lake_evening with fade
+                "The two of you find a quiet spot by the lake, the water shimmering in the fading light."
+
+                the "This here’s nice. Don’t reckon I’ve spent much time jus’ sittin’ by a lake afore."
+                "Theo skips a stone across the water, her strength sending it skipping farther than you expected."
+                the "What 'bout you, mate? What’s yer idea of a good time? Punchin’ goblins? Climbin’ mountains? Or somethin' else?"
+
+                menu:
+                    "Say you enjoy adventuring":
+                        "You tell Theo you love the thrill of adventuring, just like she does."
+                        the "Ha! Knew we was alike. Ain’t nothin’ better than a good fight an’ a stiff drink after!"
+
+                    "Say you enjoy quiet moments like this":
+                        $ affection += 5
+                        "You tell her you enjoy moments of peace and quiet, like this one."
+                        the "Aye, I guess there’s somethin’ special 'bout it. Sittin' here with ye makes it even better."
+
+                "Theo looks at the lake for a moment, her expression softening."
+                the "Ye know, this calm... it’s rare fer me. When I was a wee lass, there weren’t no calm. Got sold off like a piece o’ meat. Life as a slave ain’t no life at all."
+                the "But then, some paladins came. They cut through them bastards like butter an’ freed me. Saved me life, they did. I been dreamin’ o’ bein’ like 'em ever since."
+                the "This academy, though... They don’t think I’m paladin material. So they shoved me in the barbarian class. But I’ll prove ‘em wrong. One day, I’ll make 'em see."
+                "You feel a new sense of respect for Theo as she opens up about her past."
+                jump date_end
+
+            label date_armwrestle:
+                # scene park_table with fade
+                "You and Theo find a sturdy table, and she eagerly sets her arm on it, ready for the challenge."
+
+                the "Alright, mate, give it yer best shot! But don’t go cryin’ when I wipe the floor with ye!"
+                "You grip Theo’s hand, her calloused palm strong and steady. The two of you lock eyes as the match begins."
+
+                menu:
+                    "Try to win with all your strength":
+                        "You put everything you have into the match, straining against Theo’s strength."
+                        "She grins as she easily overpowers you, slamming your arm down."
+                        the "Ha! Told ye I’m the strongest! But good on ye fer tryin’, mate."
+
+                    "Pretend to struggle but let her win":
+                        $ affection += 10
+                        "You put up a show of resistance but ultimately let Theo win."
+                        the "Hah! I knew I’d win! Yer tough, but I’m tougher! Still, good match, eh?"
+
+                    "Use a clever trick to distract her and win":
+                        "You feint a distraction, causing Theo to briefly lose focus. Taking the chance, you slam her arm down."
+                        the "Oi! That weren’t fair! But I gotta hand it to ye—yer clever, I’ll give ye that."
+
+                "Theo laughs heartily, but as the laughter fades, she grows thoughtful."
+                the "Ye know, strength’s always been me thing. Had to be, growin’ up. Weren’t no one there to protect me but meself—at least until them paladins showed up."
+                the "They saved me from the worst, and I swore I’d be like ‘em one day. But this academy thinks I’m naught but a brute. Bah, I’ll show 'em what I’m made of."
+                "Her determination is palpable, and you can’t help but admire her resolve."
+                jump date_end
+
+            label date_end:
+                scene park_night with fade
+                "As the evening comes to an end, you and Theo make your way back to the academy, the bond between you stronger than ever."
+
+                the "That was a good time, mate. Yer alright fer someone who ain’t swingin’ a big ol’ axe. Let’s do this again sometime, eh?"
+        
         "Skip (continue with your life at the Academy)":
-            jump orc_vs_mage_conflict
-
-
-    label orc_vs_mage_conflict:
-        # Scene setup
-        # scene courtyard_day with fade
-        # play music "tense_argument.mp3"
-        "As you walk through the academy courtyard, the sounds of a heated argument catch your attention. A crowd of students has gathered, forming a loose circle around the commotion."
-        "Pushing through the crowd, you see her—an imposing, muscular half-orc girl, her expression furious, towering over a smaller, sharply dressed boy. It's the same girl you noticed in the cafeteria a few days ago."
-        # show orc_girl_angry at left
-        # show mage_boy_arrogant at right
-        "The boy, his robes finely embroidered with arcane symbols, sneers at the half-orc girl with open disdain. His tone is dripping with contempt."        
-        dan "Listen here, you filthy *Half-Blood*. Know your place before you embarrass yourself further."        
-        "The half-orc girl clenches her fists, her muscles tensing. Her voice booms with fury as she steps closer to him."
-        the "Ye wanna say that 'gain, eh? Ye lil' worm? Say it, an' I’ll knock yer teeth down yer throat!"        
-        dan "Oh, I will. Your kind doesn't belong here, let alone in the academy. Barbaric brute!"
-        "The crowd murmurs in anticipation, and you notice several larger boys standing behind the mage, smirking and cracking their knuckles. It's clear they're his lackeys, ready to back him up."
-        # show orc_girl_tense at left
-        "The half-orc girl glances around, her defiant expression faltering just slightly as she realizes she's outnumbered. Still, she doesn't back down."
-        the "Oh, ye think I’m scared o’ yer lot? Bring it! I’ll bash yer skulls in, one by one!"
-        "The tension in the air is palpable, and you feel the weight of the moment pressing down on you. You can't just stand by."
-        
-        menu:
-            "Side with the Half-Orc Barbarian Girl":
-                $ alliance = "the"
-                jump side_with_orc
-            "Side with the Noble Mage Boy":
-                $ alliance = "dan"
-                jump side_with_mage
-            "Stay neutral and walk away":
-                $ alliance = "neutral"
-                jump stay_neutral
-
-    label side_with_orc:
-        $ Player.achievements.append("Side with Theo")
-        $ Theo.approval += 10
-        "You step forward, placing yourself between the half-orc girl and the mage boy, your heart racing."        
-        player "That's enough! Leave her alone. She hasn't done anything to deserve this."        
-        # show mage_boy_shocked at right
-        "The mage looks at you in disbelief, his smirk replaced by annoyance."
-        dan "You're siding with *her*? Figures. Another fool to join the brutes."
-        # show orc_girl_surprised at left
-        "The half-orc girl looks at you with a mixture of surprise and gratitude. For a moment, her furious expression softens."
-        the "Eh, ye got guts, I’ll give ye that. Thanks fer steppin’ in."
-        "The mage boy scoffs, signaling to his lackeys."
-        dan "Fine. Let's see if your little alliance can handle what's coming next. Let's go, boys."
-        "He storms off, his lackeys following closely behind, though their glares linger on you."
-        "The crowd begins to disperse, and the half-orc girl turns to you with a nod of appreciation."
-        the "Name’s Theo. Ye ain’t half bad, y’know. Not many folk’d do what ye just did."
-        player "It was the right thing to do."
-        "You sense that you've made an ally today. One whose strength and courage might come in handy in the future."
-        "(Theo's approval: +10)"
-        jump after_conflict
-
-    label side_with_mage:
-        $ Player.achievements.append("Side with Dante")
-        "You step forward, aligning yourself with the mage boy and his lackeys. The half-orc girl narrows her eyes at you, betrayal flickering across her face."
-
-        player "Maybe you should learn to control your temper. This academy isn't the place for threats and violence."
-        
-        # show orc_girl_hurt at left
-        "The half-orc girl glares at you, her anger briefly replaced by a hint of hurt."
-
-        the "Figures. Just another coward siding with the bullies."
-
-        # show mage_boy_smirk at right
-        "The mage boy chuckles, his arrogance growing."
-
-        dan "Smart choice. At least someone here understands how things work."
-
-        "The crowd begins to disperse as the half-orc girl storms off, her shoulders tense with barely contained fury."
-
-        dan "I'll remember this. Maybe you're not as hopeless as the rest of them."
-
-        "You've clearly made an impression on the mage boy and his circle, though you can't help but wonder if siding with him was the right decision."
-        jump after_conflict
-
-    label stay_neutral:
-        "You hesitate, unsure of how to act. The tension is thick, but ultimately, you decide not to get involved."
-        "The half-orc girl and the mage boy exchange a few more heated words before the crowd begins to disperse."
-        "You walk away, leaving the conflict unresolved. Whether it was the right choice or not, you'll never know."
-        jump after_conflict
-
-    label after_conflict:
-        "With the confrontation behind you, you reflect on what just happened. The choices you made today might shape your future relationships at the academy."
-        return
+            jump assassin_encounter_cloak # or with Dante
 
     label assassin_encounter_cloak:
         # Scene setup
@@ -1945,90 +2063,318 @@ label chapter_4:
     # Simulated dungeon with mechanical goblins, traps, and the Lake of the Spirit Trial
     # The "Cursed Dawn" goddess, evil sister of the Blessed Eve, will interfere in the spirit trial with a much darker test of her own
     # 1v1 Final battle against Geralt Dune
-    $ choice = ""
-    $ rewards_list = [
-        "Shield of Justice",
-        "Critical Ring",
-        "Gloves of Gargantuan",
-        "Amulet of Mana"
-    ]
-    menu:
-        "Choose your reward"
 
-        "[rewards_list[0]]":
-            python:
-                Player.inventory.append(rewards_list[0])
-                choice = rewards_list[0]
-                Player.ac_bonus += 3
+    label tournament_intro:
+        scene academy_arena with fade
+        play music "epic_tournament.mp3"
 
-        "[rewards_list[1]]":
-            python:
-                Player.inventory.append(rewards_list[1])
-                choice = rewards_list[1]
-                Player.dmg_critical_threshold -= 2
+        "The grand arena of the academy buzzes with excitement as the students gather for the annual end-of-year tournament. The tournament is a showcase of skill, intellect, and teamwork—a final challenge before the academy break."
+        "Your team is assembled: Ciry, your ever-reliable companion, and [alliance], the person you chose to ally with earlier in the year."
 
-        "[rewards_list[2]]":
-            python:
-                Player.inventory.append(rewards_list[2])
-                choice = rewards_list[2]
-                Player.sheet.strength += 2
+        if alliance == "Theo":
+            show theo_confident at left
+            "Theo, the towering half-orc barbarian, cracks her knuckles, a wide grin on her face."
+            theo "Ha! We’ll crush 'em. Ain’t no team out there better than us!"
+        elif alliance == "Dante":
+            show dante_calculating at left
+            "Dante, the noble mage, adjusts his robes with a smirk, confidence radiating from him."
+            dante "Victory is assured. I’ve already calculated every possibility."
 
-        "[rewards_list[3]]":
-            python:
-                Player.inventory.append(rewards_list[3])
-                choice = rewards_list[3]
+        show ciry_ready at center
+        "Ciry gives you a reassuring nod, her focus unshakable."
+        ciry "We’ve got this. Just stick together, and we’ll win."
 
-    label gwen_returns:
-        """
-        You've done your best to put the encounter behind you, burying the memory of Gwen's true form under the routine of academy life. But no matter how hard you try, it lingers—her glowing crimson eyes, the brush of her claws, the unsettling mix of fear and fascination.
+        "The announcer’s voice echoes through the arena, silencing the crowd."
+        announcer "Ladies and gentlemen, welcome to the annual End-of-Year Tournament! Today, our teams will face three trials. Only the strongest, smartest, and bravest will emerge victorious!"
+        "The crowd erupts into cheers as the announcer continues."
 
-        Then one day, she returns.
+        announcer "The first trial: a test of knowledge. The second trial: a simulated dungeon. And finally, the third trial: a one-on-one duel! Let the tournament begin!"
+        jump trial_one
 
-        You're sitting in the academy courtyard, trying to focus on a particularly dense passage in one of your magical theory books. The chatter of students fills the air, a comforting background noise—until you hear a familiar voice behind you.
+    label trial_one:
+        scene classroom_theory with fade
+        "The first trial takes place in a grand lecture hall, with each team seated at desks. A professor stands at the front, ready to administer the test."
 
-        "Miss me?"
+        if alliance == "Theo":
+            theo "Bah, tests. This ain’t what I signed up for. I’m better at bashin’ than thinkin’."
+            ciry "Don’t worry, Theo. We’ll carry this one. Just try your best!"
+        elif alliance == "Dante":
+            dante "A theory test? Excellent. This is where we shine. Let’s focus and ace it."
+            ciry "Don’t get too cocky, Dante. We still need to work as a team."
 
-        Your heart stops. You turn, and there she is—Gwen, back in her playful, mischievous academy disguise. She's dressed in the same student uniform, her hair cropped short again, her bright eyes gleaming with amusement. She looks harmless, normal even, but you know better now.
+        "The professor clears his throat and begins reading out questions related to the *Player’s Handbook* of *Dungeons & Dragons 5th Edition*."
 
-        "You're still alive. I have to admit, I'm impressed," she says, sliding onto the bench beside you as if nothing has changed. "I thought you might've run off to some temple by now, begging a cleric to ward me away."
+        menu:
+            "Answer the question about spell slots.":
+                "You confidently explain how spell slots work, earning points for your team."
+                $ team_score += 10
+            "Answer the question about saving throws.":
+                "You explain the mechanics of saving throws, impressing the judges."
+                $ team_score += 10
+            "Pass the question to your teammates.":
+                if alliance == "Theo":
+                    "Theo fumbles the answer, but Ciry steps in to save the day."
+                    $ team_score += 5
+                elif alliance == "Dante":
+                    "Dante smugly answers the question with ease."
+                    $ team_score += 10
 
-        You shift uncomfortably, the memory of her true form flashing in your mind. "What are you doing here, Gwen?"
+        "The theory test concludes, and your team’s score is announced."
+        if team_score >= 20:
+            "Your team scores high marks, placing you among the top teams!"
+            $ team_rank = 1
+        else:
+            "Your team scores average marks, leaving you in the middle of the rankings."
+            $ team_rank = 2
 
-        She leans in closer, her voice dropping to a conspiratorial whisper. "You, of course. I told you, didn't I? There's something about you, something... deliciously unique."
+        jump trial_two
 
-        Her words send a shiver down your spine. "I thought you already got what you wanted," you say, trying to keep your voice steady.
+    label trial_two:
+        scene dungeon_simulation with fade
+        "The second trial takes place in a magically simulated dungeon. The environment is filled with traps, mechanical goblins, and other challenges."
 
-        She laughs softly, the sound both charming and unnerving. "Oh, I tried. Believe me, I tried. But whatever is anchoring your soul to your body? It's powerful. Too powerful for even me to break through. I need to figure out what it is."
+        if alliance == "Theo":
+            theo "Now this is what I’m talkin’ about! Lemme at 'em!"
+            ciry "Stay sharp, Theo. We need to stick together."
+        elif alliance == "Dante":
+            dante "A simulated dungeon? Child’s play. Let’s move carefully and efficiently."
+            ciry "Let’s not underestimate the challenge, Dante."
 
-        You swallow hard, unsure whether to feel relieved or terrified. "And why does that matter to you?"
+        "The first challenge is a swarm of mechanical goblins blocking your path."
+        menu:
+            "Charge in with Theo/Dante leading the way.":
+                if alliance == "Theo":
+                    "Theo barrels through the goblins, smashing them with her strength."
+                    $ team_score += 10
+                elif alliance == "Dante":
+                    "Dante casts a powerful fireball, incinerating most of the goblins."
+                    $ team_score += 10
+            "Coordinate a careful strategy with Ciry.":
+                "Ciry expertly guides the team, allowing you to take out the goblins with precision."
+                $ team_score += 15
 
-        Gwen's playful smirk fades, replaced by something more serious. "Because your soul, my dear, was the most delicious thing I've ever tasted. Centuries of seduction, centuries of taking what I want, and nothing has ever come close to the sweetness of you. And I couldn't even finish the meal."
+        "Next, your team faces a powerful mechanical boss. It towers over you, gears whirring and weapons ready."
 
-        Her words hang in the air, and you feel a cold sweat forming on your brow.
+        menu:
+            "Distract the boss while your teammates attack.":
+                "You draw the boss’s attention, giving your teammates an opening to strike."
+                $ team_score += 10
+            "Lead a coordinated attack with Ciry and Theo/Dante.":
+                "Together, you and your team bring down the boss with a well-coordinated assault."
+                $ team_score += 15
 
-        "But don't worry," she adds, her smirk returning as she rests her chin in her hand. "I'm not here to hurt you. Yet. I just... need to figure you out. For now, you're safe. Think of me as... a friend."
+        "The final challenge is a magical lake that reveals and animates your deepest fears."
+        "One by one, your team members face their fears and work together to overcome them."
+        if alliance == "Theo":
+            theo "A lake messin’ with my head? Bah, I’ll bash it jus’ like everything else!"
+            "Theo’s confidence helps the team push through the illusions."
+            $ team_score += 10
+        elif alliance == "Dante":
+            dante "Illusions? Mere tricks. Focus your mind, and they’ll shatter."
+            "Dante’s logical approach guides the team to success."
+            $ team_score += 10
 
-        "A friend," you repeat, incredulous.
+        "Your team emerges from the dungeon, tired but victorious."
+        if team_score >= 40:
+            "You place in the top two teams and advance to the final trial!"
+            $ team_rank = 1
+        else:
+            "Your team performs well but doesn’t make it to the top two."
+            $ team_rank = 2
 
-        She grins. "Why not? Who else knows your secret? Who else can help you understand what's going on with that soul of yours?"
+        # jump trial_three if team_rank == 1 else after_tournament
 
-        Her words have a strange logic to them, even if every instinct tells you to stay as far away from her as possible.
+    label trial_three:
+        scene arena_duel with fade
+        "The final trial is a one-on-one duel between the strongest members of the two top teams."
 
-        "So, what do you say?" Gwen asks, her voice dropping to a low, honeyed tone. "Want to figure this out together?"
+        if alliance == "Theo":
+            theo "Guess it’s my turn, eh? Time to show ‘em what I’m made of!"
+        elif alliance == "Dante":
+            dante "This is it. Let me show them the true power of a mage."
 
-        You hesitate. The memory of her glowing eyes and infernal wings looms large, but there's something else too—a curiosity, a faint pull that you can't entirely resist.
+        "Your teammate steps into the arena, facing off against a formidable opponent. The duel is intense, and both fighters give it their all."
 
-        Choice:
+        menu:
+            "Encourage your teammate to go all out.":
+                "Your encouragement gives your teammate the boost they need to win the duel!"
+                $ team_score += 20
+            "Suggest a cautious strategy.":
+                "Your teammate fights carefully, but the opponent gains the upper hand."
+                $ team_score -= 10
 
-        "I don't trust you, Gwen. Stay away from me."
-        "Fine. But I'm keeping my guard up."
-        "If you're offering answers, I'm in."
-        """
+        "The duel concludes, and the final winner is announced."
+        if team_score >= 50:
+            "Your team wins the tournament, earning glory and recognition across the academy!"
+        else:
+            "Your team places second, but you’ve gained valuable experience and camaraderie."
+
+        jump after_tournament
+
+    label after_tournament:
+        "The tournament comes to an end, and you reflect on the trials you faced and the bonds you forged."
+
+        $ choice = ""
+        $ rewards_list = [
+            "Shield of Justice",
+            "Critical Ring",
+            "Gloves of Gargantuan",
+            "Amulet of Mana"
+        ]
+        menu:
+            "Choose your reward"
+
+            "[rewards_list[0]]":
+                python:
+                    Player.inventory.append(rewards_list[0])
+                    choice = rewards_list[0]
+                    Player.ac_bonus += 3
+
+            "[rewards_list[1]]":
+                python:
+                    Player.inventory.append(rewards_list[1])
+                    choice = rewards_list[1]
+                    Player.dmg_critical_threshold -= 2
+
+            "[rewards_list[2]]":
+                python:
+                    Player.inventory.append(rewards_list[2])
+                    choice = rewards_list[2]
+                    Player.sheet.strength += 2
+
+            "[rewards_list[3]]":
+                python:
+                    Player.inventory.append(rewards_list[3])
+                    choice = rewards_list[3]
 
 
+
+    
 label chapter_5:
     # Changing class (if player wants) and accelerated summer course for the new class
     # Dark teachings from Hooded-Woman, during summer, if player accepts
+    label gwen_returns:
+        "You've done your best to put the encounter behind you, burying the memory of Gwen's true form under the routine of academy life. But no matter how hard you try, it lingers—her glowing crimson eyes, the brush of her claws, the unsettling mix of fear and fascination."
+        "Then one day, she returns."
+        "You're sitting in the academy courtyard, trying to focus on a particularly dense passage in one of your magical theory books. The chatter of students fills the air, a comforting background noise—until you hear a familiar voice behind you."
+
+        gwen "Miss me?"
+        "Your heart stops. You turn, and there she is—Gwen, back in her playful, mischievous academy disguise. She's dressed in the same student uniform, her hair cropped short again, her bright eyes gleaming with amusement. She looks harmless, normal even, but you know better now."
+
+        gwen "You're still alive. I have to admit, I'm impressed. I thought you might've run off to some temple by now, begging a cleric to ward me away."
+
+        p "What are you doing here, Gwen?"
+        "You shift uncomfortably, the memory of her true form flashing in your mind."
+        gwen "You, of course. I told you, didn't I? There's something about you, something... deliciously unique."
+
+        "Her words send a shiver down your spine."
+        p "I thought you already got what you wanted."
+        "You try to keep your voice steady, but the memory of her glowing eyes makes it difficult."
+
+        gwen "Oh, I tried. Believe me, I tried. But whatever is anchoring your soul to your body? It's powerful. Too powerful for even me to break through. I need to figure out what it is."
+
+        "You swallow hard, unsure whether to feel relieved or terrified."
+        p "And why does that matter to you?"
+        "Gwen's playful smirk fades, replaced by something more serious."
+        gwen "Because your soul, my dear, was the most delicious thing I've ever tasted. Centuries of seduction, centuries of taking what I want, and nothing has ever come close to the sweetness of you. And I couldn't even finish the meal."
+        "Her words hang in the air, and you feel a cold sweat forming on your brow."
+        gwen "But don't worry. I'm not here to hurt you. Yet. I just... need to figure you out. For now, you're safe. Think of me as... a friend."
+        p "A friend?"
+        "You repeat the word, incredulous."
+        gwen "Why not? Who else knows your secret? Who else can help you understand what's going on with that soul of yours?"
+        "Her words have a strange logic to them, even if every instinct tells you to stay as far away from her as possible."
+        gwen "So, what do you say? Want to figure this out together?"
+        "Her voice drops to a low, honeyed tone, and you hesitate. The memory of her glowing eyes and infernal wings looms large, but there's something else too—a curiosity, a faint pull that you can't entirely resist."
+
+        menu:
+            "I don't trust you, Gwen. Stay away from me.":
+                p "I don't trust you, Gwen. Stay away from me."
+
+                gwen "(smirking) Oh, you wound me. But that’s okay. I’ll keep my distance—for now. I can be patient."
+
+                "She stands, her smirk lingering as she disappears into the crowd. Even as she leaves, you feel her presence, like a shadow that won’t let you go."
+
+                jump after_gwen_returns
+
+            "Fine. But I'm keeping my guard up.":
+                p "Fine. But I'm keeping my guard up."
+
+                gwen "(chuckling) Of course you are. I wouldn’t expect anything less. Just don’t let that guard of yours get too heavy to carry."
+
+                "She leans back, resting her hands on the bench, her smirk softening into something almost genuine."
+
+                jump after_gwen_returns
+
+            "If you're offering answers, I'm in.":
+                p "If you're offering answers, I'm in."
+
+                gwen "(grinning) I knew you'd see reason. You and I, we’re going to make an excellent team. Just you wait."
+
+                "Her eyes gleam with something between excitement and hunger, and you can’t quite tell if you’ve made the right choice—or the worst one."
+
+        "The encounter with Gwen leaves you unsettled, no matter your choice. Her presence lingers in your mind, a constant reminder of the mysteries—and dangers—surrounding her."
+        "But one thing is certain: your path is now inexorably tied to hers, for better or worse."
+
+
+    label gwen_connection_scene:
+        "Days turn into weeks, and Gwen’s presence becomes an inescapable part of your life. Whether in the academy courtyard, during classes, or even in your dreams, she lingers—watching, waiting, her motives unclear but her fascination with you undeniable."
+
+        "One night, as you sit in your dorm room pouring over a tome on magical anomalies, there’s a knock at your door. Before you can answer, it creaks open, and Gwen steps inside, her usual playful smirk replaced by something more serious."
+
+        gwen "We need to talk."
+
+        "You close the book and sit up, your heart racing. Gwen rarely shows this kind of intensity, and it puts you on edge."
+
+        p "What’s this about, Gwen? Another cryptic comment about my soul?"
+
+        gwen "(shaking her head) No. This is different. I've been... looking into things. About you. About us."
+
+        "The way she says 'us' sends a shiver down your spine. She steps closer, her crimson eyes flickering with an unusual softness."
+
+        gwen "I’ve learned something. Something important."
+
+        p "I’m listening."
+
+        gwen "There’s a way to understand what’s anchoring your soul. A ritual, ancient and forbidden. It’s dangerous, but if it works... we’ll finally have answers. For both of us."
+
+        "You stare at her, trying to gauge her sincerity. For once, there’s no trace of her usual playfulness—only determination."
+
+        p "And what’s in it for you, Gwen? Why are you so invested in this?"
+
+        gwen "(hesitant) I told you before... your soul is unlike anything I’ve encountered. It’s not just curiosity. There’s a part of me that... craves it. But it’s more than that now. I need to know why I can’t break you. Why I feel... bound to you."
+
+        p "(suspicious) Bound? What does that mean?"
+
+        gwen "(softly) I don’t know. That’s what I want to find out."
+
+        menu:
+            "Agree to the ritual":
+                p "Fine. If it gets me answers, I’ll do it."
+
+                gwen "(relieved) Good. I knew you’d see reason. But I have to warn you—it won’t be easy. This ritual will lay your soul bare. There’s no hiding from it."
+
+                "Her words send a chill through you, but you nod, determination outweighing your fear."
+
+                jump gwen_ritual_preparation
+
+            "Refuse the ritual":
+                p "No. I don’t trust you enough to do this."
+
+                gwen "(smirking, but with a hint of sadness) I figured you’d say that. But I’ll be here when you change your mind. Because you will, eventually."
+
+                "She steps back, her crimson eyes lingering on you before she leaves the room. Even as the door closes, you feel her presence, like a shadow clinging to your soul."
+
+                "The days that follow are restless. Gwen keeps her distance, but her gaze always seems to find you in the crowd. The weight of her proposal hangs heavy in your mind, no matter how much you try to bury it."
+
+
+    label gwen_ritual_preparation:
+        "Over the next few days, Gwen becomes unusually focused, helping you prepare for the ritual. She shares ancient texts, teaches you incantations, and warns you of the risks involved."
+
+        gwen "This isn’t just about answers, you know. It’s about trust. If we do this, we’ll be bound together in ways neither of us fully understands."
+
+        "Her words linger as the night of the ritual approaches. Despite your doubts, you can’t shake the feeling that this is the path you were meant to take."
+
+
 
 
 label chapter_6:
@@ -2042,67 +2388,61 @@ label chapter_6:
 
     label deva_ritual:
         # Scene setup
-        scene meditation_room with fade
-        play music "meditation_theme.mp3"
+        # scene meditation_room with fade
+        # play music "meditation_theme.mp3"
 
         "You sit cross-legged, the familiar calm of meditation washing over you. The air around you seems to grow heavy with an unspoken power."
         "As you focus, your mind drifts, and the faint hum of divine energy fills the room, pulling you deeper into the ritual."
         
         "Suddenly, a vision appears before you—a fierce warrior woman, her form illuminated by a faint, otherworldly glow."
-        show deva_image
+        # show deva_image
         
         "Her piercing gaze locks onto yours, and though she doesn't speak, her presence commands your full attention. You feel her name in your soul: {i}Deva.{/i}"
         "The Silent Goddess's power flows through the vision, and Deva's story begins to unfold before your eyes…"
 
-        scene deva_childhood with dissolve
-        play music "haunting_theme.mp3"
+        # scene deva_childhood with dissolve
+        # play music "haunting_theme.mp3"
         
         "Deva is but a child in a nomadic barbarian village in the far north, nestled near the snowy mountains. One day, while playing, she hears a strange hum."
-        "Drawn by the sound, she follows it to a hidden cave where she discovers an ancient sword, glowing faintly with divine energy. Playfully, she picks it up and swings it around."
-        
+        "Drawn by the sound, she follows it to a hidden cave where she discovers an ancient sword, glowing faintly with divine energy. Playfully, she picks it up and swings it around."        
         "The sword delays her return home, and when she finally heads back, she sees a nightmare unfolding. Frost Giants are attacking her village."
-        "She watches in horror as the giants destroy her home and devour her family and neighbors. Frozen with fear and despair, Deva eventually flees."
-        
+        "She watches in horror as the giants destroy her home and devour her family and neighbors. Frozen with fear and despair, Deva eventually flees."        
         "The vision shifts, showing Deva surviving alone in the wilderness. The sword, her only companion, offers her warmth on frigid nights and warns her of lurking dangers."
         "It guides her in finding food and keeps her safe from predators. The bond between Deva and the sword grows stronger with each passing day."
 
-        scene deva_meets_villagers with dissolve
-        play music "soft_theme.mp3"
+        # scene deva_meets_villagers with dissolve
+        # play music "soft_theme.mp3"
         
         "Years later, Deva stumbles upon a new settlement by a great river. There, she meets an elderly couple who show her kindness."
-        "Though she lives a wild, solitary life, she grows fond of them. They leave her food on cold nights, and the woman teaches her to read."
-        
+        "Though she lives a wild, solitary life, she grows fond of them. They leave her food on cold nights, and the woman teaches her to read."        
         "One night, as Deva sleeps by her small fire, the sword vibrates with urgency, glowing brighter than ever before. It leads her to the couple's house."
         "In the shadows, she senses two predatory presences—Dire Wolves, monstrous and bloodthirsty. The couple cries for help, their voices trembling with fear."
 
-        scene deva_wolf_battle with dissolve
-        play music "battle_theme.mp3"
+        # scene deva_wolf_battle with dissolve
+        # play music "battle_theme.mp3"
 
         "Deva refuses to flee this time. With fierce determination, she faces the wolves. The sword vibrates intensely, its glow nearly blinding the beasts."
         "Though injured in the battle, Deva's newfound resolve and the sword's divine power help her slay both wolves. The elderly couple is saved."
-
         "The vision fades momentarily, but you feel a deep sense of awe. Deva's story continues to unfold."
 
-        scene deva_frost_giants with dissolve
-        play music "epic_theme.mp3"
+        # scene deva_frost_giants with dissolve
+        # play music "epic_theme.mp3"
         
         "Now an experienced warrior, Deva becomes a protector of the region, helping villages threatened by monsters and evil forces."
-        "One day, she hears of Frost Giants attacking a familiar settlement—the very one that once took her in."
-        
+        "One day, she hears of Frost Giants attacking a familiar settlement—the very one that once took her in."        
         "Overcoming her childhood fears, Deva confronts the giants, slaying many with the sword's divine power. A black dragon leading the giants attacks next, but Deva's holy fury fuels her strength."
         "In a climactic battle, she scales the dragon and pierces its skull with the sword, ending its reign of terror."
 
-        scene deva_genocide_with dissolve
-        play music "dark_theme.mp3"
+        # scene deva_genocide_with dissolve
+        # play music "dark_theme.mp3"
         
         "But the vision turns darker. Deva, in her Sacred Rage, follows the retreating giants to their village, killing warriors and innocents alike."
         "As she is about to strike down a pregnant giantess and her child, the sword grows unbearably heavy. It refuses to obey her will, resonating with a sense of sorrow and warning."
         "Deva regains her senses, grateful to the sword for stopping her from committing an atrocity. This moment shapes her deeply, and she vows to wield her power with greater wisdom."
-
         "The vision fades, and Deva looks at you once more, her expression a mixture of strength and pain."
 
-        hide deva_image with dissolve
-        play music "mystical_theme.mp3"
+        # hide deva_image with dissolve
+        # play music "mystical_theme.mp3"
         
         "As the vision ends, the Silent Goddess's presence lingers in the air. Deva's story echoes in your heart, a tale of strength, loss, and redemption."
         "You feel a newfound connection to the Silent Goddess and her Chosen, as though their trials are now entwined with your own."
@@ -2112,83 +2452,133 @@ label chapter_6:
     label private_ritual:
         scene ritual_room with fade
         """
-        "The chamber is dimly lit, the air thick with the scent of burning incense and old magic. Strange runes etched into the stone walls shimmer faintly as the ritual reaches its climax."
-        "Gwen stands before you, her infernal wings partially unfurled, her glowing crimson eyes fixed on you with an intensity that makes it hard to breathe."
+        The chamber is dimly lit, the air thick with the scent of burning incense and old magic. Strange runes etched into the stone walls shimmer faintly as the ritual reaches its climax.
+        Gwen stands before you, her infernal wings partially unfurled, her glowing crimson eyes fixed on you with an intensity that makes it hard to breathe.
         """    
-        gwe "Are you ready? This ritual... it will lay everything bare. Your soul, my essence—nothing will remain hidden."
+        gwe "Are you ready? This ritual... it will lay everything bare. Your soul, my essence... nothing will remain hidden."
         
         menu:
             "Nod silently":
                 "You nod, unable to speak, your heart pounding in your chest."
                 
             "Express doubt":
-                p "I'm not sure about this, Gwen. What if something goes wrong?"
-                
+                p "I'm not sure about this, Gwen. What if something goes wrong?"                
                 gwe "Something always goes wrong. That's half the fun, isn't it?"
                 "She smirks, but there's a flicker of something genuine in her eyes. Concern? No, surely not."
 
         "Gwen steps closer, her clawed hand brushing your cheek. Her touch is cold, sending a shiver down your spine."
-        
         gwe "Just relax. This might sting a little."
-        
         "She places her other hand on your chest, right above your heart. A dark energy begins to swirl around her, tendrils of shadow curling like smoke. You feel an unnatural pull, like your very essence is being drawn to the surface."
         
-        scene ritual_glow with dissolve
+        # scene ritual_glow with dissolve
         
-        "But then, something unexpected happens. A blinding light erupts from within you, golden and pure, cutting through the shadows like a blade. The runes on the walls flicker and shift, their infernal glow replaced by a soft, holy radiance."
-        
+        "But then, something unexpected happens."
+        "A blinding light erupts from within you, golden and pure, cutting through the shadows like a blade. The runes on the walls flicker and shift, their infernal glow replaced by a soft, holy radiance."        
         gwe "(startled) What... what is this?"
         
-        "She stumbles back, shielding her eyes from the light. Her wings twitch, and for the first time, you see fear on her face."
-        
-        p "I don't know! This wasn't supposed to happen!"
-        
-        "The light intensifies, and a voice—calm, soothing, and impossibly ancient—fills the room."
-        
-        dea "Gwenethra, daughter of shadow, bound by infernal chains. You have touched the root of a soul under my protection. In doing so, you have invited me into this place."
-        
-        gwe "(whispering)The Silent Goddess..."
-        
-        "The voice continues, unyielding yet gentle."
-        
+        "She stumbles back, shielding her eyes from the light. Her wings twitch, and for the first time, you see fear on her face."        
+        p "I don't know... Ehm isn't... this supposed to happen?"        
+        """
+        The light intensifies, filling the room with a radiant, almost otherworldly glow. You feel a gentle warmth spreading across your body.
+        Then, something unexpected happens. A strange, soothing presence envelops your mind. It’s not just in you—it’s everywhere, as if the air itself is alive with meaning.
+        Your thoughts... they begin to shift. You realize that your mind has somehow connected with Gwen's. You sense her presence, her emotions, her fears—and they echo through you like whispers of an ancient melody.
+        She glances at you, her usual guarded demeanor softening in the glowing light. You can see the confusion, the vulnerability in her eyes.
+        There’s no voice in the room, but meanings—pure, unspoken truths—begin to appear in both your mind and Gwen's. They’re not words but something deeper, primal and raw, yet profoundly calming.
+        You can feel the presence as if it’s something ancient, wise, and benevolent. It’s not trying to control or force you. Instead, it simply exists, weaving a tapestry of understanding between you and Gwen.
+        """        
+        dea "Gwenethra, daughter of shadow, bound by infernal chains. You have touched the root of a soul under my protection. In doing so, you have invited me into this place."        
+        gwe "(whispering) The... Silent Goddess?"        
+        "Words and meanings continue to appear, unyielding yet gentle."        
         dea "You have lived in darkness, consumed by your instincts. But I offer you a choice: Redemption. Not to walk the path of light, but to sever the chains that bind you to the infernal plane. To be free."
         
         menu:
             "Encourage Gwen to accept":
-                p "Gwen, this is your chance. You don't have to be a slave to your nature anymore."
-                
-                gwe "(hesitant) Free... I don't even know what that means anymore."
-                
-                dea "Freedom means choice. To act, not as your instincts demand, but as your will decides."
-                
-                "Gwen stares at the light, her expression conflicted. Finally, she steps forward, reaching out tentatively."
-                
-                gwe "I... I accept."
-                
-                "The light envelops her, and for a moment, her form dissolves into pure radiance. When it fades, she stands before you, her wings smaller, her eyes no longer glowing but a deep, soulful violet."
-                
-                gwe "I feel... lighter. But also... hollow."
-                
+                $ Player.achievements.append("Redeemed Gwen")
+                p "Gwen, this is your chance. You don't have to be a slave to your nature anymore."                
+                gwe "(hesitant) Free... I don't even know what that means anymore."                
+                dea "Freedom means choice. To act, not as your instincts demand, but as your will decides."                
+                "Gwen stares at the light, her expression conflicted. Finally, she steps forward, reaching out tentatively."                
+                gwe "I... I accept."                
+                "The light envelops her, and for a moment, her form dissolves into pure radiance. When it fades, she stands before you, her wings smaller, her eyes no longer glowing but a deep, soulful violet."                
+                gwe "I feel... lighter. But also... hollow."                
                 dea "That is the weight of freedom. You will learn to carry it."
+                "Gwen stands silently for a moment, her new form radiating a subtle, serene aura. Her deep violet eyes meet yours, and you sense a storm of emotions swirling within her."
+                gwe "I... I don’t know what to make of this. I’ve spent so long being driven by my instincts, by my power. Now, it feels like... like a part of me is missing."
                 
-                return
-                
-            "Remain silent":
-                "You say nothing, watching as Gwen wrestles with the choice before her."
-                
-                gwe "I... I don't know if I can. What am I without my instincts? Without my power?"
-                
-                dea "You are what you choose to become."
-                
-                "Gwen hesitates, then shakes her head, stepping back."
-                
-                gwe "No. I can't. I've been this way too long."
-                
-                dea "So be it. The choice remains, should you seek it again."
-                
-                "The light fades, and the room grows dark once more. Gwen turns to you, her crimson eyes filled with a mix of regret and defiance."
-                
+                menu:
+                    "Reassure her":
+                        p "You’re not missing anything, Gwen. You’re free now, free to choose your own path. That’s all you need."
+                        gwe "(softly) Freedom... It’s strange. Exciting, but terrifying. I don’t know who I am without that part of me."
+
+                    "Challenge her doubts":
+                        p "Or maybe you’re just afraid of what freedom means. It’s easier to follow instincts than to decide for yourself, isn’t it?"
+                        gwe "(frowning) Afraid? Maybe I am. But don’t think for a moment that I’ll back down from this. I’ll figure it out, one way or another."
+
+                    "Lighten the mood":
+                        p "Well, you’re still Gwen, and I doubt anything can take away your sharp tongue and flair for drama."
+                        gwe "(smirking faintly) Hah. Trust you to make a joke at a time like this. Maybe I need that, though. Thanks."
+
+                "She steps away, wrapping her arms around herself as though shielding against an unseen chill. Her voice trembles slightly, but it carries a determination you’ve never heard from her before."
+                gwe "I need time. Time to figure out what this change means for me, for us. I’m not ready to dive headfirst into whatever lies ahead—not yet."
+
+                menu:
+                    "Encourage her":
+                        p "Take all the time you need, Gwen. I’ll be here when you’re ready."
+                        "She looks at you, a faint smile forming on her lips. It’s not her usual smirk, but something softer, more vulnerable."
+                        gwe "Thank you. For giving me this chance, for... believing in me."
+
+                    "Ask about your bond":
+                        p "What happens to our connection, then? Are we still bound in some way?"
+                        gwe "Our bond remains, mortal. I’m still your patron, guiding you. That part of me will always be with you, whether I’m at your side or not."
+
+                    "Push for more":
+                        p "You’ve changed, but that doesn’t mean you should walk away from everything. Don’t you want to see where this could take us?"
+                        gwe "(sighing) I do, but not yet. I need to understand who I am now before I can stand beside you again. Give me time."
+
+                "Gwen takes a deep breath, her composure returning as she straightens and places a hand on your shoulder."
+                gwe "But don’t think I’m abandoning you, mortal. I’ll still be your patron, guiding you from the shadows, as I always have. My power will remain at your disposal, though it may take a different form now."
+                "Her fingers brush lightly against your shoulder before she steps back, her gaze steady and resolute."
+                gwe "And who knows? Perhaps one day, when I’ve figured all this out, I’ll join you in your adventures. You’ll need someone to keep you out of trouble, after all."
+                "She winks, her playful tone returning for just a moment, a glimpse of the Gwen you’ve come to know."
+                gwe "Until then, don’t do anything reckless without me. I’d hate to have to clean up your messes from afar."
+                "Gwen begins to fade into the shadows, her presence lingering for just a moment longer before disappearing entirely. You’re left standing alone in the quiet, a faint sense of her power still coursing through you."
+
+                                
+            "Remain silent":                
+                "You say nothing, watching as Gwen wrestles with the choice before her."                
+                gwe "I... I don't know if I can. What am I without my instincts? Without my power?"                
+                dea "You are what you choose to become."                
+                "Gwen hesitates, then shakes her head, stepping back."                
+                gwe "No. I can't. I've been this way too long."                
+                dea "So be it. The choice remains, should you seek it again."                
+                "The light fades, and the room grows dark once more. Gwen turns to you, her crimson eyes filled with a mix of regret and defiance."                
                 gwe "Let's finish what we started. No more interruptions."
+                "The room falls into an almost sacred silence, the remnants of the calming light fading, leaving behind an atmosphere thick with raw, electric energy."
+                "Gwen turns toward you, her crimson eyes burning with an intense mixture of desire and determination. She approaches slowly, her every step deliberate, her form glowing faintly with the remnants of the ritual's power."
+                gwe "No more interruptions. This is our moment, yours and mine. Let me show you the depths of what we can become together."
+                """
+                She places her hands on your chest, and a strange warmth courses through your body.
+                Gwen begins to chant in a language you don't recognize, her voice low and sultry, carrying a power that seems to resonate with the very essence of your being.
+                Her hands begin to glow faintly as demonic runes appear in the air around you both, their intricate patterns dancing in unison with her words. The connection between you grows deeper, your mind and hers intertwining.
+                Every thought, every emotion she feels is laid bare before you, and in turn, she experiences every part of you.The bond is intoxicating, overwhelming, and for a moment, it feels as though the two of you are one.
+                An indescribable sensation fills you, a pleasure beyond anything you could have imagined. It's not just physical—it’s spiritual, an ecstasy that touches the deepest parts of your soul.
+                Gwen’s touch, her presence, becomes the center of your world, and you feel yourself drawn deeper into her embrace.
+                She gasps, her head tilting back as the ritual reaches its peak. Her voice trembles, filled with a mixture of triumph and bliss.
+                """
+                gwe "This... this is perfection. Together, we are unstoppable. Your soul... your essence... it’s unlike anything I’ve ever known."
+                "The glowing runes flare brightly before fading into your skin, leaving behind faint marks that pulse with a soft, dark energy. Gwen collapses against you, breathing heavily, her body trembling from the intensity of the experience."
+                gwe "It’s done. The bond is complete. You and I... we’re connected now, in ways neither of us could have imagined."
+                "She looks up at you, her eyes softer now, her usual cocky smirk replaced with something more genuine, almost reverent."
+                gwe "You’ve given me something I’ve never had before... satisfaction, completeness. For that, I swear to you—I am bound to you, now and forever. A part of my power will live within you, always."
+                "You feel a faint spark deep within you, a fragment of Gwen’s dark energy embedding itself into your very being. It’s both foreign and familiar, a shadow that you know will always be a part of you."
+                "Gwen leans closer, her lips brushing against your ear as she whispers softly."
+                gwe "You’ve changed me. And together, we’ll change everything."
+                "Her words linger in the air as she pulls back, her expression one of complete devotion. Whatever the future holds, you know that this bond, this connection, will shape everything that comes next."
+                $ Player.achievements.append("Demonic Bond")
+                "Added Feat: 'Demonic Bond'"
+                $ Player.sheet.charisma += 2                
+                "[Player.sheet.name]'s Charisma: +2"
+
             
 
 label chapter_7:
