@@ -1542,12 +1542,138 @@ label chapter_2:
             p "{i}(No, this is something different... I just... can't open my hands!){/i}"
         return
 
+    label cave_to_academy:
+        # Scene transition from the cave
+        # scene bg_cave_exit with fade
+        # play music "music/epic_aftermath.ogg" fadein 2.0
 
+        "The return to the surface was a blur of exhaustion and adrenaline. With Aryanna safe, and Ciry supporting her as the three of you climbed out of the cavern, the weight of the battle still lingered heavily in your mind."
+        "The sword, now just a rusty, unremarkable blade, hangs at your side. But you can feel something within it, or perhaps within yourself—something has changed."
+
+        c "You did it. You saved her. I—"
+        "Ciry’s voice breaks as she glances at Aryanna, then back to you. Her expression is a mixture of gratitude and awe."
+        c "I don’t even know what to say. Just… thank you."
+        ary "Big bro was so cool! That glowing sword, the explosion—everything!"
+        "You offer Aryanna a small smile, but her words make you uneasy. The memory of the light and the sudden power of the sword lingers in your mind, unanswered questions swirling like a storm."
+
+        # scene bg_academy_gate with dissolve
+        "By the time you make it back to the Academy gates, night has fallen. The familiar sight of the towers and courtyards is both comforting and surreal, as if you’re seeing it all for the first time."
+
+        c "We’ll take Aryanna to the infirmary. They’ll check her over, just to be safe."
+        ary "I’m fine, really! Big bro already took care of everything."
+        "Despite her protests, Ciry insists, leading Aryanna toward the infirmary building."
+        c "We’ll talk later, alright? I want to hear everything."
+        "Her gaze lingers on you for a moment before she disappears into the building with her sister."
+
+        # Player reflects on the events
+        # scene bg_player_room_night with fade
+        "That night, alone in your dormitory, you find yourself staring at the sword. It sits on the desk, its dull surface betraying none of the brilliance it displayed in the cavern."
+        "You think back to the battle, to the surge of power, and to the strange, overwhelming presence you felt in that moment. The Silent Goddess. Was it really her? And why did she choose you?"
+
+        menu:
+            "Examine the sword":
+                "You pick up the sword, turning it over in your hands. Despite its ordinary appearance, it feels… alive. Or maybe it’s you that feels different."
+                p "(What exactly happened down there? And why me?)"
+                "You spend hours turning the questions over in your mind, but no answers come."
+            "Decide to let it go for now":
+                "You leave the sword where it is, running a hand through your hair. The events of the day were too much, and you’re not sure you have the energy to confront them tonight."
+                p "(Whatever happened, I’ll figure it out. Just… not now.)"
+                "Sleep eventually claims you, though your dreams are restless and filled with flashes of light and the sound of Aryanna’s voice."
+
+        # Transition back to normal life
+        # scene bg_academy_courtyard with dissolve
+        "The days that follow are a return to routine—or at least, they should be."
+        "Despite attending lessons and continuing your training under Professor Tris, the events in the cavern weigh heavily on your mind. Ciry notices, of course. She always does."
+
+        # scene bg_academy_classroom with dissolve
+        tri "Focus."
+        "Professor Tris’s voice snaps you out of your thoughts. She’s standing across the room, arms crossed, watching you carefully."
+        tri "Whatever is distracting you, leave it at the door. A distracted rogue is a dead rogue."
+        "You nod, muttering an apology, but her words stick with you. You know she’s right."
+
+        # Conversation with Ciry
+        # scene bg_academy_courtyard with dissolve
+        "Later, during a rare free afternoon, you find yourself sitting with Ciry in the Academy courtyard. She’s flipping through a thick tome on magical theory, but her eyes keep darting toward you."
+        c "You’ve been quiet lately."
+        p "Just… thinking about everything that happened. The sword, the light. It’s hard to shake."
+        c "I figured. Aryanna hasn’t stopped talking about it. 'Big bro’s magic sword,' she calls it."
+        "She smiles, but there’s concern behind it."
+        c "You know, if you want to talk about it, I’m here. Or if you’d rather not, that’s fine too. Just… don’t carry it alone, okay?"
+
+        "Her kindness softens the tension in your chest, and you can’t help but smile a little."
+        c "Actually, I was thinking… we haven’t had much time to just relax since everything happened. What do you say we hang out after lessons tomorrow?"
+        p "Hang out? Like, just the two of us?"
+        c "Yeah! I mean, unless you’d rather train or brood over the mysteries of glowing swords. I hear brooding is very 'rogue.'"
+        "Her teasing tone makes you laugh despite yourself."
+        p "Alright, alright. After lessons, then."
+        c "It’s a date! Uh, I mean—not a date-date, obviously, unless… you know what, never mind. Tomorrow, courtyard, don’t forget!"
+        "She grins and gathers her book, giving you a little wave as she heads back toward the dorms."
+
+        # scene bg_player_room_night with dissolve
+        "You return to your room, feeling a strange sense of normalcy for the first time since the cavern. Maybe things really are starting to settle down—or maybe this is just the calm before the next storm."
+
+    
 label chapter_3:
     # Discovery of the Statue of the Silent Goddess within the school and the book that Ciry gradually translates.
     # First encounter with Hooded-Woman
     # Meeting Theo and preparation for the school tournament
-    
+    label academy_intro_rogue:
+        # scene bg_academy_classroom with fade
+        # play music "music/academy_theme.ogg" fadein 2.0
+
+        "The first months at the Academy have been intense—a mix of emotions and hard work. Each day begins early with one-on-one lessons focused on your role as a rogue."
+        "You are the only student in the class of Professor Tris. Tris is a fascinating and enigmatic woman, always dressed in dark clothing, her steps so light she seems more shadow than person. Her voice is calm but carries an undeniable authority, and every word she speaks feels carefully measured."
+
+        # scene bg_training_ground with dissolve
+        tri "A rogue is not just some opportunist."
+        tri "You are the eyes and hands of your party. The first to spot danger. The first to neutralize it."
+        "Her gaze is unwavering as she walks ahead of you through the training grounds, her movements precise and silent."
+        tri "Quieter."
+        "You freeze mid-step, realizing your foot had grazed a loose stone."
+        tri "Still too noisy. Try again."
+        "Practical lessons with Tris are grueling. She has you navigating obstacle courses, disappearing into shadows, and disarming traps. Every mistake is met with a calm correction, every success with a faint nod of approval."
+
+        # scene bg_library with dissolve
+        "Afternoons are often spent in the library, surrounded by ancient tomes and intricate diagrams of traps."
+        tri "This one."
+        "She places a finger on a yellowed page, pointing to an elaborate mechanism."
+        tri "Designed to ensnare an entire party of adventurers. But a clever rogue would know how to bypass it."
+        "You lean closer, captivated by the detailed illustration. The more Tris explains, the more her vast knowledge becomes apparent."
+        p "How do you know so much about these traps?"
+        tri "Experience."
+        tri "You’re not the first student I’ve trained. Nor, I hope, will you be the last."
+
+        # scene bg_academy_courtyard with dissolve
+        "Despite the intensity of your lessons, Tris ensures you have moments of reprieve. Often, you find yourselves in the Academy courtyard, her leaning casually against a tree while quizzing you."
+        tri "If you found a room with three chests and only one disarm kit, which would you choose? And why?"
+        "Her tone is teasing, but her sharp eyes study your reaction."
+        menu:
+            "Answer confidently":
+                p "The middle chest. It’s often the most heavily guarded, which means it likely contains the best treasure."
+                tri "Interesting. And if you’re wrong?"
+                p "Then I learn something for next time."
+                tri "(smiling faintly) A good answer. Calculated risk is key."
+            "Answer hesitantly":
+                p "The chest closest to the exit... it’s probably a decoy, but it’s the safest choice."
+                tri "Safety is important, but hesitation can cost lives. A rogue must learn to trust their instincts."
+            "Admit uncertainty":
+                p "I’m not sure. Maybe I’d wait and see if there were clues nearby?"
+                tri "Clever. Observation is often more important than action. Use the environment to your advantage."
+
+        # scene bg_dormitory_night with dissolve
+        "Evenings in the dormitory are solitary, but occasionally, Tris visits, bringing a small chest filled with training tools."
+        tri "Show me how you’d open this."
+        "She places the chest on your desk, leaning against the window as moonlight filters into the room."
+        "No matter how tired you are, her presence is motivating, and you find yourself focusing intently on the task. The faint click of the lock finally breaking earns you a rare smile from her."
+        tri "Good. You’re improving."
+
+        # scene bg_academy_classroom with dissolve
+        "As the weeks pass, Tris becomes more than just your teacher. She’s a guide, a mentor, and at times, a puzzle you’re eager to unravel."
+        tri "One day, outside these walls, you’ll find yourself in situations where no one can guide you."
+        tri "But if you remember what you’ve learned here, you’ll survive any challenge."
+        "Her words stay with you, a mix of comfort and weight. Each lesson feels like a step into the unknown, but with her guidance, you begin to see your potential—not just as a rogue, but as someone destined for something greater."
+
+
     label orc_vs_mage_conflict:
         # Scene setup
         # scene courtyard_day with fade
@@ -1633,6 +1759,66 @@ label chapter_3:
 
     label ch3_choices_1:
     menu:
+        "Date with Ciry":
+            label date_with_ciry:
+                # Scene Setup
+                # scene bg_academy_garden with fade
+                "After rescuing Aryanna, you and Ciry decide to take a quiet walk in the academy gardens. The evening is calm, the moon casting a gentle glow over the carefully tended plants and pathways."
+                "Ciry walks beside you, her usual confident demeanor softened by relief and gratitude."
+
+                c "Thank you, [Player.sheet.name]. For everything. Aryanna means the world to me, and... I don't even want to think about what could've happened if you hadn't been there."
+
+                p "You don't have to thank me, Ciry. I couldn't just stand by and do nothing."
+                c "Still... it means a lot to me. And to her. I think she'll be talking about her 'big hero' for weeks."
+                "Ciry smiles warmly, but her eyes betray a hint of curiosity. You can tell she's still thinking about the events in the cavern."
+
+                menu:
+                    "Ask about the magic sword and the Silent Goddess":
+                        $ Player.achievements.append("Ciry knows")
+                        p "Ciry, I need to ask you something. That sword I used in the cavern... and that light. It wasn’t normal, was it?"
+                        c "No, it definitely wasn’t. I've seen magic weapons before, but that was... different. And Aryanna mentioned you saying something about a goddess?"
+                        p "Yeah. The Silent Goddess. I felt... something. Like she was guiding me. But I don't understand why or how."
+                        "Ciry looks thoughtful, her brow furrowed in concentration."
+                        c "The Silent Goddess... As I was telling you that day, she’s more of a myth than anything, but some ancient texts mention her as a protector of lost souls and outcasts.
+                        If you’re connected to her somehow, it might explain why that sword reacted to you."
+                        p "Do you think we can find more about her? Or the sword?"
+                        c "Absolutely. If you’re willing, we can look through the academy archives together. They’re extensive—maybe we’ll find something useful."
+                        "Her determination is contagious, and you feel a surge of hope. With Ciry by your side, the mystery of the Silent Goddess doesn’t seem so insurmountable."
+                        c "And hey, you’re not alone in this. Whatever this connection is, we’ll figure it out. Together."
+                        "You can’t help but smile at her words, grateful for her unwavering support."
+
+                    "Be vague and dismiss Aryanna's words":
+                        p "Aryanna probably just imagined things. She was scared—it’s not surprising that her mind would play tricks on her."
+                        "Ciry raises an eyebrow, clearly unconvinced, but she doesn’t press the issue."
+                        c "Maybe. But that light... it wasn’t exactly subtle, [Player.sheet.name]. Whatever happened down there was powerful. I just hope you’re okay."
+                        p "I’m fine, really. And maybe it’s better if we just leave it at that for now."
+                        "She nods slowly, though her eyes linger on you, searching for something you’re not ready to share."
+                        c "Alright. But if you ever want to talk about it, I’m here. No secrets, okay?"
+                        "Her words make you feel a pang of guilt, but you nod, grateful that she’s willing to let it go for now."
+
+                # Continue the date
+                "The conversation shifts to lighter topics as the two of you continue your walk through the gardens. Fireflies dart through the air, their soft glow adding to the serene atmosphere."
+                "After a while, you find yourselves sitting on a bench under a sprawling willow tree."
+                c "You know, [Player.sheet.name], you’re full of surprises. First, you save my sister, and now... well, let’s just say I’m glad you’re on my side."
+
+                menu:
+                    "Flirt with Ciry (geeky approach)":
+                        p "What can I say? I aim to impress. But honestly, I think the real surprise is how you manage to look so... captivating while talking about magical theory for hours."
+                        "Ciry freezes for a moment, her cheeks turning pink as she processes your words."
+                        c "C-Captivating? You’re just saying that because I went on that rant about planar binding last week."
+                        p "Not at all. I mean, who else can make complex arcane equations sound so fascinating? You’re like a walking magical encyclopedia... except way more charming."
+                        "She lets out a laugh, clearly flustered but also pleased."
+                        c "You’re such a dork. But, uh... thanks. I think."
+
+                    "Keep it friendly":
+                        p "I’m just glad everything worked out. Aryanna’s safe, and that’s what matters."
+                        "Ciry smiles warmly, her usual confident demeanor replaced by something softer."
+                        c "Yeah. It does. And I owe you for that."
+
+                "The evening stretches on, the two of you sharing stories, laughter, and a newfound closeness."
+
+            jump ch3_choices_1
+
         "Date with Gwen" if "First date with Gwen" in Player.achievements and "Second date with Gwen" not in Player.achievements:
             $ Player.achievements.append("Second date with Gwen")
             label gwen_second_date:
@@ -1973,6 +2159,8 @@ label chapter_3:
 
                 the "That was a good time, mate. Yer alright fer someone who ain’t swingin’ a big ol’ axe. Let’s do this again sometime, eh?"
         
+            jump ch3_choices_1
+
         "Skip (continue with your life at the Academy)":
             jump assassin_encounter_cloak # or with Dante
 
