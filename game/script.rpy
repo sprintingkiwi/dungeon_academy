@@ -20,6 +20,8 @@ define hob = Character("", who_color="#007d11")
 define dea = Character("", who_color="#ffffff")
 define uk = Character("???", who_color="#d5d5d5")
 define gwe = Character("Gwen", color="#FF69B4")
+define hwm = Character("Hooded Woman", color="#9B3DFF")
+define cd = Character("Cursed Dawn", color="#9B3DFF")
 
 # Cutscene stuff
 define annoytheuser = Dissolve(3.0)
@@ -212,7 +214,7 @@ label start:
 
         "Debug Jump":
             $ Player.achievements.append("First date with Gwen")
-            jump chapter_3
+            jump chapter_4
 
 
 

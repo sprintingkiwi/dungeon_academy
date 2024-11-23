@@ -2162,85 +2162,85 @@ label chapter_3:
             jump ch3_choices_1
 
         "Skip (continue with your life at the Academy)":
-            jump assassin_encounter_cloak # or with Dante
+            jump chapter_4
 
-    label assassin_encounter_cloak:
-        # Scene setup
-        # scene bedroom_night with fade
-        # play music "suspense_theme.mp3"
+    # label assassin_encounter_cloak:
+    #     # Scene setup
+    #     # scene bedroom_night with fade
+    #     # play music "suspense_theme.mp3"
         
-        "The stillness of the night is broken by the faint creak of a floorboard. You wake up, heart pounding, as the realization hits you: someone is inside your home."
-        "Reaching for your dagger, you barely have time to prepare when the door creaks open. A shadowy figure steps inside, their blade gleaming ominously in the faint moonlight."
+    #     "The stillness of the night is broken by the faint creak of a floorboard. You wake up, heart pounding, as the realization hits you: someone is inside your home."
+    #     "Reaching for your dagger, you barely have time to prepare when the door creaks open. A shadowy figure steps inside, their blade gleaming ominously in the faint moonlight."
         
-        "Before you can act, a voice whispers in your ear, low and calm, though no one is there."
+    #     "Before you can act, a voice whispers in your ear, low and calm, though no one is there."
         
-        hooded_woman "{i}Stay quiet and don't panic. I can help you.{/i}"
+    #     hooded_woman "{i}Stay quiet and don't panic. I can help you.{/i}"
         
-        "You flinch, your eyes darting around the room. Out of the corner of your vision, you spot a hooded figure materializing in the shadows. Her golden eyes seem to glow, locking onto yours."
+    #     "You flinch, your eyes darting around the room. Out of the corner of your vision, you spot a hooded figure materializing in the shadows. Her golden eyes seem to glow, locking onto yours."
         
-        menu:
-            "Trust her and listen":
-                "You stay silent, nodding slightly, unsure of who this woman is but desperate for help."
+    #     menu:
+    #         "Trust her and listen":
+    #             "You stay silent, nodding slightly, unsure of who this woman is but desperate for help."
                 
-            "Demand answers":
-                p "Who are you?! What's going on?!"
+    #         "Demand answers":
+    #             p "Who are you?! What's going on?!"
                 
-                hooded_woman "{i}No time for questions. If you want to live, follow my lead.{/i}"
-                "Her tone brooks no argument, and you reluctantly nod."
+    #             hooded_woman "{i}No time for questions. If you want to live, follow my lead.{/i}"
+    #             "Her tone brooks no argument, and you reluctantly nod."
         
-        "The assassin steps closer, their gaze scanning the room. The hooded woman tosses something to you—a shimmering cloak that feels impossibly light in your hands."
+    #     "The assassin steps closer, their gaze scanning the room. The hooded woman tosses something to you—a shimmering cloak that feels impossibly light in your hands."
         
-        hooded_woman "{i}Put it on. This will render you invisible to them, but it won't last long.{/i}"
+    #     hooded_woman "{i}Put it on. This will render you invisible to them, but it won't last long.{/i}"
         
-        menu:
-            "Put on the cloak":
-                "You throw the cloak around your shoulders, feeling a strange tingle as it settles over you. The assassin's gaze passes over you without reaction, as though you've disappeared."
+    #     menu:
+    #         "Put on the cloak":
+    #             "You throw the cloak around your shoulders, feeling a strange tingle as it settles over you. The assassin's gaze passes over you without reaction, as though you've disappeared."
                 
-            "Hesitate":
-                "You hesitate, unsure if you can trust her, but the assassin's approach leaves you no choice. You throw the cloak around your shoulders just in time, vanishing from sight."
+    #         "Hesitate":
+    #             "You hesitate, unsure if you can trust her, but the assassin's approach leaves you no choice. You throw the cloak around your shoulders just in time, vanishing from sight."
         
-        "The hooded woman's voice whispers again, soft and urgent."
+    #     "The hooded woman's voice whispers again, soft and urgent."
         
-        hooded_woman "{i}Now, use your skills. You've trained for moments like this. Stay quiet, stay sharp, and take them down.{/i}"
+    #     hooded_woman "{i}Now, use your skills. You've trained for moments like this. Stay quiet, stay sharp, and take them down.{/i}"
         
-        menu:
-            "Sneak behind the assassin":
-                "You move silently across the room, your footsteps barely a whisper on the wooden floor. The cloak conceals you completely, and the assassin seems oblivious to your presence."
+    #     menu:
+    #         "Sneak behind the assassin":
+    #             "You move silently across the room, your footsteps barely a whisper on the wooden floor. The cloak conceals you completely, and the assassin seems oblivious to your presence."
                 
-                "When you're close enough, you reach out, your dagger poised. With a swift, calculated motion, you disarm the assassin, their blade clattering to the floor."
+    #             "When you're close enough, you reach out, your dagger poised. With a swift, calculated motion, you disarm the assassin, their blade clattering to the floor."
                 
-            "Set a trap using the surroundings":
-                "You scan the room quickly, noticing a loose curtain cord dangling nearby. Silently, you tie it into a makeshift tripwire."
+    #         "Set a trap using the surroundings":
+    #             "You scan the room quickly, noticing a loose curtain cord dangling nearby. Silently, you tie it into a makeshift tripwire."
                 
-                "Then, with a deliberate noise, you draw the assassin's attention. As they lunge, they trip over the cord, falling heavily to the floor."
+    #             "Then, with a deliberate noise, you draw the assassin's attention. As they lunge, they trip over the cord, falling heavily to the floor."
         
-        "The assassin struggles, but you seize the opportunity, pinning them down and pressing your dagger to their throat."
+    #     "The assassin struggles, but you seize the opportunity, pinning them down and pressing your dagger to their throat."
         
-        "The hooded woman steps forward, her presence commanding."
+    #     "The hooded woman steps forward, her presence commanding."
         
-        hooded_woman "{i}Enough.{/i}"
+    #     hooded_woman "{i}Enough.{/i}"
         
-        "The assassin freezes, their eyes wide with fear as they glance at her. Without another word, the assassin scrambles to their feet and flees, disappearing into the night."
+    #     "The assassin freezes, their eyes wide with fear as they glance at her. Without another word, the assassin scrambles to their feet and flees, disappearing into the night."
         
-        stop music fadeout 2.0
-        # play music "mystery_theme.mp3"
+    #     stop music fadeout 2.0
+    #     # play music "mystery_theme.mp3"
         
-        "You turn to the hooded woman, your breath heavy. She nods approvingly, her golden eyes glowing faintly."
+    #     "You turn to the hooded woman, your breath heavy. She nods approvingly, her golden eyes glowing faintly."
         
-        hooded_woman "{i}You did well. But this was only the beginning.{/i}"
+    #     hooded_woman "{i}You did well. But this was only the beginning.{/i}"
         
-        menu:
-            "Ask who she is":
-                p "Who are you? And why did you help me?"
+    #     menu:
+    #         "Ask who she is":
+    #             p "Who are you? And why did you help me?"
                 
-                hooded_woman "{i}That's a story for another time. For now, let's just say I have an interest in seeing you survive.{/i}"
+    #             hooded_woman "{i}That's a story for another time. For now, let's just say I have an interest in seeing you survive.{/i}"
                 
-            "Thank her nervously":
-                p "T-Thank you. I don't know how I could have done that without you."
+    #         "Thank her nervously":
+    #             p "T-Thank you. I don't know how I could have done that without you."
                 
-                hooded_woman "{i}Perhaps. But you're stronger than you think. Remember that.{/i}"
+    #             hooded_woman "{i}Perhaps. But you're stronger than you think. Remember that.{/i}"
         
-        "Before you can say anything else, she vanishes into the shadows as quickly as she appeared, leaving you alone in the stillness of the night."
+    #     "Before you can say anything else, she vanishes into the shadows as quickly as she appeared, leaving you alone in the stillness of the night."
 
 
 
@@ -2252,9 +2252,77 @@ label chapter_4:
     # The "Cursed Dawn" goddess, evil sister of the Blessed Eve, will interfere in the spirit trial with a much darker test of her own
     # 1v1 Final battle against Geralt Dune
 
+    label cursed_dawn_offer:
+        # scene bg_academy_evening with fade
+        # play music "mysterious_theme.ogg" fadein 2.0
+
+        "The academy corridors are eerily silent as the sun dips below the horizon. Shadows stretch long and dark, flickering as faint torches light the hall."
+        "Your teammates are elsewhere, preparing for the tournament, but you've found yourself alone, wandering the quiet halls lost in thought."
+        "As you pass by the library entrance, you feel a strange sensation—a chill, as though the air itself has grown heavier."
+        "A faint whisper brushes against your ear, and you turn sharply."
+
+        # scene bg_library_door_dark with dissolve
+        "There, standing in the shadows near the library door, is a hooded figure cloaked in deep, flowing black robes."
+        "Her presence seems to warp the air around her, as if reality itself resists her existence."
+
+        hwm "You're quite determined, aren't you, little thief?"
+        "Her voice is smooth and cold, laced with a subtle power that makes your skin crawl."
+        p "Who are you? What do you want?"
+        hwm "Oh, just a concerned... observer. Someone who sees potential in you—potential that is being squandered."
+
+        "The figure steps closer, and as she moves, the shadows cling to her like living tendrils. Despite the darkness obscuring her face, you feel her gaze pierce straight through you."
+
+        hwm "The tournament is no mere game, you know. It's a proving ground. A chance to rise above the rest, to show them all who truly deserves to stand at the top."
+        p "I don’t need your help. I can handle it on my own."
+        hwm "Of course you can." 
+        "Her tone drips with condescension, a mocking smile audible in her words."
+        hwm "But why struggle? Why risk failure when I can offer you... an edge?"
+
+        "With a slow, deliberate motion, she reaches beneath her cloak and pulls out a shimmering, ethereal garment—a cloak that seems to ripple and shimmer like liquid darkness."
+
+        hwm "This is no ordinary cloak. Its magic can make you unseen, untouchable, untraceable. With it, you can slip past any obstacle, unseen by even the sharpest eyes."
+        hwm "Imagine the possibilities, dear thief. During the trials, you could gain the upper hand with ease—an advantage no one could ever trace back to you."
+        p "(A cloak of invisibility...)"
+        "The idea is tempting. You can already imagine the countless ways it could help—not just during the tournament, but beyond."
+
+        label hwm_questions:
+            menu:
+                "Ask about the cloak":
+                    p "What’s the catch? Magic like this doesn’t come without a price."
+                    hwm "Smart boy. You're right—everything has a cost. But this? This is... a gift. Call it an investment."
+                    hwm "All I ask is that you use it well. Show me the cunning and ambition I know you possess."
+                    jump hwm_questions
+
+                "Ask about her identity":
+                    p "Why would you help me? Who are you, really?"
+                    "The woman chuckles softly, a sound both alluring and unnerving."
+                    hwm "A friend. A guide, perhaps. Someone who understands what it takes to win in this cruel world."
+                    hwm "My name is irrelevant for now. Call me... an ally in the shadows."
+                    jump hwm_questions
+
+                "Refuse the cloak":
+                    p "I don’t need your help. Keep your cloak and your games."
+                    "The figure tilts her head slightly, as if amused by your defiance."
+                    hwm "Pride is a dangerous thing, little thief. Don’t let it blind you to opportunity."
+                    hwm "But... I respect your decision. For now."
+                    "With a wave of her hand, the cloak vanishes, and the figure melts back into the shadows."
+
+                "Accept the cloak":
+                    $ player_accepted_cloak = True
+                    "You reach out, your hand trembling slightly as your fingers brush against the fabric of the cloak."
+                    "It feels weightless, cold to the touch yet oddly comforting."
+                    p "What do you want in return?"
+                    hwm "Oh, nothing too burdensome. Consider it a token of trust—a gift for someone who will do great things."
+                    hwm "But remember this: gifts always come with... expectations."
+                    "She hands you the cloak, her voice dropping to a whisper."
+                    hwm "Use it wisely. You’ll find it invaluable—not just for the trials, but for the secrets this academy hides."
+                    p "(Secrets?)"
+                    hwm "Oh yes. This academy holds many secrets, and I suspect you’re clever enough to uncover them. This cloak will help you slip where others cannot tread."
+
+
     label tournament_intro:
-        scene academy_arena with fade
-        play music "epic_tournament.mp3"
+        # scene academy_arena with fade
+        # play music "epic_tournament.mp3"
 
         "The grand arena of the academy buzzes with excitement as the students gather for the annual end-of-year tournament. The tournament is a showcase of skill, intellect, and teamwork—a final challenge before the academy break."
         "Your team is assembled: Ciry, your ever-reliable companion, and [alliance], the person you chose to ally with earlier in the year."
@@ -2353,14 +2421,95 @@ label chapter_4:
 
         "The final challenge is a magical lake that reveals and animates your deepest fears."
         "One by one, your team members face their fears and work together to overcome them."
+        
+    label cursed_dawn:
+        # Background: Trial Arena
+        scene bg_trial_arena with fade
+        play music "music/ominous_theme.ogg" fadein 2.0
+
+        "The final trial begins, a test of spirit, where competitors are to face their deepest fears in a constructed illusionary space."
+        "The judges signal the start, and a faint, ethereal mist fills the arena as your mind begins to drift."
+        
+        # Conditional branching
+        if accepted_hooded_woman:
+            "But something feels... wrong."
+            "The mist, which should have been silvery and calming, suddenly turns darker, tinged with a crimson hue."
+            "A chilling wind sweeps through the arena, sending shivers down your spine."
+
+            # Introduction of the Cursed Dawn
+            scene bg_dark_void with fade
+            play sound "sound/dark_whisper.ogg"
+
+            "The surroundings dissolve into darkness. All sound fades, replaced by a low, echoing voice that seems to come from everywhere and nowhere at once."
+            cd "So you accepted her help, did you? How... predictable."
+            "The voice is sharp, cold, and filled with a sinister amusement. A figure materializes from the shadows—a woman cloaked in black, her presence radiating malevolence."
+            cd "You sought power, and power always comes with a price. Did you truly think the Blessed Eve would protect you from me?"
+
+            menu:
+                "Who are you?":
+                    p "Who... who are you?"                    
+                "Stay silent.":
+                    p "(Stay calm. Don’t give her the satisfaction of fear.)"
+                    cd "Oh, silent bravery? How charming. But bravery won't save you here."
+            cd "You don't recognize me? Perhaps your little gnome companion failed to mention me during her lesson on deities. I am the Cursed Dawn, sister of her precious Blessed Eve."
+            cd "Yes, I've been watching you for a while... I was wondering why the Silent Goddes is so much interested in having you as her pet."
+            cd "(snickering provocatively) She whispers her little riddles into your dreams and calls it guidance, doesn't she?. It’s laughable."
+            cd "Let me show you the true depths of your spirit—your failures, your fears, and the lies you tell yourself to keep moving forward."
+
+            # The Dark Test begins
+            # scene bg_fear_hall with dissolve
+            "The darkness shifts, and you find yourself standing in a warped reflection of the Academy courtyard."
+            "The buildings are cracked and crumbling, the sky above a blood-red hue. Shadows writhe at the edges of your vision, and ghostly whispers fill the air."
+            cd "Face the truth, mortal. Or be consumed by it."
+            # Player encounters their fears
+            "Suddenly, familiar figures emerge from the shadows. It's your companions—Ciry, Theo or Dante, and Aryanna—but their faces are twisted in anger and hatred."
+            c "You think you're a hero? You're nothing but a coward who hides behind others."
+            the "You're weak. You couldn’t save anyone without someone else's power."
+            dan "Pathetic. You’ve always relied on others to fight your battles."
+            "Their words pierce through you, each one cutting deeper than the last. You try to speak, but the weight of their accusations keeps you silent."
+
+            # Player's choices
+            menu:
+                "Stand your ground":
+                    p "No... This isn't real. You're not real."
+                    "You steady yourself, focusing on the truth. These are illusions, crafted to break you, and you won’t let them win."
+                    "The figures waver, their forms flickering as your resolve strengthens."
+                    cd "Impressive. But resolve alone won't save you."
+                "Doubt yourself":
+                    p "(Maybe... maybe they're right. I have relied on others too much.)"
+                    "The shadows close in as doubt clouds your mind. The figures grow stronger, their accusations louder."
+                    cd "Good. Accept it. Sink into the truth of your insignificance."
+
+            # The conclusion of the Dark Test
+            scene bg_dark_void with dissolve
+            "The vision dissolves, and you find yourself back in the dark void with the Cursed Dawn."
+            cd "You’re stronger than I expected. Perhaps there’s something worth breaking in you after all."
+            cd "But remember this, mortal. You carry my mark now, the shadow of the Cursed Dawn. And this is because I have plans for you."
+            "A searing pain burns on your arm, and when you glance down, a faint black sigil in the shape of a crescent moon glows ominously on your skin."
+            cd "I offer you true power, should you ever seek it."
+            cd "I offer you to not be the puppet of that Silent Goddess... such a joke of a deity. What kind of ‘savior’ can’t even speak for herself?"
+            cd "Go, little pawn. Win your tournament. But know that I am watching."
+
+            # scene bg_trial_arena with fade
+            "With a final, mocking laugh, the darkness fades, and you’re back in the arena."
+            "The mist clears, and you collapse to your knees, gasping for breath. The other competitors look just as shaken, but none of them seem to have experienced the same... interference."
+
+            c "Hey! Are you okay?"
+            "Ciry rushes over, concern etched on her face. You nod weakly, hiding your arm from her view."
+            p "(The mark... so this was real?)"
+
+        else:
+            # Normal trial continues
+            "The mist envelops you, and visions of your deepest fears emerge. But there’s nothing out of the ordinary—just the standard test of spirit."
+
         if alliance == "Theo":
-            theo "A lake messin’ with my head? Bah, I’ll bash it jus’ like everything else!"
+            the "A lake messin’ with my head? Bah, I’ll bash it jus’ like everything else!"
             "Theo’s confidence helps the team push through the illusions."
             $ team_score += 10
         elif alliance == "Dante":
-            dante "Illusions? Mere tricks. Focus your mind, and they’ll shatter."
+            dant "Illusions? Mere tricks. Focus your mind, and they’ll shatter."
             "Dante’s logical approach guides the team to success."
-            $ team_score += 10
+            $ team_score += 15
 
         "Your team emerges from the dungeon, tired but victorious."
         if team_score >= 40:
