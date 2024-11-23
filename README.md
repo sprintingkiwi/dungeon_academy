@@ -2,7 +2,7 @@ A 5E compatible Visual Novel prototype realized with Ren'Py and AI-generated gra
 
 Releases can be found on [my Itch.io channel](https://sprintingkiwi.itch.io/)
 
-Graphics realized with Stable Diffusion
+Most characters and backgrounds are realized with Stable Diffusion or DALL-E
 
 # LICENSES:
 * The **code** is under GNU GPL 3 License, except for the content of the [sheet_5e folder](sheet_5e/) which is a fork of [this project](https://github.com/tassaron/dnd-character) by [tassaron](https://github.com/tassaron), and it comes with its own license.
