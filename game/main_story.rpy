@@ -1822,6 +1822,7 @@ label chapter_3:
         "Date with Gwen" if "First date with Gwen" in Player.achievements and "Second date with Gwen" not in Player.achievements:
             $ Player.achievements.append("Second date with Gwen")
             label gwen_second_date:
+                show gwen_student at topleft with dissolve
                 # scene bg academy_path_night with fade
                 "The two walk back towards the Academy under the glow of moonlight, their conversation easy and relaxed."                
                 gwe "You're not bad company for a quiet guy, you know that?
@@ -1834,7 +1835,8 @@ label chapter_3:
                     "Politely decline":
                         p "Thanks, but I should probably head back. It's getting late."
                         gwe "(smirking) Fair enough, new boy. Maybe next time."
-                        return
+                        hide gwen_student with dissolve
+                        jump ch3_choices_1
 
             label gwen_house:
                 # scene bg gwen_house_interior with fade
@@ -1843,7 +1845,8 @@ label chapter_3:
                 "She disappears into another room, leaving [Player.sheet.name] to nervously take in his surroundings. Something about the place feels... different, though he can't quite put his finger on it."                
                 # scene bg gwen_house_dark with dissolve
                 "When Gwen returns, her demeanor has shifted. The playful grin remains, but her eyes glow faintly, and the air around her seems charged with an unfamiliar energy."                
-                gwe"You're a sweet guy, [Player.sheet.name]. I like that about you. But there's something you should know about me..."                
+                gwe"You're a sweet guy, [Player.sheet.name]. I like that about you. But there's something you should know about me..."
+                hide gwen_student with dissolve
                 """
                 "Her form begins to change subtly. Her eyes burn brighter, small horns appear on her head, and a tail flicks into view behind her."
                 When Gwen reveals her true succubus form, the transformation is as breathtaking as it is unsettling.
@@ -1866,7 +1869,7 @@ label chapter_3:
                 The air around her seems to ripple with heat, not uncomfortable but disorienting, like standing too close to a fire. Her presence is almost magnetic, impossible to ignore, as if every movement and gesture is calculated to ensnare attention.
                 A faint, intoxicating aroma follows her, a mix of jasmine, dark spices, and something ineffable that stirs primal instincts.
                 """
-                show gwen at top with dissolve
+                show gwen_succubus at top with dissolve
                 
                 menu:
                     "Roll a D20 on Nature":
@@ -1913,7 +1916,7 @@ label chapter_3:
                     "Confront her with fear and anger":
                         p "(shouting) So this is what you do? You lure people in just to destroy them? That's... that's monstrous!"
                         gwe "(smirking) Oh, [Player.sheet.name], don't be so dramatic. I never force anyone—they all agree in the end. Even the ones who protest at first."
-                        "[Player.sheet.name] backs away, heart pounding, desperately scanning for an escape route."
+                        "You back away, heart pounding, desperately scanning for an escape route."
 
                     "Challenge her with courage":
                         p "(firmly) If you think I'm going to just let you take my soul, you've got another thing coming. I'm not like the others."

@@ -214,7 +214,7 @@ label start:
 
         "Debug Jump":
             $ Player.achievements.append("First date with Gwen")
-            jump chapter_4
+            jump gwen_second_date
 
 
 
